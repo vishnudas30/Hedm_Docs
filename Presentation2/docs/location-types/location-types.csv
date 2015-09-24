@@ -1,0 +1,74 @@
+title,Location Type
+description,A type of physical location where a person or organization may be contacted.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A globally unique identifier of a location type.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of a location type.
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,The description of a location type.
+properties.description.type,string
+properties.code.title,Location Type Code
+properties.code.description,The generally unique code for a location type.
+properties.code.type,string
+properties.type.title,Type
+properties.type.description,The high level type of the location.
+properties.type.oneOf.title,Type
+properties.type.oneOf.description,A type of location for a person.
+properties.type.oneOf.type,object
+properties.type.oneOf.properties.person.title,Person
+properties.type.oneOf.properties.person.description,A human being or other independent agent.
+properties.type.oneOf.properties.person.type,object
+properties.type.oneOf.properties.person.properties.locationType.title,Type
+properties.type.oneOf.properties.person.properties.locationType.description,A type of location information for a person.
+properties.type.oneOf.properties.person.properties.locationType.enum,home;school;vacation;billing;shipping;mailing;business;parent;family;other
+properties.type.oneOf.properties.person.properties.locationType.type,string
+properties.type.oneOf.properties.person.additionalProperties,false
+properties.type.oneOf.properties.person.required,locationType
+properties.type.oneOf.additionalProperties,false
+properties.type.oneOf.required,person
+properties.type.oneOf.title,Type
+properties.type.oneOf.description,A type of location for an organization.
+properties.type.oneOf.type,object
+properties.type.oneOf.properties.organization.title,Organization
+properties.type.oneOf.properties.organization.description,A collection of people organized together into a community or other social, commercial or political structure for a common purpose that acts as a single agent.
+properties.type.oneOf.properties.organization.type,object
+properties.type.oneOf.properties.organization.properties.locationType.title,Type
+properties.type.oneOf.properties.organization.properties.locationType.description,A type of location information for an organization.
+properties.type.oneOf.properties.organization.properties.locationType.enum,business;pobox;main;branch;region;support;matchingGifts;other
+properties.type.oneOf.properties.organization.properties.locationType.type,string
+properties.type.oneOf.properties.organization.additionalProperties,false
+properties.type.oneOf.properties.organization.required,locationType
+properties.type.oneOf.additionalProperties,false
+properties.type.oneOf.required,organization
+required,id;title;type
+additionalProperties,false

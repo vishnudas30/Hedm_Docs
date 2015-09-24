@@ -1,0 +1,154 @@
+title,donations-summary
+description,Provides a summary of all the donation made by a person.
+type,object
+properties.id.title,Id
+properties.id.description,A global identifier of donations-summary
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donor.title,Donor
+properties.donor.description,The id of the Person donating.
+properties.donor.type,object
+properties.donor.properties.id.title,ID
+properties.donor.properties.id.description,The global identifier for Donor
+properties.donor.properties.id.type,string
+properties.donor.properties.id.format,guid
+properties.donor.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donor.links.rel,self
+properties.donor.links.href,/persons/{id}
+properties.donor.links.targetSchema.$ref,persons.json#
+properties.donor.additionalProperties,false
+properties.donor.required,id
+properties.firstDonation.title,First Donation
+properties.firstDonation.description,The first donation details.
+properties.firstDonation.oneOf.type,object
+properties.firstDonation.oneOf.properties.donatedOn.title,Donated On
+properties.firstDonation.oneOf.properties.donatedOn.description,The date the first donation was made on.
+properties.firstDonation.oneOf.properties.donatedOn.type,string
+properties.firstDonation.oneOf.properties.donatedOn.format,date
+properties.firstDonation.oneOf.properties.donatedOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.firstDonation.oneOf.properties.amount.title,Amount
+properties.firstDonation.oneOf.properties.amount.description,The amount of funds donated the first time.
+properties.firstDonation.oneOf.properties.amount.type,object
+properties.firstDonation.oneOf.properties.amount.properties.currency.title,currency
+properties.firstDonation.oneOf.properties.amount.properties.currency.description,
+properties.firstDonation.oneOf.properties.amount.properties.currency.type,object
+properties.firstDonation.oneOf.properties.amount.properties.currency.properties.value.title,Value
+properties.firstDonation.oneOf.properties.amount.properties.currency.properties.value.description,
+properties.firstDonation.oneOf.properties.amount.properties.currency.properties.value.minimum,
+properties.firstDonation.oneOf.properties.amount.properties.currency.properties.value.type,number
+properties.firstDonation.oneOf.properties.amount.properties.currency.properties.value.format,positiveNumber
+properties.firstDonation.oneOf.properties.amount.properties.currency.properties.currency.title,Currency
+properties.firstDonation.oneOf.properties.amount.properties.currency.properties.currency.description,
+properties.firstDonation.oneOf.properties.amount.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.firstDonation.oneOf.properties.amount.properties.currency.properties.currency.type,string
+properties.firstDonation.oneOf.properties.amount.properties.currency.additionalProperties,false
+properties.firstDonation.oneOf.properties.amount.properties.currency.required,value;currency
+properties.firstDonation.oneOf.properties.amount.required,currency
+properties.firstDonation.oneOf.properties.amount.additionalProperties,false
+properties.firstDonation.oneOf.properties.amount.format,currency
+properties.firstDonation.oneOf.additionalProperties,false
+properties.firstDonation.oneOf.required,donatedOn;amount
+properties.firstDonation.oneOf.type,object
+properties.firstDonation.oneOf.maxProperties,
+properties.latestDonation.title,Latest Donation
+properties.latestDonation.description,Details of most recent donation.
+properties.latestDonation.oneOf.type,object
+properties.latestDonation.oneOf.properties.donatedOn.title,Donated On
+properties.latestDonation.oneOf.properties.donatedOn.description,The most recent donation made on.
+properties.latestDonation.oneOf.properties.donatedOn.type,string
+properties.latestDonation.oneOf.properties.amount.title,Amount
+properties.latestDonation.oneOf.properties.amount.description,The most recent donation made.
+properties.latestDonation.oneOf.properties.amount.type,object
+properties.latestDonation.oneOf.properties.amount.properties.currency.title,currency
+properties.latestDonation.oneOf.properties.amount.properties.currency.description,
+properties.latestDonation.oneOf.properties.amount.properties.currency.type,object
+properties.latestDonation.oneOf.properties.amount.properties.currency.properties.value.title,Value
+properties.latestDonation.oneOf.properties.amount.properties.currency.properties.value.description,
+properties.latestDonation.oneOf.properties.amount.properties.currency.properties.value.minimum,
+properties.latestDonation.oneOf.properties.amount.properties.currency.properties.value.type,number
+properties.latestDonation.oneOf.properties.amount.properties.currency.properties.value.format,positiveNumber
+properties.latestDonation.oneOf.properties.amount.properties.currency.properties.currency.title,Currency
+properties.latestDonation.oneOf.properties.amount.properties.currency.properties.currency.description,
+properties.latestDonation.oneOf.properties.amount.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.latestDonation.oneOf.properties.amount.properties.currency.properties.currency.type,string
+properties.latestDonation.oneOf.properties.amount.properties.currency.additionalProperties,false
+properties.latestDonation.oneOf.properties.amount.properties.currency.required,value;currency
+properties.latestDonation.oneOf.properties.amount.required,currency
+properties.latestDonation.oneOf.properties.amount.additionalProperties,false
+properties.latestDonation.oneOf.properties.amount.format,currency
+properties.latestDonation.oneOf.additionalProperties,false
+properties.latestDonation.oneOf.required,donatedOn;amount
+properties.latestDonation.oneOf.type,object
+properties.latestDonation.oneOf.maxProperties,
+properties.largestDonation.title,Largest Donation
+properties.largestDonation.description,Details of largest amount of donation made so far.
+properties.largestDonation.oneOf.type,object
+properties.largestDonation.oneOf.properties.donatedOn.title,Donated On
+properties.largestDonation.oneOf.properties.donatedOn.description,The date when the largest amount of donation made.
+properties.largestDonation.oneOf.properties.donatedOn.type,string
+properties.largestDonation.oneOf.properties.donatedOn.format,date
+properties.largestDonation.oneOf.properties.donatedOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.largestDonation.oneOf.properties.amount.title,Amount
+properties.largestDonation.oneOf.properties.amount.description,The largest amount of donation made so far.
+properties.largestDonation.oneOf.properties.amount.type,object
+properties.largestDonation.oneOf.properties.amount.properties.currency.title,currency
+properties.largestDonation.oneOf.properties.amount.properties.currency.description,
+properties.largestDonation.oneOf.properties.amount.properties.currency.type,object
+properties.largestDonation.oneOf.properties.amount.properties.currency.properties.value.title,Value
+properties.largestDonation.oneOf.properties.amount.properties.currency.properties.value.description,
+properties.largestDonation.oneOf.properties.amount.properties.currency.properties.value.minimum,
+properties.largestDonation.oneOf.properties.amount.properties.currency.properties.value.type,number
+properties.largestDonation.oneOf.properties.amount.properties.currency.properties.value.format,positiveNumber
+properties.largestDonation.oneOf.properties.amount.properties.currency.properties.currency.title,Currency
+properties.largestDonation.oneOf.properties.amount.properties.currency.properties.currency.description,
+properties.largestDonation.oneOf.properties.amount.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.largestDonation.oneOf.properties.amount.properties.currency.properties.currency.type,string
+properties.largestDonation.oneOf.properties.amount.properties.currency.additionalProperties,false
+properties.largestDonation.oneOf.properties.amount.properties.currency.required,value;currency
+properties.largestDonation.oneOf.properties.amount.required,currency
+properties.largestDonation.oneOf.properties.amount.additionalProperties,false
+properties.largestDonation.oneOf.properties.amount.format,currency
+properties.largestDonation.oneOf.additionalProperties,false
+properties.largestDonation.oneOf.required,donatedOn;amount
+properties.largestDonation.oneOf.type,object
+properties.largestDonation.oneOf.maxProperties,
+properties.totalDonations.title,Total Donations
+properties.totalDonations.description,The details of donations made so far.
+properties.totalDonations.oneOf.type,object
+properties.totalDonations.oneOf.properties.yearsOfGiving.title,Years Of Giving
+properties.totalDonations.oneOf.properties.yearsOfGiving.description,The total amount of donations made so far
+properties.totalDonations.oneOf.properties.yearsOfGiving.minimum,
+properties.totalDonations.oneOf.properties.yearsOfGiving.type,number
+properties.totalDonations.oneOf.properties.yearsOfGiving.format,positiveInteger
+properties.totalDonations.oneOf.properties.donationCount.title,Donation Count
+properties.totalDonations.oneOf.properties.donationCount.description,The total number of donations made so far
+properties.totalDonations.oneOf.properties.donationCount.minimum,
+properties.totalDonations.oneOf.properties.donationCount.type,number
+properties.totalDonations.oneOf.properties.donationCount.format,positiveInteger
+properties.totalDonations.oneOf.properties.amount.title,Amount
+properties.totalDonations.oneOf.properties.amount.description,The total amount of funds donated so far
+properties.totalDonations.oneOf.properties.amount.type,object
+properties.totalDonations.oneOf.properties.amount.properties.currency.title,currency
+properties.totalDonations.oneOf.properties.amount.properties.currency.description,
+properties.totalDonations.oneOf.properties.amount.properties.currency.type,object
+properties.totalDonations.oneOf.properties.amount.properties.currency.properties.value.title,Value
+properties.totalDonations.oneOf.properties.amount.properties.currency.properties.value.description,
+properties.totalDonations.oneOf.properties.amount.properties.currency.properties.value.minimum,
+properties.totalDonations.oneOf.properties.amount.properties.currency.properties.value.type,number
+properties.totalDonations.oneOf.properties.amount.properties.currency.properties.value.format,positiveNumber
+properties.totalDonations.oneOf.properties.amount.properties.currency.properties.currency.title,Currency
+properties.totalDonations.oneOf.properties.amount.properties.currency.properties.currency.description,
+properties.totalDonations.oneOf.properties.amount.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.totalDonations.oneOf.properties.amount.properties.currency.properties.currency.type,string
+properties.totalDonations.oneOf.properties.amount.properties.currency.additionalProperties,false
+properties.totalDonations.oneOf.properties.amount.properties.currency.required,value;currency
+properties.totalDonations.oneOf.properties.amount.required,currency
+properties.totalDonations.oneOf.properties.amount.additionalProperties,false
+properties.totalDonations.oneOf.properties.amount.format,currency
+properties.totalDonations.oneOf.additionalProperties,false
+properties.totalDonations.oneOf.required,amount
+properties.totalDonations.oneOf.type,object
+properties.totalDonations.oneOf.maxProperties,
+required,id;donor
+additionalProperties,false

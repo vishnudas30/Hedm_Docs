@@ -1,0 +1,57 @@
+title,Person Group
+description,A Group of persons
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a group
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of a group.
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,A description of a group
+properties.description.type,string
+properties.members.title,Member
+properties.members.description,A person who is a member of the group
+properties.members.type,array
+properties.members.items.title,Member
+properties.members.items.description,A person who is a member of the group
+properties.members.items.type,object
+properties.members.items.properties.id.title,ID
+properties.members.items.properties.id.description,The global identifier for Member
+properties.members.items.properties.id.type,string
+properties.members.items.properties.id.format,guid
+properties.members.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.members.items.links.rel,self
+properties.members.items.links.href,/persons/{id}
+properties.members.items.links.targetSchema.$ref,persons.json#
+properties.members.items.additionalProperties,false
+properties.members.items.required,id
+required,id;title
+additionalProperties,false

@@ -1,0 +1,84 @@
+title,Geographic Area
+description,A geographic area defined for a specific purpose
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,Id
+properties.id.description,The global identifier of a geographic area
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of a geographic area
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,The description of a geographic area
+properties.description.type,string
+properties.type.title,Type
+properties.type.description,The type of a geographic area
+properties.type.type,object
+properties.type.properties.category.title,Category
+properties.type.properties.category.description,A category of geographic area type
+properties.type.properties.category.enum,governmental;postal;fundraising;recruitment
+properties.type.properties.category.type,string
+properties.type.properties.detail.title,Detail
+properties.type.properties.detail.description,A custom geographic area type
+properties.type.properties.detail.oneOf.type,object
+properties.type.properties.detail.oneOf.properties.id.title,ID
+properties.type.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.type.properties.detail.oneOf.properties.id.type,string
+properties.type.properties.detail.oneOf.properties.id.format,guid
+properties.type.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.type.properties.detail.oneOf.links.rel,self
+properties.type.properties.detail.oneOf.links.href,/geographic-areas/{id}
+properties.type.properties.detail.oneOf.links.targetSchema.$ref,geographic-areas.json#
+properties.type.properties.detail.oneOf.additionalProperties,false
+properties.type.properties.detail.oneOf.required,id
+properties.type.properties.detail.oneOf.type,object
+properties.type.properties.detail.oneOf.maxProperties,
+properties.type.additionalProperties,false
+properties.type.required,category
+properties.code.title,Code
+properties.code.description,The code of the area
+properties.code.type,string
+properties.includedAreas.title,Included Areas
+properties.includedAreas.description,Areas included in this one
+properties.includedAreas.type,array
+properties.includedAreas.items.title,Included Areas
+properties.includedAreas.items.description,Areas included in this one
+properties.includedAreas.items.type,object
+properties.includedAreas.items.properties.id.title,ID
+properties.includedAreas.items.properties.id.description,The global identifier for Included Areas
+properties.includedAreas.items.properties.id.type,string
+properties.includedAreas.items.properties.id.format,guid
+properties.includedAreas.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.includedAreas.items.links.rel,self
+properties.includedAreas.items.links.href,/geographic-areas/{id}
+properties.includedAreas.items.links.targetSchema.$ref,geographic-areas.json#
+properties.includedAreas.items.additionalProperties,false
+properties.includedAreas.items.required,id
+required,id;title;type
+additionalProperties,false

@@ -1,0 +1,168 @@
+title,Donor Society
+description,A society that recognizes the level of donations to an organiztion.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a donor society.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of a donor society.
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,A full description of a donor society.
+properties.description.type,string
+properties.status.title,Status
+properties.status.description,A status of a donor society. 
+properties.status.enum,active;inactive
+properties.status.type,string
+properties.startOn.title,Start Date
+properties.startOn.description,A date when a donor society started.
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.format,date-time
+properties.startOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.maxLength,
+properties.endOn.title,End Date
+properties.endOn.description,A date when a donor society ended.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.evaluationTimeFrame.title,Evaluation Time Frame
+properties.evaluationTimeFrame.description,The time frame used to evaluate cumulative donations. 
+properties.evaluationTimeFrame.enum,year;lifetime
+properties.evaluationTimeFrame.type,string
+properties.donationTypes.title,Donation Type
+properties.donationTypes.description,The types of donations that qualify for the donor society.
+properties.donationTypes.type,array
+properties.donationTypes.items.title,Donation Type
+properties.donationTypes.items.description,The types of donations that qualify for the donor society.
+properties.donationTypes.items.type,object
+properties.donationTypes.items.properties.id.title,ID
+properties.donationTypes.items.properties.id.description,The global identifier for Donation Type
+properties.donationTypes.items.properties.id.type,string
+properties.donationTypes.items.properties.id.format,guid
+properties.donationTypes.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donationTypes.items.links.rel,self
+properties.donationTypes.items.links.href,/donation-types/{id}
+properties.donationTypes.items.links.targetSchema.$ref,donation-types.json#
+properties.donationTypes.items.additionalProperties,false
+properties.donationTypes.items.required,id
+properties.creditTypes.title,Credit Type
+properties.creditTypes.description,The types of credit that qualify for the donor society.
+properties.creditTypes.type,array
+properties.creditTypes.items.type,object
+properties.creditTypes.items.properties.creditType.title,Credit Type
+properties.creditTypes.items.properties.creditType.description,The type of credit given for the donation.
+properties.creditTypes.items.properties.creditType.oneOf.title,One Of-1
+properties.creditTypes.items.properties.creditType.oneOf.description,
+properties.creditTypes.items.properties.creditType.oneOf.type,object
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditType.title,Hard Credit
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditType.description,A hard credit
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditType.enum,hard
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditType.type,string
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditTypeReason.title,Hard Credit Reason
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditTypeReason.description,The reason for giving hard credit for the donation.
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditTypeReason.enum,recognition;legal;other
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditTypeReason.type,string
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.title,Detail
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.description,
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.type,object
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.title,ID
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.type,string
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.format,guid
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.links.rel,self
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.links.href,/donation-credit-types/{id}
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.links.targetSchema.$ref,donation-credit-types.json#
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.additionalProperties,false
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.required,id
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.type,object
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.maxProperties,
+properties.creditTypes.items.properties.creditType.oneOf.additionalProperties,false
+properties.creditTypes.items.properties.creditType.oneOf.required,donationCreditType;donationCreditTypeReason
+properties.creditTypes.items.properties.creditType.oneOf.title,One Of-2
+properties.creditTypes.items.properties.creditType.oneOf.description,
+properties.creditTypes.items.properties.creditType.oneOf.type,object
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditType.title,Soft Credit
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditType.description,A soft Credit
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditType.enum,soft
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditType.type,string
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditTypeReason.title,Soft Credit Reason
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditTypeReason.description,The reason for giving soft credit for the donation.
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditTypeReason.enum,matching;soft;other
+properties.creditTypes.items.properties.creditType.oneOf.properties.donationCreditTypeReason.type,string
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.title,Detail
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.description,
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.type,object
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.title,ID
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.type,string
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.format,guid
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.links.rel,self
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.links.href,/donation-credit-types/{id}
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.links.targetSchema.$ref,donation-credit-types.json#
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.additionalProperties,false
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.required,id
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.type,object
+properties.creditTypes.items.properties.creditType.oneOf.properties.detail.oneOf.maxProperties,
+properties.creditTypes.items.properties.creditType.oneOf.additionalProperties,false
+properties.creditTypes.items.properties.creditType.oneOf.required,donationCreditType;donationCreditTypeReason
+properties.creditTypes.items.additionalProperties,false
+properties.creditTypes.items.required,creditType
+properties.constituentTypes.title,Constituent Type
+properties.constituentTypes.description,The constituent types applicable to the donor society.
+properties.constituentTypes.type,array
+properties.constituentTypes.items.type,object
+properties.constituentTypes.items.properties.vseSource.title,Source
+properties.constituentTypes.items.properties.vseSource.description,VSE Survey source category.
+properties.constituentTypes.items.properties.vseSource.enum,alumni;parent;otherIndividual;foundation;corporation;religious;consortia;otherOrganization
+properties.constituentTypes.items.properties.vseSource.type,string
+properties.constituentTypes.items.properties.detail.title,Detail
+properties.constituentTypes.items.properties.detail.description,
+properties.constituentTypes.items.properties.detail.oneOf.type,object
+properties.constituentTypes.items.properties.detail.oneOf.properties.id.title,ID
+properties.constituentTypes.items.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.constituentTypes.items.properties.detail.oneOf.properties.id.type,string
+properties.constituentTypes.items.properties.detail.oneOf.properties.id.format,guid
+properties.constituentTypes.items.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.constituentTypes.items.properties.detail.oneOf.links.rel,self
+properties.constituentTypes.items.properties.detail.oneOf.links.href,/constituent-types/{id}
+properties.constituentTypes.items.properties.detail.oneOf.links.targetSchema.$ref,constituent-types.json#
+properties.constituentTypes.items.properties.detail.oneOf.additionalProperties,false
+properties.constituentTypes.items.properties.detail.oneOf.required,id
+properties.constituentTypes.items.properties.detail.oneOf.type,object
+properties.constituentTypes.items.properties.detail.oneOf.maxProperties,
+properties.constituentTypes.items.additionalProperties,false
+properties.constituentTypes.items.required,vseSource
+required,id;title;status
+additionalProperties,false

@@ -1,0 +1,38 @@
+title,Mailing Label
+description,Pre-formatted lines of address text, usable directly with mail pieces.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a preformatted mailing label.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.label.title,Mailing Label
+properties.label.description,Pre-formatted lines of address text, usable directly with mail pieces. The text lines are printed in the order given. Complete use may require the addition of postal automation information on the mail piece. The postalCountry element must be added as an additional line when the sender is in a different country than the recipient.
+properties.label.type,array
+properties.label.items.type,string
+required,id;label
+additionalProperties,false

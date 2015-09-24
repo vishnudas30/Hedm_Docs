@@ -1,0 +1,252 @@
+{
+  "title": "Donor Society Membership",
+  "description": "A membership in a donor society",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "A global identifier of a donor society membership",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "donor": {
+      "title": "Donor",
+      "description": "",
+      "oneOf": [
+        {
+          "title": "Person",
+          "description": "A person who is a member of a donor society.",
+          "type": "object",
+          "properties": {
+            "person": {
+              "title": "Person",
+              "description": "A human being or other independent agent.",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Person",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/persons/{id}",
+                  "targetSchema": {
+                    "$ref": "persons.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "person"
+          ]
+        },
+        {
+          "title": "Organization",
+          "description": "An organization which is a member of a donor society.",
+          "type": "object",
+          "properties": {
+            "organization": {
+              "title": "Organization",
+              "description": "Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Organization",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/organizations/{id}",
+                  "targetSchema": {
+                    "$ref": "organizations.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "organization"
+          ]
+        }
+      ]
+    },
+    "society": {
+      "title": "Donor Society",
+      "description": "The donor society in which the donor is a member.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The global identifier for Donor Society",
+          "type": "string",
+          "format": "guid",
+          "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+        }
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "/donor-societies/{id}",
+          "targetSchema": {
+            "$ref": "donor-societies.json#"
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "level": {
+      "title": "Donor Society Level",
+      "description": "A recognition level within a donor society.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier for Donor Society Level",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "links": [
+            {
+              "rel": "self",
+              "href": "/donor-society-levels/{id}",
+              "targetSchema": {
+                "$ref": "donor-society-levels.json#"
+              }
+            }
+          ],
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "status": {
+      "title": "Status",
+      "description": "A status of a donor society membership. ",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "type": "string"
+    },
+    "startOn": {
+      "title": "Start Date",
+      "description": "A date when a donor society membership started.",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "endOn": {
+      "title": "End Date",
+      "description": "A date when a donor society membership ended.",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "donor",
+    "society",
+    "status"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,314 @@
+title,Campaign
+description,A systematic course of fundraising activities.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a campaign.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of a fundraising campaign.
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,A description of a fundraising campaign.
+properties.description.type,string
+properties.fundRaisingTarget.title,Fund Raising Target
+properties.fundRaisingTarget.description,The desired amount of funds to be raised via the campaign.
+properties.fundRaisingTarget.oneOf.type,object
+properties.fundRaisingTarget.oneOf.properties.currency.title,currency
+properties.fundRaisingTarget.oneOf.properties.currency.description,
+properties.fundRaisingTarget.oneOf.properties.currency.type,object
+properties.fundRaisingTarget.oneOf.properties.currency.properties.value.title,Value
+properties.fundRaisingTarget.oneOf.properties.currency.properties.value.description,
+properties.fundRaisingTarget.oneOf.properties.currency.properties.value.minimum,
+properties.fundRaisingTarget.oneOf.properties.currency.properties.value.type,number
+properties.fundRaisingTarget.oneOf.properties.currency.properties.value.format,positiveNumber
+properties.fundRaisingTarget.oneOf.properties.currency.properties.currency.title,Currency
+properties.fundRaisingTarget.oneOf.properties.currency.properties.currency.description,
+properties.fundRaisingTarget.oneOf.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.fundRaisingTarget.oneOf.properties.currency.properties.currency.type,string
+properties.fundRaisingTarget.oneOf.properties.currency.additionalProperties,false
+properties.fundRaisingTarget.oneOf.properties.currency.required,value;currency
+properties.fundRaisingTarget.oneOf.additionalProperties,false
+properties.fundRaisingTarget.oneOf.format,currency
+properties.fundRaisingTarget.oneOf.type,object
+properties.fundRaisingTarget.oneOf.maxProperties,
+properties.budgetedExpense.title,Budgeted Expense
+properties.budgetedExpense.description,The amount of funds budgeted to be spent during the campaign.
+properties.budgetedExpense.oneOf.type,object
+properties.budgetedExpense.oneOf.properties.currency.title,currency
+properties.budgetedExpense.oneOf.properties.currency.description,
+properties.budgetedExpense.oneOf.properties.currency.type,object
+properties.budgetedExpense.oneOf.properties.currency.properties.value.title,Value
+properties.budgetedExpense.oneOf.properties.currency.properties.value.description,
+properties.budgetedExpense.oneOf.properties.currency.properties.value.minimum,
+properties.budgetedExpense.oneOf.properties.currency.properties.value.type,number
+properties.budgetedExpense.oneOf.properties.currency.properties.value.format,positiveNumber
+properties.budgetedExpense.oneOf.properties.currency.properties.currency.title,Currency
+properties.budgetedExpense.oneOf.properties.currency.properties.currency.description,
+properties.budgetedExpense.oneOf.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.budgetedExpense.oneOf.properties.currency.properties.currency.type,string
+properties.budgetedExpense.oneOf.properties.currency.additionalProperties,false
+properties.budgetedExpense.oneOf.properties.currency.required,value;currency
+properties.budgetedExpense.oneOf.additionalProperties,false
+properties.budgetedExpense.oneOf.format,currency
+properties.budgetedExpense.oneOf.type,object
+properties.budgetedExpense.oneOf.maxProperties,
+properties.actualExpense.title,Actual Expense
+properties.actualExpense.description,The total amount of funds actually spent during the campaign.
+properties.actualExpense.oneOf.type,object
+properties.actualExpense.oneOf.properties.currency.title,currency
+properties.actualExpense.oneOf.properties.currency.description,
+properties.actualExpense.oneOf.properties.currency.type,object
+properties.actualExpense.oneOf.properties.currency.properties.value.title,Value
+properties.actualExpense.oneOf.properties.currency.properties.value.description,
+properties.actualExpense.oneOf.properties.currency.properties.value.minimum,
+properties.actualExpense.oneOf.properties.currency.properties.value.type,number
+properties.actualExpense.oneOf.properties.currency.properties.value.format,positiveNumber
+properties.actualExpense.oneOf.properties.currency.properties.currency.title,Currency
+properties.actualExpense.oneOf.properties.currency.properties.currency.description,
+properties.actualExpense.oneOf.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.actualExpense.oneOf.properties.currency.properties.currency.type,string
+properties.actualExpense.oneOf.properties.currency.additionalProperties,false
+properties.actualExpense.oneOf.properties.currency.required,value;currency
+properties.actualExpense.oneOf.additionalProperties,false
+properties.actualExpense.oneOf.format,currency
+properties.actualExpense.oneOf.type,object
+properties.actualExpense.oneOf.maxProperties,
+properties.category.title,Category
+properties.category.description,A category of a campaign.
+properties.category.oneOf.type,object
+properties.category.oneOf.properties.id.title,ID
+properties.category.oneOf.properties.id.description,The global identifier for Category
+properties.category.oneOf.properties.id.type,string
+properties.category.oneOf.properties.id.format,guid
+properties.category.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.category.oneOf.links.rel,self
+properties.category.oneOf.links.href,/campaign-categories/{id}
+properties.category.oneOf.links.targetSchema.$ref,campaign-categories.json#
+properties.category.oneOf.additionalProperties,false
+properties.category.oneOf.required,id
+properties.category.oneOf.type,object
+properties.category.oneOf.maxProperties,
+properties.type.title,Type
+properties.type.description,Type of a campaign.
+properties.type.type,object
+properties.type.properties.id.title,ID
+properties.type.properties.id.description,The global identifier for Type
+properties.type.properties.id.type,string
+properties.type.properties.id.format,guid
+properties.type.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.type.links.rel,self
+properties.type.links.href,/campaign-types/{id}
+properties.type.links.targetSchema.$ref,campaign-types.json#
+properties.type.additionalProperties,false
+properties.type.required,id
+properties.status.title,Status
+properties.status.description,A status of a campaign. 
+properties.status.enum,proposed;inProgress;cancelled;completed
+properties.status.type,string
+properties.startOn.title,Start Date
+properties.startOn.description,A date when a campaign started.
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.format,date-time
+properties.startOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.maxLength,
+properties.endOn.title,End Date
+properties.endOn.description,A date when a campaign ended.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.appeals.title,Appeal
+properties.appeals.description,A list of appeals associated with the campaign.
+properties.appeals.type,array
+properties.appeals.items.title,Appeal
+properties.appeals.items.description,A list of appeals associated with the campaign.
+properties.appeals.items.type,object
+properties.appeals.items.properties.id.title,ID
+properties.appeals.items.properties.id.description,The global identifier for Appeal
+properties.appeals.items.properties.id.type,string
+properties.appeals.items.properties.id.format,guid
+properties.appeals.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.appeals.items.links.rel,self
+properties.appeals.items.links.href,/appeals/{id}
+properties.appeals.items.links.targetSchema.$ref,appeals.json#
+properties.appeals.items.additionalProperties,false
+properties.appeals.items.required,id
+properties.targets.title,Target
+properties.targets.description,Prospective fundraising targets of the campaign.
+properties.targets.type,array
+properties.targets.items.type,object
+properties.targets.items.properties.target.title,Target
+properties.targets.items.properties.target.description,
+properties.targets.items.properties.target.oneOf.title,Person
+properties.targets.items.properties.target.oneOf.description,A person targeted for fundraising durng the campaign.
+properties.targets.items.properties.target.oneOf.type,object
+properties.targets.items.properties.target.oneOf.properties.person.title,Person
+properties.targets.items.properties.target.oneOf.properties.person.description,A human being or other independent agent.
+properties.targets.items.properties.target.oneOf.properties.person.type,object
+properties.targets.items.properties.target.oneOf.properties.person.properties.id.title,ID
+properties.targets.items.properties.target.oneOf.properties.person.properties.id.description,The global identifier for Person
+properties.targets.items.properties.target.oneOf.properties.person.properties.id.type,string
+properties.targets.items.properties.target.oneOf.properties.person.properties.id.format,guid
+properties.targets.items.properties.target.oneOf.properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.targets.items.properties.target.oneOf.properties.person.links.rel,self
+properties.targets.items.properties.target.oneOf.properties.person.links.href,/persons/{id}
+properties.targets.items.properties.target.oneOf.properties.person.links.targetSchema.$ref,persons.json#
+properties.targets.items.properties.target.oneOf.properties.person.additionalProperties,false
+properties.targets.items.properties.target.oneOf.properties.person.required,id
+properties.targets.items.properties.target.oneOf.additionalProperties,false
+properties.targets.items.properties.target.oneOf.required,person
+properties.targets.items.properties.target.oneOf.title,Organization
+properties.targets.items.properties.target.oneOf.description,An organization targeted for fundraising durng the campaign.
+properties.targets.items.properties.target.oneOf.type,object
+properties.targets.items.properties.target.oneOf.properties.organization.title,Organization
+properties.targets.items.properties.target.oneOf.properties.organization.description,Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.
+properties.targets.items.properties.target.oneOf.properties.organization.type,object
+properties.targets.items.properties.target.oneOf.properties.organization.properties.id.title,ID
+properties.targets.items.properties.target.oneOf.properties.organization.properties.id.description,The global identifier for Organization
+properties.targets.items.properties.target.oneOf.properties.organization.properties.id.type,string
+properties.targets.items.properties.target.oneOf.properties.organization.properties.id.format,guid
+properties.targets.items.properties.target.oneOf.properties.organization.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.targets.items.properties.target.oneOf.properties.organization.links.rel,self
+properties.targets.items.properties.target.oneOf.properties.organization.links.href,/organizations/{id}
+properties.targets.items.properties.target.oneOf.properties.organization.links.targetSchema.$ref,organizations.json#
+properties.targets.items.properties.target.oneOf.properties.organization.additionalProperties,false
+properties.targets.items.properties.target.oneOf.properties.organization.required,id
+properties.targets.items.properties.target.oneOf.additionalProperties,false
+properties.targets.items.properties.target.oneOf.required,organization
+properties.targets.items.properties.target.oneOf.title,Prospect
+properties.targets.items.properties.target.oneOf.description,A prospect targeted for fundraising during the campaign.
+properties.targets.items.properties.target.oneOf.type,object
+properties.targets.items.properties.target.oneOf.properties.prospect.title,Prospect
+properties.targets.items.properties.target.oneOf.properties.prospect.description,Donation prospect.
+properties.targets.items.properties.target.oneOf.properties.prospect.type,object
+properties.targets.items.properties.target.oneOf.properties.prospect.properties.id.title,ID
+properties.targets.items.properties.target.oneOf.properties.prospect.properties.id.description,The global identifier for Prospect
+properties.targets.items.properties.target.oneOf.properties.prospect.properties.id.type,string
+properties.targets.items.properties.target.oneOf.properties.prospect.properties.id.format,guid
+properties.targets.items.properties.target.oneOf.properties.prospect.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.targets.items.properties.target.oneOf.properties.prospect.links.rel,self
+properties.targets.items.properties.target.oneOf.properties.prospect.links.href,/prospects/{id}
+properties.targets.items.properties.target.oneOf.properties.prospect.links.targetSchema.$ref,prospects.json#
+properties.targets.items.properties.target.oneOf.properties.prospect.additionalProperties,false
+properties.targets.items.properties.target.oneOf.properties.prospect.required,id
+properties.targets.items.properties.target.oneOf.additionalProperties,false
+properties.targets.items.properties.target.oneOf.required,prospect
+properties.targets.items.additionalProperties,false
+properties.targets.items.required,target
+properties.assignments.title,Assignment
+properties.assignments.description,Campaign assignments
+properties.assignments.type,array
+properties.assignments.items.type,object
+properties.assignments.items.properties.assignee.title,Assignee
+properties.assignments.items.properties.assignee.description,
+properties.assignments.items.properties.assignee.oneOf.title,Person
+properties.assignments.items.properties.assignee.oneOf.description,Assigned Person
+properties.assignments.items.properties.assignee.oneOf.type,object
+properties.assignments.items.properties.assignee.oneOf.properties.person.title,Person
+properties.assignments.items.properties.assignee.oneOf.properties.person.description,A human being or other independent agent.
+properties.assignments.items.properties.assignee.oneOf.properties.person.type,object
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.title,ID
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.description,The global identifier for Person
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.type,string
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.format,guid
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.assignments.items.properties.assignee.oneOf.properties.person.links.rel,self
+properties.assignments.items.properties.assignee.oneOf.properties.person.links.href,/persons/{id}
+properties.assignments.items.properties.assignee.oneOf.properties.person.links.targetSchema.$ref,persons.json#
+properties.assignments.items.properties.assignee.oneOf.properties.person.additionalProperties,false
+properties.assignments.items.properties.assignee.oneOf.properties.person.required,id
+properties.assignments.items.properties.assignee.oneOf.additionalProperties,false
+properties.assignments.items.properties.assignee.oneOf.required,person
+properties.assignments.items.properties.assignee.oneOf.title,Group
+properties.assignments.items.properties.assignee.oneOf.description,Assigned Group
+properties.assignments.items.properties.assignee.oneOf.type,object
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.title,Group
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.description,A group of persons.
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.type,object
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.properties.id.title,ID
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.properties.id.description,The global identifier for Group
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.properties.id.type,string
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.properties.id.format,guid
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.links.rel,self
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.links.href,/person-groups/{id}
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.links.targetSchema.$ref,person-groups.json#
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.additionalProperties,false
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.required,id
+properties.assignments.items.properties.assignee.oneOf.additionalProperties,false
+properties.assignments.items.properties.assignee.oneOf.required,personGroup
+properties.assignments.items.properties.role.title,Assignment Role
+properties.assignments.items.properties.role.description,The role of the assignee in the campaign.
+properties.assignments.items.properties.role.type,object
+properties.assignments.items.properties.role.properties.roleType.title,Type
+properties.assignments.items.properties.role.properties.roleType.description,A type of role.
+properties.assignments.items.properties.role.properties.roleType.enum,manager;other
+properties.assignments.items.properties.role.properties.roleType.type,string
+properties.assignments.items.properties.role.properties.detail.title,Detail
+properties.assignments.items.properties.role.properties.detail.description,
+properties.assignments.items.properties.role.properties.detail.oneOf.type,object
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.title,ID
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.type,string
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.format,guid
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.assignments.items.properties.role.properties.detail.oneOf.links.rel,self
+properties.assignments.items.properties.role.properties.detail.oneOf.links.href,/roles/{id}
+properties.assignments.items.properties.role.properties.detail.oneOf.links.targetSchema.$ref,roles.json#
+properties.assignments.items.properties.role.properties.detail.oneOf.additionalProperties,false
+properties.assignments.items.properties.role.properties.detail.oneOf.required,id
+properties.assignments.items.properties.role.properties.detail.oneOf.type,object
+properties.assignments.items.properties.role.properties.detail.oneOf.maxProperties,
+properties.assignments.items.properties.role.additionalProperties,false
+properties.assignments.items.properties.role.required,roleType
+properties.assignments.items.properties.preference.title,Preferred assignee
+properties.assignments.items.properties.preference.description,Indicates the preferred assignee for the designation.
+properties.assignments.items.properties.preference.oneOf.type,string
+properties.assignments.items.properties.preference.oneOf.enum,primary
+properties.assignments.items.properties.preference.oneOf.type,string
+properties.assignments.items.properties.preference.oneOf.maxLength,
+properties.assignments.items.properties.startOn.title,Start Date
+properties.assignments.items.properties.startOn.description,The start date of the assignment
+properties.assignments.items.properties.startOn.type,string
+properties.assignments.items.properties.startOn.format,date-time
+properties.assignments.items.properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.assignments.items.properties.endOn.title,End Date
+properties.assignments.items.properties.endOn.description,The end date of the assignment
+properties.assignments.items.properties.endOn.oneOf.type,string
+properties.assignments.items.properties.endOn.oneOf.format,date-time
+properties.assignments.items.properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.assignments.items.properties.endOn.oneOf.type,string
+properties.assignments.items.properties.endOn.oneOf.maxLength,
+properties.assignments.items.additionalProperties,false
+properties.assignments.items.required,assignee;role;startOn
+required,id;title;type;status
+additionalProperties,false

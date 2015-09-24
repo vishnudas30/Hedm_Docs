@@ -1,0 +1,155 @@
+title,General Ledger Transaction
+description,The details of a transaction to be entered into the general ledger.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a .
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.ledgerDate.title,Date
+properties.ledgerDate.description,The date the transaction is put into the ledger.
+properties.ledgerDate.oneOf.type,string
+properties.ledgerDate.oneOf.format,date
+properties.ledgerDate.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.ledgerDate.oneOf.type,string
+properties.ledgerDate.oneOf.maxLength,
+properties.type.title,Type
+properties.type.description,The type of general ledger transaction.
+properties.type.enum,journalEntry
+properties.type.type,string
+properties.processMode.title,Process Mode
+properties.processMode.description,How the transaction should be processed.
+properties.processMode.enum,update;validate
+properties.processMode.type,string
+properties.senderReference.title,Sender Reference
+properties.senderReference.description,Additional reference information about the sender of the transaction.
+properties.senderReference.oneOf.type,object
+properties.senderReference.oneOf.properties.sender.title,Sender
+properties.senderReference.oneOf.properties.sender.description,
+properties.senderReference.oneOf.properties.sender.oneOf.title,Person
+properties.senderReference.oneOf.properties.sender.oneOf.description,The person sending the transaction.
+properties.senderReference.oneOf.properties.sender.oneOf.type,object
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.title,Person
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.description,A human being or other independent agent.
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.type,object
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.properties.id.title,ID
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.properties.id.description,The global identifier for Person
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.properties.id.type,string
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.properties.id.format,guid
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.links.rel,self
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.links.href,/persons/{id}
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.links.targetSchema.$ref,persons.json#
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.additionalProperties,false
+properties.senderReference.oneOf.properties.sender.oneOf.properties.person.required,id
+properties.senderReference.oneOf.properties.sender.oneOf.additionalProperties,false
+properties.senderReference.oneOf.properties.sender.oneOf.required,person
+properties.senderReference.oneOf.properties.sender.oneOf.title,Organization
+properties.senderReference.oneOf.properties.sender.oneOf.description,The sending organization.
+properties.senderReference.oneOf.properties.sender.oneOf.type,object
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.title,Organization
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.description,Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.type,object
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.properties.id.title,ID
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.properties.id.description,The global identifier for Organization
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.properties.id.type,string
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.properties.id.format,guid
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.links.rel,self
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.links.href,/organizations/{id}
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.links.targetSchema.$ref,organizations.json#
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.additionalProperties,false
+properties.senderReference.oneOf.properties.sender.oneOf.properties.organization.required,id
+properties.senderReference.oneOf.properties.sender.oneOf.additionalProperties,false
+properties.senderReference.oneOf.properties.sender.oneOf.required,organization
+properties.senderReference.oneOf.properties.referenceNumber.title,Reference Number
+properties.senderReference.oneOf.properties.referenceNumber.description,A number that ties together multiple entities into a common process.
+properties.senderReference.oneOf.properties.referenceNumber.type,string
+properties.senderReference.oneOf.properties.adjustmentNumber.title,Adjustment Number
+properties.senderReference.oneOf.properties.adjustmentNumber.description,A sequence number that identifies an adjustment.
+properties.senderReference.oneOf.properties.adjustmentNumber.type,string
+properties.senderReference.oneOf.additionalProperties,false
+properties.senderReference.oneOf.required,sender
+properties.senderReference.oneOf.type,object
+properties.senderReference.oneOf.maxProperties,
+properties.transactionDetailLines.title,Transaction Detail Line
+properties.transactionDetailLines.description,
+properties.transactionDetailLines.type,array
+properties.transactionDetailLines.items.type,object
+properties.transactionDetailLines.items.properties.description.title,Description
+properties.transactionDetailLines.items.properties.description.description,A description of the transaction detail line.
+properties.transactionDetailLines.items.properties.description.type,string
+properties.transactionDetailLines.items.properties.accountComponents.title,Account Component
+properties.transactionDetailLines.items.properties.accountComponents.description,
+properties.transactionDetailLines.items.properties.accountComponents.type,array
+properties.transactionDetailLines.items.properties.accountComponents.items.type,object
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.title,Account Component
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.description,A component part of an account.
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.type,object
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.properties.id.title,ID
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.properties.id.description,The global identifier for Account Component
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.properties.id.type,string
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.properties.id.format,guid
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.links.rel,self
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.links.href,/account-components/{id}
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.links.targetSchema.$ref,account-components.json#
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.additionalProperties,false
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.accountComponent.required,id
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.value.title,Value
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.value.description,The value of the account component
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.value.type,string
+properties.transactionDetailLines.items.properties.accountComponents.items.properties.value.minLength,1
+properties.transactionDetailLines.items.properties.accountComponents.items.additionalProperties,false
+properties.transactionDetailLines.items.properties.accountComponents.items.required,accountComponent;value
+properties.transactionDetailLines.items.properties.type.title,Type
+properties.transactionDetailLines.items.properties.type.description,The type of transaction being detailed on this line (credit or debit).
+properties.transactionDetailLines.items.properties.type.enum,credit;debit
+properties.transactionDetailLines.items.properties.type.type,string
+properties.transactionDetailLines.items.properties.amount.title,Amount
+properties.transactionDetailLines.items.properties.amount.description,The amount of the transaction detatiled on this line.
+properties.transactionDetailLines.items.properties.amount.type,object
+properties.transactionDetailLines.items.properties.amount.properties.currency.title,currency
+properties.transactionDetailLines.items.properties.amount.properties.currency.description,
+properties.transactionDetailLines.items.properties.amount.properties.currency.type,object
+properties.transactionDetailLines.items.properties.amount.properties.currency.properties.value.title,Value
+properties.transactionDetailLines.items.properties.amount.properties.currency.properties.value.description,
+properties.transactionDetailLines.items.properties.amount.properties.currency.properties.value.minimum,
+properties.transactionDetailLines.items.properties.amount.properties.currency.properties.value.type,number
+properties.transactionDetailLines.items.properties.amount.properties.currency.properties.value.format,positiveNumber
+properties.transactionDetailLines.items.properties.amount.properties.currency.properties.currency.title,Currency
+properties.transactionDetailLines.items.properties.amount.properties.currency.properties.currency.description,
+properties.transactionDetailLines.items.properties.amount.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.transactionDetailLines.items.properties.amount.properties.currency.properties.currency.type,string
+properties.transactionDetailLines.items.properties.amount.properties.currency.additionalProperties,false
+properties.transactionDetailLines.items.properties.amount.properties.currency.required,value;currency
+properties.transactionDetailLines.items.properties.amount.additionalProperties,false
+properties.transactionDetailLines.items.properties.amount.format,currency
+properties.transactionDetailLines.items.additionalProperties,false
+properties.transactionDetailLines.items.required,accountComponents;type;amount
+required,type;processMode;transactionDetailLines
+additionalProperties,false

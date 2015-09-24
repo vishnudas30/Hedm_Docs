@@ -1,0 +1,105 @@
+title,External Donation
+description,A donation made by a constitient to an external organization
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,The global identifier of an external donation
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donor.title,Donor
+properties.donor.description,
+properties.donor.oneOf.title,Person
+properties.donor.oneOf.description,A person who made a donation
+properties.donor.oneOf.type,object
+properties.donor.oneOf.properties.person.title,Person
+properties.donor.oneOf.properties.person.description,A human being or other independent agent.
+properties.donor.oneOf.properties.person.type,object
+properties.donor.oneOf.properties.person.properties.id.title,ID
+properties.donor.oneOf.properties.person.properties.id.description,The global identifier for Person
+properties.donor.oneOf.properties.person.properties.id.type,string
+properties.donor.oneOf.properties.person.properties.id.format,guid
+properties.donor.oneOf.properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donor.oneOf.properties.person.links.rel,self
+properties.donor.oneOf.properties.person.links.href,/persons/{id}
+properties.donor.oneOf.properties.person.links.targetSchema.$ref,persons.json#
+properties.donor.oneOf.properties.person.additionalProperties,false
+properties.donor.oneOf.properties.person.required,id
+properties.donor.oneOf.additionalProperties,false
+properties.donor.oneOf.required,person
+properties.donor.oneOf.title,Organization
+properties.donor.oneOf.description,An organization that made a donation
+properties.donor.oneOf.type,object
+properties.donor.oneOf.properties.organization.title,Organization
+properties.donor.oneOf.properties.organization.description,Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.
+properties.donor.oneOf.properties.organization.type,object
+properties.donor.oneOf.properties.organization.properties.id.title,ID
+properties.donor.oneOf.properties.organization.properties.id.description,The global identifier for Organization
+properties.donor.oneOf.properties.organization.properties.id.type,string
+properties.donor.oneOf.properties.organization.properties.id.format,guid
+properties.donor.oneOf.properties.organization.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donor.oneOf.properties.organization.links.rel,self
+properties.donor.oneOf.properties.organization.links.href,/organizations/{id}
+properties.donor.oneOf.properties.organization.links.targetSchema.$ref,organizations.json#
+properties.donor.oneOf.properties.organization.additionalProperties,false
+properties.donor.oneOf.properties.organization.required,id
+properties.donor.oneOf.additionalProperties,false
+properties.donor.oneOf.required,organization
+properties.recipient.title,Recipient
+properties.recipient.description,The full name a recipient of a donation
+properties.recipient.type,string
+properties.recipient.minLength,1
+properties.description.title,Description
+properties.description.description,The full description of an external donation
+properties.description.type,string
+properties.donatedOn.title,Donation Date
+properties.donatedOn.description,A date of an external donation
+properties.donatedOn.type,string
+properties.donatedOn.format,date-time
+properties.donatedOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.amount.title,Donated Amount
+properties.amount.description,An amount of an external donation
+properties.amount.oneOf.type,object
+properties.amount.oneOf.properties.currency.title,currency
+properties.amount.oneOf.properties.currency.description,
+properties.amount.oneOf.properties.currency.type,object
+properties.amount.oneOf.properties.currency.properties.value.title,Value
+properties.amount.oneOf.properties.currency.properties.value.description,
+properties.amount.oneOf.properties.currency.properties.value.minimum,
+properties.amount.oneOf.properties.currency.properties.value.type,number
+properties.amount.oneOf.properties.currency.properties.value.format,positiveNumber
+properties.amount.oneOf.properties.currency.properties.currency.title,Currency
+properties.amount.oneOf.properties.currency.properties.currency.description,
+properties.amount.oneOf.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.amount.oneOf.properties.currency.properties.currency.type,string
+properties.amount.oneOf.properties.currency.additionalProperties,false
+properties.amount.oneOf.properties.currency.required,value;currency
+properties.amount.oneOf.additionalProperties,false
+properties.amount.oneOf.format,currency
+properties.amount.oneOf.type,object
+properties.amount.oneOf.maxProperties,
+required,id;donor;recipient;donatedOn
+additionalProperties,false

@@ -1,0 +1,80 @@
+title,Prospect
+description,Donation prospects
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of the prospect
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of the prospect
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,The full description of the prospect
+properties.description.type,string
+properties.prospects.title,Donation Prospects
+properties.prospects.description,Prospects identified for donations
+properties.prospects.oneOf.type,object
+properties.prospects.oneOf.properties.persons.title,Person
+properties.prospects.oneOf.properties.persons.description,A person identified as a donation prospect
+properties.prospects.oneOf.properties.persons.type,array
+properties.prospects.oneOf.properties.persons.items.title,Person
+properties.prospects.oneOf.properties.persons.items.description,A person identified as a donation prospect
+properties.prospects.oneOf.properties.persons.items.type,object
+properties.prospects.oneOf.properties.persons.items.properties.id.title,ID
+properties.prospects.oneOf.properties.persons.items.properties.id.description,The global identifier for Person
+properties.prospects.oneOf.properties.persons.items.properties.id.type,string
+properties.prospects.oneOf.properties.persons.items.properties.id.format,guid
+properties.prospects.oneOf.properties.persons.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.prospects.oneOf.properties.persons.items.links.rel,self
+properties.prospects.oneOf.properties.persons.items.links.href,/persons/{id}
+properties.prospects.oneOf.properties.persons.items.links.targetSchema.$ref,persons.json#
+properties.prospects.oneOf.properties.persons.items.additionalProperties,false
+properties.prospects.oneOf.properties.persons.items.required,id
+properties.prospects.oneOf.properties.organizations.title,Organization
+properties.prospects.oneOf.properties.organizations.description,An organization identified as a donation prospect
+properties.prospects.oneOf.properties.organizations.type,array
+properties.prospects.oneOf.properties.organizations.items.title,Organization
+properties.prospects.oneOf.properties.organizations.items.description,An organization identified as a donation prospect
+properties.prospects.oneOf.properties.organizations.items.type,object
+properties.prospects.oneOf.properties.organizations.items.properties.id.title,ID
+properties.prospects.oneOf.properties.organizations.items.properties.id.description,The global identifier for Organization
+properties.prospects.oneOf.properties.organizations.items.properties.id.type,string
+properties.prospects.oneOf.properties.organizations.items.properties.id.format,guid
+properties.prospects.oneOf.properties.organizations.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.prospects.oneOf.properties.organizations.items.links.rel,self
+properties.prospects.oneOf.properties.organizations.items.links.href,/organizations/{id}
+properties.prospects.oneOf.properties.organizations.items.links.targetSchema.$ref,organizations.json#
+properties.prospects.oneOf.properties.organizations.items.additionalProperties,false
+properties.prospects.oneOf.properties.organizations.items.required,id
+properties.prospects.oneOf.additionalProperties,false
+properties.prospects.oneOf.required,persons;organizations
+properties.prospects.oneOf.type,object
+properties.prospects.oneOf.maxProperties,
+required,id;title
+additionalProperties,false

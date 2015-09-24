@@ -1,0 +1,373 @@
+{
+  "title": "Donor Society",
+  "description": "A society that recognizes the level of donations to an organiztion.",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "A global identifier of a donor society.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "title": {
+      "title": "Title",
+      "description": "The full name of a donor society.",
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "title": "Description",
+      "description": "A full description of a donor society.",
+      "type": "string"
+    },
+    "status": {
+      "title": "Status",
+      "description": "A status of a donor society. ",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "type": "string"
+    },
+    "startOn": {
+      "title": "Start Date",
+      "description": "A date when a donor society started.",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "endOn": {
+      "title": "End Date",
+      "description": "A date when a donor society ended.",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "evaluationTimeFrame": {
+      "title": "Evaluation Time Frame",
+      "description": "The time frame used to evaluate cumulative donations. ",
+      "enum": [
+        "year",
+        "lifetime"
+      ],
+      "type": "string"
+    },
+    "donationTypes": {
+      "title": "Donation Type",
+      "description": "The types of donations that qualify for the donor society.",
+      "type": "array",
+      "items": {
+        "title": "Donation Type",
+        "description": "The types of donations that qualify for the donor society.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "The global identifier for Donation Type",
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        },
+        "links": [
+          {
+            "rel": "self",
+            "href": "/donation-types/{id}",
+            "targetSchema": {
+              "$ref": "donation-types.json#"
+            }
+          }
+        ],
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "creditTypes": {
+      "title": "Credit Type",
+      "description": "The types of credit that qualify for the donor society.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "creditType": {
+            "title": "Credit Type",
+            "description": "The type of credit given for the donation.",
+            "oneOf": [
+              {
+                "title": "One Of-1",
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "donationCreditType": {
+                    "title": "Hard Credit",
+                    "description": "A hard credit",
+                    "enum": [
+                      "hard"
+                    ],
+                    "type": "string"
+                  },
+                  "donationCreditTypeReason": {
+                    "title": "Hard Credit Reason",
+                    "description": "The reason for giving hard credit for the donation.",
+                    "enum": [
+                      "recognition",
+                      "legal",
+                      "other"
+                    ],
+                    "type": "string"
+                  },
+                  "detail": {
+                    "title": "Detail",
+                    "description": "",
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "title": "ID",
+                            "description": "The global identifier for Detail",
+                            "type": "string",
+                            "format": "guid",
+                            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                          }
+                        },
+                        "links": [
+                          {
+                            "rel": "self",
+                            "href": "/donation-credit-types/{id}",
+                            "targetSchema": {
+                              "$ref": "donation-credit-types.json#"
+                            }
+                          }
+                        ],
+                        "additionalProperties": false,
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "maxProperties": 0
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "donationCreditType",
+                  "donationCreditTypeReason"
+                ]
+              },
+              {
+                "title": "One Of-2",
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "donationCreditType": {
+                    "title": "Soft Credit",
+                    "description": "A soft Credit",
+                    "enum": [
+                      "soft"
+                    ],
+                    "type": "string"
+                  },
+                  "donationCreditTypeReason": {
+                    "title": "Soft Credit Reason",
+                    "description": "The reason for giving soft credit for the donation.",
+                    "enum": [
+                      "matching",
+                      "soft",
+                      "other"
+                    ],
+                    "type": "string"
+                  },
+                  "detail": {
+                    "title": "Detail",
+                    "description": "",
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "title": "ID",
+                            "description": "The global identifier for Detail",
+                            "type": "string",
+                            "format": "guid",
+                            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                          }
+                        },
+                        "links": [
+                          {
+                            "rel": "self",
+                            "href": "/donation-credit-types/{id}",
+                            "targetSchema": {
+                              "$ref": "donation-credit-types.json#"
+                            }
+                          }
+                        ],
+                        "additionalProperties": false,
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "maxProperties": 0
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "donationCreditType",
+                  "donationCreditTypeReason"
+                ]
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "creditType"
+        ]
+      }
+    },
+    "constituentTypes": {
+      "title": "Constituent Type",
+      "description": "The constituent types applicable to the donor society.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "vseSource": {
+            "title": "Source",
+            "description": "VSE Survey source category.",
+            "enum": [
+              "alumni",
+              "parent",
+              "otherIndividual",
+              "foundation",
+              "corporation",
+              "religious",
+              "consortia",
+              "otherOrganization"
+            ],
+            "type": "string"
+          },
+          "detail": {
+            "title": "Detail",
+            "description": "",
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "title": "ID",
+                    "description": "The global identifier for Detail",
+                    "type": "string",
+                    "format": "guid",
+                    "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                  }
+                },
+                "links": [
+                  {
+                    "rel": "self",
+                    "href": "/constituent-types/{id}",
+                    "targetSchema": {
+                      "$ref": "constituent-types.json#"
+                    }
+                  }
+                ],
+                "additionalProperties": false,
+                "required": [
+                  "id"
+                ]
+              },
+              {
+                "type": "object",
+                "maxProperties": 0
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "vseSource"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "status"
+  ],
+  "additionalProperties": false
+}

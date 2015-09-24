@@ -1,0 +1,61 @@
+title,Site
+description,A physical location within the organization.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A globally unique identifier
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.code.title,Code
+properties.code.description,The code that identifies the site.
+properties.code.type,string
+properties.title.title,Title
+properties.title.description,The full name of the site.
+properties.title.type,string
+properties.description.title,Description
+properties.description.description,A description of the site.
+properties.description.type,string
+properties.organization.title,Organization
+properties.organization.description,Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.
+properties.organization.type,object
+properties.organization.properties.id.title,ID
+properties.organization.properties.id.description,The global identifier for Organization
+properties.organization.properties.id.type,string
+properties.organization.properties.id.format,guid
+properties.organization.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.organization.links.rel,self
+properties.organization.links.href,/organizations/{id}
+properties.organization.links.targetSchema.$ref,organizations.json#
+properties.organization.additionalProperties,false
+properties.organization.required,id
+required,id;organization
+additionalProperties,false
+links.rel,buildings
+links.title,Buildings
+links.description,The buildings in this site.
+links.href,/buildings?site.id={id}
+links.targetSchema.$ref,buildings.json#

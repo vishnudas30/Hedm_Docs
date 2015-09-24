@@ -1,0 +1,3822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Person</title>
+	
+	<link rel="stylesheet" type="text/css" href="/Presentation2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/Presentation2/css/bootstrap-toggle.min.css">
+	<link rel="stylesheet" type="text/css" href="/Presentation2/css/github.min.css">
+	<link rel="stylesheet" type="text/css" href="/Presentation2/css/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="/Presentation2/css/animate.css">
+	<link rel="stylesheet" type="text/css" href="/Presentation2/css/jsondiffpatch.css">
+	<link rel="stylesheet" type="text/css" href="/Presentation2/css/main.css">
+	<!--
+	<link rel="stylesheet" type="text/css" href="/Presentation2/css/ellucian.css">
+	<link rel="stylesheet" type="text/css" href="/Presentation2/css/ellucian-light.css">
+	-->
+	
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jquery.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jquery-migrate.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jquery-ui.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jquery.tipsy.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/d3.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/dagre-d3.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/CollapsibleLists.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/epiceditor.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/bootstrap-toggle.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/highlight.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jsondiffpatch.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jsondiffpatch-formatters.min.js"></script>
+	
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/applyMdTables.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/hedm-graph.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/dropdown.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/search-bar.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/stickytabs.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/resize.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/quickstart.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/navbar.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/standardsnav.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/bootstrap.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/hljs.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/leftnav.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/initepiceditor.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/toggleDiff.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/search-buttons.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/toggleAdmin.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/toggleAllProperties.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/collapsibleLists.js"></script>
+	
+	
+	<meta name="name" content="persons">
+	<meta name="version" content="Presentation2">
+</head>
+<body>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h2 class="modal-title" id="myModalLabel">Search Bar and Filter Bar Help Menu</h2>
+	      </div>
+	      <div class="modal-body">
+	        <h3> Search Bar Usage <span class="glyphicon glyphicon-search" aria-hidden="true"></span></h3>
+	        <h4> Description </h4>
+	        <p> The search bar provides the ability to quickly navigate to an entity in the listing. </p>
+	        <h4> Usage </h4>
+	        <p> In the "Search for entities" bar, begin typing the name of an entity of interest. </p>
+	        <p> A dropdown will display suggestions based upon the text in the search bar. </p>
+	        <p> To select the entity from the dropdown, use the down arrow key to navigate to the particular entity, then press tab for the selected entity to fill in the text field. </p>
+	        <p> Finally, press enter and the entity list will jump to the selected entity. To view that entitiy's documentation, press enter again or click on the entity in the list </p>
+	        <p> <b>Note:</b> Queries with the search bar are <b>case insensitive</b>. </p>
+	
+	        <h3> Filter Bar Usage <span class="glyphicon glyphicon-filter" aria-hidden="true"></span></h3>
+	        <h4> Description </h4>
+	        <p> The filter bar provides the ability to filter the list of entities by attribute. </p>
+	        <h4> Usage </h4>
+	        <p> The mechanics of using the filter bar are the same as the search bar mechanics described above.</p>
+	        <p> The filter bar supports complex filters using the keywords "and", "or" and "not" and parentheses "(" and ")". </p>
+	        <p> Try the example filter below: </p>
+	        <pre> ((startOn or endOn) and metadata) </pre>
+	        <p> <b>Note:</b> Queries with the search bar are <b>case sensitive</b>. </p>
+	
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>	<div class="container-fluid">
+		<div id="header" class="row">
+		  <div id="header-title" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+		    <h1 class="logo float-left m-hide ta-hide tb1 da1 db1">
+		      <a href="/Presentation2/">Ellucian</a>
+		    </h1>
+		  </div>
+		  <div id="docVersion" class="dropdown">
+		        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		          Version: Presentation2
+		          <span class="caret"></span>
+		        </button>
+		        <ul class="dropdown-menu">
+			  <li><a href="/1.0">1.0</a></li>
+		<li><a href="/1.0.1">1.0.1</a></li>
+		<li><a href="/1.0.2">1.0.2</a></li>
+		<li><a href="/2.0">2.0</a></li>
+		<li><a href="/2.0.1">2.0.1</a></li>
+		<li><a href="/2.0.2">2.0.2</a></li>
+		<li><a href="/Presentation2">Presentation2</a></li>
+		<li><a href="/migrated">migrated</a></li>
+		<li><a href="/premigration-done">premigration-done</a></li>
+		<li><a href="/presentation1">presentation1</a></li>
+		<li><a href="/v0.1">v0.1</a></li>
+		
+		        </ul>
+		  </div>
+		</div>
+		<div id="main" class="row">
+			<div id="navbar" class="slideInLeft col-lg-3 col-md-3 col-sm-12 col-xs-12">
+			  <div id="nav-header" class="row">
+			    <!--
+			    <div class="navSlider collapse">&#9664;</div>
+			    -->
+			    <div id="entity-search" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+			      <div class="row">
+			        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-md-6">
+			         <h2>Entities</h2>
+			        </div>
+			      </div>
+			      <form id="navbar-search" class="input-group" action="#" onsubmit="return tryJump(event);">
+				<input id="searchbar" type="text" aria-label="Search for and entity" placeholder="Search for entities" class="form-control search" onKeyUp="return tryJump(event);">
+				
+				<span class="input-group-btn">
+			
+				  <button class="btn btn-default" type="button" aria-label="search for entity submit" id="searchButton" onclick="return tryJump(enterEvent());">
+			
+				    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				  </button>
+				</span>
+			      </form>
+			      <form id="search-attr-form" class="input-group" action="#" onsubmit="return trySearch(event);">
+			        <input id="searchbar-attr" type="text" aria-label="Filter by attributes" placeholder="Filter by attribute" class="form-control search" onKeyUp="return trySearch(event);">
+				<span class="input-group-btn">
+				  <button class="btn btn-default" type="button" aria-label="filter by attributes submit" id="filterButton" onclick="return trySearch(enterEvent());">
+				    <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+				  </button>
+				</span>
+			      </form>
+			       <!-- Button trigger modal -->
+			    <div id="modalBtnDiv" class="row">
+			      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+			       <!--  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+			          ?
+			        </button> -->
+			      </div>
+			    </div>
+			    </div>
+			     
+			  </div>
+			 <div id="scroll" class="row">
+			    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+			      <ul class="nav">
+			      <li>
+			        <a id="academic-catalogs" href="/Presentation2/docs/academic-catalogs/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Academic Catalogs
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="academic-credentials" href="/Presentation2/docs/academic-credentials/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Academic Credentials
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="academic-disciplines" href="/Presentation2/docs/academic-disciplines/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Academic Disciplines
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="academic-histories" href="/Presentation2/docs/academic-histories/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Academic Histories
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="academic-honors" href="/Presentation2/docs/academic-honors/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Academic Honors
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="academic-levels" href="/Presentation2/docs/academic-levels/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Academic Levels
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="academic-periods" href="/Presentation2/docs/academic-periods/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Academic Periods
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="academic-program-enrollments" href="/Presentation2/docs/academic-program-enrollments/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Academic Program Enrollments
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="academic-programs" href="/Presentation2/docs/academic-programs/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Academic Programs
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="account-components" href="/Presentation2/docs/account-components/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Account Components
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="accounting-transaction-types" href="/Presentation2/docs/accounting-transaction-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Accounting Transaction Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="administrative-periods" href="/Presentation2/docs/administrative-periods/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Administrative Periods
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="api-links" href="/Presentation2/docs/api-links/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Api Links
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="appeal-purposes" href="/Presentation2/docs/appeal-purposes/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Appeal Purposes
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="appeal-types" href="/Presentation2/docs/appeal-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Appeal Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="appeals" href="/Presentation2/docs/appeals/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Appeals
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="areas-of-giving" href="/Presentation2/docs/areas-of-giving/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Areas Of Giving
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="asset-states" href="/Presentation2/docs/asset-states/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Asset States
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="asset-types" href="/Presentation2/docs/asset-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Asset Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="buildings" href="/Presentation2/docs/buildings/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Buildings
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="campaign-categories" href="/Presentation2/docs/campaign-categories/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Campaign Categories
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="campaign-types" href="/Presentation2/docs/campaign-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Campaign Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="campaigns" href="/Presentation2/docs/campaigns/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Campaigns
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="citizenship-statuses" href="/Presentation2/docs/citizenship-statuses/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Citizenship Statuses
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="comments" href="/Presentation2/docs/comments/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Comments
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="compensation-levels" href="/Presentation2/docs/compensation-levels/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Compensation Levels
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="confidence-levels" href="/Presentation2/docs/confidence-levels/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Confidence Levels
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="constituent-activities" href="/Presentation2/docs/constituent-activities/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Constituent Activities
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="constituent-activity-categories" href="/Presentation2/docs/constituent-activity-categories/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Constituent Activity Categories
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="constituent-activity-types" href="/Presentation2/docs/constituent-activity-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Constituent Activity Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="constituent-donation-interests" href="/Presentation2/docs/constituent-donation-interests/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Constituent Donation Interests
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="constituent-participation-types" href="/Presentation2/docs/constituent-participation-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Constituent Participation Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="constituent-types" href="/Presentation2/docs/constituent-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Constituent Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="constituents" href="/Presentation2/docs/constituents/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Constituents
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="countries" href="/Presentation2/docs/countries/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Countries
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="course-levels" href="/Presentation2/docs/course-levels/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Course Levels
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="courses" href="/Presentation2/docs/courses/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Courses
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="credit-categories" href="/Presentation2/docs/credit-categories/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Credit Categories
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="deposit-types" href="/Presentation2/docs/deposit-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Deposit Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="designation-purposes" href="/Presentation2/docs/designation-purposes/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Designation Purposes
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="designation-restrictions" href="/Presentation2/docs/designation-restrictions/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Designation Restrictions
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="designation-types" href="/Presentation2/docs/designation-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Designation Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="designations" href="/Presentation2/docs/designations/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Designations
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="donation-credit-types" href="/Presentation2/docs/donation-credit-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Donation Credit Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="donation-promises" href="/Presentation2/docs/donation-promises/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Donation Promises
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="donation-types" href="/Presentation2/docs/donation-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Donation Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="donations" href="/Presentation2/docs/donations/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Donations
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="donations-summary" href="/Presentation2/docs/donations-summary/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Donations Summary
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="donor-association-types" href="/Presentation2/docs/donor-association-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Donor Association Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="donor-societies" href="/Presentation2/docs/donor-societies/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Donor Societies
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="donor-society-levels" href="/Presentation2/docs/donor-society-levels/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Donor Society Levels
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="donor-society-memberships" href="/Presentation2/docs/donor-society-memberships/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Donor Society Memberships
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="email-types" href="/Presentation2/docs/email-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Email Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="employment-histories" href="/Presentation2/docs/employment-histories/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Employment Histories
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="employment-position-levels" href="/Presentation2/docs/employment-position-levels/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Employment Position Levels
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="employment-termination-reasons" href="/Presentation2/docs/employment-termination-reasons/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Employment Termination Reasons
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="employment-types" href="/Presentation2/docs/employment-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Employment Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="enrollment-statuses" href="/Presentation2/docs/enrollment-statuses/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Enrollment Statuses
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="errors" href="/Presentation2/docs/errors/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Errors
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="ethnicities" href="/Presentation2/docs/ethnicities/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Ethnicities
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="external-donations" href="/Presentation2/docs/external-donations/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            External Donations
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="financial-aid-funds" href="/Presentation2/docs/financial-aid-funds/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Financial Aid Funds
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="general-ledger-transactions" href="/Presentation2/docs/general-ledger-transactions/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            General Ledger Transactions
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="geographic-area-types" href="/Presentation2/docs/geographic-area-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Geographic Area Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="geographic-areas" href="/Presentation2/docs/geographic-areas/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Geographic Areas
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="giving-capacity-ranges" href="/Presentation2/docs/giving-capacity-ranges/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Giving Capacity Ranges
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="grade-change-reasons" href="/Presentation2/docs/grade-change-reasons/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Grade Change Reasons
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="grade-scheme-items" href="/Presentation2/docs/grade-scheme-items/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Grade Scheme Items
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="grade-scheme-items-maximum" href="/Presentation2/docs/grade-scheme-items-maximum/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Grade Scheme Items Maximum
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="grade-schemes" href="/Presentation2/docs/grade-schemes/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Grade Schemes
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="instructional-event-instances" href="/Presentation2/docs/instructional-event-instances/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Instructional Event Instances
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="instructional-events" href="/Presentation2/docs/instructional-events/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Instructional Events
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="instructional-methods" href="/Presentation2/docs/instructional-methods/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Instructional Methods
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="instructional-platforms" href="/Presentation2/docs/instructional-platforms/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Instructional Platforms
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="interest-areas" href="/Presentation2/docs/interest-areas/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Interest Areas
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="interest-levels" href="/Presentation2/docs/interest-levels/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Interest Levels
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="interest-purposes" href="/Presentation2/docs/interest-purposes/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Interest Purposes
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="interest-types" href="/Presentation2/docs/interest-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Interest Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="location-types" href="/Presentation2/docs/location-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Location Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="mailing-labels" href="/Presentation2/docs/mailing-labels/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Mailing Labels
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="marital-statuses" href="/Presentation2/docs/marital-statuses/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Marital Statuses
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="organization-size-levels" href="/Presentation2/docs/organization-size-levels/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Organization Size Levels
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="organizations" href="/Presentation2/docs/organizations/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Organizations
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="payment-methods" href="/Presentation2/docs/payment-methods/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Payment Methods
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="payroll-deduction-requests" href="/Presentation2/docs/payroll-deduction-requests/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Payroll Deduction Requests
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="person-filters" href="/Presentation2/docs/person-filters/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Person Filters
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="person-groups" href="/Presentation2/docs/person-groups/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Person Groups
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="person-name-types" href="/Presentation2/docs/person-name-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Person Name Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="person-names" href="/Presentation2/docs/person-names/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Person Names
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="personal-relationship-types" href="/Presentation2/docs/personal-relationship-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Personal Relationship Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="personal-relationships" href="/Presentation2/docs/personal-relationships/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Personal Relationships
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="persons" href="/Presentation2/docs/persons/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Persons
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="phone-types" href="/Presentation2/docs/phone-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Phone Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="places" href="/Presentation2/docs/places/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Places
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="privacy-statuses" href="/Presentation2/docs/privacy-statuses/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Privacy Statuses
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="proposal-purposes" href="/Presentation2/docs/proposal-purposes/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Proposal Purposes
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="proposal-states" href="/Presentation2/docs/proposal-states/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Proposal States
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="proposals" href="/Presentation2/docs/proposals/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Proposals
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="prospects" href="/Presentation2/docs/prospects/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Prospects
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="races" href="/Presentation2/docs/races/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Races
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="restriction-types" href="/Presentation2/docs/restriction-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Restriction Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="roles" href="/Presentation2/docs/roles/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Roles
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="room-types" href="/Presentation2/docs/room-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Room Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="rooms" href="/Presentation2/docs/rooms/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Rooms
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="rooms-minimum" href="/Presentation2/docs/rooms-minimum/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Rooms Minimum
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="rooms_room-availability" href="/Presentation2/docs/rooms_room-availability/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Rooms_room Availability
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="screening-target-types" href="/Presentation2/docs/screening-target-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Screening Target Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="section-grade-types" href="/Presentation2/docs/section-grade-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Section Grade Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="section-grades" href="/Presentation2/docs/section-grades/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Section Grades
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="section-registration-statuses" href="/Presentation2/docs/section-registration-statuses/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Section Registration Statuses
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="section-registrations" href="/Presentation2/docs/section-registrations/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Section Registrations
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="sections" href="/Presentation2/docs/sections/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Sections
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="sections-maximum" href="/Presentation2/docs/sections-maximum/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Sections Maximum
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="sites" href="/Presentation2/docs/sites/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Sites
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="social-media" href="/Presentation2/docs/social-media/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Social Media
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="social-media-types" href="/Presentation2/docs/social-media-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Social Media Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="source-contexts" href="/Presentation2/docs/source-contexts/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Source Contexts
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="sources" href="/Presentation2/docs/sources/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Sources
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="subjects" href="/Presentation2/docs/subjects/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Subjects
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="visa-types" href="/Presentation2/docs/visa-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Visa Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="wealth-assessment-metrics" href="/Presentation2/docs/wealth-assessment-metrics/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Wealth Assessment Metrics
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="wealth-assessment-statuses" href="/Presentation2/docs/wealth-assessment-statuses/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Wealth Assessment Statuses
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="wealth-assessments" href="/Presentation2/docs/wealth-assessments/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Wealth Assessments
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="wealth-information-types" href="/Presentation2/docs/wealth-information-types/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Wealth Information Types
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="wealth-ranges" href="/Presentation2/docs/wealth-ranges/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Wealth Ranges
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			      <li>
+			        <a id="wealth-screening-profiles" href="/Presentation2/docs/wealth-screening-profiles/?#">
+			          <div class="row">
+			            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+			            Wealth Screening Profiles
+			            </div>
+			          </div>
+			        </a>
+			      </li>
+			        </ul>
+			    </div>
+			  </div>
+			</div>
+			<div id="content" class="col-lg-9 col-md-9 col-sm-12 col-xs-12 slideInLeft">
+				<div class="row" id="meta">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+						<div class="row">
+							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+		  <!--
+		      <button id="toggle-nav" class="btn btn-default" type="button" onclick="toggleNav()">
+			<span class="glyphicon glyphicon-triangle-left" aria-hidden="true">&nbsp;</span>
+		      </button>
+		  -->
+		  <h1 id="pageTitle">Person</h1>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			<div id="downloads" class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="downloadDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					Download
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="downloadDropdown">
+					<li><a href="persons.json" download>JSON</a></li>
+					<li><a href="persons.csv" download>CSV</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- May be added later 
+		     <a id="adv" href="#">Advanced Documentation</a>
+		 -->
+		 <div id="meta" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+		   <table class="desc table table-condensed">
+		     <tr>
+		       <td>Author</td>
+		       <td>Ellucian</td>
+		     </tr>
+		     <tr>
+		       <td>Date</td>
+		       <td>2015.08.07</td>
+		     </tr>
+		     <tr>
+		       <td>Version</td>
+		       <td>4.0</td>
+		     </tr>
+		     <tr>
+		       <td>Copyright</td>
+		       <td>2015 Ellucian Company L.P. and its affiliates.</td>
+		     </tr>
+		   </table>
+		 </div>
+		</div>
+	</div>
+</div>
+<div class="row" id="tabs">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12" id="operationsdiv">
+		<ul class="nav nav-tabs" id="operations">
+			<li id="overview-tab" role="presentation" class="active tab" onclick="switchTab(this)"><a>Overview</a></li>
+			<li id="delete-tab" role="presentation" class="tab" onclick="switchTab(this)"><a>Delete</a></li>
+			<li id="get-tab" role="presentation" class="tab" onclick="switchTab(this)"><a>Get</a></li>
+			<li id="post-tab" role="presentation" class="tab" onclick="switchTab(this)"><a>Post</a></li>
+			<li id="put-tab" role="presentation" class="tab" onclick="switchTab(this)"><a>Put</a></li>
+			<li id="change-tab" role="presentation" class="tab" onclick="switchTab(this)"><a>Changelog</a></li>
+		</ul>
+	</div>
+</div>	  
+<div class="row" id="content-area">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+		<div id="overview" class="row tab-elem">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+				<h1>Overview</h1>
+				<h2>Description</h2>
+				<p>In HEDM, the persons entity is used to structure the basic demographic information of the people associated with higher education. People fulfill many different (and often, multiple) roles within higher education. This entity only contains properties that are common to all roles. Properties associated with the roles people fill will be contained in role specific entities (e.g. students, constituents, ...) which will be developed and added to HEDM as required.</p>
+<p>The persons entity includes the following properties associated with the person:</p>
+<ul>
+<li>a list of names, by type (&#39;legal&#39;, &#39;birth&#39;),</li>
+<li>the date of birth (and death, if applicable),</li>
+<li>gender,</li>
+<li>ethnicity,</li>
+<li>race,</li>
+<li>marital status,</li>
+<li>a list of roles with associated dates ( e.g. &#39;student&#39;, &#39;faculty&#39;, ...)),</li>
+<li>a list of credentials (e.g. SSN, system IDs) and the dates when valid,</li>
+<li>a list of locations (i.e. addresses),</li>
+<li>a list of phone numbers,</li>
+<li>a list of email addresses,</li>
+<li>a list of social media addresses.</li>
+</ul>
+<p>The locations specified for a person include the address lines, address type (&#39;home&#39;, &#39;school&#39;, ...), the status of the address (&#39;active&#39;, &#39;inactive&#39;) and if the address should be considered the &#39;Primary&#39; address of the specified type. In addition, the location can include latitude and longitude and a definition of seasonal occupancy. Each location can be assigned to multiple geographic regions/sub-regions for reporting purposes. The mailing address for each location can also be specified in a country specific format.</p>
+
+				<h2>HEDM Enitity Relation Graph</h2>
+				<svg id="er-graph" height="400"></svg><br>
+				<div class='key'>
+					<p>
+						<span class="req"><span class="oneOf">&nbsp;oneOf&nbsp;</span></span> 
+						<span class="req"><span class="link">&nbsp;link&nbsp;</span> | </span>
+						<span class="req"><span class="object">&nbsp;object/array&nbsp;</span> | </span>
+						<span class="req">&nbsp;<span style='color:red'>*</span> = required field | </span>
+					</p>
+					<!-- <br><button id="toggleAll" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span></button> -->
+				</div>
+				<h2>Properties</h2>
+
+				<!--div class='vizSchema'>  </div-->
+				<div class='vizSchema'> <ul class='treeView' id='root'> <li> <span class='root'>persons</span> <ul class='collapsibleList'><li><span class='object'>metadata<span style='color:red'></span> </span><span> : Metadata about the JSON payload</span><ul><li> <span>createdBy<span style='color:red'></span> </span><span> : The name of the originator (user or system) of the data. This is informational only, do not use in business logic!</span> </li><li> <span>createdOn<span style='color:red'></span> </span><span> : The date and time when the entity instance was created</span> </li><li> <span>modifiedBy<span style='color:red'></span> </span><span> : The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!</span> </li><li> <span>modifiedOn<span style='color:red'></span> </span><span> : The date and time when the entity instance was last modified</span> </li></ul> </li><li> <span>id<span style='color:red'>*</span> </span><span> : A global identifier of a person.</span> </li><li><span class='object'>privacyStatus</span><span style='color:red'></span> <span></span><ul><li> <span>privacyCategory<span style='color:red'>*</span> </span><span> : The global category of information privacy protection</span> </li><li><span class='link'>detail</span><span style='color:red'></span> <span></span><ul><li> <span>id<span style='color:red'>*</span> </span><span> : The global identifier for Detail</span> </li></ul> </li></ul> </li><li> <span class='object'>names<span style='color:red'>*</span> </span><span> : The names associated with a person, specified by type (e.g. "legal", "birth", ...).</span><ul><li><span class='object'>type<span style='color:red'></span> </span><span> : The type of person's name being defined. For example, a "Primary" name.</span><ul><li> <span>category<span style='color:red'>*</span> </span><span> : The global category of person name types</span> </li><li><span class='link'>detail</span><span style='color:red'></span> <span></span><ul><li> <span>id<span style='color:red'>*</span> </span><span> : The global identifier for Detail</span> </li></ul> </li></ul> </li><li> <span>preference<span style='color:red'></span> </span><span> : Indicates the preferred name for the type</span> </li><li> <span>fullName<span style='color:red'></span> </span><span> : The person's full name.</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The person's title, e.g., "Mr.", "Mrs.", "Dr.", etc.</span> </li><li> <span>firstName<span style='color:red'></span> </span><span> : The person's first, or given, name.</span> </li><li> <span>middleName<span style='color:red'></span> </span><span> : The person's middle name.</span> </li><li> <span>lastNamePrefix<span style='color:red'></span> </span><span> : The article or preposition portion of a person's last name, for example, "De la", "Van", "Van der Von", etc.</span> </li><li> <span>lastName<span style='color:red'></span> </span><span> : The person's last, or family, name.</span> </li><li> <span>pedigree<span style='color:red'></span> </span><span> : The person's pedigree, e.g. "Jr.", "Sr.", etc.</span> </li><li> <span class='object'>professionalAbbreviations<span style='color:red'></span> </span><span> : A post-nominal professional abbreviation, reflecting an earned degree or honor, e.g. "M.D.", "Ph.D.", etc.</span><ul></ul> </li></ul> </li><li> <span>dateOfBirth<span style='color:red'></span> </span><span> : The date when a person was born.</span> </li><li> <span>dateDeceased<span style='color:red'></span> </span><span> : The date when a person died.</span> </li><li> <span>gender<span style='color:red'></span> </span><span> : The biological and/or social/cultural masculinity or femininity of the person.</span> </li><li><span class='object'>ethnicity</span><span style='color:red'></span> <span></span><ul><li> <span>ethnicCategory<span style='color:red'>*</span> </span><span> : The global category of ethnic origin to which a person belongs.</span> </li><li><span class='link'>detail</span><span style='color:red'></span> <span></span><ul><li> <span>id<span style='color:red'>*</span> </span><span> : The global identifier for Detail</span> </li></ul> </li></ul> </li><li> <span class='object'>races<span style='color:red'></span> </span><span> : The categories of race to which a person belongs.</span><ul><li> <span>racialCategory<span style='color:red'></span> </span><span> : The higher-level racial category to which the person belongs.</span> </li><li><span class='link'>detail</span><span style='color:red'></span> <span></span><ul><li> <span>id<span style='color:red'>*</span> </span><span> : The global identifier for Detail</span> </li></ul> </li></ul> </li><li><span class='object'>maritalStatus</span><span style='color:red'></span> <span></span><ul><li> <span>maritalCategory<span style='color:red'>*</span> </span><span> : The higher-level marital category of the person.</span> </li><li><span class='link'>detail</span><span style='color:red'></span> <span></span><ul><li> <span>id<span style='color:red'>*</span> </span><span> : The global identifier for Detail</span> </li></ul> </li></ul> </li><li><span class='object'>citizenshipStatus</span><span style='color:red'></span> <span></span><ul><li> <span>category<span style='color:red'>*</span> </span><span> : A global category of citizenship statuses</span> </li><li><span class='link'>detail</span><span style='color:red'></span> <span></span><ul><li> <span>id<span style='color:red'>*</span> </span><span> : The global identifier for Detail</span> </li></ul> </li></ul> </li><li> <span class='object'>nationalities<span style='color:red'></span> </span><span> : The foreign nationalities (citizenships of a foreign country) the person holds</span><ul></ul> </li><li><span class='object'>visaStatus</span><span style='color:red'></span> <span></span><ul><li> <span>category<span style='color:red'>*</span> </span><span> : A global category of visa types</span> </li><li><span class='link'>detail</span><span style='color:red'></span> <span></span><ul><li> <span>id<span style='color:red'>*</span> </span><span> : The global identifier for Detail</span> </li></ul> </li><li> <span>status<span style='color:red'></span> </span><span> : The last known status of the visa</span> </li><li> <span>startOn<span style='color:red'></span> </span><span> : The start date of the visa</span> </li><li> <span>endOn<span style='color:red'></span> </span><span> : The expiration date of the visa</span> </li></ul> </li><li> <span class='object'>roles<span style='color:red'></span> </span><span> : The roles that a person fills as he/she interacts with the institution.</span><ul><li> <span>role<span style='color:red'></span> </span><span> : The actions and activities assigned to, required of, or expected of a person. For example, the roles of "Faculty" or "Student".</span> </li><li> <span>startOn<span style='color:red'></span> </span><span> : The date when a person starts filling a role.</span> </li><li> <span>endOn<span style='color:red'></span> </span><span> : The date when a person stops filling a role.</span> </li></ul> </li><li> <span class='object'>credentials<span style='color:red'></span> </span><span> : Information that identifies a user to a system such as a network or computer.</span><ul><li> <span>type<span style='color:red'></span> </span><span> : The type of credential, such as "Person ID", "System ID", etc.</span> </li><li> <span>value<span style='color:red'></span> </span><span> : The current value of the credential.</span> </li><li> <span>startOn<span style='color:red'></span> </span><span> : The date when the credential starts being valid.</span> </li><li> <span>endOn<span style='color:red'></span> </span><span> : The date when the credential stops being valid.</span> </li></ul> </li><li> <span class='object'>locations<span style='color:red'></span> </span><span> : The physical locations where a person resides or may be contacted by mail.</span><ul><li> <span>id<span style='color:red'></span> </span><span> : A globally unique identifier of a person's mailing location</span> </li><li> <span>description<span style='color:red'></span> </span><span> : A full description or comments about the location</span> </li><li><span class='object'>type<span style='color:red'></span> </span><span> : A type of location for a person. Includes a standard type (e.g. 'home', 'school') and an optional, custom type to further identify the type of location.</span><ul><li> <span>locationType<span style='color:red'>*</span> </span><span> : A type of location for a person (e.g. "home", "school").</span> </li><li><span class='link'>detail</span><span style='color:red'></span> <span></span><ul><li> <span>id<span style='color:red'>*</span> </span><span> : The global identifier for Detail</span> </li></ul> </li></ul> </li><li> <span>status<span style='color:red'></span> </span><span> : The current status of the person's relationship to the location</span> </li><li> <span>preference<span style='color:red'></span> </span><span> : Specifies if the location is preferred over others of the same type.</span> </li><li> <span class='object'>addressLines<span style='color:red'></span> </span><span> : The address lines of the person's location, such as a street address, post office box number, or city, region, and postal code.</span><ul></ul> </li><li><span class='object'>place</span><span style='color:red'></span> <span></span><ul><li> <span class='oneOf'>country<span style='color:red'>*</span> </span> <span> : The country where the person's mailing address is located.</span> <ul><li> <span class='object'>Australia<span style='color:red'>*</span> </span><span> : </span><ul><li> <span>code<span style='color:red'>*</span> </span><span> : The ISO 3166-1 alpha-3 country code.</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of the country, as used in everyday speech.</span> </li><li> <span>postalTitle<span style='color:red'></span> </span><span> : The name of the country when mail is being addressed from an international sender.</span> </li><li><span class='object'>region<span style='color:red'></span> </span><span> : A region within the country</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a region within the country</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The full name of the region</span> </li></ul> </li><li><span class='object'>subRegion<span style='color:red'></span> </span><span> : A subregion within the country and region</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a subregion</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of a subregion</span> </li></ul> </li><li> <span>locality<span style='color:red'></span> </span><span> : The name of the city or town.</span> </li><li> <span>postalCode<span style='color:red'></span> </span><span> : The mailing postal code.</span> </li></ul> </li><li> <span class='object'>Brazil<span style='color:red'>*</span> </span><span> : </span><ul><li> <span>code<span style='color:red'>*</span> </span><span> : The ISO 3166-1 alpha-3 country code.</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of the country, as used in everyday speech.</span> </li><li> <span>postalTitle<span style='color:red'></span> </span><span> : The name of the country when mail is being addressed from an international sender.</span> </li><li><span class='object'>region<span style='color:red'></span> </span><span> : A region within the country</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a region within the country</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The full name of the region</span> </li></ul> </li><li><span class='object'>subRegion<span style='color:red'></span> </span><span> : A subregion within the country and region</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a subregion</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of a subregion</span> </li></ul> </li><li> <span>locality<span style='color:red'></span> </span><span> : The name of the city or town.</span> </li><li> <span>postalCode<span style='color:red'></span> </span><span> : The mailing postal code.</span> </li></ul> </li><li> <span class='object'>Canada<span style='color:red'>*</span> </span><span> : </span><ul><li> <span>code<span style='color:red'>*</span> </span><span> : The ISO 3166-1 alpha-3 country code.</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of the country, as used in everyday speech.</span> </li><li> <span>postalTitle<span style='color:red'></span> </span><span> : The name of the country when mail is being addressed from an international sender.</span> </li><li><span class='object'>region<span style='color:red'></span> </span><span> : A region within the country</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a region within the country</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The full name of the region</span> </li></ul> </li><li><span class='object'>subRegion<span style='color:red'></span> </span><span> : A subregion within the country and region</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a subregion</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of a subregion</span> </li></ul> </li><li> <span>locality<span style='color:red'></span> </span><span> : The name of the city or town.</span> </li><li> <span>postalCode<span style='color:red'></span> </span><span> : The mailing postal code.</span> </li></ul> </li><li> <span class='object'>Mexico<span style='color:red'>*</span> </span><span> : </span><ul><li> <span>code<span style='color:red'>*</span> </span><span> : The ISO 3166-1 alpha-3 country code.</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of the country, as used in everyday speech.</span> </li><li> <span>postalTitle<span style='color:red'></span> </span><span> : The name of the country when mail is being addressed from an international sender.</span> </li><li><span class='object'>region<span style='color:red'></span> </span><span> : A region within the country</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a region within the country</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The full name of the region</span> </li></ul> </li><li><span class='object'>subRegion<span style='color:red'></span> </span><span> : A subregion within the country and region</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a subregion</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of a subregion</span> </li></ul> </li><li> <span>locality<span style='color:red'></span> </span><span> : The name of the city or town.</span> </li><li> <span>postalCode<span style='color:red'></span> </span><span> : The mailing postal code.</span> </li></ul> </li><li> <span class='object'>Netherlands<span style='color:red'>*</span> </span><span> : </span><ul><li> <span>code<span style='color:red'>*</span> </span><span> : The ISO 3166-1 alpha-3 country code.</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of the country, as used in everyday speech.</span> </li><li> <span>postalTitle<span style='color:red'></span> </span><span> : The name of the country when mail is being addressed from an international sender.</span> </li><li><span class='object'>region<span style='color:red'></span> </span><span> : A region within the country</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a region within the country</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The full name of the region</span> </li></ul> </li><li><span class='object'>subRegion<span style='color:red'></span> </span><span> : A subregion within the country and region</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a subregion</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of a subregion</span> </li></ul> </li><li> <span>locality<span style='color:red'></span> </span><span> : The name of the city or town.</span> </li><li> <span>postalCode<span style='color:red'></span> </span><span> : The mailing postal code.</span> </li></ul> </li><li> <span class='object'>United Kingdom of Great Britain and Northern Ireland<span style='color:red'>*</span> </span><span> : </span><ul><li> <span>code<span style='color:red'>*</span> </span><span> : The ISO 3166-1 alpha-3 country code.</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of the country, as used in everyday speech.</span> </li><li> <span>postalTitle<span style='color:red'></span> </span><span> : The name of the country when mail is being addressed from an international sender.</span> </li><li><span class='object'>region<span style='color:red'></span> </span><span> : A region within the country</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a region within the country</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The full name of the region</span> </li></ul> </li><li><span class='object'>subRegion<span style='color:red'></span> </span><span> : A subregion within the country and region</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a subregion</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of a subregion</span> </li></ul> </li><li> <span>locality<span style='color:red'></span> </span><span> : The name of the city or town.</span> </li><li> <span>postalCode<span style='color:red'></span> </span><span> : The mailing postal code.</span> </li></ul> </li><li> <span class='object'>United States of America<span style='color:red'>*</span> </span><span> : </span><ul><li> <span>code<span style='color:red'>*</span> </span><span> : The ISO 3166-1 alpha-3 country code.</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of the country, as used in everyday speech.</span> </li><li> <span>postalTitle<span style='color:red'></span> </span><span> : The name of the country when mail is being addressed from an international sender.</span> </li><li><span class='object'>region<span style='color:red'></span> </span><span> : A region within the country</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a region within the country</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The full name of the region</span> </li></ul> </li><li><span class='object'>subRegion<span style='color:red'></span> </span><span> : A subregion within the country and region</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a subregion</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of a subregion</span> </li></ul> </li><li> <span>locality<span style='color:red'></span> </span><span> : The name of the city or town.</span> </li><li> <span>postalCode<span style='color:red'></span> </span><span> : The mailing postal code.</span> </li><li> <span>deliveryPoint<span style='color:red'></span> </span><span> : A specific set of digits between 00 and 99 assigned to every address. When combined with the ZIP + 4 code, the delivery point provides a unique identifier for every deliverable address served by the US Postal Service.</span> </li><li> <span>carrierRoute<span style='color:red'></span> </span><span> : A subdivision of a US zipcode.</span> </li><li> <span>correctionDigit<span style='color:red'></span> </span><span> : A number used to check for errors in a US ZIP code, delivery point, or carrier route.</span> </li></ul> </li><li> <span class='object'>Generic<span style='color:red'>*</span> </span><span> : </span><ul><li> <span>code<span style='color:red'>*</span> </span><span> : The ISO 3166-1 alpha-3 country code.</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of the country, as used in everyday speech.</span> </li><li> <span>postalTitle<span style='color:red'></span> </span><span> : The name of the country when mail is being addressed from an international sender.</span> </li><li><span class='object'>region<span style='color:red'></span> </span><span> : A region within the country</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a region within the country</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The full name of the region</span> </li></ul> </li><li><span class='object'>subRegion<span style='color:red'></span> </span><span> : A subregion within the country and region</span><ul><li> <span>code<span style='color:red'></span> </span><span> : The code of a subregion</span> </li><li> <span>title<span style='color:red'></span> </span><span> : The name of a subregion</span> </li></ul> </li><li> <span>locality<span style='color:red'></span> </span><span> : The name of the city or town.</span> </li><li> <span>postalCode<span style='color:red'></span> </span><span> : The mailing postal code.</span> </li></ul> </li></ul></span></li></ul> </li><li> <span class='object'>geographicAreas<span style='color:red'></span> </span><span> : The geographic areas assigned to this location.</span><ul><li> <span>id<span style='color:red'></span> </span><span> : The global identifier for Geographic Areas</span> </li></ul> </li><li><span class='object'>seasonalOccupancies</span><span style='color:red'></span> <span></span><ul></ul> </li></ul> </li><li> <span class='object'>phones<span style='color:red'></span> </span><span> : The phones and phone-connected devices at which a person can be contacted.</span><ul><li> <span>id<span style='color:red'></span> </span><span> : A globally unique identifier of a phone.</span> </li><li><span class='object'>type<span style='color:red'></span> </span><span> : A type of phone for a person. Includes a standard type (e.g. 'mobile', 'home') and an optional, custom type to further identify the type of phone.</span><ul><li> <span>phoneType<span style='color:red'>*</span> </span><span> : A type of phone for a person (e.g. 'mobile', 'home').</span> </li><li><span class='link'>detail</span><span style='color:red'></span> <span></span><ul><li> <span>id<span style='color:red'>*</span> </span><span> : The global identifier for Detail</span> </li></ul> </li></ul> </li><li> <span>status<span style='color:red'></span> </span><span> : The status of the phone for the person.</span> </li><li> <span>preference<span style='color:red'></span> </span><span> : Specifies if the phone is preferred over others of the same type.</span> </li><li> <span>countryCallingCode<span style='color:red'></span> </span><span> : The country calling code of telephone and/or mobile device when dialing internationally.</span> </li><li> <span>number<span style='color:red'></span> </span><span> : The number assigned to the phone.</span> </li><li> <span>extension<span style='color:red'></span> </span><span> : The extension used to connect to the phone when multiple phones share the same primary number.</span> </li></ul> </li><li> <span class='object'>emails<span style='color:red'></span> </span><span> : The email addresses at which a person can be contacted.</span><ul><li> <span>id<span style='color:red'></span> </span><span> : A globally unique identifier of an email.</span> </li><li><span class='object'>type<span style='color:red'></span> </span><span> : A type of email for a person. Includes a standard type (e.g. 'personal', 'business') and an optional, custom type to further identify the type of email.</span><ul><li> <span>emailType<span style='color:red'>*</span> </span><span> : A type of email for a person (e.g. 'personal', 'business').</span> </li><li><span class='link'>detail</span><span style='color:red'></span> <span></span><ul><li> <span>id<span style='color:red'>*</span> </span><span> : The global identifier for Detail</span> </li></ul> </li></ul> </li><li> <span>status<span style='color:red'></span> </span><span> : The status of the email for the person.</span> </li><li> <span>startOn<span style='color:red'></span> </span><span> : The date the email became active</span> </li><li> <span>endOn<span style='color:red'></span> </span><span> : The date the email became inactive</span> </li><li> <span>preference<span style='color:red'></span> </span><span> : Specifies if the email is preferred over others of the same type.</span> </li><li> <span>address<span style='color:red'></span> </span><span> : An email address for the person.</span> </li></ul> </li><li> <span class='object'>socialMedia<span style='color:red'></span> </span><span> : The social media account at which a person can be contacted.</span><ul><li> <span>id<span style='color:red'></span> </span><span> : A globally unique identifier of a social media contact.</span> </li><li><span class='object'>type<span style='color:red'></span> </span><span> : A type of social media account for a person. Includes a standard type (e.g. 'skype', 'facebook') and an optional, custom type to further identify the type of social media account.</span><ul><li> <span>socialMediaType<span style='color:red'>*</span> </span><span> : A type of social media account (e.g. 'skype', 'facebook').</span> </li><li><span class='link'>detail</span><span style='color:red'></span> <span></span><ul><li> <span>id<span style='color:red'>*</span> </span><span> : The global identifier for Detail</span> </li></ul> </li></ul> </li><li> <span>status<span style='color:red'></span> </span><span> : The status of a social media account information for the person.</span> </li><li> <span>preference<span style='color:red'></span> </span><span> : Specifies if the social media account is preferred over others of the same type.</span> </li><li> <span>address<span style='color:red'></span> </span><span> : The username, handle or other address of the social media account.</span> </li></ul> </li></ul> </li> </ul> </div>
+<h2>Quick Start</h2>
+<div id="step1">
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+			<div class="step_num">1</div>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+			<p class="desc"> Call the POST request three times to create three entities each with a unique GUID. </p>
+			<div id="example-request"><div class="syntax"><pre><code class='http'>POST /api/persons HTTP/1.1</code></pre><pre><code class="http">{
+  "metadata": {
+    "createdBy": "Elevate",
+    "createdOn": "",
+    "modifiedBy": "",
+    "modifiedOn": ""
+  },
+  "id": "5674f28b-b216-4055-b236-81a922d93b4c",
+  "privacyStatus": {
+    "privacyCategory": "unrestricted"
+  },
+  "names": [
+    {
+      "type": {
+        "category": "birth",
+        "detail": {
+          "id": "caf0f4fa-4b85-49f7-bc89-8a849309dfca"
+        }
+      },
+      "preference": "",
+      "fullName": "Marie Aguste von Trapp",
+      "title": "",
+      "firstName": "",
+      "middleName": "",
+      "lastNamePrefix": "",
+      "lastName": "",
+      "pedigree": "",
+      "professionalAbbreviations": []
+    }
+  ],
+  "dateOfBirth": "",
+  "dateDeceased": "",
+  "gender": "",
+  "ethnicity": {},
+  "races": [],
+  "maritalStatus": {},
+  "citizenshipStatus": {},
+  "nationalities": [],
+  "visaStatus": {},
+  "roles": [],
+  "credentials": [],
+  "locations": [
+    {
+      "id": "e664fdc0-928e-4931-91dd-0a963aef6b3f",
+      "description": "",
+      "type": {
+        "locationType": "home"
+      },
+      "status": "active",
+      "preference": "",
+      "addressLines": [],
+      "place": {},
+      "seasonalOccupancies": []
+    }
+  ],
+  "phones": [
+    {
+      "id": "3f2eecc3-9df7-40fb-a295-e1961c8757a1",
+      "type": {
+        "phoneType": "home",
+        "detail": {}
+      },
+      "status": "active",
+      "preference": "",
+      "countryCallingCode": "",
+      "number": "7032592885",
+      "extension": ""
+    }
+  ],
+  "emails": [
+    {
+      "id": "9238446a-3d9f-4a44-ae98-9e701df26026",
+      "type": {
+        "emailType": "personal",
+        "detail": {}
+      },
+      "startOn": "",
+      "endOn": "",
+      "status": "",
+      "preference": "",
+      "address": "someone@example.com"
+    }
+  ],
+  "socialMedia": [
+    {
+      "id": "e60685f1-48d9-47e0-b710-b37dcb8bb6ce",
+      "status": "",
+      "preference": "",
+      "address": "bsmith",
+      "type": {
+        "socialMediaType": "twitter",
+        "detail": {}
+      }
+    }
+  ]
+}</code></pre></div> </div>
+			<p class="status-code-gr">Status 204 OK</p>
+		</div>
+	</div>
+</div>
+<p> </p>
+<div id="step2">
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+			<div class="step_num">2</div>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+			<p class="desc"> Call the GET request with the GUID of one of the three entities to verify the entity has been created.</p>
+			<div id="example-request"><div class="syntax"><pre><code class='http'>GET /api/persons?title=item HTTP/1.1</code></pre></div> </div><div id="example-request"><div class="syntax"><pre><code class='http'>GET /api/persons?personsFilter=5674f28b-b216-4055-b236-81a922d93b4c HTTP/1.1</code></pre></div> </div><div id="example-request"><div class="syntax"><pre><code class='http'>GET /api/persons/5674f28b-b216-4055-b236-81a922d93b4c HTTP/1.1</code></pre></div> </div>
+			<p class="status-code-gr">Status 200 OK</p>
+		</div>
+	</div>
+</div>
+<p> </p>
+<div id="step3">
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+			<div class="step_num">3</div>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+			<p class="desc"> Call the GET (Query/Filter) request to filter by field.</p>
+			<div id="example-request"><div class="syntax"><pre><code class='http'>GET /api/persons?title=item HTTP/1.1</code></pre></div> </div><div id="example-request"><div class="syntax"><pre><code class='http'>GET /api/persons?personsFilter=5674f28b-b216-4055-b236-81a922d93b4c HTTP/1.1</code></pre></div> </div><div id="example-request"><div class="syntax"><pre><code class='http'>GET /api/persons/5674f28b-b216-4055-b236-81a922d93b4c HTTP/1.1</code></pre></div> </div>
+			<p class="status-code-gr">Status 200 OK</p>
+		</div>
+	</div>
+</div>
+<p> </p>
+<div id="step4">
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+			<div class="step_num">4</div>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+			<p class="desc"> Call the PUT request with an entitiy's GUID to update that entity's description. </p>
+			<div id="example-request"><div class="syntax"><pre><code class='http'>PUT /api/persons/5674f28b-b216-4055-b236-81a922d93b4c HTTP/1.1</code></pre></div> </div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"> </div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+<pre><code class="http">"description": [
+      {
+        "en": "Updated Description"
+      }
+    ]</code></pre>
+    <p class="status-code-gr">Status 200 OK</p>
+		</div>
+	</div>
+</div>
+<p></p>
+<div id="step5">
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+			<div class="step_num">5</div>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+			<p class="desc"> Call the DELETE request with an entity's GUID to delete that entity. </p>
+			<div id="example-request"><div class="syntax"><pre><code class='http'>DELETE /api/persons/5674f28b-b216-4055-b236-81a922d93b4c HTTP/1.1</code></pre></div> </div>
+			<p class="status-code-gr">Status 204 OK</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"> </div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+			<p class="desc"> Call the DELETE request again the same GUID to verify that the entity no longer exists. </p>
+			<div id="example-request"><div class="syntax"><pre><code class='http'>DELETE /api/persons/5674f28b-b216-4055-b236-81a922d93b4c HTTP/1.1</code></pre></div> </div>
+			<p class="status-code-rd">Status 404 Not Found</p>
+		</div>
+	</div>
+</div>
+
+                                <div id="related-resources" class="row">
+                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+                                    <h2>Related Resources</h2>
+                                    <ul id="resource-list">
+                                      <li><a href="../academic-histories/">Academic Histories</a></li><li><a href="../academic-program-enrollments/">Academic Program Enrollments</a></li><li><a href="../appeals/">Appeals</a></li><li><a href="../campaigns/">Campaigns</a></li><li><a href="../comments/">Comments</a></li><li><a href="../constituent-activities/">Constituent Activities</a></li><li><a href="../constituent-donation-interests/">Constituent Donation Interests</a></li><li><a href="../constituents/">Constituents</a></li><li><a href="../designations/">Designations</a></li><li><a href="../donation-promises/">Donation Promises</a></li><li><a href="../donations-summary/">Donations Summary</a></li><li><a href="../donations/">Donations</a></li><li><a href="../donor-society-memberships/">Donor Society Memberships</a></li><li><a href="../employment-histories/">Employment Histories</a></li><li><a href="../external-donations/">External Donations</a></li><li><a href="../general-ledger-transactions/">General Ledger Transactions</a></li><li><a href="../instructional-event-instances/">Instructional Event Instances</a></li><li><a href="../instructional-events/">Instructional Events</a></li><li><a href="../payroll-deduction-requests/">Payroll Deduction Requests</a></li><li><a href="../person-groups/">Person Groups</a></li><li><a href="../personal-relationships/">Personal Relationships</a></li><li><a href="../privacy-statuses/">Privacy Statuses</a></li><li><a href="../person-name-types/">Person Name Types</a></li><li><a href="../ethnicities/">Ethnicities</a></li><li><a href="../races/">Races</a></li><li><a href="../marital-statuses/">Marital Statuses</a></li><li><a href="../citizenship-statuses/">Citizenship Statuses</a></li><li><a href="../visa-types/">Visa Types</a></li><li><a href="../location-types/">Location Types</a></li><li><a href="../geographic-areas/">Geographic Areas</a></li><li><a href="../phone-types/">Phone Types</a></li><li><a href="../email-types/">Email Types</a></li><li><a href="../social-media-types/">Social Media Types</a></li><li><a href="../proposals/">Proposals</a></li><li><a href="../prospects/">Prospects</a></li><li><a href="../section-grades/">Section Grades</a></li><li><a href="../section-registrations/">Section Registrations</a></li><li><a href="../wealth-assessments/">Wealth Assessments</a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+			</div>
+		</div>
+<div id="delete" class="row tab-elem">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+<div id="title" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h1>DELETE Persons</h1>
+    
+  </div>
+</div>
+<div id="request" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Requests</h2>
+    <table class="table table-condensed">
+      <tr>
+	<th>Header</th>
+	<th>Value</th>
+      </tr>
+      <tr>
+	<td>Content-Type</td>
+	<td>application/vnd.hedtech.integration.v1+json</td>
+      </tr>
+      <tr>
+	<td>Accept</td>
+	<td>application/vnd.hedtech.integration.v1+json</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="row syntax">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Syntax</h2>
+    <pre><code class="http">DELETE /api/persons HTTP/1.1</code></pre>
+  </div>
+</div>
+<div id="response" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Responses</h2>
+    <div id="response-form">
+      <button type="button" class="btn btn-default btn-lg" onclick="showCode(this)">View Request/Response Format</button>
+      <pre class="code-block"><code class="json">[
+   {
+      "metadata": {
+         "createdBy": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+         "createdOn": "The date and time when the entity instance was created",
+         "modifiedBy": "The date and time when the entity instance was created",
+         "modifiedOn": "The date and time when the entity instance was last modified",
+      },
+      "id": "A global identifier of a person.",
+      "privacyStatus": {
+         "privacyCategory": "The global category of information privacy protection",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "names": [
+         "type": {
+            "category": "The global category of person name types",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "preference": "Indicates the preferred name for the type",
+         "fullName": "Indicates the preferred name for the type",
+         "title": "Indicates the preferred name for the type",
+         "firstName": "Indicates the preferred name for the type",
+         "middleName": "Indicates the preferred name for the type",
+         "lastNamePrefix": "Indicates the preferred name for the type",
+         "lastName": "Indicates the preferred name for the type",
+         "pedigree": "Indicates the preferred name for the type",
+         "professionalAbbreviations": [
+            ......
+            record n
+         ],
+         ......
+         record n
+      ],
+      "dateOfBirth": "The date when a person was born.",
+      "dateDeceased": "The date when a person died.",
+      "gender": "The biological and/or social/cultural masculinity or femininity of the person.",
+      "ethnicity": {
+         "ethnicCategory": "The global category of ethnic origin to which a person belongs.",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "races": [
+         "racialCategory": "The higher-level racial category to which the person belongs.",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+         ......
+         record n
+      ],
+      "maritalStatus": {
+         "maritalCategory": "The higher-level marital category of the person.",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "citizenshipStatus": {
+         "category": "A global category of citizenship statuses",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "nationalities": [
+         ......
+         record n
+      ],
+      "visaStatus": {
+         "category": "A global category of visa types",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+         "status": "The last known status of the visa",
+         "startOn": "The start date of the visa",
+         "endOn": "The expiration date of the visa",
+      },
+      "roles": [
+         "role": "The actions and activities assigned to, required of, or expected of a person. For example, the roles of "Faculty" or "Student".",
+         "startOn": "The date when a person starts filling a role.",
+         "endOn": "The date when a person stops filling a role.",
+         ......
+         record n
+      ],
+      "credentials": [
+         "type": "The type of credential, such as "Person ID", "System ID", etc.",
+         "value": "The current value of the credential.",
+         "startOn": "The date when the credential starts being valid.",
+         "endOn": "The date when the credential stops being valid.",
+         ......
+         record n
+      ],
+      "locations": [
+         "id": "A globally unique identifier of a person's mailing location",
+         "description": "A full description or comments about the location",
+         "type": {
+            "locationType": "A type of location for a person (e.g. "home", "school").",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The current status of the person's relationship to the location",
+         "preference": "Specifies if the location is preferred over others of the same type.",
+         "addressLines": [
+            ......
+            record n
+         ],
+         "place": {
+            "country": {
+               "code": "The ISO 3166-1 alpha-3 country code.",
+               "title": "The name of the country, as used in everyday speech.",
+               "postalTitle": "The name of the country when mail is being addressed from an international sender.",
+               "region": {
+                  "code": "The code of a region within the country",
+                  "title": "The code of a region within the country",
+               },
+               "subRegion": {
+                  "code": "The code of a subregion",
+                  "title": "The name of a subregion",
+               },
+               "locality": "The name of the country when mail is being addressed from an international sender.",
+               "postalCode": "The mailing postal code.",
+            },
+         },
+         "geographicAreas": [
+            "id": "The global identifier for Geographic Areas",
+            ......
+            record n
+         ],
+         "seasonalOccupancies": [
+            "recurrence": {
+               "timePeriod": {
+                  "startOn": "The beginning of the time period being repeated.",
+                  "endOn": "The end of the time period being repeated.",
+               },
+               "repeatRule": {
+                  "type": "undefined",
+                  "ends": {
+                  },
+               },
+            },
+            ......
+            record n
+         ],
+         ......
+         record n
+      ],
+      "phones": [
+         "id": "A globally unique identifier of a phone.",
+         "type": {
+            "phoneType": "A type of phone for a person (e.g. 'mobile', 'home').",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The status of the phone for the person.",
+         "preference": "Specifies if the phone is preferred over others of the same type.",
+         "countryCallingCode": "The country calling code of telephone and/or mobile device when dialing internationally.",
+         "number": "The country calling code of telephone and/or mobile device when dialing internationally.",
+         "extension": "The country calling code of telephone and/or mobile device when dialing internationally.",
+         ......
+         record n
+      ],
+      "emails": [
+         "id": "A globally unique identifier of an email.",
+         "type": {
+            "emailType": "A type of email for a person (e.g. 'personal', 'business').",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The status of the email for the person.",
+         "startOn": "The date the email became active",
+         "endOn": "The date the email became inactive",
+         "preference": "Specifies if the email is preferred over others of the same type.",
+         "address": "Specifies if the email is preferred over others of the same type.",
+         ......
+         record n
+      ],
+      "socialMedia": [
+         "id": "A globally unique identifier of a social media contact.",
+         "type": {
+            "socialMediaType": "A type of social media account (e.g. 'skype', 'facebook').",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The status of a social media account information for the person.",
+         "preference": "Specifies if the social media account is preferred over others of the same type.",
+         "address": "Specifies if the social media account is preferred over others of the same type.",
+         ......
+         record n
+      ],
+   }
+   {record 2},
+   {record 3},
+   ...
+   {record n}
+]</code></pre>
+    </div>
+  </div>
+</div>
+<div id="example" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Examples</h2>
+	<div id="example-request"><h4> Request </h4> <div class="syntax"><pre><code class='http'>DELETE /api/persons/5674f28b-b216-4055-b236-81a922d93b4c HTTP/1.1</code></pre></div> </div><div id="example-response"> <h4> Response </h4><pre><code class="http">Status 204 OK</code></pre><button type="button" class="btn btn-default btn-lg" onclick="showCode(this)">View Body</button><pre class="code-block"><code class="http">{
+  "metadata": {
+    "createdBy": "Elevate",
+    "createdOn": "",
+    "modifiedBy": "",
+    "modifiedOn": ""
+  },
+  "id": "5674f28b-b216-4055-b236-81a922d93b4c",
+  "privacyStatus": {
+    "privacyCategory": "unrestricted"
+  },
+  "names": [
+    {
+      "type": {
+        "category": "birth",
+        "detail": {
+          "id": "caf0f4fa-4b85-49f7-bc89-8a849309dfca"
+        }
+      },
+      "preference": "",
+      "fullName": "Marie Aguste von Trapp",
+      "title": "",
+      "firstName": "",
+      "middleName": "",
+      "lastNamePrefix": "",
+      "lastName": "",
+      "pedigree": "",
+      "professionalAbbreviations": []
+    }
+  ],
+  "dateOfBirth": "",
+  "dateDeceased": "",
+  "gender": "",
+  "ethnicity": {},
+  "races": [],
+  "maritalStatus": {},
+  "citizenshipStatus": {},
+  "nationalities": [],
+  "visaStatus": {},
+  "roles": [],
+  "credentials": [],
+  "locations": [
+    {
+      "id": "e664fdc0-928e-4931-91dd-0a963aef6b3f",
+      "description": "",
+      "type": {
+        "locationType": "home"
+      },
+      "status": "active",
+      "preference": "",
+      "addressLines": [],
+      "place": {},
+      "seasonalOccupancies": []
+    }
+  ],
+  "phones": [
+    {
+      "id": "3f2eecc3-9df7-40fb-a295-e1961c8757a1",
+      "type": {
+        "phoneType": "home",
+        "detail": {}
+      },
+      "status": "active",
+      "preference": "",
+      "countryCallingCode": "",
+      "number": "7032592885",
+      "extension": ""
+    }
+  ],
+  "emails": [
+    {
+      "id": "9238446a-3d9f-4a44-ae98-9e701df26026",
+      "type": {
+        "emailType": "personal",
+        "detail": {}
+      },
+      "startOn": "",
+      "endOn": "",
+      "status": "",
+      "preference": "",
+      "address": "someone@example.com"
+    }
+  ],
+  "socialMedia": [
+    {
+      "id": "e60685f1-48d9-47e0-b710-b37dcb8bb6ce",
+      "status": "",
+      "preference": "",
+      "address": "bsmith",
+      "type": {
+        "socialMediaType": "twitter",
+        "detail": {}
+      }
+    }
+  ]
+}</code></pre></div>
+  </div>
+</div>
+</div>
+</div>
+<div id="get" class="row tab-elem">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+<div id="title" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h1>GET Persons</h1>
+    
+  </div>
+</div>
+<div id="request" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Requests</h2>
+    <table class="table table-condensed">
+      <tr>
+	<th>Header</th>
+	<th>Value</th>
+      </tr>
+      <tr>
+	<td>Content-Type</td>
+	<td>application/vnd.hedtech.integration.v1+json</td>
+      </tr>
+      <tr>
+	<td>Accept</td>
+	<td>application/vnd.hedtech.integration.v1+json</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="row syntax">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Syntax</h2>
+    <pre><code class="http">GET /api/persons HTTP/1.1</code></pre>
+  </div>
+</div>
+<div id="queryParameters" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Query Parameters</h2>
+    
+    
+    
+    <h3>URL Filter Parameters</h3>
+    <table class="table table-condensed">
+      <tr>
+      	<th>Parameter</th>
+      	<th>Type</th>
+      	<th>Enumerations</th>
+      </tr>
+      <tr>
+      	<td>title</td>
+      	<td>string</td>
+      	<td></td>
+      </tr>
+      <tr>
+      	<td>firstName</td>
+      	<td>string</td>
+      	<td></td>
+      </tr>
+      <tr>
+      	<td>middleName</td>
+      	<td>string</td>
+      	<td></td>
+      </tr>
+      <tr>
+      	<td>lastNamePrefix</td>
+      	<td>string</td>
+      	<td></td>
+      </tr>
+      <tr>
+      	<td>lastName</td>
+      	<td>string</td>
+      	<td></td>
+      </tr>
+      <tr>
+      	<td>pedigree</td>
+      	<td>string</td>
+      	<td></td>
+      </tr>
+      <tr>
+      	<td>preferredName</td>
+      	<td>string</td>
+      	<td></td>
+      </tr>
+      <tr>
+      	<td>role</td>
+      	<td>string</td>
+      	<td>student, faculty</td>
+      </tr>
+      <tr>
+      	<td>credentialType</td>
+      	<td>string</td>
+      	<td>ssn, sin, bannerId, colleaguePersonId, elevateId, bannerSourceId, bannerUserName, bannerUdcId</td>
+      </tr>
+      <tr>
+      	<td>personFilter.code</td>
+      	<td>string</td>
+      	<td></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div id="response" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Responses</h2>
+    <div id="response-form">
+      <button type="button" class="btn btn-default btn-lg" onclick="showCode(this)">View Request/Response Format</button>
+      <pre class="code-block"><code class="json">[
+   {
+      "metadata": {
+         "createdBy": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+         "createdOn": "The date and time when the entity instance was created",
+         "modifiedBy": "The date and time when the entity instance was created",
+         "modifiedOn": "The date and time when the entity instance was last modified",
+      },
+      "id": "A global identifier of a person.",
+      "privacyStatus": {
+         "privacyCategory": "The global category of information privacy protection",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "names": [
+         "type": {
+            "category": "The global category of person name types",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "preference": "Indicates the preferred name for the type",
+         "fullName": "Indicates the preferred name for the type",
+         "title": "Indicates the preferred name for the type",
+         "firstName": "Indicates the preferred name for the type",
+         "middleName": "Indicates the preferred name for the type",
+         "lastNamePrefix": "Indicates the preferred name for the type",
+         "lastName": "Indicates the preferred name for the type",
+         "pedigree": "Indicates the preferred name for the type",
+         "professionalAbbreviations": [
+            ......
+            record n
+         ],
+         ......
+         record n
+      ],
+      "dateOfBirth": "The date when a person was born.",
+      "dateDeceased": "The date when a person died.",
+      "gender": "The biological and/or social/cultural masculinity or femininity of the person.",
+      "ethnicity": {
+         "ethnicCategory": "The global category of ethnic origin to which a person belongs.",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "races": [
+         "racialCategory": "The higher-level racial category to which the person belongs.",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+         ......
+         record n
+      ],
+      "maritalStatus": {
+         "maritalCategory": "The higher-level marital category of the person.",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "citizenshipStatus": {
+         "category": "A global category of citizenship statuses",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "nationalities": [
+         ......
+         record n
+      ],
+      "visaStatus": {
+         "category": "A global category of visa types",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+         "status": "The last known status of the visa",
+         "startOn": "The start date of the visa",
+         "endOn": "The expiration date of the visa",
+      },
+      "roles": [
+         "role": "The actions and activities assigned to, required of, or expected of a person. For example, the roles of "Faculty" or "Student".",
+         "startOn": "The date when a person starts filling a role.",
+         "endOn": "The date when a person stops filling a role.",
+         ......
+         record n
+      ],
+      "credentials": [
+         "type": "The type of credential, such as "Person ID", "System ID", etc.",
+         "value": "The current value of the credential.",
+         "startOn": "The date when the credential starts being valid.",
+         "endOn": "The date when the credential stops being valid.",
+         ......
+         record n
+      ],
+      "locations": [
+         "id": "A globally unique identifier of a person's mailing location",
+         "description": "A full description or comments about the location",
+         "type": {
+            "locationType": "A type of location for a person (e.g. "home", "school").",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The current status of the person's relationship to the location",
+         "preference": "Specifies if the location is preferred over others of the same type.",
+         "addressLines": [
+            ......
+            record n
+         ],
+         "place": {
+            "country": {
+               "code": "The ISO 3166-1 alpha-3 country code.",
+               "title": "The name of the country, as used in everyday speech.",
+               "postalTitle": "The name of the country when mail is being addressed from an international sender.",
+               "region": {
+                  "code": "The code of a region within the country",
+                  "title": "The code of a region within the country",
+               },
+               "subRegion": {
+                  "code": "The code of a subregion",
+                  "title": "The name of a subregion",
+               },
+               "locality": "The name of the country when mail is being addressed from an international sender.",
+               "postalCode": "The mailing postal code.",
+            },
+         },
+         "geographicAreas": [
+            "id": "The global identifier for Geographic Areas",
+            ......
+            record n
+         ],
+         "seasonalOccupancies": [
+            "recurrence": {
+               "timePeriod": {
+                  "startOn": "The beginning of the time period being repeated.",
+                  "endOn": "The end of the time period being repeated.",
+               },
+               "repeatRule": {
+                  "type": "undefined",
+                  "ends": {
+                  },
+               },
+            },
+            ......
+            record n
+         ],
+         ......
+         record n
+      ],
+      "phones": [
+         "id": "A globally unique identifier of a phone.",
+         "type": {
+            "phoneType": "A type of phone for a person (e.g. 'mobile', 'home').",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The status of the phone for the person.",
+         "preference": "Specifies if the phone is preferred over others of the same type.",
+         "countryCallingCode": "The country calling code of telephone and/or mobile device when dialing internationally.",
+         "number": "The country calling code of telephone and/or mobile device when dialing internationally.",
+         "extension": "The country calling code of telephone and/or mobile device when dialing internationally.",
+         ......
+         record n
+      ],
+      "emails": [
+         "id": "A globally unique identifier of an email.",
+         "type": {
+            "emailType": "A type of email for a person (e.g. 'personal', 'business').",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The status of the email for the person.",
+         "startOn": "The date the email became active",
+         "endOn": "The date the email became inactive",
+         "preference": "Specifies if the email is preferred over others of the same type.",
+         "address": "Specifies if the email is preferred over others of the same type.",
+         ......
+         record n
+      ],
+      "socialMedia": [
+         "id": "A globally unique identifier of a social media contact.",
+         "type": {
+            "socialMediaType": "A type of social media account (e.g. 'skype', 'facebook').",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The status of a social media account information for the person.",
+         "preference": "Specifies if the social media account is preferred over others of the same type.",
+         "address": "Specifies if the social media account is preferred over others of the same type.",
+         ......
+         record n
+      ],
+   }
+   {record 2},
+   {record 3},
+   ...
+   {record n}
+]</code></pre>
+    </div>
+  </div>
+</div>
+<div id="example" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Examples</h2>
+	<div id="example-request"><h4> Request </h4> <div class="syntax"><pre><code class='http'>GET /api/persons?title=item HTTP/1.1</code></pre></div> </div><div id="example-response"> <h4> Response </h4><pre><code class="http">Status 200 OK</code></pre><button type="button" class="btn btn-default btn-lg" onclick="showCode(this)">View Body</button><pre class="code-block"><code class="http">[
+  {
+    "metadata": {
+      "createdBy": "Elevate",
+      "createdOn": "1956-10-16T12:00:00-05:00",
+      "modifiedBy": "Elevate",
+      "modifiedOn": "1956-10-16T12:00:00-05:00"
+    },
+    "id": "5674f28b-b216-4055-b236-81a922d93b4c",
+    "privacyStatus": {
+      "privacyCategory": "restricted",
+      "detail": {
+        "id": "d83f81b2-777d-4bfc-b553-d986a2e9c83a"
+      }
+    },
+    "names": [
+      {
+        "type": {
+          "category": "birth",
+          "detail": {
+            "id": "caf0f4fa-4b85-49f7-bc89-8a849309dfca"
+          }
+        },
+        "preference": "preferred",
+        "title": "Mrs.",
+        "fullName": "Marie Aguste von Trapp",
+        "firstName": "Marie",
+        "middleName": "Aguste",
+        "lastNamePrefix": "von",
+        "lastName": "Trapp",
+        "pedigree": "I",
+        "professionalAbbreviations": [
+          "J.D."
+        ]
+      }
+    ],
+    "dateOfBirth": "1905-01-26",
+    "dateDeceased": "1987-03-28",
+    "gender": "female",
+    "ethnicity": {
+      "ethnicCategory": "hispanic",
+      "detail": {
+        "id": "bf3f11c6-0cc9-493b-95e3-d6670574ef19"
+      }
+    },
+    "races": [
+      {
+        "racialCategory": "otherPacificIslander",
+        "detail": {
+          "id": "e1c3ef88-38fd-485b-9bc3-e71a83f72a94"
+        }
+      }
+    ],
+    "maritalStatus": {
+      "maritalCategory": "married",
+      "detail": {
+        "id": "cc0b8912-910c-4470-9445-072aaad0910f"
+      }
+    },
+    "citizenshipStatus": {
+      "category": "citizen",
+      "detail": {
+        "id": "dcfc304c-c673-4534-b5a4-56bc5d004c8d"
+      }
+    },
+    "nationalities": [
+      "USA",
+      "DEU"
+    ],
+    "visaStatus": {},
+    "roles": [
+      {
+        "role": "faculty",
+        "startOn": "2014-10-16T00:00:00+00:00",
+        "endOn": "2015-10-16T23:59:59+00:00"
+      }
+    ],
+    "credentials": [
+      {
+        "type": "ssn",
+        "value": "000-00-0000",
+        "startOn": "1942-12-30T00:00:00+00:00",
+        "endOn": "1987-03-28T23:59:59+00:00"
+      }
+    ],
+    "locations": [
+      {
+        "id": "e664fdc0-928e-4931-91dd-0a963aef6b3f",
+        "description": "Primary residence",
+        "type": {
+          "locationType": "home"
+        },
+        "status": "active",
+        "preference": "primary",
+        "addressLines": [
+          "10241 Stratford Avenue"
+        ],
+        "place": {
+          "country": {
+            "code": "USA",
+            "region": {
+              "code": "VA"
+            },
+            "subRegion": {
+              "title": "Fairfax County"
+            },
+            "locality": "Fairfax",
+            "postalCode": "22030",
+            "deliveryPoint": "01",
+            "carrierRoute": "C039",
+            "correctionDigit": "1"
+          }
+        },
+        "latitude": 38.857911,
+        "longitude": -77.301369,
+        "seasonalOccupancies": [
+          {
+            "recurrence": {
+              "timePeriod": {
+                "startOn": "2015-06-01T00:00:00+00:00",
+                "endOn": "2015-07-31T00:00:00+00:00"
+              },
+              "repeatRule": {
+                "type": "yearly"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "phones": [
+      {
+        "id": "3f2eecc3-9df7-40fb-a295-e1961c8757a1",
+        "type": {
+          "phoneType": "home",
+          "detail": {
+            "id": "feee5fac-624a-4e73-986d-b9676d6652ec"
+          }
+        },
+        "status": "active",
+        "preference": "primary",
+        "countryCallingCode": "+1",
+        "number": "7032592885",
+        "extension": "1103"
+      }
+    ],
+    "emails": [
+      {
+        "id": "9238446a-3d9f-4a44-ae98-9e701df26026",
+        "type": {
+          "emailType": "personal",
+          "detail": {
+            "id": "9e70be81-38c6-47ef-8dfb-79c230ea5847"
+          }
+        },
+        "startOn": "2010-03-24",
+        "endOn": "2012-11-17",
+        "status": "inactive",
+        "preference": "primary",
+        "address": "someone@example.com"
+      }
+    ],
+    "socialMedia": [
+      {
+        "id": "e60685f1-48d9-47e0-b710-b37dcb8bb6ce",
+        "status": "inactive",
+        "preference": "primary",
+        "address": "bsmith",
+        "type": {
+          "socialMediaType": "twitter",
+          "detail": {
+            "id": "e60685f1-48d9-47e0-b710-b37dcb83b6ce"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "metadata": {
+      "createdBy": "Elevate",
+      "createdOn": "",
+      "modifiedBy": "",
+      "modifiedOn": ""
+    },
+    "id": "5674f28b-b216-4055-b236-81a922d93b4c",
+    "privacyStatus": {
+      "privacyCategory": "unrestricted"
+    },
+    "names": [
+      {
+        "type": {
+          "category": "birth",
+          "detail": {
+            "id": "caf0f4fa-4b85-49f7-bc89-8a849309dfca"
+          }
+        },
+        "preference": "",
+        "fullName": "Marie Aguste von Trapp",
+        "title": "",
+        "firstName": "",
+        "middleName": "",
+        "lastNamePrefix": "",
+        "lastName": "",
+        "pedigree": "",
+        "professionalAbbreviations": []
+      }
+    ],
+    "dateOfBirth": "",
+    "dateDeceased": "",
+    "gender": "",
+    "ethnicity": {},
+    "races": [],
+    "maritalStatus": {},
+    "citizenshipStatus": {},
+    "nationalities": [],
+    "visaStatus": {},
+    "roles": [],
+    "credentials": [],
+    "locations": [
+      {
+        "id": "e664fdc0-928e-4931-91dd-0a963aef6b3f",
+        "description": "",
+        "type": {
+          "locationType": "home"
+        },
+        "status": "active",
+        "preference": "",
+        "addressLines": [],
+        "place": {},
+        "seasonalOccupancies": []
+      }
+    ],
+    "phones": [
+      {
+        "id": "3f2eecc3-9df7-40fb-a295-e1961c8757a1",
+        "type": {
+          "phoneType": "home",
+          "detail": {}
+        },
+        "status": "active",
+        "preference": "",
+        "countryCallingCode": "",
+        "number": "7032592885",
+        "extension": ""
+      }
+    ],
+    "emails": [
+      {
+        "id": "9238446a-3d9f-4a44-ae98-9e701df26026",
+        "type": {
+          "emailType": "personal",
+          "detail": {}
+        },
+        "startOn": "",
+        "endOn": "",
+        "status": "",
+        "preference": "",
+        "address": "someone@example.com"
+      }
+    ],
+    "socialMedia": [
+      {
+        "id": "e60685f1-48d9-47e0-b710-b37dcb8bb6ce",
+        "status": "",
+        "preference": "",
+        "address": "bsmith",
+        "type": {
+          "socialMediaType": "twitter",
+          "detail": {}
+        }
+      }
+    ]
+  },
+  {
+    "metadata": {
+      "createdBy": "Elevate",
+      "createdOn": "1956-10-16T12:00:00-05:00",
+      "modifiedBy": "Elevate",
+      "modifiedOn": "1956-10-16T12:00:00-05:00"
+    },
+    "id": "b7e2cea0-5644-4448-86d1-6c9cbdc5168f",
+    "privacyStatus": {},
+    "names": [
+      {
+        "type": {
+          "category": "birth"
+        },
+        "fullName": "Georg Ludwig von Trapp",
+        "title": "Mr.",
+        "firstName": "Georg",
+        "middleName": "Ludwig Ritter",
+        "lastNamePrefix": "von",
+        "lastName": "Trapp",
+        "pedigree": "I",
+        "professionalAbbreviations": [
+          "Ph.D.",
+          "M.D."
+        ]
+      }
+    ],
+    "dateOfBirth": "1905-01-26",
+    "dateDeceased": "1987-03-28",
+    "gender": "male",
+    "ethnicity": {
+      "ethnicCategory": "hispanic",
+      "detail": {
+        "id": "bf3f11c6-0cc9-493b-95e3-d6670574ef19"
+      }
+    },
+    "races": [
+      {
+        "racialCategory": "otherPacificIslander",
+        "detail": {
+          "id": "e1c3ef88-38fd-485b-9bc3-e71a83f72a94"
+        }
+      }
+    ],
+    "maritalStatus": {
+      "maritalCategory": "married",
+      "detail": {
+        "id": "cc0b8912-910c-4470-9445-072aaad0910f"
+      }
+    },
+    "citizenshipStatus": {
+      "category": "nonCitizen"
+    },
+    "nationalities": [
+      "NLD"
+    ],
+    "visaStatus": {
+      "category": "nonImmigrant",
+      "detail": {
+        "id": "48dc0c6d-043d-41fa-a8dd-243d41b6f0e3"
+      },
+      "status": "current",
+      "startOn": "2014-01-25T00:00:00+00:00",
+      "endOn": "2017-01-25T00:00:00+00:00"
+    },
+    "roles": [
+      {
+        "role": "faculty",
+        "startOn": "2014-10-16T00:00:00+00:00",
+        "endOn": "2015-10-16T23:59:59+00:00"
+      }
+    ],
+    "credentials": [
+      {
+        "type": "ssn",
+        "value": "000-00-0000",
+        "startOn": "1942-12-30T00:00:00+00:00",
+        "endOn": "1987-03-28T23:59:59+00:00"
+      }
+    ],
+    "locations": [],
+    "phones": [
+      {
+        "id": "3f2eecc3-9df7-40fb-a295-e1961c8757a1",
+        "type": {
+          "phoneType": "home",
+          "detail": {
+            "id": "feee5fac-624a-4e73-986d-b9676d6652ec"
+          }
+        },
+        "status": "active",
+        "preference": "primary",
+        "countryCallingCode": "+1",
+        "number": "7032592885",
+        "extension": "1103"
+      }
+    ],
+    "emails": [
+      {
+        "id": "9238446a-3d9f-4a44-ae98-9e701df26026",
+        "type": {
+          "emailType": "personal",
+          "detail": {
+            "id": "9e70be81-38c6-47ef-8dfb-79c230ea5847"
+          }
+        },
+        "startOn": "2010-03-24",
+        "endOn": "2012-11-17",
+        "status": "inactive",
+        "preference": "primary",
+        "address": "someone@example.com"
+      }
+    ],
+    "socialMedia": [
+      {
+        "id": "e60685f1-48d9-47e0-b710-b37dcb8bb6ce",
+        "status": "inactive",
+        "preference": "primary",
+        "address": "bsmith",
+        "type": {
+          "socialMediaType": "twitter",
+          "detail": {
+            "id": "e60685f1-48d9-47e0-b710-b37dcb83b6ce"
+          }
+        }
+      }
+    ]
+  }
+]</code></pre></div><div id="example-request"><h4> Request </h4> <div class="syntax"><pre><code class='http'>GET /api/persons?personsFilter=5674f28b-b216-4055-b236-81a922d93b4c HTTP/1.1</code></pre></div> </div><div id="example-response"> <h4> Response </h4><pre><code class="http">Status 200 OK</code></pre><button type="button" class="btn btn-default btn-lg" onclick="showCode(this)">View Body</button><pre class="code-block"><code class="http">{
+  "metadata": {
+    "createdBy": "Elevate",
+    "createdOn": "1956-10-16T12:00:00-05:00",
+    "modifiedBy": "Elevate",
+    "modifiedOn": "1956-10-16T12:00:00-05:00"
+  },
+  "id": "5674f28b-b216-4055-b236-81a922d93b4c",
+  "privacyStatus": {
+    "privacyCategory": "restricted",
+    "detail": {
+      "id": "d83f81b2-777d-4bfc-b553-d986a2e9c83a"
+    }
+  },
+  "names": [
+    {
+      "type": {
+        "category": "birth",
+        "detail": {
+          "id": "caf0f4fa-4b85-49f7-bc89-8a849309dfca"
+        }
+      },
+      "preference": "preferred",
+      "title": "Mrs.",
+      "fullName": "Marie Aguste von Trapp",
+      "firstName": "Marie",
+      "middleName": "Aguste",
+      "lastNamePrefix": "von",
+      "lastName": "Trapp",
+      "pedigree": "I",
+      "professionalAbbreviations": [
+        "J.D."
+      ]
+    }
+  ],
+  "dateOfBirth": "1905-01-26",
+  "dateDeceased": "1987-03-28",
+  "gender": "female",
+  "ethnicity": {
+    "ethnicCategory": "hispanic",
+    "detail": {
+      "id": "bf3f11c6-0cc9-493b-95e3-d6670574ef19"
+    }
+  },
+  "races": [
+    {
+      "racialCategory": "otherPacificIslander",
+      "detail": {
+        "id": "e1c3ef88-38fd-485b-9bc3-e71a83f72a94"
+      }
+    }
+  ],
+  "maritalStatus": {
+    "maritalCategory": "married",
+    "detail": {
+      "id": "cc0b8912-910c-4470-9445-072aaad0910f"
+    }
+  },
+  "citizenshipStatus": {
+    "category": "citizen",
+    "detail": {
+      "id": "dcfc304c-c673-4534-b5a4-56bc5d004c8d"
+    }
+  },
+  "nationalities": [
+    "USA",
+    "DEU"
+  ],
+  "visaStatus": {},
+  "roles": [
+    {
+      "role": "faculty",
+      "startOn": "2014-10-16T00:00:00+00:00",
+      "endOn": "2015-10-16T23:59:59+00:00"
+    }
+  ],
+  "credentials": [
+    {
+      "type": "ssn",
+      "value": "000-00-0000",
+      "startOn": "1942-12-30T00:00:00+00:00",
+      "endOn": "1987-03-28T23:59:59+00:00"
+    }
+  ],
+  "locations": [
+    {
+      "id": "e664fdc0-928e-4931-91dd-0a963aef6b3f",
+      "description": "Primary residence",
+      "type": {
+        "locationType": "home"
+      },
+      "status": "active",
+      "preference": "primary",
+      "addressLines": [
+        "10241 Stratford Avenue"
+      ],
+      "place": {
+        "country": {
+          "code": "USA",
+          "region": {
+            "code": "VA"
+          },
+          "subRegion": {
+            "title": "Fairfax County"
+          },
+          "locality": "Fairfax",
+          "postalCode": "22030",
+          "deliveryPoint": "01",
+          "carrierRoute": "C039",
+          "correctionDigit": "1"
+        }
+      },
+      "latitude": 38.857911,
+      "longitude": -77.301369,
+      "seasonalOccupancies": [
+        {
+          "recurrence": {
+            "timePeriod": {
+              "startOn": "2015-06-01T00:00:00+00:00",
+              "endOn": "2015-07-31T00:00:00+00:00"
+            },
+            "repeatRule": {
+              "type": "yearly"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "phones": [
+    {
+      "id": "3f2eecc3-9df7-40fb-a295-e1961c8757a1",
+      "type": {
+        "phoneType": "home",
+        "detail": {
+          "id": "feee5fac-624a-4e73-986d-b9676d6652ec"
+        }
+      },
+      "status": "active",
+      "preference": "primary",
+      "countryCallingCode": "+1",
+      "number": "7032592885",
+      "extension": "1103"
+    }
+  ],
+  "emails": [
+    {
+      "id": "9238446a-3d9f-4a44-ae98-9e701df26026",
+      "type": {
+        "emailType": "personal",
+        "detail": {
+          "id": "9e70be81-38c6-47ef-8dfb-79c230ea5847"
+        }
+      },
+      "startOn": "2010-03-24",
+      "endOn": "2012-11-17",
+      "status": "inactive",
+      "preference": "primary",
+      "address": "someone@example.com"
+    }
+  ],
+  "socialMedia": [
+    {
+      "id": "e60685f1-48d9-47e0-b710-b37dcb8bb6ce",
+      "status": "inactive",
+      "preference": "primary",
+      "address": "bsmith",
+      "type": {
+        "socialMediaType": "twitter",
+        "detail": {
+          "id": "e60685f1-48d9-47e0-b710-b37dcb83b6ce"
+        }
+      }
+    }
+  ]
+}</code></pre></div><div id="example-request"><h4> Request </h4> <div class="syntax"><pre><code class='http'>GET /api/persons/5674f28b-b216-4055-b236-81a922d93b4c HTTP/1.1</code></pre></div> </div><div id="example-response"> <h4> Response </h4><pre><code class="http">Status 200 OK</code></pre><button type="button" class="btn btn-default btn-lg" onclick="showCode(this)">View Body</button><pre class="code-block"><code class="http">{
+  "metadata": {
+    "createdBy": "Elevate",
+    "createdOn": "",
+    "modifiedBy": "",
+    "modifiedOn": ""
+  },
+  "id": "5674f28b-b216-4055-b236-81a922d93b4c",
+  "privacyStatus": {
+    "privacyCategory": "unrestricted"
+  },
+  "names": [
+    {
+      "type": {
+        "category": "birth",
+        "detail": {
+          "id": "caf0f4fa-4b85-49f7-bc89-8a849309dfca"
+        }
+      },
+      "preference": "",
+      "fullName": "Marie Aguste von Trapp",
+      "title": "",
+      "firstName": "",
+      "middleName": "",
+      "lastNamePrefix": "",
+      "lastName": "",
+      "pedigree": "",
+      "professionalAbbreviations": []
+    }
+  ],
+  "dateOfBirth": "",
+  "dateDeceased": "",
+  "gender": "",
+  "ethnicity": {},
+  "races": [],
+  "maritalStatus": {},
+  "citizenshipStatus": {},
+  "nationalities": [],
+  "visaStatus": {},
+  "roles": [],
+  "credentials": [],
+  "locations": [
+    {
+      "id": "e664fdc0-928e-4931-91dd-0a963aef6b3f",
+      "description": "",
+      "type": {
+        "locationType": "home"
+      },
+      "status": "active",
+      "preference": "",
+      "addressLines": [],
+      "place": {},
+      "seasonalOccupancies": []
+    }
+  ],
+  "phones": [
+    {
+      "id": "3f2eecc3-9df7-40fb-a295-e1961c8757a1",
+      "type": {
+        "phoneType": "home",
+        "detail": {}
+      },
+      "status": "active",
+      "preference": "",
+      "countryCallingCode": "",
+      "number": "7032592885",
+      "extension": ""
+    }
+  ],
+  "emails": [
+    {
+      "id": "9238446a-3d9f-4a44-ae98-9e701df26026",
+      "type": {
+        "emailType": "personal",
+        "detail": {}
+      },
+      "startOn": "",
+      "endOn": "",
+      "status": "",
+      "preference": "",
+      "address": "someone@example.com"
+    }
+  ],
+  "socialMedia": [
+    {
+      "id": "e60685f1-48d9-47e0-b710-b37dcb8bb6ce",
+      "status": "",
+      "preference": "",
+      "address": "bsmith",
+      "type": {
+        "socialMediaType": "twitter",
+        "detail": {}
+      }
+    }
+  ]
+}</code></pre></div>
+  </div>
+</div>
+</div>
+</div>
+<div id="post" class="row tab-elem">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+<div id="title" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h1>POST Persons</h1>
+    
+  </div>
+</div>
+<div id="request" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Requests</h2>
+    <table class="table table-condensed">
+      <tr>
+	<th>Header</th>
+	<th>Value</th>
+      </tr>
+      <tr>
+	<td>Content-Type</td>
+	<td>application/vnd.hedtech.integration.v1+json</td>
+      </tr>
+      <tr>
+	<td>Accept</td>
+	<td>application/vnd.hedtech.integration.v1+json</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="row syntax">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Syntax</h2>
+    <pre><code class="http">POST /api/persons HTTP/1.1</code></pre>
+  </div>
+</div>
+<div id="response" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Responses</h2>
+    <div id="response-form">
+      <button type="button" class="btn btn-default btn-lg" onclick="showCode(this)">View Request/Response Format</button>
+      <pre class="code-block"><code class="json">[
+   {
+      "metadata": {
+         "createdBy": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+         "createdOn": "The date and time when the entity instance was created",
+         "modifiedBy": "The date and time when the entity instance was created",
+         "modifiedOn": "The date and time when the entity instance was last modified",
+      },
+      "id": "A global identifier of a person.",
+      "privacyStatus": {
+         "privacyCategory": "The global category of information privacy protection",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "names": [
+         "type": {
+            "category": "The global category of person name types",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "preference": "Indicates the preferred name for the type",
+         "fullName": "Indicates the preferred name for the type",
+         "title": "Indicates the preferred name for the type",
+         "firstName": "Indicates the preferred name for the type",
+         "middleName": "Indicates the preferred name for the type",
+         "lastNamePrefix": "Indicates the preferred name for the type",
+         "lastName": "Indicates the preferred name for the type",
+         "pedigree": "Indicates the preferred name for the type",
+         "professionalAbbreviations": [
+            ......
+            record n
+         ],
+         ......
+         record n
+      ],
+      "dateOfBirth": "The date when a person was born.",
+      "dateDeceased": "The date when a person died.",
+      "gender": "The biological and/or social/cultural masculinity or femininity of the person.",
+      "ethnicity": {
+         "ethnicCategory": "The global category of ethnic origin to which a person belongs.",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "races": [
+         "racialCategory": "The higher-level racial category to which the person belongs.",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+         ......
+         record n
+      ],
+      "maritalStatus": {
+         "maritalCategory": "The higher-level marital category of the person.",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "citizenshipStatus": {
+         "category": "A global category of citizenship statuses",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "nationalities": [
+         ......
+         record n
+      ],
+      "visaStatus": {
+         "category": "A global category of visa types",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+         "status": "The last known status of the visa",
+         "startOn": "The start date of the visa",
+         "endOn": "The expiration date of the visa",
+      },
+      "roles": [
+         "role": "The actions and activities assigned to, required of, or expected of a person. For example, the roles of "Faculty" or "Student".",
+         "startOn": "The date when a person starts filling a role.",
+         "endOn": "The date when a person stops filling a role.",
+         ......
+         record n
+      ],
+      "credentials": [
+         "type": "The type of credential, such as "Person ID", "System ID", etc.",
+         "value": "The current value of the credential.",
+         "startOn": "The date when the credential starts being valid.",
+         "endOn": "The date when the credential stops being valid.",
+         ......
+         record n
+      ],
+      "locations": [
+         "id": "A globally unique identifier of a person's mailing location",
+         "description": "A full description or comments about the location",
+         "type": {
+            "locationType": "A type of location for a person (e.g. "home", "school").",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The current status of the person's relationship to the location",
+         "preference": "Specifies if the location is preferred over others of the same type.",
+         "addressLines": [
+            ......
+            record n
+         ],
+         "place": {
+            "country": {
+               "code": "The ISO 3166-1 alpha-3 country code.",
+               "title": "The name of the country, as used in everyday speech.",
+               "postalTitle": "The name of the country when mail is being addressed from an international sender.",
+               "region": {
+                  "code": "The code of a region within the country",
+                  "title": "The code of a region within the country",
+               },
+               "subRegion": {
+                  "code": "The code of a subregion",
+                  "title": "The name of a subregion",
+               },
+               "locality": "The name of the country when mail is being addressed from an international sender.",
+               "postalCode": "The mailing postal code.",
+            },
+         },
+         "geographicAreas": [
+            "id": "The global identifier for Geographic Areas",
+            ......
+            record n
+         ],
+         "seasonalOccupancies": [
+            "recurrence": {
+               "timePeriod": {
+                  "startOn": "The beginning of the time period being repeated.",
+                  "endOn": "The end of the time period being repeated.",
+               },
+               "repeatRule": {
+                  "type": "undefined",
+                  "ends": {
+                  },
+               },
+            },
+            ......
+            record n
+         ],
+         ......
+         record n
+      ],
+      "phones": [
+         "id": "A globally unique identifier of a phone.",
+         "type": {
+            "phoneType": "A type of phone for a person (e.g. 'mobile', 'home').",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The status of the phone for the person.",
+         "preference": "Specifies if the phone is preferred over others of the same type.",
+         "countryCallingCode": "The country calling code of telephone and/or mobile device when dialing internationally.",
+         "number": "The country calling code of telephone and/or mobile device when dialing internationally.",
+         "extension": "The country calling code of telephone and/or mobile device when dialing internationally.",
+         ......
+         record n
+      ],
+      "emails": [
+         "id": "A globally unique identifier of an email.",
+         "type": {
+            "emailType": "A type of email for a person (e.g. 'personal', 'business').",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The status of the email for the person.",
+         "startOn": "The date the email became active",
+         "endOn": "The date the email became inactive",
+         "preference": "Specifies if the email is preferred over others of the same type.",
+         "address": "Specifies if the email is preferred over others of the same type.",
+         ......
+         record n
+      ],
+      "socialMedia": [
+         "id": "A globally unique identifier of a social media contact.",
+         "type": {
+            "socialMediaType": "A type of social media account (e.g. 'skype', 'facebook').",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The status of a social media account information for the person.",
+         "preference": "Specifies if the social media account is preferred over others of the same type.",
+         "address": "Specifies if the social media account is preferred over others of the same type.",
+         ......
+         record n
+      ],
+   }
+   {record 2},
+   {record 3},
+   ...
+   {record n}
+]</code></pre>
+    </div>
+  </div>
+</div>
+<div id="example" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Examples</h2>
+	<div id="example-request"><h4> Request </h4> <div class="syntax"><pre><code class='http'>POST /api/persons HTTP/1.1</code></pre><button type="button" class="btn btn-default btn-lg" onclick="showCode(this)">View Body</button><pre class="code-block"><code class="http">{
+  "metadata": {
+    "createdBy": "Elevate",
+    "createdOn": "",
+    "modifiedBy": "",
+    "modifiedOn": ""
+  },
+  "id": "5674f28b-b216-4055-b236-81a922d93b4c",
+  "privacyStatus": {
+    "privacyCategory": "unrestricted"
+  },
+  "names": [
+    {
+      "type": {
+        "category": "birth",
+        "detail": {
+          "id": "caf0f4fa-4b85-49f7-bc89-8a849309dfca"
+        }
+      },
+      "preference": "",
+      "fullName": "Marie Aguste von Trapp",
+      "title": "",
+      "firstName": "",
+      "middleName": "",
+      "lastNamePrefix": "",
+      "lastName": "",
+      "pedigree": "",
+      "professionalAbbreviations": []
+    }
+  ],
+  "dateOfBirth": "",
+  "dateDeceased": "",
+  "gender": "",
+  "ethnicity": {},
+  "races": [],
+  "maritalStatus": {},
+  "citizenshipStatus": {},
+  "nationalities": [],
+  "visaStatus": {},
+  "roles": [],
+  "credentials": [],
+  "locations": [
+    {
+      "id": "e664fdc0-928e-4931-91dd-0a963aef6b3f",
+      "description": "",
+      "type": {
+        "locationType": "home"
+      },
+      "status": "active",
+      "preference": "",
+      "addressLines": [],
+      "place": {},
+      "seasonalOccupancies": []
+    }
+  ],
+  "phones": [
+    {
+      "id": "3f2eecc3-9df7-40fb-a295-e1961c8757a1",
+      "type": {
+        "phoneType": "home",
+        "detail": {}
+      },
+      "status": "active",
+      "preference": "",
+      "countryCallingCode": "",
+      "number": "7032592885",
+      "extension": ""
+    }
+  ],
+  "emails": [
+    {
+      "id": "9238446a-3d9f-4a44-ae98-9e701df26026",
+      "type": {
+        "emailType": "personal",
+        "detail": {}
+      },
+      "startOn": "",
+      "endOn": "",
+      "status": "",
+      "preference": "",
+      "address": "someone@example.com"
+    }
+  ],
+  "socialMedia": [
+    {
+      "id": "e60685f1-48d9-47e0-b710-b37dcb8bb6ce",
+      "status": "",
+      "preference": "",
+      "address": "bsmith",
+      "type": {
+        "socialMediaType": "twitter",
+        "detail": {}
+      }
+    }
+  ]
+}</code></pre></div> </div><div id="example-response"> <h4> Response </h4><pre><code class="http">Status 201 OK</code></pre><button type="button" class="btn btn-default btn-lg" onclick="showCode(this)">View Body</button><pre class="code-block"><code class="http">{
+  "metadata": {
+    "createdBy": "Elevate",
+    "createdOn": "",
+    "modifiedBy": "",
+    "modifiedOn": ""
+  },
+  "id": "5674f28b-b216-4055-b236-81a922d93b4c",
+  "privacyStatus": {
+    "privacyCategory": "unrestricted"
+  },
+  "names": [
+    {
+      "type": {
+        "category": "birth",
+        "detail": {
+          "id": "caf0f4fa-4b85-49f7-bc89-8a849309dfca"
+        }
+      },
+      "preference": "",
+      "fullName": "Marie Aguste von Trapp",
+      "title": "",
+      "firstName": "",
+      "middleName": "",
+      "lastNamePrefix": "",
+      "lastName": "",
+      "pedigree": "",
+      "professionalAbbreviations": []
+    }
+  ],
+  "dateOfBirth": "",
+  "dateDeceased": "",
+  "gender": "",
+  "ethnicity": {},
+  "races": [],
+  "maritalStatus": {},
+  "citizenshipStatus": {},
+  "nationalities": [],
+  "visaStatus": {},
+  "roles": [],
+  "credentials": [],
+  "locations": [
+    {
+      "id": "e664fdc0-928e-4931-91dd-0a963aef6b3f",
+      "description": "",
+      "type": {
+        "locationType": "home"
+      },
+      "status": "active",
+      "preference": "",
+      "addressLines": [],
+      "place": {},
+      "seasonalOccupancies": []
+    }
+  ],
+  "phones": [
+    {
+      "id": "3f2eecc3-9df7-40fb-a295-e1961c8757a1",
+      "type": {
+        "phoneType": "home",
+        "detail": {}
+      },
+      "status": "active",
+      "preference": "",
+      "countryCallingCode": "",
+      "number": "7032592885",
+      "extension": ""
+    }
+  ],
+  "emails": [
+    {
+      "id": "9238446a-3d9f-4a44-ae98-9e701df26026",
+      "type": {
+        "emailType": "personal",
+        "detail": {}
+      },
+      "startOn": "",
+      "endOn": "",
+      "status": "",
+      "preference": "",
+      "address": "someone@example.com"
+    }
+  ],
+  "socialMedia": [
+    {
+      "id": "e60685f1-48d9-47e0-b710-b37dcb8bb6ce",
+      "status": "",
+      "preference": "",
+      "address": "bsmith",
+      "type": {
+        "socialMediaType": "twitter",
+        "detail": {}
+      }
+    }
+  ]
+}</code></pre></div>
+  </div>
+</div>
+</div>
+</div>
+<div id="put" class="row tab-elem">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+<div id="title" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h1>PUT Persons</h1>
+    
+  </div>
+</div>
+<div id="request" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Requests</h2>
+    <table class="table table-condensed">
+      <tr>
+	<th>Header</th>
+	<th>Value</th>
+      </tr>
+      <tr>
+	<td>Content-Type</td>
+	<td>application/vnd.hedtech.integration.v1+json</td>
+      </tr>
+      <tr>
+	<td>Accept</td>
+	<td>application/vnd.hedtech.integration.v1+json</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="row syntax">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Syntax</h2>
+    <pre><code class="http">PUT /api/persons HTTP/1.1</code></pre>
+  </div>
+</div>
+<div id="response" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Responses</h2>
+    <div id="response-form">
+      <button type="button" class="btn btn-default btn-lg" onclick="showCode(this)">View Request/Response Format</button>
+      <pre class="code-block"><code class="json">[
+   {
+      "metadata": {
+         "createdBy": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+         "createdOn": "The date and time when the entity instance was created",
+         "modifiedBy": "The date and time when the entity instance was created",
+         "modifiedOn": "The date and time when the entity instance was last modified",
+      },
+      "id": "A global identifier of a person.",
+      "privacyStatus": {
+         "privacyCategory": "The global category of information privacy protection",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "names": [
+         "type": {
+            "category": "The global category of person name types",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "preference": "Indicates the preferred name for the type",
+         "fullName": "Indicates the preferred name for the type",
+         "title": "Indicates the preferred name for the type",
+         "firstName": "Indicates the preferred name for the type",
+         "middleName": "Indicates the preferred name for the type",
+         "lastNamePrefix": "Indicates the preferred name for the type",
+         "lastName": "Indicates the preferred name for the type",
+         "pedigree": "Indicates the preferred name for the type",
+         "professionalAbbreviations": [
+            ......
+            record n
+         ],
+         ......
+         record n
+      ],
+      "dateOfBirth": "The date when a person was born.",
+      "dateDeceased": "The date when a person died.",
+      "gender": "The biological and/or social/cultural masculinity or femininity of the person.",
+      "ethnicity": {
+         "ethnicCategory": "The global category of ethnic origin to which a person belongs.",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "races": [
+         "racialCategory": "The higher-level racial category to which the person belongs.",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+         ......
+         record n
+      ],
+      "maritalStatus": {
+         "maritalCategory": "The higher-level marital category of the person.",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "citizenshipStatus": {
+         "category": "A global category of citizenship statuses",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+      },
+      "nationalities": [
+         ......
+         record n
+      ],
+      "visaStatus": {
+         "category": "A global category of visa types",
+         "detail": {
+            "id": "The global identifier for Detail",
+         },
+         "status": "The last known status of the visa",
+         "startOn": "The start date of the visa",
+         "endOn": "The expiration date of the visa",
+      },
+      "roles": [
+         "role": "The actions and activities assigned to, required of, or expected of a person. For example, the roles of "Faculty" or "Student".",
+         "startOn": "The date when a person starts filling a role.",
+         "endOn": "The date when a person stops filling a role.",
+         ......
+         record n
+      ],
+      "credentials": [
+         "type": "The type of credential, such as "Person ID", "System ID", etc.",
+         "value": "The current value of the credential.",
+         "startOn": "The date when the credential starts being valid.",
+         "endOn": "The date when the credential stops being valid.",
+         ......
+         record n
+      ],
+      "locations": [
+         "id": "A globally unique identifier of a person's mailing location",
+         "description": "A full description or comments about the location",
+         "type": {
+            "locationType": "A type of location for a person (e.g. "home", "school").",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The current status of the person's relationship to the location",
+         "preference": "Specifies if the location is preferred over others of the same type.",
+         "addressLines": [
+            ......
+            record n
+         ],
+         "place": {
+            "country": {
+               "code": "The ISO 3166-1 alpha-3 country code.",
+               "title": "The name of the country, as used in everyday speech.",
+               "postalTitle": "The name of the country when mail is being addressed from an international sender.",
+               "region": {
+                  "code": "The code of a region within the country",
+                  "title": "The code of a region within the country",
+               },
+               "subRegion": {
+                  "code": "The code of a subregion",
+                  "title": "The name of a subregion",
+               },
+               "locality": "The name of the country when mail is being addressed from an international sender.",
+               "postalCode": "The mailing postal code.",
+            },
+         },
+         "geographicAreas": [
+            "id": "The global identifier for Geographic Areas",
+            ......
+            record n
+         ],
+         "seasonalOccupancies": [
+            "recurrence": {
+               "timePeriod": {
+                  "startOn": "The beginning of the time period being repeated.",
+                  "endOn": "The end of the time period being repeated.",
+               },
+               "repeatRule": {
+                  "type": "undefined",
+                  "ends": {
+                  },
+               },
+            },
+            ......
+            record n
+         ],
+         ......
+         record n
+      ],
+      "phones": [
+         "id": "A globally unique identifier of a phone.",
+         "type": {
+            "phoneType": "A type of phone for a person (e.g. 'mobile', 'home').",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The status of the phone for the person.",
+         "preference": "Specifies if the phone is preferred over others of the same type.",
+         "countryCallingCode": "The country calling code of telephone and/or mobile device when dialing internationally.",
+         "number": "The country calling code of telephone and/or mobile device when dialing internationally.",
+         "extension": "The country calling code of telephone and/or mobile device when dialing internationally.",
+         ......
+         record n
+      ],
+      "emails": [
+         "id": "A globally unique identifier of an email.",
+         "type": {
+            "emailType": "A type of email for a person (e.g. 'personal', 'business').",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The status of the email for the person.",
+         "startOn": "The date the email became active",
+         "endOn": "The date the email became inactive",
+         "preference": "Specifies if the email is preferred over others of the same type.",
+         "address": "Specifies if the email is preferred over others of the same type.",
+         ......
+         record n
+      ],
+      "socialMedia": [
+         "id": "A globally unique identifier of a social media contact.",
+         "type": {
+            "socialMediaType": "A type of social media account (e.g. 'skype', 'facebook').",
+            "detail": {
+               "id": "The global identifier for Detail",
+            },
+         },
+         "status": "The status of a social media account information for the person.",
+         "preference": "Specifies if the social media account is preferred over others of the same type.",
+         "address": "Specifies if the social media account is preferred over others of the same type.",
+         ......
+         record n
+      ],
+   }
+   {record 2},
+   {record 3},
+   ...
+   {record n}
+]</code></pre>
+    </div>
+  </div>
+</div>
+<div id="example" class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+    <h2>Examples</h2>
+	<div id="example-request"><h4> Request </h4> <div class="syntax"><pre><code class='http'>PUT /api/persons/5674f28b-b216-4055-b236-81a922d93b4c HTTP/1.1</code></pre><button type="button" class="btn btn-default btn-lg" onclick="showCode(this)">View Body</button><pre class="code-block"><code class="http">{
+  "metadata": {
+    "createdBy": "Elevate",
+    "createdOn": "",
+    "modifiedBy": "",
+    "modifiedOn": ""
+  },
+  "id": "5674f28b-b216-4055-b236-81a922d93b4c",
+  "privacyStatus": {
+    "privacyCategory": "unrestricted"
+  },
+  "names": [
+    {
+      "type": {
+        "category": "birth",
+        "detail": {
+          "id": "caf0f4fa-4b85-49f7-bc89-8a849309dfca"
+        }
+      },
+      "preference": "",
+      "fullName": "Marie Aguste von Trapp",
+      "title": "",
+      "firstName": "",
+      "middleName": "",
+      "lastNamePrefix": "",
+      "lastName": "",
+      "pedigree": "",
+      "professionalAbbreviations": []
+    }
+  ],
+  "dateOfBirth": "",
+  "dateDeceased": "",
+  "gender": "",
+  "ethnicity": {},
+  "races": [],
+  "maritalStatus": {},
+  "citizenshipStatus": {},
+  "nationalities": [],
+  "visaStatus": {},
+  "roles": [],
+  "credentials": [],
+  "locations": [
+    {
+      "id": "e664fdc0-928e-4931-91dd-0a963aef6b3f",
+      "description": "",
+      "type": {
+        "locationType": "home"
+      },
+      "status": "active",
+      "preference": "",
+      "addressLines": [],
+      "place": {},
+      "seasonalOccupancies": []
+    }
+  ],
+  "phones": [
+    {
+      "id": "3f2eecc3-9df7-40fb-a295-e1961c8757a1",
+      "type": {
+        "phoneType": "home",
+        "detail": {}
+      },
+      "status": "active",
+      "preference": "",
+      "countryCallingCode": "",
+      "number": "7032592885",
+      "extension": ""
+    }
+  ],
+  "emails": [
+    {
+      "id": "9238446a-3d9f-4a44-ae98-9e701df26026",
+      "type": {
+        "emailType": "personal",
+        "detail": {}
+      },
+      "startOn": "",
+      "endOn": "",
+      "status": "",
+      "preference": "",
+      "address": "someone@example.com"
+    }
+  ],
+  "socialMedia": [
+    {
+      "id": "e60685f1-48d9-47e0-b710-b37dcb8bb6ce",
+      "status": "",
+      "preference": "",
+      "address": "bsmith",
+      "type": {
+        "socialMediaType": "twitter",
+        "detail": {}
+      }
+    }
+  ]
+}</code></pre></div> </div><div id="example-response"> <h4> Response </h4><pre><code class="http">Status 200 OK</code></pre><button type="button" class="btn btn-default btn-lg" onclick="showCode(this)">View Body</button><pre class="code-block"><code class="http">{
+  "metadata": {
+    "createdBy": "Elevate",
+    "createdOn": "",
+    "modifiedBy": "",
+    "modifiedOn": ""
+  },
+  "id": "5674f28b-b216-4055-b236-81a922d93b4c",
+  "privacyStatus": {
+    "privacyCategory": "unrestricted"
+  },
+  "names": [
+    {
+      "type": {
+        "category": "birth",
+        "detail": {
+          "id": "caf0f4fa-4b85-49f7-bc89-8a849309dfca"
+        }
+      },
+      "preference": "",
+      "fullName": "Marie Aguste von Trapp",
+      "title": "",
+      "firstName": "",
+      "middleName": "",
+      "lastNamePrefix": "",
+      "lastName": "",
+      "pedigree": "",
+      "professionalAbbreviations": []
+    }
+  ],
+  "dateOfBirth": "",
+  "dateDeceased": "",
+  "gender": "",
+  "ethnicity": {},
+  "races": [],
+  "maritalStatus": {},
+  "citizenshipStatus": {},
+  "nationalities": [],
+  "visaStatus": {},
+  "roles": [],
+  "credentials": [],
+  "locations": [
+    {
+      "id": "e664fdc0-928e-4931-91dd-0a963aef6b3f",
+      "description": "",
+      "type": {
+        "locationType": "home"
+      },
+      "status": "active",
+      "preference": "",
+      "addressLines": [],
+      "place": {},
+      "seasonalOccupancies": []
+    }
+  ],
+  "phones": [
+    {
+      "id": "3f2eecc3-9df7-40fb-a295-e1961c8757a1",
+      "type": {
+        "phoneType": "home",
+        "detail": {}
+      },
+      "status": "active",
+      "preference": "",
+      "countryCallingCode": "",
+      "number": "7032592885",
+      "extension": ""
+    }
+  ],
+  "emails": [
+    {
+      "id": "9238446a-3d9f-4a44-ae98-9e701df26026",
+      "type": {
+        "emailType": "personal",
+        "detail": {}
+      },
+      "startOn": "",
+      "endOn": "",
+      "status": "",
+      "preference": "",
+      "address": "someone@example.com"
+    }
+  ],
+  "socialMedia": [
+    {
+      "id": "e60685f1-48d9-47e0-b710-b37dcb8bb6ce",
+      "status": "",
+      "preference": "",
+      "address": "bsmith",
+      "type": {
+        "socialMediaType": "twitter",
+        "detail": {}
+      }
+    }
+  ]
+}</code></pre></div>
+  </div>
+</div>
+</div>
+</div>
+		<div id="change" class="row tab-elem">
+		  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+		    <h1>Changelog</h1>
+		    <div>
+		      <h2>2015.08.07 - Version 4.0 - 8e0409cc</h2>
+		      <hr>
+		      <h3>Overview</h3>
+		      <p>Initial version of HEDM.</p>
+		      <button id="btn-8e0409cc" class="btn btn-default" type="button" onclick="toggleDiff('persons', '8e0409cc')">View diff to previous release. <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button>
+		      <div id="diff-8e0409cc" class="diff"></div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

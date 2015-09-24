@@ -1,0 +1,423 @@
+title,Instructional Event
+description,An instructional activity that takes place during a Section
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A globally unique identifier of an instructional activity to be used in all external references
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of an instructional activity.
+properties.title.type,string
+properties.description.title,Description
+properties.description.description,A description of an instructional activity.
+properties.description.type,string
+properties.section.title,Section
+properties.section.description,An instance of a Course.
+properties.section.type,object
+properties.section.properties.id.title,ID
+properties.section.properties.id.description,The global identifier for Section
+properties.section.properties.id.type,string
+properties.section.properties.id.format,guid
+properties.section.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.section.links.rel,self
+properties.section.links.href,/sections/{id}
+properties.section.links.targetSchema.$ref,sections.json#
+properties.section.additionalProperties,false
+properties.section.required,id
+properties.instructionalMethod.title,Instructional Method
+properties.instructionalMethod.description,
+properties.instructionalMethod.type,object
+properties.instructionalMethod.properties.id.title,ID
+properties.instructionalMethod.properties.id.description,The global identifier for Instructional Method
+properties.instructionalMethod.properties.id.type,string
+properties.instructionalMethod.properties.id.format,guid
+properties.instructionalMethod.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructionalMethod.links.rel,self
+properties.instructionalMethod.links.href,/instructional-methods/{id}
+properties.instructionalMethod.links.targetSchema.$ref,instructional-methods.json#
+properties.instructionalMethod.additionalProperties,false
+properties.instructionalMethod.required,id
+properties.workLoad.title,Work Load
+properties.workLoad.description,The amount of work involved in teaching a Section.
+properties.workLoad.oneOf.type,number
+properties.workLoad.oneOf.type,null
+properties.recurrence.title,Recurrence
+properties.recurrence.description,
+properties.recurrence.oneOf.type,object
+properties.recurrence.oneOf.format,recurrence
+properties.recurrence.oneOf.properties.timePeriod.title,Time Period
+properties.recurrence.oneOf.properties.timePeriod.description,The period of time to be repeated.
+properties.recurrence.oneOf.properties.timePeriod.type,object
+properties.recurrence.oneOf.properties.timePeriod.properties.startOn.title,Start On
+properties.recurrence.oneOf.properties.timePeriod.properties.startOn.description,The beginning of the time period being repeated.
+properties.recurrence.oneOf.properties.timePeriod.properties.startOn.type,string
+properties.recurrence.oneOf.properties.timePeriod.properties.startOn.format,date-time
+properties.recurrence.oneOf.properties.timePeriod.properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.title,End On
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.description,The end of the time period being repeated.
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.type,string
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.format,date-time
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.type,string
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.maxLength,
+properties.recurrence.oneOf.properties.timePeriod.additionalProperties,false
+properties.recurrence.oneOf.properties.timePeriod.required,startOn
+properties.recurrence.oneOf.properties.repeatRule.title,Repeat Rule
+properties.recurrence.oneOf.properties.repeatRule.description,The rule that describes how to repeat the time period.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.title,Daily
+properties.recurrence.oneOf.properties.repeatRule.oneOf.description,Rules for repeating on a daily basis.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.enum,daily
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.title,Interval
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.description,Number of days between each repetition.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.maximum,365
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,null
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.title,Ends
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.description,When to end the daily repetitions.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.title,Repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.description,Number of times to repeat, then stop.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.maximum,365
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.title,Date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.description,The date after which to stop repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.format,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.maxProperties,
+properties.recurrence.oneOf.properties.repeatRule.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.required,type
+properties.recurrence.oneOf.properties.repeatRule.oneOf.title,Weekly
+properties.recurrence.oneOf.properties.repeatRule.oneOf.description,Rules for repeating on a weekly basis.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.enum,weekly
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.title,Interval
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.description,Number of weeks between each repetition.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.maximum,52
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,null
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.title,Days of Week
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.description,The days of the week on which to repeat the event.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.type,array
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.items.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.items.enum,sunday;monday;tuesday;wednesday;thursday;friday;saturday
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.title,Ends
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.description,When to end the weekly repetitions.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.title,Repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.description,Number of times to repeat, then stop.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.maximum,52
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.title,Date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.description,The date after which to stop repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.format,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.maxProperties,
+properties.recurrence.oneOf.properties.repeatRule.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.required,type
+properties.recurrence.oneOf.properties.repeatRule.oneOf.title,Monthly
+properties.recurrence.oneOf.properties.repeatRule.oneOf.description,Rules for repeating on a monthly basis.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.enum,monthly
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.title,Interval
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.description,Number of months between each repetition.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.maximum,12
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,null
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.title,Repeat By
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.description,How to calculate the day of the month on which to start repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.title,Day of Month
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.description,The number of the day in the month on which to start repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.maximum,31
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.required,dayOfMonth
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.title,Day of Week
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.description,The cardinal day of the week (e.g., the first Tuesday, the last Friday, etc.) in the month on which to start repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.title,Occurrence
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.description,The nth occurrence of the day of the week in the month. Use a positive number to count from the start of the month (e.g., 1 = first in the month, 2 = second in the month), and a negative number to count from the end of the month (e.g. -1 = last in the month, -2 = second from last, etc.).
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.minimum,-4
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.maximum,4
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.day.title,Day of Week
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.day.description,A day in a week.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.day.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.day.enum,sunday;monday;tuesday;wednesday;thursday;friday;saturday
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.required,occurrence;day
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.required,dayOfWeek
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.title,Ends
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.description,When to end the monthly repetitions.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.title,Repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.description,Number of times to repeat, then stop.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.maximum,12
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.title,Date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.description,The date after which to stop repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.format,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.maxProperties,
+properties.recurrence.oneOf.properties.repeatRule.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.required,type;repeatBy
+properties.recurrence.oneOf.properties.repeatRule.oneOf.title,Yearly
+properties.recurrence.oneOf.properties.repeatRule.oneOf.description,Rules for repeating on an annual basis.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.enum,yearly
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.title,Interval
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.description,Number of years between each repetition.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.minimum,
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.format,positiveInteger
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,null
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.title,Ends
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.description,When to end the yearly repetitions.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.title,Repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.description,Number of times to repeat, then stop.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.minimum,
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.format,positiveInteger
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.title,Date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.description,The date after which to stop repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.format,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.maxProperties,
+properties.recurrence.oneOf.properties.repeatRule.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.required,type
+properties.recurrence.oneOf.additionalProperties,false
+properties.recurrence.oneOf.required,timePeriod;repeatRule
+properties.recurrence.oneOf.type,object
+properties.recurrence.oneOf.maxProperties,
+properties.locations.title,Location
+properties.locations.description,The locations where the instructional event will take place.
+properties.locations.type,array
+properties.locations.items.type,object
+properties.locations.items.properties.location.title,Location
+properties.locations.items.properties.location.description,
+properties.locations.items.properties.location.oneOf.title,Site
+properties.locations.items.properties.location.oneOf.description,A physical location within the organization where the event will take place
+properties.locations.items.properties.location.oneOf.type,object
+properties.locations.items.properties.location.oneOf.properties.type.title,Type
+properties.locations.items.properties.location.oneOf.properties.type.description,
+properties.locations.items.properties.location.oneOf.properties.type.enum,site
+properties.locations.items.properties.location.oneOf.properties.type.type,string
+properties.locations.items.properties.location.oneOf.properties.site.title,Site
+properties.locations.items.properties.location.oneOf.properties.site.description,The physical site where the event will take place
+properties.locations.items.properties.location.oneOf.properties.site.type,object
+properties.locations.items.properties.location.oneOf.properties.site.properties.id.title,ID
+properties.locations.items.properties.location.oneOf.properties.site.properties.id.description,The global identifier for Site
+properties.locations.items.properties.location.oneOf.properties.site.properties.id.type,string
+properties.locations.items.properties.location.oneOf.properties.site.properties.id.format,guid
+properties.locations.items.properties.location.oneOf.properties.site.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.locations.items.properties.location.oneOf.properties.site.links.rel,self
+properties.locations.items.properties.location.oneOf.properties.site.links.href,/sites/{id}
+properties.locations.items.properties.location.oneOf.properties.site.links.targetSchema.$ref,sites.json#
+properties.locations.items.properties.location.oneOf.properties.site.additionalProperties,false
+properties.locations.items.properties.location.oneOf.properties.site.required,id
+properties.locations.items.properties.location.oneOf.additionalProperties,false
+properties.locations.items.properties.location.oneOf.required,type;site
+properties.locations.items.properties.location.oneOf.title,Room
+properties.locations.items.properties.location.oneOf.description,A room within a building, on a floor.
+properties.locations.items.properties.location.oneOf.type,object
+properties.locations.items.properties.location.oneOf.properties.type.title,Type
+properties.locations.items.properties.location.oneOf.properties.type.description,
+properties.locations.items.properties.location.oneOf.properties.type.enum,room
+properties.locations.items.properties.location.oneOf.properties.type.type,string
+properties.locations.items.properties.location.oneOf.properties.room.title,Room
+properties.locations.items.properties.location.oneOf.properties.room.description,T room where the event will take place.
+properties.locations.items.properties.location.oneOf.properties.room.type,object
+properties.locations.items.properties.location.oneOf.properties.room.properties.id.title,ID
+properties.locations.items.properties.location.oneOf.properties.room.properties.id.description,The global identifier for Room
+properties.locations.items.properties.location.oneOf.properties.room.properties.id.type,string
+properties.locations.items.properties.location.oneOf.properties.room.properties.id.format,guid
+properties.locations.items.properties.location.oneOf.properties.room.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.locations.items.properties.location.oneOf.properties.room.links.rel,self
+properties.locations.items.properties.location.oneOf.properties.room.links.href,/rooms/{id}
+properties.locations.items.properties.location.oneOf.properties.room.links.targetSchema.$ref,rooms.json#
+properties.locations.items.properties.location.oneOf.properties.room.additionalProperties,false
+properties.locations.items.properties.location.oneOf.properties.room.required,id
+properties.locations.items.properties.location.oneOf.additionalProperties,false
+properties.locations.items.properties.location.oneOf.required,type;room
+properties.locations.items.properties.location.oneOf.title,Online Location
+properties.locations.items.properties.location.oneOf.description,A meeting location available via a computer network, such as an online video conference.
+properties.locations.items.properties.location.oneOf.type,object
+properties.locations.items.properties.location.oneOf.properties.type.title,Type
+properties.locations.items.properties.location.oneOf.properties.type.description,
+properties.locations.items.properties.location.oneOf.properties.type.enum,online
+properties.locations.items.properties.location.oneOf.properties.type.type,string
+properties.locations.items.properties.location.oneOf.properties.phoneNumber.title,Phone
+properties.locations.items.properties.location.oneOf.properties.phoneNumber.description,The international telephone number of the location.
+properties.locations.items.properties.location.oneOf.properties.phoneNumber.type,string
+properties.locations.items.properties.location.oneOf.properties.phoneExtension.title,Extension
+properties.locations.items.properties.location.oneOf.properties.phoneExtension.description,The telephone extension number of the location's telephone.
+properties.locations.items.properties.location.oneOf.properties.phoneExtension.type,string
+properties.locations.items.properties.location.oneOf.properties.webAddress.title,Web Address
+properties.locations.items.properties.location.oneOf.properties.webAddress.description,The primary web address (URL) of the online meeting location.
+properties.locations.items.properties.location.oneOf.properties.webAddress.type,string
+properties.locations.items.properties.location.oneOf.additionalProperties,false
+properties.locations.items.properties.location.oneOf.required,type
+properties.locations.items.properties.location.oneOf.title,Other Location
+properties.locations.items.properties.location.oneOf.description,A human-readable description of a location.
+properties.locations.items.properties.location.oneOf.type,object
+properties.locations.items.properties.location.oneOf.properties.type.title,Type
+properties.locations.items.properties.location.oneOf.properties.type.description,
+properties.locations.items.properties.location.oneOf.properties.type.enum,other
+properties.locations.items.properties.location.oneOf.properties.type.type,string
+properties.locations.items.properties.location.oneOf.properties.title.title,Title
+properties.locations.items.properties.location.oneOf.properties.title.description,
+properties.locations.items.properties.location.oneOf.properties.title.type,string
+properties.locations.items.properties.location.oneOf.additionalProperties,false
+properties.locations.items.properties.location.oneOf.required,type
+properties.locations.items.additionalProperties,false
+properties.locations.items.required,location
+properties.instructorRoster.title,Instructor Roster
+properties.instructorRoster.description,The roster of instructors assigned to teach an instructional event
+properties.instructorRoster.type,array
+properties.instructorRoster.items.type,object
+properties.instructorRoster.items.properties.instructor.title,Instructor
+properties.instructorRoster.items.properties.instructor.description,The person assigned to teach an instruction method of a section
+properties.instructorRoster.items.properties.instructor.type,object
+properties.instructorRoster.items.properties.instructor.properties.id.title,ID
+properties.instructorRoster.items.properties.instructor.properties.id.description,The global identifier for Instructor
+properties.instructorRoster.items.properties.instructor.properties.id.type,string
+properties.instructorRoster.items.properties.instructor.properties.id.format,guid
+properties.instructorRoster.items.properties.instructor.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructorRoster.items.properties.instructor.links.rel,self
+properties.instructorRoster.items.properties.instructor.links.href,/persons/{id}
+properties.instructorRoster.items.properties.instructor.links.targetSchema.$ref,persons.json#
+properties.instructorRoster.items.properties.instructor.additionalProperties,false
+properties.instructorRoster.items.properties.instructor.required,id
+properties.instructorRoster.items.properties.workLoadPercentage.title,Load Percentage
+properties.instructorRoster.items.properties.workLoadPercentage.description,The rate or proportion per hundred of the instructional method's work load that is attributable to the instructor.
+properties.instructorRoster.items.properties.workLoadPercentage.oneOf.type,number
+properties.instructorRoster.items.properties.workLoadPercentage.oneOf.type,null
+properties.instructorRoster.items.properties.responsibilityPercentage.title,Responsibility Percentage
+properties.instructorRoster.items.properties.responsibilityPercentage.description,The rate or proportion per hundred of the responsibility for managing the instructional method's activities that is attributable to the instructor.
+properties.instructorRoster.items.properties.responsibilityPercentage.oneOf.type,number
+properties.instructorRoster.items.properties.responsibilityPercentage.oneOf.type,null
+properties.instructorRoster.items.properties.workStartOn.title,Work Start Date
+properties.instructorRoster.items.properties.workStartOn.description,The date when an instructor is assigned to start teaching the scheduled event for a Section.
+properties.instructorRoster.items.properties.workStartOn.oneOf.type,string
+properties.instructorRoster.items.properties.workStartOn.oneOf.format,date-time
+properties.instructorRoster.items.properties.workStartOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.instructorRoster.items.properties.workStartOn.oneOf.type,string
+properties.instructorRoster.items.properties.workStartOn.oneOf.maxLength,
+properties.instructorRoster.items.properties.workEndOn.title,Work End Date
+properties.instructorRoster.items.properties.workEndOn.description,The date after which an instructor is no longer assigned to the scheduled event for a Section.
+properties.instructorRoster.items.properties.workEndOn.oneOf.type,string
+properties.instructorRoster.items.properties.workEndOn.oneOf.format,date-time
+properties.instructorRoster.items.properties.workEndOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.instructorRoster.items.properties.workEndOn.oneOf.type,string
+properties.instructorRoster.items.properties.workEndOn.oneOf.maxLength,
+properties.instructorRoster.items.additionalProperties,false
+properties.instructorRoster.items.required,instructor
+properties.approvals.title,Approvals
+properties.approvals.description,
+properties.approvals.type,array
+properties.approvals.items.type,object
+properties.approvals.items.properties.approvalType.title,Type
+properties.approvals.items.properties.approvalType.description,The type of approval granted
+properties.approvals.items.properties.approvalType.enum,instructorAvailability;instructorCapacity;roomAvailability;roomCapacity
+properties.approvals.items.properties.approvalType.type,string
+properties.approvals.items.properties.approvalEntity.title,Entity
+properties.approvals.items.properties.approvalEntity.description,The entity that granted approval
+properties.approvals.items.properties.approvalEntity.enum,user;system
+properties.approvals.items.properties.approvalEntity.type,string
+properties.approvals.items.additionalProperties,false
+properties.approvals.items.required,approvalType;approvalEntity
+required,id;instructionalMethod
+additionalProperties,false
+links.rel,instructional-event-instances
+links.title,Event Instances
+links.description,The individual events created from this instructional event specification.
+links.href,/instructional-event-instances?instructionalEvent.id={id}
+links.targetSchema.$ref,instructional-event-instances.json#
+links.rel,filter
+links.encType,application/x-www-form-urlencoded
+links.method,GET
+links.href,/instructional-events/
+links.schema.type,object
+links.schema.properties.section.type,string
+links.schema.properties.section.format,guid
+links.schema.properties.section.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.startOn.type,string
+links.schema.properties.startOn.format,date-time
+links.schema.properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+links.schema.properties.endOn.type,string
+links.schema.properties.endOn.format,date-time
+links.schema.properties.endOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+links.schema.properties.room.type,string
+links.schema.properties.room.format,guid
+links.schema.properties.room.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.instructor.type,string
+links.schema.properties.instructor.format,guid
+links.schema.properties.instructor.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$

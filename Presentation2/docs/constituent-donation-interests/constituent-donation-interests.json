@@ -1,0 +1,420 @@
+{
+  "title": "Constituent Donation Interest",
+  "description": "A donation interest identified for a person or organization",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "A global identifier of a donation interest",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "description": {
+      "title": "Description",
+      "description": "A full description of a donation interest",
+      "type": "string"
+    },
+    "constituent": {
+      "title": "Constituent",
+      "description": "",
+      "oneOf": [
+        {
+          "title": "Person",
+          "description": "A person, for whom an interest is identified",
+          "type": "object",
+          "properties": {
+            "person": {
+              "title": "Person",
+              "description": "A human being or other independent agent.",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Person",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/persons/{id}",
+                  "targetSchema": {
+                    "$ref": "persons.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "person"
+          ]
+        },
+        {
+          "title": "Organization",
+          "description": "An organization for which an interest is identified",
+          "type": "object",
+          "properties": {
+            "organization": {
+              "title": "Organization",
+              "description": "Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Organization",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/organizations/{id}",
+                  "targetSchema": {
+                    "$ref": "organizations.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "organization"
+          ]
+        }
+      ]
+    },
+    "type": {
+      "title": "Interest Type",
+      "description": "An type of interest",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The global identifier for Interest Type",
+          "type": "string",
+          "format": "guid",
+          "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+        }
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "/interest-types/{id}",
+          "targetSchema": {
+            "$ref": "interest-types.json#"
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "area": {
+      "title": "Interest Area",
+      "description": "An area of interest",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The global identifier for Interest Area",
+          "type": "string",
+          "format": "guid",
+          "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+        }
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "/interest-areas/{id}",
+          "targetSchema": {
+            "$ref": "interest-areas.json#"
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "purpose": {
+      "title": "Interest Purpose",
+      "description": "A purpose of interest",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier for Interest Purpose",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "links": [
+            {
+              "rel": "self",
+              "href": "/interest-purposes/{id}",
+              "targetSchema": {
+                "$ref": "interest-purposes.json#"
+              }
+            }
+          ],
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "level": {
+      "title": "Interest Level",
+      "description": "A level of interest",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier for Interest Level",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "links": [
+            {
+              "rel": "self",
+              "href": "/interest-levels/{id}",
+              "targetSchema": {
+                "$ref": "interest-levels.json#"
+              }
+            }
+          ],
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "donations": {
+      "title": "Donations",
+      "description": "Records of external donations",
+      "type": "array",
+      "items": {
+        "title": "Donations",
+        "description": "Records of external donations",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "The global identifier for Donations",
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        },
+        "links": [
+          {
+            "rel": "self",
+            "href": "/external-donations/{id}",
+            "targetSchema": {
+              "$ref": "external-donations.json#"
+            }
+          }
+        ],
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "organizations": {
+      "title": "Organization",
+      "description": "A college (school) and/or department, to which an interest is identified",
+      "type": "array",
+      "items": {
+        "title": "Organization",
+        "description": "A college (school) and/or department, to which an interest is identified",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "The global identifier for Organization",
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        },
+        "links": [
+          {
+            "rel": "self",
+            "href": "/organizations/{id}",
+            "targetSchema": {
+              "$ref": "organizations.json#"
+            }
+          }
+        ],
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "startOn": {
+      "title": "Start Date",
+      "description": "A date when an interest was first identified",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "endOn": {
+      "title": "End Date",
+      "description": "A date when an interest became invalid",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "source": {
+      "title": "Source",
+      "description": "Interest information source",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier for Source",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "links": [
+            {
+              "rel": "self",
+              "href": "/sources/{id}",
+              "targetSchema": {
+                "$ref": "sources.json#"
+              }
+            }
+          ],
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "constituent",
+    "type",
+    "area"
+  ],
+  "additionalProperties": false,
+  "links": [
+    {
+      "rel": "externalDonation",
+      "title": "External Donation",
+      "description": "The external donations for the constituent",
+      "href": "/external-donations?donor.type={donor.type}&donor.id={donor.id}",
+      "targetSchema": {
+        "$ref": "external-donations.json#"
+      }
+    }
+  ]
+}

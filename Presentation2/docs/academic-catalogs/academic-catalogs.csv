@@ -1,0 +1,93 @@
+title,Academic Catalog
+description,A catalog listing the courses offered by a an organization.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of an academic catalog to be used in all external references.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of an academic catalog.
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,A full description of an academic catalog.
+properties.description.type,string
+properties.code.title,Code
+properties.code.description,The code that identifies the academic catalog
+properties.code.type,string
+properties.startOn.title,Start Date
+properties.startOn.description,The initial date when an academic catalog is in effect.
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.format,date-time
+properties.startOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.maxLength,
+properties.endOn.title,End Date
+properties.endOn.description,The last date when an academic catalog is in effect.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.status.title,Status
+properties.status.description,A status of an academic catalog. 
+properties.status.enum,active;inactive
+properties.status.type,string
+properties.organization.title,Organization
+properties.organization.description,The organization which owns the academic catalog
+properties.organization.oneOf.type,object
+properties.organization.oneOf.properties.id.title,ID
+properties.organization.oneOf.properties.id.description,The global identifier for Organization
+properties.organization.oneOf.properties.id.type,string
+properties.organization.oneOf.properties.id.format,guid
+properties.organization.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.organization.oneOf.links.rel,self
+properties.organization.oneOf.links.href,/organizations/{id}
+properties.organization.oneOf.links.targetSchema.$ref,organizations.json#
+properties.organization.oneOf.additionalProperties,false
+properties.organization.oneOf.required,id
+properties.organization.oneOf.type,object
+properties.organization.oneOf.maxProperties,
+properties.academicPrograms.title,Academic Programs
+properties.academicPrograms.description,Academic programs which make up the catalog.
+properties.academicPrograms.type,array
+properties.academicPrograms.items.title,Academic Programs
+properties.academicPrograms.items.description,Academic programs which make up the catalog.
+properties.academicPrograms.items.type,object
+properties.academicPrograms.items.properties.id.title,ID
+properties.academicPrograms.items.properties.id.description,The global identifier for Academic Programs
+properties.academicPrograms.items.properties.id.type,string
+properties.academicPrograms.items.properties.id.format,guid
+properties.academicPrograms.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.academicPrograms.items.links.rel,self
+properties.academicPrograms.items.links.href,/academic-programs/{id}
+properties.academicPrograms.items.links.targetSchema.$ref,academic-programs.json#
+properties.academicPrograms.items.additionalProperties,false
+properties.academicPrograms.items.required,id
+required,id;title;status
+additionalProperties,false

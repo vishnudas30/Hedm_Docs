@@ -1,0 +1,226 @@
+title,Course
+description,The smallest unit of instruction for which an Oganization grants credits. Identifies the subject and course number and level, availability dates, instructional method, grading schemes, and credits granted along with the granting organizations.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a course to be used in all external references.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of a course as might appear in a course catalog (e.g. 'Calculus').
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,A description of the substance and nature of a course as might appear in a course catalog.
+properties.description.type,string
+properties.subject.title,Subject
+properties.subject.description,The branch of knowledge such as 'Mathematics' or 'Biology' associated with this course.
+properties.subject.type,object
+properties.subject.properties.id.title,ID
+properties.subject.properties.id.description,The global identifier for Subject
+properties.subject.properties.id.type,string
+properties.subject.properties.id.format,guid
+properties.subject.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.subject.links.rel,self
+properties.subject.links.href,/academic-subjects/{id}
+properties.subject.links.targetSchema.$ref,academic-subjects.json#
+properties.subject.additionalProperties,false
+properties.subject.required,id
+properties.courseLevels.title,Course Levels
+properties.courseLevels.description,The levels of scholarship that apply to a course.
+properties.courseLevels.type,array
+properties.courseLevels.items.title,Course Levels
+properties.courseLevels.items.description,The levels of scholarship that apply to a course.
+properties.courseLevels.items.type,object
+properties.courseLevels.items.properties.id.title,ID
+properties.courseLevels.items.properties.id.description,The global identifier for Course Levels
+properties.courseLevels.items.properties.id.type,string
+properties.courseLevels.items.properties.id.format,guid
+properties.courseLevels.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.courseLevels.items.links.rel,self
+properties.courseLevels.items.links.href,/course-levels/{id}
+properties.courseLevels.items.links.targetSchema.$ref,course-levels.json#
+properties.courseLevels.items.additionalProperties,false
+properties.courseLevels.items.required,id
+properties.instructionalMethods.title,Instructional Methods
+properties.instructionalMethods.description,The methods, styles, or formats in which a course is taught (e.g. 'Lecture', 'Lab').
+properties.instructionalMethods.type,array
+properties.instructionalMethods.items.title,Instructional Methods
+properties.instructionalMethods.items.description,The methods, styles, or formats in which a course is taught (e.g. 'Lecture', 'Lab').
+properties.instructionalMethods.items.type,object
+properties.instructionalMethods.items.properties.id.title,ID
+properties.instructionalMethods.items.properties.id.description,The global identifier for Instructional Methods
+properties.instructionalMethods.items.properties.id.type,string
+properties.instructionalMethods.items.properties.id.format,guid
+properties.instructionalMethods.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructionalMethods.items.links.rel,self
+properties.instructionalMethods.items.links.href,/instructional-methods/{id}
+properties.instructionalMethods.items.links.targetSchema.$ref,instructional-methods.json#
+properties.instructionalMethods.items.additionalProperties,false
+properties.instructionalMethods.items.required,id
+properties.owningOrganizations.title,Owning Organizations
+properties.owningOrganizations.description,A list of organizations, possibly hierarchical, which own or are responsible for a course.
+properties.owningOrganizations.type,array
+properties.owningOrganizations.items.type,object
+properties.owningOrganizations.items.properties.organization.title,Organization
+properties.owningOrganizations.items.properties.organization.description,A collection of people organized together into a community or other social, commercial or political structure for a common purpose. In the higher education context, it can represents an Institution, School, College, Department, Division, and any other organizational unit in the institution.
+properties.owningOrganizations.items.properties.organization.type,object
+properties.owningOrganizations.items.properties.organization.properties.id.title,ID
+properties.owningOrganizations.items.properties.organization.properties.id.description,The global identifier for Organization
+properties.owningOrganizations.items.properties.organization.properties.id.type,string
+properties.owningOrganizations.items.properties.organization.properties.id.format,guid
+properties.owningOrganizations.items.properties.organization.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.owningOrganizations.items.properties.organization.links.rel,self
+properties.owningOrganizations.items.properties.organization.links.href,/organizations/{id}
+properties.owningOrganizations.items.properties.organization.links.targetSchema.$ref,organizations.json#
+properties.owningOrganizations.items.properties.organization.additionalProperties,false
+properties.owningOrganizations.items.properties.organization.required,id
+properties.owningOrganizations.items.properties.share.title,Share
+properties.owningOrganizations.items.properties.share.description,The portion of the course owned or allocated to a particular organization.
+properties.owningOrganizations.items.properties.share.type,number
+properties.owningOrganizations.items.additionalProperties,false
+properties.owningOrganizations.items.required,organization;share
+properties.schedulingStartOn.title,Course Effective Starting Date
+properties.schedulingStartOn.description,The starting date at which a Course is avalaible to have Sections scheduled to be taken. When combined with the scheduling ending date, defines the time period a Course is available for scheduling.
+properties.schedulingStartOn.type,string
+properties.schedulingStartOn.format,date-time
+properties.schedulingStartOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.schedulingEndOn.title,Course Effective Ending Date
+properties.schedulingEndOn.description,The ending date at which a Course is no longer available to have Sections scheduled to be taken. When combined with the scheduling start date, defines the time period a Course is available for scheduling.
+properties.schedulingEndOn.oneOf.type,string
+properties.schedulingEndOn.oneOf.format,date-time
+properties.schedulingEndOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.schedulingEndOn.oneOf.type,string
+properties.schedulingEndOn.oneOf.maxLength,
+properties.number.title,Course Number
+properties.number.description,A numbering scheme to distinguish different Courses within a subject. Typically this is an integer.
+properties.number.type,string
+properties.number.minLength,1
+properties.academicLevels.title,Academic Level
+properties.academicLevels.description,The academic levels (e.g. 'Under Graduate', 'Graduate') associated with this course.
+properties.academicLevels.type,array
+properties.academicLevels.items.title,Academic Level
+properties.academicLevels.items.description,The academic levels (e.g. 'Under Graduate', 'Graduate') associated with this course.
+properties.academicLevels.items.type,object
+properties.academicLevels.items.properties.id.title,ID
+properties.academicLevels.items.properties.id.description,The global identifier for Academic Level
+properties.academicLevels.items.properties.id.type,string
+properties.academicLevels.items.properties.id.format,guid
+properties.academicLevels.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.academicLevels.items.links.rel,self
+properties.academicLevels.items.links.href,/academic-levels/{id}
+properties.academicLevels.items.links.targetSchema.$ref,academic-levels.json#
+properties.academicLevels.items.additionalProperties,false
+properties.academicLevels.items.required,id
+properties.gradeSchemes.title,Grade Scheme
+properties.gradeSchemes.description,The grading scheme specifications that apply to a course (e.g. 'A-F', 'Audit', 'Pass/Fail').
+properties.gradeSchemes.type,array
+properties.gradeSchemes.items.title,Grade Scheme
+properties.gradeSchemes.items.description,The grading scheme specifications that apply to a course (e.g. 'A-F', 'Audit', 'Pass/Fail').
+properties.gradeSchemes.items.type,object
+properties.gradeSchemes.items.properties.id.title,ID
+properties.gradeSchemes.items.properties.id.description,The global identifier for Grade Scheme
+properties.gradeSchemes.items.properties.id.type,string
+properties.gradeSchemes.items.properties.id.format,guid
+properties.gradeSchemes.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.gradeSchemes.items.links.rel,self
+properties.gradeSchemes.items.links.href,/grade-schemes/{id}
+properties.gradeSchemes.items.links.targetSchema.$ref,grade-schemes.json#
+properties.gradeSchemes.items.additionalProperties,false
+properties.gradeSchemes.items.required,id
+properties.credits.title,Credit
+properties.credits.description,The credit specifications that apply to a course (e.g. 'Regular Credit').
+properties.credits.type,array
+properties.credits.items.type,object
+properties.credits.items.properties.creditCategory.title,Credit Category
+properties.credits.items.properties.creditCategory.description,
+properties.credits.items.properties.creditCategory.type,object
+properties.credits.items.properties.creditCategory.properties.creditType.title,Credit Type
+properties.credits.items.properties.creditCategory.properties.creditType.description,The higher-level category of academic credits.
+properties.credits.items.properties.creditCategory.properties.creditType.enum,ce;institution;transfer
+properties.credits.items.properties.creditCategory.properties.creditType.type,string
+properties.credits.items.properties.creditCategory.properties.detail.title,Detail
+properties.credits.items.properties.creditCategory.properties.detail.description,
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.type,object
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.properties.id.title,ID
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.properties.id.type,string
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.properties.id.format,guid
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.links.rel,self
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.links.href,/credit-categories/{id}
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.links.targetSchema.$ref,credit-categories.json#
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.additionalProperties,false
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.required,id
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.type,object
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.maxProperties,
+properties.credits.items.properties.creditCategory.additionalProperties,false
+properties.credits.items.properties.creditCategory.required,creditType
+properties.credits.items.properties.measure.title,Measure
+properties.credits.items.properties.measure.description,A unit or standard of measurement for the course credit.
+properties.credits.items.properties.measure.enum,credit;ceu;hour
+properties.credits.items.properties.measure.type,string
+properties.credits.items.properties.minimum.title,Minimum number
+properties.credits.items.properties.minimum.description,The lower, inclusive bound of the range of values for the course credit.
+properties.credits.items.properties.minimum.type,number
+properties.credits.items.properties.maximum.title,Maximum number
+properties.credits.items.properties.maximum.description,The upper, inclusive bound of the range of values for the course credit.
+properties.credits.items.properties.maximum.oneOf.type,number
+properties.credits.items.properties.maximum.oneOf.type,null
+properties.credits.items.properties.increment.title,Increment number
+properties.credits.items.properties.increment.description,The increment by which the range of values for the course credit can be stepped from the minimum to the maximum. For example, a range of 1 to 3 with an increment of 1 would evaluate to 1, 2, or 3. Specifying an increment of 0.5 would evaluate to 1, 1.5, 2, 2.5, or 3
+properties.credits.items.properties.increment.oneOf.type,number
+properties.credits.items.properties.increment.oneOf.type,null
+properties.credits.items.additionalProperties,false
+properties.credits.items.required,creditCategory;measure;minimum
+required,id;title;subject;schedulingStartOn;number
+additionalProperties,false
+links.rel,filter
+links.encType,application/x-www-form-urlencoded
+links.method,GET
+links.href,/courses/
+links.schema.type,object
+links.schema.properties.subject.type,string
+links.schema.properties.subject.format,guid
+links.schema.properties.subject.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.number.type,string
+links.schema.properties.academicLevels.type,string
+links.schema.properties.academicLevels.format,guid
+links.schema.properties.academicLevels.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.owningOrganizations.type,string
+links.schema.properties.owningOrganizations.format,guid
+links.schema.properties.owningOrganizations.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.title.type,string
+links.schema.properties.instructionalMethods.type,string
+links.schema.properties.instructionalMethods.format,guid
+links.schema.properties.instructionalMethods.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.schedulingStartOn.type,string
+links.schema.properties.schedulingStartOn.format,date-time
+links.schema.properties.schedulingStartOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+links.schema.properties.schedulingEndOn.type,string
+links.schema.properties.schedulingEndOn.format,date-time
+links.schema.properties.schedulingEndOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$

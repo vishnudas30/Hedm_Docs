@@ -1,0 +1,140 @@
+title,Constituent
+description,Persons or organizations that are the subjects of fund-raising activities
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a constituent.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.constituent.title,Entity
+properties.constituent.description,The person or organization for whom an interest is identified
+properties.constituent.oneOf.title,Person
+properties.constituent.oneOf.description,A constituent that is a person.
+properties.constituent.oneOf.type,object
+properties.constituent.oneOf.properties.person.title,Person
+properties.constituent.oneOf.properties.person.description,A human being or other independent agent.
+properties.constituent.oneOf.properties.person.type,object
+properties.constituent.oneOf.properties.person.properties.id.title,ID
+properties.constituent.oneOf.properties.person.properties.id.description,The global identifier for Person
+properties.constituent.oneOf.properties.person.properties.id.type,string
+properties.constituent.oneOf.properties.person.properties.id.format,guid
+properties.constituent.oneOf.properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.constituent.oneOf.properties.person.links.rel,self
+properties.constituent.oneOf.properties.person.links.href,/persons/{id}
+properties.constituent.oneOf.properties.person.links.targetSchema.$ref,persons.json#
+properties.constituent.oneOf.properties.person.additionalProperties,false
+properties.constituent.oneOf.properties.person.required,id
+properties.constituent.oneOf.properties.classYear.title,Class Year
+properties.constituent.oneOf.properties.classYear.description,The constituent's preferred class year
+properties.constituent.oneOf.properties.classYear.oneOf.type,string
+properties.constituent.oneOf.properties.classYear.oneOf.format,year
+properties.constituent.oneOf.properties.classYear.oneOf.pattern,^([1-9][0-9]*)?[0-9]{4}$
+properties.constituent.oneOf.properties.classYear.oneOf.type,string
+properties.constituent.oneOf.properties.classYear.oneOf.maxLength,
+properties.constituent.oneOf.properties.preferredOrganization.title,Organization
+properties.constituent.oneOf.properties.preferredOrganization.description,Constituent's preferred organization (school, college, etc.)
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.type,object
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.properties.id.title,ID
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.properties.id.description,The global identifier for Organization
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.properties.id.type,string
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.properties.id.format,guid
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.links.rel,self
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.links.href,/organizations/{id}
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.links.targetSchema.$ref,organizations.json#
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.additionalProperties,false
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.required,id
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.type,object
+properties.constituent.oneOf.properties.preferredOrganization.oneOf.maxProperties,
+properties.constituent.oneOf.additionalProperties,false
+properties.constituent.oneOf.required,person
+properties.constituent.oneOf.title,Organization
+properties.constituent.oneOf.description,A constituent that is an organization.
+properties.constituent.oneOf.type,object
+properties.constituent.oneOf.properties.organization.title,Organization
+properties.constituent.oneOf.properties.organization.description,Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.
+properties.constituent.oneOf.properties.organization.type,object
+properties.constituent.oneOf.properties.organization.properties.id.title,ID
+properties.constituent.oneOf.properties.organization.properties.id.description,The global identifier for Organization
+properties.constituent.oneOf.properties.organization.properties.id.type,string
+properties.constituent.oneOf.properties.organization.properties.id.format,guid
+properties.constituent.oneOf.properties.organization.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.constituent.oneOf.properties.organization.links.rel,self
+properties.constituent.oneOf.properties.organization.links.href,/organizations/{id}
+properties.constituent.oneOf.properties.organization.links.targetSchema.$ref,organizations.json#
+properties.constituent.oneOf.properties.organization.additionalProperties,false
+properties.constituent.oneOf.properties.organization.required,id
+properties.constituent.oneOf.additionalProperties,false
+properties.constituent.oneOf.required,organization
+properties.types.title,Type
+properties.types.description,The list of the categories of types of a constituent
+properties.types.type,array
+properties.types.items.title,Type
+properties.types.items.description,The list of the categories of types of a constituent
+properties.types.items.type,object
+properties.types.items.properties.id.title,ID
+properties.types.items.properties.id.description,The global identifier for Type
+properties.types.items.properties.id.type,string
+properties.types.items.properties.id.format,guid
+properties.types.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.types.items.links.rel,self
+properties.types.items.links.href,/constituent-types/{id}
+properties.types.items.links.targetSchema.$ref,constituent-types.json#
+properties.types.items.additionalProperties,false
+properties.types.items.required,id
+required,id;constituent
+additionalProperties,false
+links.rel,wealthAssessment
+links.title,Wealth Assessment
+links.description,An assessment of a person or organization's giving potential
+links.href,/wealth-assessments?constituent.entityType={constituent.entityType}&constituent.id={constituent.id}
+links.targetSchema.$ref,wealth-assessments.json#
+links.rel,constituentDonationInterest
+links.title,Constituent Donation Interest
+links.description,A donation interest identified for a person or organization
+links.href,/constituent-donation-interests?constituent.entityType={constituent.entityType}&constituent.id={constituent.id}
+links.targetSchema.$ref,constituent-donation-interests.json#
+links.rel,externalDonations
+links.title,External Donations
+links.description,A donation made by a constitient to an external organization
+links.href,/external-donations?constituent.entityType={constituent.entityType}&constituent.id={constituent.id}
+links.targetSchema.$ref,external-donations.json#
+links.rel,donationPromises
+links.title,External Donations
+links.description,A promised donation that has yet to be fulfilled
+links.href,/donation-promises?donorAllocations[donor].entityType={constituent.entityType}&donorAllocations[donor].id={constituent.id}
+links.targetSchema.$ref,donation-promises.json#
+links.rel,donations
+links.title,Donations
+links.description,A donation made to an institution
+links.href,/donations?donorAllocations[donor].entityType={constituent.entityType}&donorAllocations[donor].id={constituent.id}
+links.targetSchema.$ref,donations.json#
+links.rel,donorSocietyMembership
+links.title,Donor Society Membership
+links.description,A membership in a donor society
+links.href,/donor-society-memberships?donor.entityType={constituent.entityType}&donor.id={constituent.id}
+links.targetSchema.$ref,donor-society-memberships.json#

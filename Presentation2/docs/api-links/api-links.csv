@@ -1,0 +1,87 @@
+title,API Links Example
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,
+properties.id.type,string
+properties.title.title,Name
+properties.title.description,
+properties.title.type,string
+properties.code.title,Code
+properties.code.description,
+properties.code.type,string
+required,id;title
+additionalProperties,false
+links.rel,read
+links.method,GET
+links.href,/api-links/{id}
+links.targetSchema.allOf.$ref,id
+links.targetSchema.allOf.$ref,title
+links.targetSchema.allOf.$ref,code
+links.rel,instances
+links.method,GET
+links.href,/api-links
+links.targetSchema.type,array
+links.targetSchema.items.type,object
+links.targetSchema.items.allOf.$ref,id
+links.targetSchema.items.allOf.$ref,title
+links.targetSchema.items.allOf.$ref,code
+links.rel,create
+links.method,POST
+links.href,/api-links
+links.schema.allOf.$ref,title
+links.schema.allOf.$ref,code
+links.schema.required,title
+links.targetSchema.allOf.$ref,id
+links.targetSchema.allOf.$ref,title
+links.targetSchema.allOf.$ref,code
+links.rel,replace
+links.method,PUT
+links.href,/api-links/{id}
+links.schema.allOf.$ref,title
+links.schema.allOf.$ref,code
+links.schema.required,title
+links.targetSchema.allOf.$ref,id
+links.targetSchema.allOf.$ref,title
+links.targetSchema.allOf.$ref,code
+links.rel,patch
+links.method,PATCH
+links.href,/api-links
+links.schema.type,array
+links.targetSchema.type,array
+links.targetSchema.items.allOf.$ref,id
+links.targetSchema.items.allOf.$ref,title
+links.targetSchema.items.allOf.$ref,code
+links.rel,delete
+links.method,DELETE
+links.href,/api-links/{id}
+links.targetSchema.allOf.$ref,id
+links.targetSchema.allOf.$ref,title
+links.targetSchema.allOf.$ref,code
+links.rel,associatedProperty
+links.method,GET
+links.href,/some/path/
+links.targetSchema.$ref,associated-schema.json#

@@ -1,0 +1,510 @@
+{
+  "title": "Section Grade",
+  "description": "The grades reported for a student for a particular instance of a course section.",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "Id",
+      "description": "The global identifier of the section grade.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "sectionRegistration": {
+      "title": "Section Registration",
+      "description": "The section registration instance for which the grade was reported.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The global identifier for Section Registration",
+          "type": "string",
+          "format": "guid",
+          "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+        }
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "/section-registrations/{id}",
+          "targetSchema": {
+            "$ref": "section-registrations.json#"
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "type": {
+      "title": "Type",
+      "description": "The type of section grade.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The global identifier for Type",
+          "type": "string",
+          "format": "guid",
+          "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+        }
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "/section-grade-types/{id}",
+          "targetSchema": {
+            "$ref": "section-grade-types.json#"
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "grade": {
+      "title": "Grade",
+      "description": "The reported grade for the section registration.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "title": "Value",
+          "description": "The value of the reported grade",
+          "type": "string"
+        },
+        "gradeSchemeItem": {
+          "title": "Grade Scheme Item",
+          "description": "The grade scheme item that represents the grade reported.",
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Grade Scheme Item",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/grade-scheme-items/{id}",
+                  "targetSchema": {
+                    "$ref": "grade-scheme-items.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            },
+            {
+              "type": "object",
+              "maxProperties": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "reporting": {
+      "title": "Reporting",
+      "description": "Properties required for governmental or other reporting.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "countryCode": {
+              "title": "Country Code",
+              "description": "The country code for the USA",
+              "enum": [
+                "USA"
+              ],
+              "type": "string"
+            },
+            "lastDayOfAttendance": {
+              "title": "Last Day Of Attendance",
+              "description": "Information about the last day of attendance",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "title": "Status",
+                      "description": "Attendance Status",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "enum": [
+                            "attended",
+                            "neverAttended"
+                          ]
+                        },
+                        {
+                          "type": "string",
+                          "maxLength": 0
+                        }
+                      ]
+                    },
+                    "lastAttendedOn": {
+                      "title": "Last Attended On",
+                      "description": "The date the student last attended the section for this registration.",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+                        },
+                        {
+                          "type": "string",
+                          "maxLength": 0
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "minProperties": 1
+                },
+                {
+                  "type": "object",
+                  "maxProperties": 0
+                }
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "countryCode"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "process": {
+      "title": "Process",
+      "description": "Properties associated with the processing of section grades.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "gradeExtension": {
+              "title": "Grade Extension",
+              "description": "Default grade and expiration date for incomplete grades.",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "expiresOn": {
+                      "title": "Expires On",
+                      "description": "The date the incomplete grade expires and is replaced with the default grade.",
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+                    },
+                    "defaultGrade": {
+                      "title": "Default Grade",
+                      "description": "The grade to which an incomplete will revert if not updated by the expiration date.",
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "title": "Value",
+                          "description": "The value of the default grade",
+                          "type": "string"
+                        },
+                        "gradeSchemeItem": {
+                          "title": "Grade Scheme Item",
+                          "description": "The grade scheme item that represents the default grade.",
+                          "oneOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "title": "ID",
+                                  "description": "The global identifier for Grade Scheme Item",
+                                  "type": "string",
+                                  "format": "guid",
+                                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                                }
+                              },
+                              "links": [
+                                {
+                                  "rel": "self",
+                                  "href": "/grade-scheme-items/{id}",
+                                  "targetSchema": {
+                                    "$ref": "grade-scheme-items.json#"
+                                  }
+                                }
+                              ],
+                              "additionalProperties": false,
+                              "required": [
+                                "id"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "maxProperties": 0
+                            }
+                          ]
+                        }
+                      },
+                      "additionalProperties": false,
+                      "minProperties": 1
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "expiresOn"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "maxProperties": 0
+                }
+              ]
+            },
+            "transcript": {
+              "title": "Transcript",
+              "description": "Properties dealing with the transcript processing of the grade.",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "verifiedOn": {
+                      "title": "Verified On",
+                      "description": "The date the grade was verified and rolled into a student's transcript.",
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+                    },
+                    "verifiedBy": {
+                      "title": "Verified By",
+                      "description": "The person who verified the grade and rolled it into the student's transcript.",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "title": "ID",
+                              "description": "The global identifier for Verified By",
+                              "type": "string",
+                              "format": "guid",
+                              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                            }
+                          },
+                          "links": [
+                            {
+                              "rel": "self",
+                              "href": "/persons/{id}",
+                              "targetSchema": {
+                                "$ref": "persons.json#"
+                              }
+                            }
+                          ],
+                          "additionalProperties": false,
+                          "required": [
+                            "id"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "maxProperties": 0
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "verifiedOn"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "maxProperties": 0
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "submission": {
+      "title": "Submission",
+      "description": "Properties related to the submission of the section grade.",
+      "type": "object",
+      "properties": {
+        "submittedBy": {
+          "title": "Submitted By",
+          "description": "The person who submitted the section grade.",
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Submitted By",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/persons/{id}",
+                  "targetSchema": {
+                    "$ref": "persons.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            },
+            {
+              "type": "object",
+              "maxProperties": 0
+            }
+          ]
+        },
+        "submittedOn": {
+          "title": "Submitted On",
+          "description": "The date the section grade was submitted.",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "method": {
+          "title": "Method",
+          "description": "The method by which the section grade was submitted.",
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "auto",
+                "manual"
+              ]
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "reason": {
+          "title": "Reason",
+          "description": "The reason for the section grade submission.",
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Reason",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/grade-change-reasons/{id}",
+                  "targetSchema": {
+                    "$ref": "grade-change-reasons.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            },
+            {
+              "type": "object",
+              "maxProperties": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "id",
+    "sectionRegistration",
+    "type",
+    "grade"
+  ],
+  "additionalProperties": false
+}

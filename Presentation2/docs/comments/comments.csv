@@ -1,0 +1,78 @@
+title,Comment
+description,Comments and notes
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,The global identifier of the comments record
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.content.title,Comment Text
+properties.content.description,The content of the comment
+properties.content.type,string
+properties.content.minLength,1
+properties.createdBy.title,Created By
+properties.createdBy.description,The person who created the comment
+properties.createdBy.type,object
+properties.createdBy.properties.id.title,ID
+properties.createdBy.properties.id.description,The global identifier for Created By
+properties.createdBy.properties.id.type,string
+properties.createdBy.properties.id.format,guid
+properties.createdBy.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.createdBy.links.rel,self
+properties.createdBy.links.href,/persons/{id}
+properties.createdBy.links.targetSchema.$ref,persons.json#
+properties.createdBy.additionalProperties,false
+properties.createdBy.required,id
+properties.createdOn.title,Created Date
+properties.createdOn.description,The date when the comment was created
+properties.createdOn.type,string
+properties.createdOn.format,date-time
+properties.createdOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.modifiedBy.title,Modified By
+properties.modifiedBy.description,The person who last modified the comment
+properties.modifiedBy.oneOf.type,object
+properties.modifiedBy.oneOf.properties.id.title,ID
+properties.modifiedBy.oneOf.properties.id.description,The global identifier for Modified By
+properties.modifiedBy.oneOf.properties.id.type,string
+properties.modifiedBy.oneOf.properties.id.format,guid
+properties.modifiedBy.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.modifiedBy.oneOf.links.rel,self
+properties.modifiedBy.oneOf.links.href,/persons/{id}
+properties.modifiedBy.oneOf.links.targetSchema.$ref,persons.json#
+properties.modifiedBy.oneOf.additionalProperties,false
+properties.modifiedBy.oneOf.required,id
+properties.modifiedBy.oneOf.type,object
+properties.modifiedBy.oneOf.maxProperties,
+properties.modifiedOn.title,Modified Date
+properties.modifiedOn.description,The date when the comment was last modified
+properties.modifiedOn.oneOf.type,string
+properties.modifiedOn.oneOf.format,date-time
+properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.modifiedOn.oneOf.type,string
+properties.modifiedOn.oneOf.maxLength,
+required,id;content;createdBy;createdOn
+additionalProperties,false

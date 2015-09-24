@@ -1,0 +1,723 @@
+title,Organization
+description,Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A globally unique identifier of an organization.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.code.title,Code
+properties.code.description,A code used to identify an organization.
+properties.code.type,string
+properties.title.title,Title
+properties.title.description,The full name of an organization.
+properties.title.type,string
+properties.description.title,Description
+properties.description.description,A description of an organization.
+properties.description.type,string
+properties.type.title,Type
+properties.type.description,The type of organization, e.g., "College", "Department", etc.
+properties.type.oneOf.type,string
+properties.type.oneOf.enum,college;department;division;faculty;school;university;business
+properties.type.oneOf.type,string
+properties.type.oneOf.maxLength,
+properties.locations.title,Location
+properties.locations.description,The physical locations where an organization may be contacted by mail.
+properties.locations.type,array
+properties.locations.items.type,object
+properties.locations.items.properties.id.title,ID
+properties.locations.items.properties.id.description,A globally unique identifier of an organization's mailing location
+properties.locations.items.properties.id.type,string
+properties.locations.items.properties.id.format,guid
+properties.locations.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.locations.items.properties.description.title,Description
+properties.locations.items.properties.description.description,A full description or comments about the mailing location
+properties.locations.items.properties.description.type,string
+properties.locations.items.properties.type.title,Type
+properties.locations.items.properties.type.description,A type of mailing location for an organization, such as the main office.
+properties.locations.items.properties.type.type,object
+properties.locations.items.properties.type.properties.locationType.title,Type
+properties.locations.items.properties.type.properties.locationType.description,A type of location information for an organization.
+properties.locations.items.properties.type.properties.locationType.enum,business;pobox;main;branch;region;support;other
+properties.locations.items.properties.type.properties.locationType.type,string
+properties.locations.items.properties.type.properties.detail.title,Detail
+properties.locations.items.properties.type.properties.detail.description,
+properties.locations.items.properties.type.properties.detail.oneOf.type,object
+properties.locations.items.properties.type.properties.detail.oneOf.properties.id.title,ID
+properties.locations.items.properties.type.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.locations.items.properties.type.properties.detail.oneOf.properties.id.type,string
+properties.locations.items.properties.type.properties.detail.oneOf.properties.id.format,guid
+properties.locations.items.properties.type.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.locations.items.properties.type.properties.detail.oneOf.links.rel,self
+properties.locations.items.properties.type.properties.detail.oneOf.links.href,/location-types/{id}
+properties.locations.items.properties.type.properties.detail.oneOf.links.targetSchema.$ref,location-types.json#
+properties.locations.items.properties.type.properties.detail.oneOf.additionalProperties,false
+properties.locations.items.properties.type.properties.detail.oneOf.required,id
+properties.locations.items.properties.type.properties.detail.oneOf.type,object
+properties.locations.items.properties.type.properties.detail.oneOf.maxProperties,
+properties.locations.items.properties.type.additionalProperties,false
+properties.locations.items.properties.type.required,locationType
+properties.locations.items.properties.status.title,Status
+properties.locations.items.properties.status.description,The status of the mailing location
+properties.locations.items.properties.status.enum,active;inactive
+properties.locations.items.properties.status.type,string
+properties.locations.items.properties.preference.title,Preferred Location
+properties.locations.items.properties.preference.description,Whether a mailing location is preferred over others of the same type.
+properties.locations.items.properties.preference.oneOf.type,string
+properties.locations.items.properties.preference.oneOf.enum,primary
+properties.locations.items.properties.preference.oneOf.type,string
+properties.locations.items.properties.preference.oneOf.maxLength,
+properties.locations.items.properties.addressLines.title,Address
+properties.locations.items.properties.addressLines.description,The delivery address lines of the person's mailing location, such as a street or post office box number.
+properties.locations.items.properties.addressLines.type,array
+properties.locations.items.properties.addressLines.items.type,string
+properties.locations.items.properties.place.title,Place
+properties.locations.items.properties.place.description,A country specific postal region.  Postal regions are expressed as a hierarchy of country, region, and sub-region, and as a locality with postal automation codes
+properties.locations.items.properties.place.oneOf.type,object
+properties.locations.items.properties.place.oneOf.properties.country.title,Country
+properties.locations.items.properties.place.oneOf.properties.country.description,The country where the person's mailing address is located.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.title,Australia
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.description,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.description,The ISO 3166-1 alpha-3 country code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.enum,AUS
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.title,Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.description,The name of the country, as used in everyday speech.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.title,Postal Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.description,The name of the country when mail is being addressed from an international sender.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.enum,AUSTRALIA
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.title,Region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.description,A region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.description,The code of a region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.enum,NSW;ACT;VIC;QLD;SA;WA;TAS;NT
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.description,The full name of the region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.title,Subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.description,A subregion within the country and region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.description,The code of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.description,The name of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.title,city
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.description,The name of the city or town.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.title,Postal Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.description,The mailing postal code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.pattern,^(0[289][0-9]{2})|([1345689][0-9]{3})|(2[0-8][0-9]{2})|(290[0-9])|(291[0-4])|(7[0-4][0-9]{2})|(7[8-9][0-9]{2})$
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.required,code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.title,Brazil
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.description,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.description,The ISO 3166-1 alpha-3 country code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.enum,BRA
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.title,Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.description,The name of the country, as used in everyday speech.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.title,Postal Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.description,The name of the country when mail is being addressed from an international sender.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.enum,BRAZIL
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.title,Region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.description,A region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.description,The code of a region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.enum,AC;AL;AM;AP;BA;CE;DF;ES;GO;MA;MG;MS;MT;PA;PB;PE;PI;PR;RJ;RN;RO;RR;RS;SC;SE;SP
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.description,The full name of the region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.title,Subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.description,A subregion within the country and region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.description,The code of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.description,The name of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.title,city
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.description,The name of the city or town.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.title,Postal Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.description,The mailing postal code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.pattern,^\d{5}\-\d{3}$
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.required,code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.title,Canada
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.description,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.description,The ISO 3166-1 alpha-3 country code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.enum,CAN
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.title,Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.description,The name of the country, as used in everyday speech.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.title,Postal Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.description,The name of the country when mail is being addressed from an international sender.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.enum,CANADA
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.title,Region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.description,A region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.description,The code of a region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.enum,AB;BC;MB;NB;NL;NS;NT;NU;ON;PE;QC;SK;YT
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.description,The full name of the region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.title,Subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.description,A subregion within the country and region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.description,The code of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.description,The name of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.title,city
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.description,The name of the city or town.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.title,Postal Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.description,The mailing postal code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.pattern,^[ABCEGHJKLMNPRSTVXYabceghjklmnprstvxy]{1}\d{1}[A-Za-z]{1}\d{1}[A-Za-z]{1}\d{1}$
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.required,code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.title,Mexico
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.description,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.description,The ISO 3166-1 alpha-3 country code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.enum,MEX
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.title,Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.description,The name of the country, as used in everyday speech.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.title,Postal Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.description,The name of the country when mail is being addressed from an international sender.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.enum,MEXICO
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.title,Region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.description,A region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.description,The code of a region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.enum,AGS;MOR;BC;NAY;BCS;NL;CAM;OAX;COAH;PUE;COL;QRO;CHIS;Q ROO;CHIH;SLP;DF;SIN;DGO;SON;GTO;TAB;GRO;TAMPS;HGO;TLAX;JAL;VER;MEX;YUC;MICH;Zacatecas
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.description,The full name of the region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.title,Subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.description,A subregion within the country and region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.description,The code of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.description,The name of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.title,city
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.description,The name of the city or town.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.title,Postal Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.description,The mailing postal code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.pattern,^\A\d{5,5}\Z$
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.required,code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.title,Netherlands
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.description,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.description,The ISO 3166-1 alpha-3 country code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.enum,NLD
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.title,Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.description,The name of the country, as used in everyday speech.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.title,Postal Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.description,The name of the country when mail is being addressed from an international sender.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.enum,NETHERLANDS
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.title,Region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.description,A region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.description,The code of a region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.enum,DR;FL;FR;GE;GR;LI;NB;NH;OV;UT;ZE;ZH
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.description,The full name of the region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.title,Subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.description,A subregion within the country and region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.description,The code of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.description,The name of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.title,city
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.description,The name of the city or town.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.title,Postal Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.description,The mailing postal code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.pattern,^(NL-)?(\d{4})\s*([A-Z]{2})$
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.required,code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.title,United Kingdom of Great Britain and Northern Ireland
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.description,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.description,The ISO 3166-1 alpha-3 country code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.enum,GBR
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.title,Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.description,The name of the country, as used in everyday speech.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.title,Postal Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.description,The name of the country when mail is being addressed from an international sender.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.enum,UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.title,Region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.description,A region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.description,The code of a region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.enum,AB;AL;B;BA;BB;BD;BH;BL;BN;BR;BS;BT;CA;CB;CF;CH;CM;CO;CR;CT;CV;CW;DA;DD;DE;DG;DH;DL;DN;DT;DY;E;EC;EH;EN;EX;FK;FY;G;GL;GU;GY;HA;HD;HG;HP;HR;HS;HU;HX;IG;IM;IP;IV;JE;KA;KT;KW;KY;L;LA;LD;LE;LL;LN;LS;LU;M;ME;MK;ML;N;NE;NG;NN;NP;NR;NW;OL;OX;PA;PE;PH;PL;PO;PR;RG;RH;RM;S;SA;SE;SG;SK;SL;SM;SN;SO;SP;SR;SS;ST;SW;SY;TA;TD;TF;TN;TQ;TR;TS;TW;UB;W;WA;WC;WD;WF;WN;WR;WS;WV;YO;ZE
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.description,The full name of the region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.title,Subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.description,A subregion within the country and region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.description,The code of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.description,The name of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.title,city
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.description,The name of the city or town.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.title,Postal Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.description,The mailing postal code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.pattern,^(GIR 0AA)|((([A-Z-[QVX]][0-9][0-9]?)|(([A-Z-[QVX]][A-Z-[IJZ]][0-9][0-9]?)|(([A-Z-[QVX]][0-9][A-HJKPSTUW])|([A-Z-[QVX]][A-Z-[IJZ]][0-9][ABEHMNPRVWXY])))) [0-9][A-Z-[CIKMOV]]{2})$
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.required,code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.title,United States of America
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.description,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.description,The ISO 3166-1 alpha-3 country code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.enum,USA
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.title,Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.description,The name of the country, as used in everyday speech.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.title,Postal Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.description,The name of the country when mail is being addressed from an international sender.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.enum,UNITED STATES OF AMERICA
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.title,Region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.description,A region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.description,The code of a region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.enum,AL;AK;AZ;AR;CA;CO;CT;DE;DC;FL;GA;HI;ID;IL;IN;IA;KS;KY;LA;ME;MD;MA;MI;MN;MS;MO;MT;NE;NV;NH;NJ;NM;NY;NC;ND;OH;OK;OR;PA;RI;SC;SD;TN;TX;UT;VT;VA;WA;WV;WI;WY;AS;GU;MP;PR;UM;VI
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.description,The full name of the region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.title,Subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.description,A subregion within the country and region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.description,The code of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.description,The name of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.title,city
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.description,The name of the city or town.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.title,Postal Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.description,The mailing postal code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.pattern,^(\d{5}(-\d{4})?|[A-Z]\d[A-Z] *\d[A-Z]\d)$
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.deliveryPoint.title,Delivery Point
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.deliveryPoint.description,A specific set of digits between 00 and 99 assigned to every address. When combined with the ZIP + 4 code, the delivery point provides a unique identifier for every deliverable address served by the US Postal Service.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.deliveryPoint.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.deliveryPoint.oneOf.pattern,^[0-9][0-9]$
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.deliveryPoint.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.deliveryPoint.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.carrierRoute.title,Carrier Route
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.carrierRoute.description,A subdivision of a US zipcode.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.carrierRoute.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.carrierRoute.oneOf.pattern,^(C|R|P)[0-9]{3}$
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.carrierRoute.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.carrierRoute.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.correctionDigit.title,Correction Digit
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.correctionDigit.description,A number used to check for errors in a US ZIP code, delivery point, or carrier route.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.correctionDigit.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.correctionDigit.oneOf.pattern,^[0-9]$
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.correctionDigit.oneOf.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.correctionDigit.oneOf.maxLength,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.required,code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.title,Generic
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.description,
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.description,The ISO 3166-1 alpha-3 country code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.enum,ABW;AFG;AGO;AIA;ALA;ALB;AND;ARE;ARG;ARM;ASM;ATA;ATF;ATG;AUT;AZE;BDI;BEL;BEN;BES;BFA;BGD;BGR;BHR;BHS;BIH;BLM;BLR;BLZ;BMU;BOL;BRB;BRN;BTN;BVT;BWA;CAF;CCK;CHE;CHL;CHN;CIV;CMR;COD;COG;COK;COL;COM;CPV;CRI;CUB;CUW;CXR;CYM;CYP;CZE;DEU;DJI;DMA;DNK;DOM;DZA;ECU;EGY;ERI;ESH;ESP;EST;ETH;FIN;FJI;FLK;FRA;FRO;FSM;GAB;GEO;GGY;GHA;GIB;GIN;GLP;GMB;GNB;GNQ;GRC;GRD;GRL;GTM;GUF;GUM;GUY;HKG;HMD;HND;HRV;HTI;HUN;IDN;IMN;IND;IOT;IRL;IRN;IRQ;ISL;ISR;ITA;JAM;JEY;JOR;JPN;KAZ;KEN;KGZ;KHM;KIR;KNA;KOR;KWT;LAO;LBN;LBR;LBY;LCA;LIE;LKA;LSO;LTU;LUX;LVA;MAC;MAF;MAR;MCO;MDA;MDG;MDV;MHL;MKD;MLI;MLT;MMR;MNE;MNG;MNP;MOZ;MRT;MSR;MTQ;MUS;MWI;MYS;MYT;NAM;NCL;NER;NFK;NGA;NIC;NIU;NOR;NPL;NRU;NZL;OMN;PAK;PAN;PCN;PER;PHL;PLW;PNG;POL;PRI;PRK;PRT;PRY;PSE;PYF;QAT;REU;ROU;RUS;RWA;SAU;SDN;SEN;SGP;SGS;SHN;SJM;SLB;SLE;SLV;SMR;SOM;SPM;SRB;SSD;STP;SUR;SVK;SVN;SWE;SWZ;SXM;SYC;SYR;TCA;TCD;TGO;THA;TJK;TKL;TKM;TLS;TON;TTO;TUN;TUR;TUV;TWN;TZA;UGA;UKR;UMI;URY;UZB;VAT;VCT;VEN;VGB;VIR;VNM;VUT;WLF;WSM;YEM;ZAF;ZMB;ZWE
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.title,Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.description,The name of the country, as used in everyday speech.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.title,Postal Country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.description,The name of the country when mail is being addressed from an international sender.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalTitle.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.title,Region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.description,A region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.description,The code of a region within the country
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.description,The full name of the region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.region.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.title,Subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.description,A subregion within the country and region
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.type,object
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.title,Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.description,The code of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.code.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.title,Title
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.description,The name of a subregion
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.properties.title.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.subRegion.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.title,city
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.description,The name of the city or town.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.locality.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.title,Postal Code
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.description,The mailing postal code.
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.properties.postalCode.type,string
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.additionalProperties,false
+properties.locations.items.properties.place.oneOf.properties.country.oneOf.required,code
+properties.locations.items.properties.place.oneOf.additionalProperties,false
+properties.locations.items.properties.place.oneOf.required,country
+properties.locations.items.properties.place.oneOf.type,object
+properties.locations.items.properties.place.oneOf.maxProperties,
+properties.locations.items.properties.latitude.title,Latitude
+properties.locations.items.properties.latitude.description,The latitude of the geographic area
+properties.locations.items.properties.latitude.oneOf.type,number
+properties.locations.items.properties.latitude.oneOf.minimum,-90
+properties.locations.items.properties.latitude.oneOf.maximum,90
+properties.locations.items.properties.latitude.oneOf.type,null
+properties.locations.items.properties.longitude.title,Longitude
+properties.locations.items.properties.longitude.description,The longitude of a geographic area
+properties.locations.items.properties.longitude.oneOf.type,number
+properties.locations.items.properties.longitude.oneOf.minimum,-180
+properties.locations.items.properties.longitude.oneOf.maximum,180
+properties.locations.items.properties.longitude.oneOf.type,null
+properties.locations.items.properties.geographicAreas.title,Geographic Areas
+properties.locations.items.properties.geographicAreas.description,The geographic areas that this location is included within.
+properties.locations.items.properties.geographicAreas.type,array
+properties.locations.items.properties.geographicAreas.items.title,Geographic Areas
+properties.locations.items.properties.geographicAreas.items.description,The geographic areas that this location is included within.
+properties.locations.items.properties.geographicAreas.items.type,object
+properties.locations.items.properties.geographicAreas.items.properties.id.title,ID
+properties.locations.items.properties.geographicAreas.items.properties.id.description,The global identifier for Geographic Areas
+properties.locations.items.properties.geographicAreas.items.properties.id.type,string
+properties.locations.items.properties.geographicAreas.items.properties.id.format,guid
+properties.locations.items.properties.geographicAreas.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.locations.items.properties.geographicAreas.items.links.rel,self
+properties.locations.items.properties.geographicAreas.items.links.href,/geographic-areas/{id}
+properties.locations.items.properties.geographicAreas.items.links.targetSchema.$ref,geographic-areas.json#
+properties.locations.items.properties.geographicAreas.items.additionalProperties,false
+properties.locations.items.properties.geographicAreas.items.required,id
+properties.locations.items.additionalProperties,false
+properties.locations.items.required,id;type;status
+properties.phones.title,Phone
+properties.phones.description,The phones and phone-connected devices at which an organization can be contacted.
+properties.phones.type,array
+properties.phones.items.type,object
+properties.phones.items.properties.id.title,ID
+properties.phones.items.properties.id.description,A globally unique identifier of a phone.
+properties.phones.items.properties.id.type,string
+properties.phones.items.properties.id.format,guid
+properties.phones.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.phones.items.properties.type.title,Type
+properties.phones.items.properties.type.description,A type of phone for an organization.
+properties.phones.items.properties.type.type,object
+properties.phones.items.properties.type.properties.phoneType.title,Type
+properties.phones.items.properties.type.properties.phoneType.description,A type of phone contact for an organization.
+properties.phones.items.properties.type.properties.phoneType.enum,main;branch;region;support;billing;other
+properties.phones.items.properties.type.properties.phoneType.type,string
+properties.phones.items.properties.type.properties.detail.title,Detail
+properties.phones.items.properties.type.properties.detail.description,
+properties.phones.items.properties.type.properties.detail.oneOf.type,object
+properties.phones.items.properties.type.properties.detail.oneOf.properties.id.title,ID
+properties.phones.items.properties.type.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.phones.items.properties.type.properties.detail.oneOf.properties.id.type,string
+properties.phones.items.properties.type.properties.detail.oneOf.properties.id.format,guid
+properties.phones.items.properties.type.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.phones.items.properties.type.properties.detail.oneOf.links.rel,self
+properties.phones.items.properties.type.properties.detail.oneOf.links.href,/phone-types/{id}
+properties.phones.items.properties.type.properties.detail.oneOf.links.targetSchema.$ref,phone-types.json#
+properties.phones.items.properties.type.properties.detail.oneOf.additionalProperties,false
+properties.phones.items.properties.type.properties.detail.oneOf.required,id
+properties.phones.items.properties.type.properties.detail.oneOf.type,object
+properties.phones.items.properties.type.properties.detail.oneOf.maxProperties,
+properties.phones.items.properties.type.additionalProperties,false
+properties.phones.items.properties.type.required,phoneType
+properties.phones.items.properties.status.title,Status
+properties.phones.items.properties.status.description,The status of the phone.
+properties.phones.items.properties.status.oneOf.type,string
+properties.phones.items.properties.status.oneOf.enum,active;inactive
+properties.phones.items.properties.status.oneOf.type,string
+properties.phones.items.properties.status.oneOf.maxLength,
+properties.phones.items.properties.preference.title,Preferred Phone
+properties.phones.items.properties.preference.description,Whether a phone is preferred over others of the same type.
+properties.phones.items.properties.preference.oneOf.type,string
+properties.phones.items.properties.preference.oneOf.enum,primary
+properties.phones.items.properties.preference.oneOf.type,string
+properties.phones.items.properties.preference.oneOf.maxLength,
+properties.phones.items.properties.countryCallingCode.title,Country Calling Code
+properties.phones.items.properties.countryCallingCode.description,The country calling code of telephone and/or mobile device when dialing internationally.
+properties.phones.items.properties.countryCallingCode.oneOf.type,string
+properties.phones.items.properties.countryCallingCode.oneOf.format,countryCallingCode
+properties.phones.items.properties.countryCallingCode.oneOf.pattern,^\+?[1-9][0-9]{0,3}$
+properties.phones.items.properties.countryCallingCode.oneOf.type,string
+properties.phones.items.properties.countryCallingCode.oneOf.maxLength,
+properties.phones.items.properties.number.title,Number
+properties.phones.items.properties.number.description,The telephone number of a phone or telephone device.
+properties.phones.items.properties.number.type,string
+properties.phones.items.properties.extension.title,Extension
+properties.phones.items.properties.extension.description,The telephone extension number of a phone or telephone device.
+properties.phones.items.properties.extension.type,string
+properties.phones.items.additionalProperties,false
+properties.phones.items.required,id;type;number
+properties.emails.title,Email
+properties.emails.description,The email addresses at which an organization can be contacted.
+properties.emails.type,array
+properties.emails.items.type,object
+properties.emails.items.properties.id.title,ID
+properties.emails.items.properties.id.description,A globally unique identifier of an email.
+properties.emails.items.properties.id.type,string
+properties.emails.items.properties.id.format,guid
+properties.emails.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.emails.items.properties.type.title,Type
+properties.emails.items.properties.type.description,A type of email for an organization.
+properties.emails.items.properties.type.type,object
+properties.emails.items.properties.type.properties.emailType.title,Type
+properties.emails.items.properties.type.properties.emailType.description,A type of email contact for an organization.
+properties.emails.items.properties.type.properties.emailType.enum,sales;support;general;billing;legal;hr;media;other
+properties.emails.items.properties.type.properties.emailType.type,string
+properties.emails.items.properties.type.properties.detail.title,Detail
+properties.emails.items.properties.type.properties.detail.description,
+properties.emails.items.properties.type.properties.detail.oneOf.type,object
+properties.emails.items.properties.type.properties.detail.oneOf.properties.id.title,ID
+properties.emails.items.properties.type.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.emails.items.properties.type.properties.detail.oneOf.properties.id.type,string
+properties.emails.items.properties.type.properties.detail.oneOf.properties.id.format,guid
+properties.emails.items.properties.type.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.emails.items.properties.type.properties.detail.oneOf.links.rel,self
+properties.emails.items.properties.type.properties.detail.oneOf.links.href,/email-types/{id}
+properties.emails.items.properties.type.properties.detail.oneOf.links.targetSchema.$ref,email-types.json#
+properties.emails.items.properties.type.properties.detail.oneOf.additionalProperties,false
+properties.emails.items.properties.type.properties.detail.oneOf.required,id
+properties.emails.items.properties.type.properties.detail.oneOf.type,object
+properties.emails.items.properties.type.properties.detail.oneOf.maxProperties,
+properties.emails.items.properties.type.additionalProperties,false
+properties.emails.items.properties.type.required,emailType
+properties.emails.items.properties.status.title,Status
+properties.emails.items.properties.status.description,The status of the email.
+properties.emails.items.properties.status.oneOf.type,string
+properties.emails.items.properties.status.oneOf.enum,active;inactive
+properties.emails.items.properties.status.oneOf.type,string
+properties.emails.items.properties.status.oneOf.maxLength,
+properties.emails.items.properties.preference.title,Preferred Email
+properties.emails.items.properties.preference.description,Whether an Email is preferred over others of the same type.
+properties.emails.items.properties.preference.oneOf.type,string
+properties.emails.items.properties.preference.oneOf.enum,primary
+properties.emails.items.properties.preference.oneOf.type,string
+properties.emails.items.properties.preference.oneOf.maxLength,
+properties.emails.items.properties.address.title,Email Address
+properties.emails.items.properties.address.description,An email address
+properties.emails.items.properties.address.type,string
+properties.emails.items.properties.address.format,email
+properties.emails.items.properties.address.pattern,^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$
+properties.emails.items.additionalProperties,false
+properties.emails.items.required,id;type;address
+properties.socialMedia.title,Social Media
+properties.socialMedia.description,The social media addresses at which an organization can be contacted.
+properties.socialMedia.type,array
+properties.socialMedia.items.type,object
+properties.socialMedia.items.properties.id.title,ID
+properties.socialMedia.items.properties.id.description,A globally unique identifier of a social media contact.
+properties.socialMedia.items.properties.id.type,string
+properties.socialMedia.items.properties.id.format,guid
+properties.socialMedia.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.socialMedia.items.properties.type.title,Social Media
+properties.socialMedia.items.properties.type.description,A type of social media account.
+properties.socialMedia.items.properties.type.type,object
+properties.socialMedia.items.properties.type.properties.socialMediaType.title,Type
+properties.socialMedia.items.properties.type.properties.socialMediaType.description,A type of social media account.
+properties.socialMedia.items.properties.type.properties.socialMediaType.enum,windowsLive;yahoo;skype;qq;hangouts;icq;jabber;facebook;twitter;instagram;tumblr;pinterest;linkedin;foursquare;youtube;blog;website;other
+properties.socialMedia.items.properties.type.properties.socialMediaType.type,string
+properties.socialMedia.items.properties.type.properties.detail.title,Detail
+properties.socialMedia.items.properties.type.properties.detail.description,
+properties.socialMedia.items.properties.type.properties.detail.oneOf.type,object
+properties.socialMedia.items.properties.type.properties.detail.oneOf.properties.id.title,ID
+properties.socialMedia.items.properties.type.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.socialMedia.items.properties.type.properties.detail.oneOf.properties.id.type,string
+properties.socialMedia.items.properties.type.properties.detail.oneOf.properties.id.format,guid
+properties.socialMedia.items.properties.type.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.socialMedia.items.properties.type.properties.detail.oneOf.links.rel,self
+properties.socialMedia.items.properties.type.properties.detail.oneOf.links.href,/social-media-types/{id}
+properties.socialMedia.items.properties.type.properties.detail.oneOf.links.targetSchema.$ref,social-media-types.json#
+properties.socialMedia.items.properties.type.properties.detail.oneOf.additionalProperties,false
+properties.socialMedia.items.properties.type.properties.detail.oneOf.required,id
+properties.socialMedia.items.properties.type.properties.detail.oneOf.type,object
+properties.socialMedia.items.properties.type.properties.detail.oneOf.maxProperties,
+properties.socialMedia.items.properties.type.additionalProperties,false
+properties.socialMedia.items.properties.type.required,socialMediaType
+properties.socialMedia.items.properties.status.title,Status
+properties.socialMedia.items.properties.status.description,The status of a social media contact information.
+properties.socialMedia.items.properties.status.oneOf.type,string
+properties.socialMedia.items.properties.status.oneOf.enum,active;inactive
+properties.socialMedia.items.properties.status.oneOf.type,string
+properties.socialMedia.items.properties.status.oneOf.maxLength,
+properties.socialMedia.items.properties.preference.title,Preferred Social Media
+properties.socialMedia.items.properties.preference.description,Whether a Social Media contact that is preferred over others of the same type.
+properties.socialMedia.items.properties.preference.oneOf.type,string
+properties.socialMedia.items.properties.preference.oneOf.enum,primary
+properties.socialMedia.items.properties.preference.oneOf.type,string
+properties.socialMedia.items.properties.preference.oneOf.maxLength,
+properties.socialMedia.items.properties.address.title,Address
+properties.socialMedia.items.properties.address.description,The username, handle or other address of the social media account.
+properties.socialMedia.items.properties.address.type,string
+properties.socialMedia.items.additionalProperties,false
+properties.socialMedia.items.required,id;type;address
+required,id
+additionalProperties,false
+links.rel,filter
+links.encType,application/x-www-form-urlencoded
+links.method,GET
+links.href,/organizations/
+links.schema.type,object
+links.schema.properties.title.type,string
+links.schema.properties.type.type,string
+links.schema.properties.type.enum,college;department;division;faculty;school;university;business
+links.schema.properties.contactInformationFilter.code.type,string
+links.rel,sites
+links.title,Sites
+links.description,The sites in this organization.
+links.href,/sites?organization.id={id}
+links.targetSchema.$ref,sites.json#

@@ -1,0 +1,19 @@
+title,Error
+description,An error conveyed from the recipient to the requestor
+type,object
+properties.code.title,Code
+properties.code.description,Error code
+properties.code.type,string
+properties.code.minLength,1
+properties.description.title,Description
+properties.description.description,A human-readable description of the error
+properties.description.type,string
+properties.resourceURL.title,Resource URL
+properties.resourceURL.description,The URL of the resource request that resulted in the error condition being triggered
+properties.resourceURL.type,string
+properties.errorProperties.title,Error properties
+properties.errorProperties.description,A list of JSON pointers to the properties in the entity where the error occurred
+properties.errorProperties.type,array
+properties.errorProperties.items.type,string
+required,code
+additionalProperties,false

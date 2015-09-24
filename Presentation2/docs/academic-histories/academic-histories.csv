@@ -1,0 +1,189 @@
+title,Academic History
+description,A record of a person's academic history.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of an academic history record.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.description.title,Description
+properties.description.description,A full description of an academic history record.
+properties.description.type,string
+properties.person.title,Person
+properties.person.description,The person related to the academic history record.
+properties.person.type,object
+properties.person.properties.id.title,ID
+properties.person.properties.id.description,The global identifier for Person
+properties.person.properties.id.type,string
+properties.person.properties.id.format,guid
+properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.person.links.rel,self
+properties.person.links.href,/persons/{id}
+properties.person.links.targetSchema.$ref,persons.json#
+properties.person.additionalProperties,false
+properties.person.required,id
+properties.organization.title,Type
+properties.organization.description,The organization associated with the academic history record.
+properties.organization.type,object
+properties.organization.properties.name.title,Name
+properties.organization.properties.name.description,The name of the organization.
+properties.organization.properties.name.type,string
+properties.organization.properties.name.minLength,1
+properties.organization.properties.detail.title,Detail
+properties.organization.properties.detail.description,Detailed organization information, if available from the authoritative source.
+properties.organization.properties.detail.type,object
+properties.organization.properties.detail.properties.id.title,ID
+properties.organization.properties.detail.properties.id.description,The global identifier for Detail
+properties.organization.properties.detail.properties.id.type,string
+properties.organization.properties.detail.properties.id.format,guid
+properties.organization.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.organization.properties.detail.links.rel,self
+properties.organization.properties.detail.links.href,/organizations/{id}
+properties.organization.properties.detail.links.targetSchema.$ref,organizations.json#
+properties.organization.properties.detail.additionalProperties,false
+properties.organization.properties.detail.required,id
+properties.organization.additionalProperties,false
+properties.organization.required,name
+properties.credentials.title,Credentials
+properties.credentials.description,The academic credentials associated with the academic history record.
+properties.credentials.type,array
+properties.credentials.items.type,object
+properties.credentials.items.properties.name.title,Name
+properties.credentials.items.properties.name.description,The name of the credential.
+properties.credentials.items.properties.name.type,string
+properties.credentials.items.properties.name.minLength,1
+properties.credentials.items.properties.detail.title,Detail
+properties.credentials.items.properties.detail.description,Detailed credential information, if available from the authoritative source..
+properties.credentials.items.properties.detail.type,object
+properties.credentials.items.properties.detail.properties.id.title,ID
+properties.credentials.items.properties.detail.properties.id.description,The global identifier for Detail
+properties.credentials.items.properties.detail.properties.id.type,string
+properties.credentials.items.properties.detail.properties.id.format,guid
+properties.credentials.items.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.credentials.items.properties.detail.links.rel,self
+properties.credentials.items.properties.detail.links.href,/academic-credentials/{id}
+properties.credentials.items.properties.detail.links.targetSchema.$ref,academic-credentials.json#
+properties.credentials.items.properties.detail.additionalProperties,false
+properties.credentials.items.properties.detail.required,id
+properties.credentials.items.additionalProperties,false
+properties.credentials.items.required,name
+properties.disciplines.title,Discipline
+properties.disciplines.description,The academic disciplines associated with the academic history record.
+properties.disciplines.type,array
+properties.disciplines.items.type,object
+properties.disciplines.items.properties.discipline.title,Discipline
+properties.disciplines.items.properties.discipline.description,An academic discipline associated with the education history record.
+properties.disciplines.items.properties.discipline.type,object
+properties.disciplines.items.properties.discipline.properties.name.title,Name
+properties.disciplines.items.properties.discipline.properties.name.description,The name of the academic discipline.
+properties.disciplines.items.properties.discipline.properties.name.type,string
+properties.disciplines.items.properties.discipline.properties.name.minLength,1
+properties.disciplines.items.properties.discipline.properties.detail.title,Detail
+properties.disciplines.items.properties.discipline.properties.detail.description,Detailed academic discipline information, if available from the authoritative source..
+properties.disciplines.items.properties.discipline.properties.detail.type,object
+properties.disciplines.items.properties.discipline.properties.detail.properties.id.title,ID
+properties.disciplines.items.properties.discipline.properties.detail.properties.id.description,The global identifier for Detail
+properties.disciplines.items.properties.discipline.properties.detail.properties.id.type,string
+properties.disciplines.items.properties.discipline.properties.detail.properties.id.format,guid
+properties.disciplines.items.properties.discipline.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.disciplines.items.properties.discipline.properties.detail.links.rel,self
+properties.disciplines.items.properties.discipline.properties.detail.links.href,/academic-disciplines/{id}
+properties.disciplines.items.properties.discipline.properties.detail.links.targetSchema.$ref,academic-disciplines.json#
+properties.disciplines.items.properties.discipline.properties.detail.additionalProperties,false
+properties.disciplines.items.properties.discipline.properties.detail.required,id
+properties.disciplines.items.properties.discipline.additionalProperties,false
+properties.disciplines.items.properties.discipline.required,name
+properties.disciplines.items.properties.subdisciplines.title,Sub-discipline
+properties.disciplines.items.properties.subdisciplines.description,An academic discipline which is subordinate to the discipline.
+properties.disciplines.items.properties.subdisciplines.type,array
+properties.disciplines.items.properties.subdisciplines.items.type,object
+properties.disciplines.items.properties.subdisciplines.items.properties.name.title,Name
+properties.disciplines.items.properties.subdisciplines.items.properties.name.description,The name of the academic sub-discipline.
+properties.disciplines.items.properties.subdisciplines.items.properties.name.type,string
+properties.disciplines.items.properties.subdisciplines.items.properties.name.minLength,1
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.title,Detail
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.description,Detailed academic sub-discipline information, if available from the authoritative source..
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.type,object
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.properties.id.title,ID
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.properties.id.description,The global identifier for Detail
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.properties.id.type,string
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.properties.id.format,guid
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.links.rel,self
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.links.href,/academic-disciplines/{id}
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.links.targetSchema.$ref,academic-disciplines.json#
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.additionalProperties,false
+properties.disciplines.items.properties.subdisciplines.items.properties.detail.required,id
+properties.disciplines.items.properties.subdisciplines.items.additionalProperties,false
+properties.disciplines.items.properties.subdisciplines.items.required,name
+properties.disciplines.items.additionalProperties,false
+properties.disciplines.items.required,discipline
+properties.startOn.title,Start Year
+properties.startOn.description,The year the education started.
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.format,year
+properties.startOn.oneOf.pattern,^([1-9][0-9]*)?[0-9]{4}$
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.maxLength,
+properties.endOn.title,End Year
+properties.endOn.description,The year the education ended.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,year
+properties.endOn.oneOf.pattern,^([1-9][0-9]*)?[0-9]{4}$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.grade.title,Grade
+properties.grade.description,A measurement of the grades received.
+properties.grade.type,string
+properties.recognitions.title,Recognition
+properties.recognitions.description,The academic recognitions received.
+properties.recognitions.type,array
+properties.recognitions.items.type,object
+properties.recognitions.items.properties.name.title,Name
+properties.recognitions.items.properties.name.description,The name of the academic recognition.
+properties.recognitions.items.properties.name.type,string
+properties.recognitions.items.properties.name.minLength,1
+properties.recognitions.items.properties.detail.title,Detail
+properties.recognitions.items.properties.detail.description,Detailed academic recognition information, if available from the authoritative source..
+properties.recognitions.items.properties.detail.type,object
+properties.recognitions.items.properties.detail.properties.id.title,ID
+properties.recognitions.items.properties.detail.properties.id.description,The global identifier for Detail
+properties.recognitions.items.properties.detail.properties.id.type,string
+properties.recognitions.items.properties.detail.properties.id.format,guid
+properties.recognitions.items.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.recognitions.items.properties.detail.links.rel,self
+properties.recognitions.items.properties.detail.links.href,/academic-honors/{id}
+properties.recognitions.items.properties.detail.links.targetSchema.$ref,academic-honors.json#
+properties.recognitions.items.properties.detail.additionalProperties,false
+properties.recognitions.items.properties.detail.required,id
+properties.recognitions.items.additionalProperties,false
+properties.recognitions.items.required,name
+properties.thesis.title,Thesis/Dissertation
+properties.thesis.description,The title of a thesis or dissertation.
+properties.thesis.type,string
+required,id;person;organization
+additionalProperties,false

@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HeDM API</title>
+    
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/bootstrap-toggle.min.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/github.min.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/jsondiffpatch.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/main.css">
+    <!--
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/ellucian.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/ellucian-light.css">
+    -->
+    
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jquery-migrate.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jquery-ui.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jquery.tipsy.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/d3.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/dagre-d3.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/CollapsibleLists.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/epiceditor.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/bootstrap-toggle.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/highlight.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jsondiffpatch.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jsondiffpatch-formatters.min.js"></script>
+    
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/applyMdTables.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/hedm-graph.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/dropdown.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/search-bar.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/stickytabs.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/resize.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/quickstart.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/navbar.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/standardsnav.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/hljs.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/leftnav.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/initepiceditor.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/toggleDiff.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/search-buttons.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/toggleAdmin.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/toggleAllProperties.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/collapsibleLists.js"></script>
+    
+    
+    <link rel="stylesheet" href="./node_modules/mocha/mocha.css">
+	<style type="text/css">
+	  #navbar, #content, #header, #page {
+	    display: none;
+	  }
+	</style>
+  </head>
+  <body>
+    <div id="page" class="container-fluid">
+      <div id="header" class="row">
+        <div id="header-title" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <h1 class="logo float-left m-hide ta-hide tb1 da1 db1">
+            <a href="/Presentation2/">Ellucian</a>
+          </h1>
+        </div>
+        <div id="docVersion" class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Version: Presentation2
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+      	  <li><a href="/1.0">1.0</a></li>
+      <li><a href="/1.0.1">1.0.1</a></li>
+      <li><a href="/1.0.2">1.0.2</a></li>
+      <li><a href="/2.0">2.0</a></li>
+      <li><a href="/2.0.1">2.0.1</a></li>
+      <li><a href="/2.0.2">2.0.2</a></li>
+      <li><a href="/Presentation2">Presentation2</a></li>
+      <li><a href="/migrated">migrated</a></li>
+      <li><a href="/premigration-done">premigration-done</a></li>
+      <li><a href="/presentation1">presentation1</a></li>
+      <li><a href="/v0.1">v0.1</a></li>
+      
+              </ul>
+        </div>
+      </div>
+      <div id="main" class="row">
+	<div id="navbar" class="slideInLeft col-lg-3 col-md-3 col-sm-12 col-xs-12">
+	  <div id="nav-header" class="row">
+	    <!--
+	    <div class="navSlider collapse">&#9664;</div>
+	    -->
+	    <div id="entity-search" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+	      <div class="row">
+	        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-md-6">
+	         <h2>Entities</h2>
+	        </div>
+	      </div>
+	      <form id="navbar-search" class="input-group" action="#" onsubmit="return tryJump(event);">
+		<input id="searchbar" type="text" aria-label="Search for and entity" placeholder="Search for entities" class="form-control search" onKeyUp="return tryJump(event);">
+		
+		<span class="input-group-btn">
+	
+		  <button class="btn btn-default" type="button" aria-label="search for entity submit" id="searchButton" onclick="return tryJump(enterEvent());">
+	
+		    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+		  </button>
+		</span>
+	      </form>
+	      <form id="search-attr-form" class="input-group" action="#" onsubmit="return trySearch(event);">
+	        <input id="searchbar-attr" type="text" aria-label="Filter by attributes" placeholder="Filter by attribute" class="form-control search" onKeyUp="return trySearch(event);">
+		<span class="input-group-btn">
+		  <button class="btn btn-default" type="button" aria-label="filter by attributes submit" id="filterButton" onclick="return trySearch(enterEvent());">
+		    <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+		  </button>
+		</span>
+	      </form>
+	       <!-- Button trigger modal -->
+	    <div id="modalBtnDiv" class="row">
+	      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+	       <!--  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	          ?
+	        </button> -->
+	      </div>
+	    </div>
+	    </div>
+	     
+	  </div>
+	 <div id="scroll" class="row">
+	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+	      <ul class="nav">
+	      <li>
+	        <a id="academic-catalogs" href="/Presentation2/docs/academic-catalogs/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Catalogs
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-credentials" href="/Presentation2/docs/academic-credentials/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Credentials
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-disciplines" href="/Presentation2/docs/academic-disciplines/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Disciplines
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-histories" href="/Presentation2/docs/academic-histories/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Histories
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-honors" href="/Presentation2/docs/academic-honors/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Honors
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-levels" href="/Presentation2/docs/academic-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-periods" href="/Presentation2/docs/academic-periods/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Periods
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-program-enrollments" href="/Presentation2/docs/academic-program-enrollments/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Program Enrollments
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-programs" href="/Presentation2/docs/academic-programs/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Programs
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="account-components" href="/Presentation2/docs/account-components/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Account Components
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="accounting-transaction-types" href="/Presentation2/docs/accounting-transaction-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Accounting Transaction Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="administrative-periods" href="/Presentation2/docs/administrative-periods/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Administrative Periods
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="api-links" href="/Presentation2/docs/api-links/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Api Links
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="appeal-purposes" href="/Presentation2/docs/appeal-purposes/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Appeal Purposes
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="appeal-types" href="/Presentation2/docs/appeal-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Appeal Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="appeals" href="/Presentation2/docs/appeals/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Appeals
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="areas-of-giving" href="/Presentation2/docs/areas-of-giving/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Areas Of Giving
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="asset-states" href="/Presentation2/docs/asset-states/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Asset States
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="asset-types" href="/Presentation2/docs/asset-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Asset Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="buildings" href="/Presentation2/docs/buildings/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Buildings
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="campaign-categories" href="/Presentation2/docs/campaign-categories/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Campaign Categories
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="campaign-types" href="/Presentation2/docs/campaign-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Campaign Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="campaigns" href="/Presentation2/docs/campaigns/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Campaigns
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="citizenship-statuses" href="/Presentation2/docs/citizenship-statuses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Citizenship Statuses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="comments" href="/Presentation2/docs/comments/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Comments
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="compensation-levels" href="/Presentation2/docs/compensation-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Compensation Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="confidence-levels" href="/Presentation2/docs/confidence-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Confidence Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituent-activities" href="/Presentation2/docs/constituent-activities/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituent Activities
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituent-activity-categories" href="/Presentation2/docs/constituent-activity-categories/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituent Activity Categories
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituent-activity-types" href="/Presentation2/docs/constituent-activity-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituent Activity Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituent-donation-interests" href="/Presentation2/docs/constituent-donation-interests/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituent Donation Interests
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituent-participation-types" href="/Presentation2/docs/constituent-participation-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituent Participation Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituent-types" href="/Presentation2/docs/constituent-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituent Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituents" href="/Presentation2/docs/constituents/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituents
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="countries" href="/Presentation2/docs/countries/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Countries
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="course-levels" href="/Presentation2/docs/course-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Course Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="courses" href="/Presentation2/docs/courses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Courses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="credit-categories" href="/Presentation2/docs/credit-categories/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Credit Categories
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="deposit-types" href="/Presentation2/docs/deposit-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Deposit Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="designation-purposes" href="/Presentation2/docs/designation-purposes/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Designation Purposes
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="designation-restrictions" href="/Presentation2/docs/designation-restrictions/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Designation Restrictions
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="designation-types" href="/Presentation2/docs/designation-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Designation Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="designations" href="/Presentation2/docs/designations/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Designations
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donation-credit-types" href="/Presentation2/docs/donation-credit-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donation Credit Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donation-promises" href="/Presentation2/docs/donation-promises/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donation Promises
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donation-types" href="/Presentation2/docs/donation-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donation Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donations" href="/Presentation2/docs/donations/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donations
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donations-summary" href="/Presentation2/docs/donations-summary/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donations Summary
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donor-association-types" href="/Presentation2/docs/donor-association-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donor Association Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donor-societies" href="/Presentation2/docs/donor-societies/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donor Societies
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donor-society-levels" href="/Presentation2/docs/donor-society-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donor Society Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donor-society-memberships" href="/Presentation2/docs/donor-society-memberships/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donor Society Memberships
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="email-types" href="/Presentation2/docs/email-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Email Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="employment-histories" href="/Presentation2/docs/employment-histories/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Employment Histories
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="employment-position-levels" href="/Presentation2/docs/employment-position-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Employment Position Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="employment-termination-reasons" href="/Presentation2/docs/employment-termination-reasons/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Employment Termination Reasons
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="employment-types" href="/Presentation2/docs/employment-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Employment Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="enrollment-statuses" href="/Presentation2/docs/enrollment-statuses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Enrollment Statuses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="errors" href="/Presentation2/docs/errors/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Errors
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="ethnicities" href="/Presentation2/docs/ethnicities/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Ethnicities
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="external-donations" href="/Presentation2/docs/external-donations/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            External Donations
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="financial-aid-funds" href="/Presentation2/docs/financial-aid-funds/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Financial Aid Funds
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="general-ledger-transactions" href="/Presentation2/docs/general-ledger-transactions/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            General Ledger Transactions
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="geographic-area-types" href="/Presentation2/docs/geographic-area-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Geographic Area Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="geographic-areas" href="/Presentation2/docs/geographic-areas/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Geographic Areas
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="giving-capacity-ranges" href="/Presentation2/docs/giving-capacity-ranges/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Giving Capacity Ranges
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="grade-change-reasons" href="/Presentation2/docs/grade-change-reasons/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Grade Change Reasons
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="grade-scheme-items" href="/Presentation2/docs/grade-scheme-items/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Grade Scheme Items
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="grade-scheme-items-maximum" href="/Presentation2/docs/grade-scheme-items-maximum/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Grade Scheme Items Maximum
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="grade-schemes" href="/Presentation2/docs/grade-schemes/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Grade Schemes
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="instructional-event-instances" href="/Presentation2/docs/instructional-event-instances/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Instructional Event Instances
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="instructional-events" href="/Presentation2/docs/instructional-events/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Instructional Events
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="instructional-methods" href="/Presentation2/docs/instructional-methods/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Instructional Methods
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="instructional-platforms" href="/Presentation2/docs/instructional-platforms/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Instructional Platforms
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="interest-areas" href="/Presentation2/docs/interest-areas/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Interest Areas
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="interest-levels" href="/Presentation2/docs/interest-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Interest Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="interest-purposes" href="/Presentation2/docs/interest-purposes/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Interest Purposes
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="interest-types" href="/Presentation2/docs/interest-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Interest Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="location-types" href="/Presentation2/docs/location-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Location Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="mailing-labels" href="/Presentation2/docs/mailing-labels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Mailing Labels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="marital-statuses" href="/Presentation2/docs/marital-statuses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Marital Statuses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="organization-size-levels" href="/Presentation2/docs/organization-size-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Organization Size Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="organizations" href="/Presentation2/docs/organizations/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Organizations
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="payment-methods" href="/Presentation2/docs/payment-methods/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Payment Methods
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="payroll-deduction-requests" href="/Presentation2/docs/payroll-deduction-requests/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Payroll Deduction Requests
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="person-filters" href="/Presentation2/docs/person-filters/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Person Filters
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="person-groups" href="/Presentation2/docs/person-groups/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Person Groups
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="person-name-types" href="/Presentation2/docs/person-name-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Person Name Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="person-names" href="/Presentation2/docs/person-names/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Person Names
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="personal-relationship-types" href="/Presentation2/docs/personal-relationship-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Personal Relationship Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="personal-relationships" href="/Presentation2/docs/personal-relationships/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Personal Relationships
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="persons" href="/Presentation2/docs/persons/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Persons
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="phone-types" href="/Presentation2/docs/phone-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Phone Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="places" href="/Presentation2/docs/places/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Places
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="privacy-statuses" href="/Presentation2/docs/privacy-statuses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Privacy Statuses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="proposal-purposes" href="/Presentation2/docs/proposal-purposes/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Proposal Purposes
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="proposal-states" href="/Presentation2/docs/proposal-states/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Proposal States
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="proposals" href="/Presentation2/docs/proposals/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Proposals
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="prospects" href="/Presentation2/docs/prospects/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Prospects
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="races" href="/Presentation2/docs/races/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Races
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="restriction-types" href="/Presentation2/docs/restriction-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Restriction Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="roles" href="/Presentation2/docs/roles/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Roles
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="room-types" href="/Presentation2/docs/room-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Room Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="rooms" href="/Presentation2/docs/rooms/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Rooms
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="rooms-minimum" href="/Presentation2/docs/rooms-minimum/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Rooms Minimum
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="rooms_room-availability" href="/Presentation2/docs/rooms_room-availability/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Rooms_room Availability
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="screening-target-types" href="/Presentation2/docs/screening-target-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Screening Target Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="section-grade-types" href="/Presentation2/docs/section-grade-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Section Grade Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="section-grades" href="/Presentation2/docs/section-grades/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Section Grades
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="section-registration-statuses" href="/Presentation2/docs/section-registration-statuses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Section Registration Statuses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="section-registrations" href="/Presentation2/docs/section-registrations/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Section Registrations
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="sections" href="/Presentation2/docs/sections/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Sections
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="sections-maximum" href="/Presentation2/docs/sections-maximum/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Sections Maximum
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="sites" href="/Presentation2/docs/sites/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Sites
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="social-media" href="/Presentation2/docs/social-media/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Social Media
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="social-media-types" href="/Presentation2/docs/social-media-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Social Media Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="source-contexts" href="/Presentation2/docs/source-contexts/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Source Contexts
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="sources" href="/Presentation2/docs/sources/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Sources
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="subjects" href="/Presentation2/docs/subjects/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Subjects
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="visa-types" href="/Presentation2/docs/visa-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Visa Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="wealth-assessment-metrics" href="/Presentation2/docs/wealth-assessment-metrics/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Wealth Assessment Metrics
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="wealth-assessment-statuses" href="/Presentation2/docs/wealth-assessment-statuses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Wealth Assessment Statuses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="wealth-assessments" href="/Presentation2/docs/wealth-assessments/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Wealth Assessments
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="wealth-information-types" href="/Presentation2/docs/wealth-information-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Wealth Information Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="wealth-ranges" href="/Presentation2/docs/wealth-ranges/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Wealth Ranges
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="wealth-screening-profiles" href="/Presentation2/docs/wealth-screening-profiles/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Wealth Screening Profiles
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	        </ul>
+	    </div>
+	  </div>
+	</div>
+	<div id="content" class="col-lg-9">
+	  <div class="row">
+	    <div class="col-lg-12">
+	      <h1>REST API</h1>
+	      <p> The REST APIs provide programmatic access to read and write Twitter data. Author a new Tweet, read author profile and follower data, and more. The REST API identifies Twitter applications and users using OAuth; responses are available in JSON.
+		
+		If your intention is to monitor or process Tweets in real-time, consider using the Streaming API instead.</p>
+	    </div>
+	  </div>	  
+	  <div class="row" id="content-area">
+	    <div class="col-lg-12">
+	      <div class="row">
+		<div id="standards" class="col-lg-12">
+		  <h1>Overview of Standards</h1>
+		  <div class="row"> 
+		    <div class="col-lg-3">
+		      <ul id="standards-nav" class="nav nav-pills nav-stacked">
+			<li role="presentation" class="active"><a href="#">Requiredness</a></li>
+			<li role="presentation"><a href="#"> Filtering </a></li>
+			<li role="presentation"><a href="#">Error Handling</a></li>
+			<li role="presentation"><a href="#">Partial Updates</a></li>
+			<li role="presentation"><a href="#">Functional API</a></li>
+			<li role="presentation"><a href="#">Optimistic Locking</a></li>
+			<li role="presentation"><a href="#">Deleted Data</a></li>
+			<li role="presentation"><a href="#">Users/Permissions</a></li>
+			<li role="presentation"><a href="#">High/Med/Low Data</a></li>
+		      </ul>
+
+		    </div>
+		    <div id="standards-content" class="col-lg-8">
+		      <div id="requiredness">
+		  	<h4>Using HeDM on the Ellucian Hub</h4>
+		  	<p>While there are many conceptual similarities between our products, there is a lot of variation in how things are named and organized. What is required by Banner may not be required by Colleague - and may not even be a concept at all in Recruiter or Elevate.  The following are some best practices for using HeDM in these scenarios.</p>
+
+		  	<p>Interaction between systems is done through the Ellucian Hub, which uses a Publisher/Subscriber model. </p>
+		  	<ul>
+		  	  <li>Publishers:</li>
+		  	  <ul>
+		  	    <li>Are authoritative for specific HEDM entities. </li>
+		  	    <li>Persist or provide defaults for the full HEDM model, all properties. </li>
+		  	    <li>Have exclusive permission to create, update, and delete.</li>
+		  	  </ul>
+		  	</ul>
+
+		  	<ul>
+		  	  <li>Subscribers: </li>
+		  	  <ul>
+		  	    <li>If <i>syncing</i>, subscribers are keeping a copy of published data. </li>
+		  	    <li>If <i>consuming</i>, subscribers are reading published data. </li>
+		  	    <li>No subscribers are authoritative, they only have permission to read.</li>
+		  	  </ul>
+		  	</ul>
+		      </div>
+		      <div id="filtering">
+		  	<p>When requesting a list of matching entities via the API (e.g., /persons?[query-string], the following properties are required to be allowed in query strings.  The format of the query-string must follow the <a href = "https://github.com/restfulapi/api-strategy#support-querying">API Strategy Guide</a>, and use the "unstructured", name=value form.</p>
+
+		  	<p>The JSON Schema for each entity listed here must provide a JSON Hyper-Schema link named "filter" that documents the allowed submission query parameters.</p>
+
+		  	<p>The response to all filter queries is an array of objects containing a "guid" property of all matching entities, or an empty array if there are no matching results.</p>
+		  	<ul>
+		  	  <li>Person</li>
+			  <ul>
+			    <li> Name (Support filtering on all name fields)</li>
+			    <li> Roles</li>
+			    <li> Credentials - Banner ID, Banner Sourced ID, Banner User Name, Banner UDC ID</li>
+			    <li> EmailType and EmailAddress </li>
+			    <li> Filter based on Population Selection</li>
+			  </ul>
+			  <ul>
+			    <li>Course</li>
+			    <ul>
+			      <li> Subject and Number</li>
+			      <li> academicLevels</li>
+			      <li> owningOrganizations (College, Department)</li>
+			      <li> Title </li>
+			      <li> instructionalMethods</li>
+			      <li> Credit</li>
+			      <li> effectiveStartDate </li>
+			      <li> effectiveEndDate</li>
+			    </ul>
+			  </ul>
+			  <ul>
+			    <li>Section</li>
+			    <ul>
+			      <li> Title</li>
+			      <li> startDate</li>
+			      <li> End Date</li>
+			      <li> Code </li>
+			      <li> Number</li>
+			      <li> instructionalPlatform</li>
+			      <li> academicPeriod </li>
+			      <li> course (filter all sections for a given course guid)</li>
+			      <li> site</li>
+			      <li> academicLevels</li>
+			      <li> status</li>
+			      <li> owningOrganizations </li>
+			      <li> integrationpartner (ILP requirement but not yet added to v2 HeDM)</li>
+			    </ul>
+			  </ul>
+			  <ul>
+			    <li>Instructional-events</li>
+			    <ul>
+			      <li> Section (filter all instructional-events for a section)</li>
+			      <li> startDate</li>
+			      <li> End Date</li>
+			      <li> Location.Room</li>
+			      <li> instructorRoster.instructor</li>
+			      <li> Paging</li>
+			    </ul>
+			  </ul>
+		      </div>
+		      <div id="error-handling">
+		  	<h1>Nothing Here</h1>
+		      </div>
+		      <div id="partial-updates">
+		  	<p>Regarding partial updates in HEDM APIs:</p>
+		  	<p>Systems must support partial updates regarding optional HEDM defined fields in PUT operations at this time.  This means, when processing a PUT operation, only those fields present in the request JSON content body should be updated(or removed) from the resource.  Systems are not required to implement the HTTP PATCH verb at this time.  Note that this caveat is noted in the Ellucian restful API strategy:</p>
+		  	<p>"Note: 'PUT' may, in the future, be replaced with 'PATCH' as 'PUT' is actually intended to replace the resource based upon the new content whereby 'PATCH' is intended to 'update' the existing resource with new content. REST APIs should use 'PUT' with 'PATCH' semantics until PATCH is more broadly supported."</p>
+		  	<p>To further clarify, this means that HEDM API behavior on PUT should be to overlay the fields provided in the request over the existing resource only changing fields which were actually provided in the original web request body.  We handle any property present in the content body and use NULL(or empty string for string literals) to note the removal or deletion of a value/associated object.  This behavior is still compatible with full representations where all HEDM fields are provided, although does not wipe out fields unmentioned in the content body like HTTP PUT specification dictates.</p>
+		  	<p>We will revisit this standard once HTTP PATCH becomes more widely supported in the REST API industry as well as within commonly used client and server framework SDK versions.</p>
+		  	<p>Things needing consideration when revisiting this standard from an HEDM prospective:</p>
+		  	<p>Change events by BEP/EDX must identify between updates and creation of a new resource.  (An insert of an address is not the creation of a new person.  Also the insert of a new name record and update invalidating an old name record for audit history is not the creation of a new person)</p>
+		  	<p>Update content bodies will need to be generated by the ERP adapter off of the event as no restful-api in the source system will build this differential JSON formatted message.</p>
+		      </div>
+		      <div id="functional-api">
+		  	<p>Each implementer of the HEDM models in a restful API should provide their own data dictionary for clients. </p>
+		  	<p>All HEDM models will be centrally documented on the XE Registry where Banner and Colleague API resides.</p>
+		  	<p>HEDM defines the schema which describes the type and whether required for each field in the HEDM model. Also has example responses for each endpoint.</p>
+		  	<p>Filterable fields are defined in the links section of the response schema.</p>
+		  	<p>Special query requests sent via POST through QAPI need their own schema.</p>
+		  	<p>In order to differentiate different special requests on the same HEDM resource, the Content-Type must be provided which explicitly defines the request type sent and which schema the request body should be validated against.  This allows for each special request to have it's own schema with it's own required and optional properties defined.</p>
+		  	<p>For persons when duplicate checking the schema is the same as the normal person schema.  However, when requesting a saved person list (person-filter) a required property named person-filter is required of type string and format guid.</p>
+		  	<p>This allows us to have multiple different special requests that return standard HEDM resources from the standard HEDM endpoint for that resource.</p>
+		  	<p>Special request suggested naming:</p>
+		  	<table class='table table-stiped'>
+		  	  <tr>
+		  	    <th>Media Type</th>
+		  	    <th>Schema file</th>
+		  	    <th>Resource being called</th>
+		  	  </tr>
+		  	  <tr>
+		  	    <td>application/vnd.hedtech.integration.duplicate-check.v1+json </td>
+		  	    <td>persons_duplicate-check.json </td>
+		  	    <td>/persons </td>
+		  	  </tr>
+		  	  <tr>
+		  	    <td>application/vnd.hedtech.integration.person-filter.v1+json </td>
+		  	    <td>persons_person-filter.json	 </td>
+		  	    <td>/persons </td>
+		  	  </tr>
+		  	  <tr>
+		  	    <td>application/vnd.hedtech.integration.room-availability.v1+json </td>
+		  	    <td>rooms_room-availability.json</td>
+		  	    <td>/rooms </td>
+		  	  </tr>
+		  	</table>
+		  	<p>Responses also may have extended or minimal representations.</p>
+		  	<table class='table table-stiped'>
+		  	  <tr>
+		  	    <th>Media Type</th>
+		  	    <th>Schema file</th>
+		  	    <th>Resource being called</th>
+		  	  </tr>
+		  	  <tr>
+		  	    <td>application/vnd.hedtech.integration.maximum.v1+json </td>
+		  	    <td>sections_maximum.json </td>
+		  	    <td>/sections </td>
+		  	  </tr>
+		  	  <tr>
+		  	    <td>application/vnd.hedtech.integration.minimum.v1+json </td>
+		  	    <td>sections_minimum.json </td>
+		  	    <td>/sections </td>
+		  	  </tr>
+		  	</table>
+		      </div>
+		      <div id="optimistic-locking">
+		  	<h1> Nothing here</h1>
+		      </div>
+		      <div id="deleted-data">
+		  	<h1> Nothing here</h1>
+		      </div>
+		      <div id="users-permissions">
+		  	<h1> Nothing here</h1>
+		      </div>
+		      <div id="high-med-low-data">
+		  	<p>After discussion with AR architects, we've come to the conclusion that we should move forward with the strategy of supporting these three basic representation levels, and expand upon if absolutely necessary in the future. We will define them as the needs are identified and not define them in advance to avoid a large number of schemas in total.</p>
+		  	<p> schemas/sections-minimum.json<br>Accept: application/vnd.hedtech.integration.minimum+json</p>
+		  	<p>	schemas/sections-maximum.json <br> Accept: application/vnd.hedtech.integration.maximum+json</p>
+		  	<p>schemas/sections.json <br> Accept: application/vnd.hedtech.integration+json</p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+
+    </div>
+    <div id="mocha"></div>
+	<script src="./node_modules/mocha/mocha.js"></script>
+	<script src="./node_modules/chai/chai.js"></script>
+	<script>
+	    mocha.ui('bdd'); 
+	    mocha.reporter('html');
+	</script>
+	<script src="./test.js"></script>
+	<script>
+	    mocha.run();
+	</script>
+  </body>
+</html>

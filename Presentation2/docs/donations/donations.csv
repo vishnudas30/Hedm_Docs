@@ -1,0 +1,383 @@
+title,Donation
+description,A donation made to an institution
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A globally unique identifier of a donation
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.code.title,Code
+properties.code.description,A human readable reference code to identify a particular donation
+properties.code.type,string
+properties.donorAllocations.title,Donor Allocation
+properties.donorAllocations.description,Allocation of the donation between donors and designations
+properties.donorAllocations.type,array
+properties.donorAllocations.items.type,object
+properties.donorAllocations.items.properties.donor.title,Donor
+properties.donorAllocations.items.properties.donor.description,
+properties.donorAllocations.items.properties.donor.oneOf.title,Individual Donor
+properties.donorAllocations.items.properties.donor.oneOf.description,A person who is making, or contributing towards, a donation
+properties.donorAllocations.items.properties.donor.oneOf.type,object
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.title,Person
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.description,A human being or other independent agent
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.type,object
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.properties.id.title,ID
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.properties.id.description,The global identifier for Person
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.properties.id.type,string
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.properties.id.format,guid
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.links.rel,self
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.links.href,/persons/{id}
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.links.targetSchema.$ref,persons.json#
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.additionalProperties,false
+properties.donorAllocations.items.properties.donor.oneOf.properties.person.required,id
+properties.donorAllocations.items.properties.donor.oneOf.additionalProperties,false
+properties.donorAllocations.items.properties.donor.oneOf.required,person
+properties.donorAllocations.items.properties.donor.oneOf.title,Organization
+properties.donorAllocations.items.properties.donor.oneOf.description,An organization that is making, or contributing towards, a donation
+properties.donorAllocations.items.properties.donor.oneOf.type,object
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.title,Organization
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.description,A commercial, non-profit, political or religious organization
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.type,object
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.properties.id.title,ID
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.properties.id.description,The global identifier for Organization
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.properties.id.type,string
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.properties.id.format,guid
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.links.rel,self
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.links.href,/organizations/{id}
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.links.targetSchema.$ref,organizations.json#
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.additionalProperties,false
+properties.donorAllocations.items.properties.donor.oneOf.properties.organization.required,id
+properties.donorAllocations.items.properties.donor.oneOf.additionalProperties,false
+properties.donorAllocations.items.properties.donor.oneOf.required,organization
+properties.donorAllocations.items.properties.classYear.title,Class Year
+properties.donorAllocations.items.properties.classYear.description,Preferred class (graduation) year specified for the donor
+properties.donorAllocations.items.properties.classYear.oneOf.type,string
+properties.donorAllocations.items.properties.classYear.oneOf.format,year
+properties.donorAllocations.items.properties.classYear.oneOf.pattern,^([1-9][0-9]*)?[0-9]{4}$
+properties.donorAllocations.items.properties.classYear.oneOf.type,string
+properties.donorAllocations.items.properties.classYear.oneOf.maxLength,
+properties.donorAllocations.items.properties.campaign.title,Campaign
+properties.donorAllocations.items.properties.campaign.description,A fundraising campaign associated with a donation
+properties.donorAllocations.items.properties.campaign.oneOf.type,object
+properties.donorAllocations.items.properties.campaign.oneOf.properties.id.title,ID
+properties.donorAllocations.items.properties.campaign.oneOf.properties.id.description,The global identifier for Campaign
+properties.donorAllocations.items.properties.campaign.oneOf.properties.id.type,string
+properties.donorAllocations.items.properties.campaign.oneOf.properties.id.format,guid
+properties.donorAllocations.items.properties.campaign.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donorAllocations.items.properties.campaign.oneOf.links.rel,self
+properties.donorAllocations.items.properties.campaign.oneOf.links.href,/campaigns/{id}
+properties.donorAllocations.items.properties.campaign.oneOf.links.targetSchema.$ref,campaigns.json#
+properties.donorAllocations.items.properties.campaign.oneOf.additionalProperties,false
+properties.donorAllocations.items.properties.campaign.oneOf.required,id
+properties.donorAllocations.items.properties.campaign.oneOf.type,object
+properties.donorAllocations.items.properties.campaign.oneOf.maxProperties,
+properties.donorAllocations.items.properties.appeal.title,Appeal
+properties.donorAllocations.items.properties.appeal.description,A fundraising appeal associated with a donation
+properties.donorAllocations.items.properties.appeal.oneOf.type,object
+properties.donorAllocations.items.properties.appeal.oneOf.properties.id.title,ID
+properties.donorAllocations.items.properties.appeal.oneOf.properties.id.description,The global identifier for Appeal
+properties.donorAllocations.items.properties.appeal.oneOf.properties.id.type,string
+properties.donorAllocations.items.properties.appeal.oneOf.properties.id.format,guid
+properties.donorAllocations.items.properties.appeal.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donorAllocations.items.properties.appeal.oneOf.links.rel,self
+properties.donorAllocations.items.properties.appeal.oneOf.links.href,/appeals/{id}
+properties.donorAllocations.items.properties.appeal.oneOf.links.targetSchema.$ref,appeals.json#
+properties.donorAllocations.items.properties.appeal.oneOf.additionalProperties,false
+properties.donorAllocations.items.properties.appeal.oneOf.required,id
+properties.donorAllocations.items.properties.appeal.oneOf.type,object
+properties.donorAllocations.items.properties.appeal.oneOf.maxProperties,
+properties.donorAllocations.items.properties.amount.title,Amount
+properties.donorAllocations.items.properties.amount.description,The amount of the donation to be attributed to a donor
+properties.donorAllocations.items.properties.amount.type,object
+properties.donorAllocations.items.properties.amount.properties.currency.title,currency
+properties.donorAllocations.items.properties.amount.properties.currency.description,
+properties.donorAllocations.items.properties.amount.properties.currency.type,object
+properties.donorAllocations.items.properties.amount.properties.currency.properties.value.title,Value
+properties.donorAllocations.items.properties.amount.properties.currency.properties.value.description,
+properties.donorAllocations.items.properties.amount.properties.currency.properties.value.minimum,
+properties.donorAllocations.items.properties.amount.properties.currency.properties.value.type,number
+properties.donorAllocations.items.properties.amount.properties.currency.properties.value.format,positiveNumber
+properties.donorAllocations.items.properties.amount.properties.currency.properties.currency.title,Currency
+properties.donorAllocations.items.properties.amount.properties.currency.properties.currency.description,
+properties.donorAllocations.items.properties.amount.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.donorAllocations.items.properties.amount.properties.currency.properties.currency.type,string
+properties.donorAllocations.items.properties.amount.properties.currency.additionalProperties,false
+properties.donorAllocations.items.properties.amount.properties.currency.required,value;currency
+properties.donorAllocations.items.properties.amount.additionalProperties,false
+properties.donorAllocations.items.properties.amount.format,currency
+properties.donorAllocations.items.properties.creditType.title,Credit Type
+properties.donorAllocations.items.properties.creditType.description,The type of credit given for the donation. It can be hard (legal) or soft (recognition).
+properties.donorAllocations.items.properties.creditType.oneOf.title,One Of-1
+properties.donorAllocations.items.properties.creditType.oneOf.description,
+properties.donorAllocations.items.properties.creditType.oneOf.type,object
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditType.title,Donation Credit Type
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditType.description,The credit type assigned to a donation
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditType.enum,hard
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditType.type,string
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditTypeReason.title,Credit Type Reason
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditTypeReason.description,The reason for assigning the hard credit type for the donation
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditTypeReason.enum,recognition;legal;other
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditTypeReason.type,string
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.title,Detail
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.description,
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.type,object
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.title,ID
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.type,string
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.format,guid
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.links.rel,self
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.links.href,/donation-credit-types/{id}
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.links.targetSchema.$ref,donation-credit-types.json#
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.additionalProperties,false
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.required,id
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.type,object
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.maxProperties,
+properties.donorAllocations.items.properties.creditType.oneOf.additionalProperties,false
+properties.donorAllocations.items.properties.creditType.oneOf.required,donationCreditType;donationCreditTypeReason
+properties.donorAllocations.items.properties.creditType.oneOf.title,One Of-2
+properties.donorAllocations.items.properties.creditType.oneOf.description,
+properties.donorAllocations.items.properties.creditType.oneOf.type,object
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditType.title,Donation Credit Type
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditType.description,The credit type assigned to a donation
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditType.enum,soft
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditType.type,string
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditTypeReason.title,Credit Type Reason
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditTypeReason.description,The reason for assigning the soft credit type for the donation
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditTypeReason.enum,matching;soft;other
+properties.donorAllocations.items.properties.creditType.oneOf.properties.donationCreditTypeReason.type,string
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.title,Detail
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.description,
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.type,object
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.title,ID
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.type,string
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.format,guid
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.links.rel,self
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.links.href,/donation-credit-types/{id}
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.links.targetSchema.$ref,donation-credit-types.json#
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.additionalProperties,false
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.required,id
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.type,object
+properties.donorAllocations.items.properties.creditType.oneOf.properties.detail.oneOf.maxProperties,
+properties.donorAllocations.items.properties.creditType.oneOf.additionalProperties,false
+properties.donorAllocations.items.properties.creditType.oneOf.required,donationCreditType;donationCreditTypeReason
+properties.donorAllocations.items.properties.designation.title,Designation
+properties.donorAllocations.items.properties.designation.description,The use designated for the donation allocation
+properties.donorAllocations.items.properties.designation.type,object
+properties.donorAllocations.items.properties.designation.properties.id.title,ID
+properties.donorAllocations.items.properties.designation.properties.id.description,The global identifier for Designation
+properties.donorAllocations.items.properties.designation.properties.id.type,string
+properties.donorAllocations.items.properties.designation.properties.id.format,guid
+properties.donorAllocations.items.properties.designation.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donorAllocations.items.properties.designation.links.rel,self
+properties.donorAllocations.items.properties.designation.links.href,/designations/{id}
+properties.donorAllocations.items.properties.designation.links.targetSchema.$ref,designations.json#
+properties.donorAllocations.items.properties.designation.additionalProperties,false
+properties.donorAllocations.items.properties.designation.required,id
+properties.donorAllocations.items.properties.donorAssociationType.title,Donor Association Type
+properties.donorAllocations.items.properties.donorAssociationType.description,The association between the donor and the donation. For example, a donor can be primary or 'in memory of', with regard to a donation.
+properties.donorAllocations.items.properties.donorAssociationType.type,object
+properties.donorAllocations.items.properties.donorAssociationType.properties.id.title,ID
+properties.donorAllocations.items.properties.donorAssociationType.properties.id.description,The global identifier for Donor Association Type
+properties.donorAllocations.items.properties.donorAssociationType.properties.id.type,string
+properties.donorAllocations.items.properties.donorAssociationType.properties.id.format,guid
+properties.donorAllocations.items.properties.donorAssociationType.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donorAllocations.items.properties.donorAssociationType.links.rel,self
+properties.donorAllocations.items.properties.donorAssociationType.links.href,/donor-association-types/{id}
+properties.donorAllocations.items.properties.donorAssociationType.links.targetSchema.$ref,donor-association-types.json#
+properties.donorAllocations.items.properties.donorAssociationType.additionalProperties,false
+properties.donorAllocations.items.properties.donorAssociationType.required,id
+properties.donorAllocations.items.properties.constituentType.title,Constituent Type
+properties.donorAllocations.items.properties.constituentType.description,The constituent type assigned to a donor. It allows classification and grouping of donors.
+properties.donorAllocations.items.properties.constituentType.oneOf.type,object
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.vseSource.title,VSE Source
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.vseSource.description,The source category from the Voluntary Support for Education (VSE) survey, maintainded by the Council for Aid to Education (CAE)
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.vseSource.enum,alumni;parent;otherIndividual;foundation;corporation;religious;consortia;otherOrganization
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.vseSource.type,string
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.title,Detail
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.description,
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.type,object
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.properties.id.title,ID
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.properties.id.type,string
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.properties.id.format,guid
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.links.rel,self
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.links.href,/constituent-types/{id}
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.links.targetSchema.$ref,constituent-types.json#
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.additionalProperties,false
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.required,id
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.type,object
+properties.donorAllocations.items.properties.constituentType.oneOf.properties.detail.oneOf.maxProperties,
+properties.donorAllocations.items.properties.constituentType.oneOf.additionalProperties,false
+properties.donorAllocations.items.properties.constituentType.oneOf.required,vseSource
+properties.donorAllocations.items.properties.constituentType.oneOf.type,object
+properties.donorAllocations.items.properties.constituentType.oneOf.maxProperties,
+properties.donorAllocations.items.additionalProperties,false
+properties.donorAllocations.items.required,donor;amount;creditType;designation;donorAssociationType
+properties.payments.title,Payment
+properties.payments.description,Payments made towards a donation
+properties.payments.type,array
+properties.payments.items.type,object
+properties.payments.items.properties.payor.title,Payor
+properties.payments.items.properties.payor.description,
+properties.payments.items.properties.payor.oneOf.title,Person
+properties.payments.items.properties.payor.oneOf.description,A person who made a payment towards a donation
+properties.payments.items.properties.payor.oneOf.type,object
+properties.payments.items.properties.payor.oneOf.properties.person.title,Person
+properties.payments.items.properties.payor.oneOf.properties.person.description,A human being or other independent agent
+properties.payments.items.properties.payor.oneOf.properties.person.type,object
+properties.payments.items.properties.payor.oneOf.properties.person.properties.id.title,ID
+properties.payments.items.properties.payor.oneOf.properties.person.properties.id.description,The global identifier for Person
+properties.payments.items.properties.payor.oneOf.properties.person.properties.id.type,string
+properties.payments.items.properties.payor.oneOf.properties.person.properties.id.format,guid
+properties.payments.items.properties.payor.oneOf.properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.payments.items.properties.payor.oneOf.properties.person.links.rel,self
+properties.payments.items.properties.payor.oneOf.properties.person.links.href,/persons/{id}
+properties.payments.items.properties.payor.oneOf.properties.person.links.targetSchema.$ref,persons.json#
+properties.payments.items.properties.payor.oneOf.properties.person.additionalProperties,false
+properties.payments.items.properties.payor.oneOf.properties.person.required,id
+properties.payments.items.properties.payor.oneOf.additionalProperties,false
+properties.payments.items.properties.payor.oneOf.required,person
+properties.payments.items.properties.payor.oneOf.title,Organization
+properties.payments.items.properties.payor.oneOf.description,An organization that made a payment towards a donation
+properties.payments.items.properties.payor.oneOf.type,object
+properties.payments.items.properties.payor.oneOf.properties.organization.title,Organization
+properties.payments.items.properties.payor.oneOf.properties.organization.description,A commercial, non-profit, political or religious organization
+properties.payments.items.properties.payor.oneOf.properties.organization.type,object
+properties.payments.items.properties.payor.oneOf.properties.organization.properties.id.title,ID
+properties.payments.items.properties.payor.oneOf.properties.organization.properties.id.description,The global identifier for Organization
+properties.payments.items.properties.payor.oneOf.properties.organization.properties.id.type,string
+properties.payments.items.properties.payor.oneOf.properties.organization.properties.id.format,guid
+properties.payments.items.properties.payor.oneOf.properties.organization.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.payments.items.properties.payor.oneOf.properties.organization.links.rel,self
+properties.payments.items.properties.payor.oneOf.properties.organization.links.href,/organizations/{id}
+properties.payments.items.properties.payor.oneOf.properties.organization.links.targetSchema.$ref,organizations.json#
+properties.payments.items.properties.payor.oneOf.properties.organization.additionalProperties,false
+properties.payments.items.properties.payor.oneOf.properties.organization.required,id
+properties.payments.items.properties.payor.oneOf.additionalProperties,false
+properties.payments.items.properties.payor.oneOf.required,organization
+properties.payments.items.properties.amount.title,Amount
+properties.payments.items.properties.amount.description,The amount of a payment towards a donation
+properties.payments.items.properties.amount.type,object
+properties.payments.items.properties.amount.properties.currency.title,currency
+properties.payments.items.properties.amount.properties.currency.description,
+properties.payments.items.properties.amount.properties.currency.type,object
+properties.payments.items.properties.amount.properties.currency.properties.value.title,Value
+properties.payments.items.properties.amount.properties.currency.properties.value.description,
+properties.payments.items.properties.amount.properties.currency.properties.value.minimum,
+properties.payments.items.properties.amount.properties.currency.properties.value.type,number
+properties.payments.items.properties.amount.properties.currency.properties.value.format,positiveNumber
+properties.payments.items.properties.amount.properties.currency.properties.currency.title,Currency
+properties.payments.items.properties.amount.properties.currency.properties.currency.description,
+properties.payments.items.properties.amount.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.payments.items.properties.amount.properties.currency.properties.currency.type,string
+properties.payments.items.properties.amount.properties.currency.additionalProperties,false
+properties.payments.items.properties.amount.properties.currency.required,value;currency
+properties.payments.items.properties.amount.additionalProperties,false
+properties.payments.items.properties.amount.format,currency
+properties.payments.items.properties.paidOn.title,Paid On Date
+properties.payments.items.properties.paidOn.description,The date when a donation payment was made
+properties.payments.items.properties.paidOn.type,string
+properties.payments.items.properties.paidOn.format,date
+properties.payments.items.properties.paidOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.payments.items.properties.paymentMethod.title,Payment Method
+properties.payments.items.properties.paymentMethod.description,The method used to make a payment
+properties.payments.items.properties.paymentMethod.type,object
+properties.payments.items.properties.paymentMethod.properties.method.title,Method
+properties.payments.items.properties.paymentMethod.properties.method.description,A method of payment
+properties.payments.items.properties.paymentMethod.properties.method.enum,annuity;bequest;cash;check;creditCard;electronicFundsTransfer;moneyOrder;inKind;other
+properties.payments.items.properties.paymentMethod.properties.method.type,string
+properties.payments.items.properties.paymentMethod.properties.detail.title,Detail
+properties.payments.items.properties.paymentMethod.properties.detail.description,
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.type,object
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.properties.id.title,ID
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.properties.id.type,string
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.properties.id.format,guid
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.links.rel,self
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.links.href,/payment-methods/{id}
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.links.targetSchema.$ref,payment-methods.json#
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.additionalProperties,false
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.required,id
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.type,object
+properties.payments.items.properties.paymentMethod.properties.detail.oneOf.maxProperties,
+properties.payments.items.properties.paymentMethod.additionalProperties,false
+properties.payments.items.properties.paymentMethod.required,method
+properties.payments.items.properties.externalReference.title,External Reference
+properties.payments.items.properties.externalReference.description,Reference information about a payment as required based on payment method. Can be a confirmation number, credit card transaction code, or check number.
+properties.payments.items.properties.externalReference.type,string
+properties.payments.items.additionalProperties,false
+properties.payments.items.required,payor;amount;paidOn;paymentMethod
+properties.donationPromiseAllocations.title,Donation Promise Allocation
+properties.donationPromiseAllocations.description,The donation promises (pledge, recurring gift, matching claim) associated with the donation
+properties.donationPromiseAllocations.type,array
+properties.donationPromiseAllocations.items.type,object
+properties.donationPromiseAllocations.items.properties.donationPromise.title,Donation Promise
+properties.donationPromiseAllocations.items.properties.donationPromise.description,
+properties.donationPromiseAllocations.items.properties.donationPromise.type,object
+properties.donationPromiseAllocations.items.properties.donationPromise.properties.id.title,ID
+properties.donationPromiseAllocations.items.properties.donationPromise.properties.id.description,The global identifier for Donation Promise
+properties.donationPromiseAllocations.items.properties.donationPromise.properties.id.type,string
+properties.donationPromiseAllocations.items.properties.donationPromise.properties.id.format,guid
+properties.donationPromiseAllocations.items.properties.donationPromise.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donationPromiseAllocations.items.properties.donationPromise.links.rel,self
+properties.donationPromiseAllocations.items.properties.donationPromise.links.href,/donation-promises/{id}
+properties.donationPromiseAllocations.items.properties.donationPromise.links.targetSchema.$ref,donation-promises.json#
+properties.donationPromiseAllocations.items.properties.donationPromise.additionalProperties,false
+properties.donationPromiseAllocations.items.properties.donationPromise.required,id
+properties.donationPromiseAllocations.items.properties.amount.title,Amount
+properties.donationPromiseAllocations.items.properties.amount.description,The amount of a donation attributed to the donation promise
+properties.donationPromiseAllocations.items.properties.amount.type,object
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.title,currency
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.description,
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.type,object
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.properties.value.title,Value
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.properties.value.description,
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.properties.value.minimum,
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.properties.value.type,number
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.properties.value.format,positiveNumber
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.properties.currency.title,Currency
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.properties.currency.description,
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.properties.currency.type,string
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.additionalProperties,false
+properties.donationPromiseAllocations.items.properties.amount.properties.currency.required,value;currency
+properties.donationPromiseAllocations.items.properties.amount.additionalProperties,false
+properties.donationPromiseAllocations.items.properties.amount.format,currency
+properties.donationPromiseAllocations.items.additionalProperties,false
+properties.donationPromiseAllocations.items.required,donationPromise;amount
+properties.comment.title,Comment
+properties.comment.description,A comment about the donation
+properties.comment.type,string
+required,id;donorAllocations;payments
+additionalProperties,false

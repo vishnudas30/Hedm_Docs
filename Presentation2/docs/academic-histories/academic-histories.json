@@ -1,0 +1,383 @@
+{
+  "title": "Academic History",
+  "description": "A record of a person's academic history.",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "A global identifier of an academic history record.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "description": {
+      "title": "Description",
+      "description": "A full description of an academic history record.",
+      "type": "string"
+    },
+    "person": {
+      "title": "Person",
+      "description": "The person related to the academic history record.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The global identifier for Person",
+          "type": "string",
+          "format": "guid",
+          "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+        }
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "/persons/{id}",
+          "targetSchema": {
+            "$ref": "persons.json#"
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "organization": {
+      "title": "Type",
+      "description": "The organization associated with the academic history record.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "The name of the organization.",
+          "type": "string",
+          "minLength": 1
+        },
+        "detail": {
+          "title": "Detail",
+          "description": "Detailed organization information, if available from the authoritative source.",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier for Detail",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "links": [
+            {
+              "rel": "self",
+              "href": "/organizations/{id}",
+              "targetSchema": {
+                "$ref": "organizations.json#"
+              }
+            }
+          ],
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "credentials": {
+      "title": "Credentials",
+      "description": "The academic credentials associated with the academic history record.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "description": "The name of the credential.",
+            "type": "string",
+            "minLength": 1
+          },
+          "detail": {
+            "title": "Detail",
+            "description": "Detailed credential information, if available from the authoritative source..",
+            "type": "object",
+            "properties": {
+              "id": {
+                "title": "ID",
+                "description": "The global identifier for Detail",
+                "type": "string",
+                "format": "guid",
+                "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+              }
+            },
+            "links": [
+              {
+                "rel": "self",
+                "href": "/academic-credentials/{id}",
+                "targetSchema": {
+                  "$ref": "academic-credentials.json#"
+                }
+              }
+            ],
+            "additionalProperties": false,
+            "required": [
+              "id"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ]
+      }
+    },
+    "disciplines": {
+      "title": "Discipline",
+      "description": "The academic disciplines associated with the academic history record.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "discipline": {
+            "title": "Discipline",
+            "description": "An academic discipline associated with the education history record.",
+            "type": "object",
+            "properties": {
+              "name": {
+                "title": "Name",
+                "description": "The name of the academic discipline.",
+                "type": "string",
+                "minLength": 1
+              },
+              "detail": {
+                "title": "Detail",
+                "description": "Detailed academic discipline information, if available from the authoritative source..",
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "title": "ID",
+                    "description": "The global identifier for Detail",
+                    "type": "string",
+                    "format": "guid",
+                    "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                  }
+                },
+                "links": [
+                  {
+                    "rel": "self",
+                    "href": "/academic-disciplines/{id}",
+                    "targetSchema": {
+                      "$ref": "academic-disciplines.json#"
+                    }
+                  }
+                ],
+                "additionalProperties": false,
+                "required": [
+                  "id"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "name"
+            ]
+          },
+          "subdisciplines": {
+            "title": "Sub-discipline",
+            "description": "An academic discipline which is subordinate to the discipline.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "title": "Name",
+                  "description": "The name of the academic sub-discipline.",
+                  "type": "string",
+                  "minLength": 1
+                },
+                "detail": {
+                  "title": "Detail",
+                  "description": "Detailed academic sub-discipline information, if available from the authoritative source..",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "title": "ID",
+                      "description": "The global identifier for Detail",
+                      "type": "string",
+                      "format": "guid",
+                      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                    }
+                  },
+                  "links": [
+                    {
+                      "rel": "self",
+                      "href": "/academic-disciplines/{id}",
+                      "targetSchema": {
+                        "$ref": "academic-disciplines.json#"
+                      }
+                    }
+                  ],
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "name"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "discipline"
+        ]
+      }
+    },
+    "startOn": {
+      "title": "Start Year",
+      "description": "The year the education started.",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "year",
+          "pattern": "^([1-9][0-9]*)?[0-9]{4}$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "endOn": {
+      "title": "End Year",
+      "description": "The year the education ended.",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "year",
+          "pattern": "^([1-9][0-9]*)?[0-9]{4}$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "grade": {
+      "title": "Grade",
+      "description": "A measurement of the grades received.",
+      "type": "string"
+    },
+    "recognitions": {
+      "title": "Recognition",
+      "description": "The academic recognitions received.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "description": "The name of the academic recognition.",
+            "type": "string",
+            "minLength": 1
+          },
+          "detail": {
+            "title": "Detail",
+            "description": "Detailed academic recognition information, if available from the authoritative source..",
+            "type": "object",
+            "properties": {
+              "id": {
+                "title": "ID",
+                "description": "The global identifier for Detail",
+                "type": "string",
+                "format": "guid",
+                "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+              }
+            },
+            "links": [
+              {
+                "rel": "self",
+                "href": "/academic-honors/{id}",
+                "targetSchema": {
+                  "$ref": "academic-honors.json#"
+                }
+              }
+            ],
+            "additionalProperties": false,
+            "required": [
+              "id"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ]
+      }
+    },
+    "thesis": {
+      "title": "Thesis/Dissertation",
+      "description": "The title of a thesis or dissertation.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "person",
+    "organization"
+  ],
+  "additionalProperties": false
+}

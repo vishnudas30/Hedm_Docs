@@ -1,0 +1,1044 @@
+{
+  "title": "Payroll Deduction Request",
+  "description": "A request to establish a payroll deduction",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "The global identifier of a payroll deduction request",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "person": {
+      "title": "Person",
+      "description": "The person requesting a payroll deduction",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The global identifier for Person",
+          "type": "string",
+          "format": "guid",
+          "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+        }
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "/persons/{id}",
+          "targetSchema": {
+            "$ref": "persons.json#"
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "paymentTarget": {
+      "title": "Payment Target",
+      "description": "The target, towards which payroll deductions are requested",
+      "oneOf": [
+        {
+          "title": "One Of-1",
+          "description": "",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Donation",
+              "description": "",
+              "enum": [
+                "donation"
+              ],
+              "type": "string"
+            },
+            "promise": {
+              "title": "Promise",
+              "description": "Donation promise",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Promise",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/donation-promises/{id}",
+                  "targetSchema": {
+                    "$ref": "donation-promises.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            },
+            "reason": {
+              "title": "Reason",
+              "description": "The reason for a payroll deduction request",
+              "oneOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "donation",
+                    "recurring",
+                    "membership"
+                  ]
+                },
+                {
+                  "type": "string",
+                  "maxLength": 0
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "title": "One Of-2",
+          "description": "",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Deposit",
+              "description": "",
+              "enum": [
+                "deposit"
+              ],
+              "type": "string"
+            },
+            "depositType": {
+              "title": "Deposit Type",
+              "description": "Deposit type",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Deposit Type",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/deposit-types/{id}",
+                  "targetSchema": {
+                    "$ref": "deposit-types.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "status": {
+      "title": "Status",
+      "description": "The status of a payroll deduction request",
+      "enum": [
+        "active",
+        "inactive",
+        "rejected"
+      ],
+      "type": "string"
+    },
+    "amountPerPayment": {
+      "title": "Amount per Payment",
+      "description": "The amount to be deducted per instance",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "title": "currency",
+          "description": "",
+          "type": "object",
+          "properties": {
+            "value": {
+              "title": "Value",
+              "description": "",
+              "minimum": 0,
+              "type": "number",
+              "format": "positiveNumber"
+            },
+            "currency": {
+              "title": "Currency",
+              "description": "",
+              "enum": [
+                "AED",
+                "AFN",
+                "ALL",
+                "AMD",
+                "ANG",
+                "AOA",
+                "ARS",
+                "AUD",
+                "AWG",
+                "AZN",
+                "BAM",
+                "BBD",
+                "BDT",
+                "BGN",
+                "BHD",
+                "BIF",
+                "BMD",
+                "BND",
+                "BOB",
+                "BRL",
+                "BSD",
+                "BTN",
+                "BWP",
+                "BYR",
+                "BZD",
+                "CAD",
+                "CDF",
+                "CHF",
+                "CLP",
+                "CNY",
+                "COP",
+                "CRC",
+                "CUC",
+                "CUP",
+                "CVE",
+                "CZK",
+                "DJF",
+                "DKK",
+                "DOP",
+                "DZD",
+                "EGP",
+                "ERN",
+                "ETB",
+                "EUR",
+                "FJD",
+                "FKP",
+                "GBP",
+                "GEL",
+                "GHS",
+                "GIP",
+                "GMD",
+                "GNF",
+                "GTQ",
+                "GYD",
+                "HKD",
+                "HNL",
+                "HRK",
+                "HTG",
+                "HUF",
+                "IDR",
+                "ILS",
+                "INR",
+                "IQD",
+                "IRR",
+                "ISK",
+                "JMD",
+                "JOD",
+                "JPY",
+                "KES",
+                "KGS",
+                "KHR",
+                "KMF",
+                "KPW",
+                "KRW",
+                "KWD",
+                "KYD",
+                "KZT",
+                "LAK",
+                "LBP",
+                "LKR",
+                "LRD",
+                "LSL",
+                "LYD",
+                "MAD",
+                "MDL",
+                "MGA",
+                "MKD",
+                "MMK",
+                "MNT",
+                "MOP",
+                "MRO",
+                "MUR",
+                "MVR",
+                "MWK",
+                "MXN",
+                "MYR",
+                "MZN",
+                "NAD",
+                "NGN",
+                "NIO",
+                "NOK",
+                "NPR",
+                "NZD",
+                "OMR",
+                "PAB",
+                "PEN",
+                "PGK",
+                "PHP",
+                "PKR",
+                "PLN",
+                "PYG",
+                "QAR",
+                "RON",
+                "RSD",
+                "RUB",
+                "RWF",
+                "SAR",
+                "SBD",
+                "SCR",
+                "SDG",
+                "SEK",
+                "SGD",
+                "SHP",
+                "SLL",
+                "SOS",
+                "SRD",
+                "SSP",
+                "STD",
+                "SVC",
+                "SYP",
+                "SZL",
+                "THB",
+                "TJS",
+                "TMT",
+                "TND",
+                "TOP",
+                "TRY",
+                "TTD",
+                "TWD",
+                "TZS",
+                "UAH",
+                "UGX",
+                "USD",
+                "UYU",
+                "UZS",
+                "VEF",
+                "VND",
+                "VUV",
+                "WST",
+                "XAF",
+                "XCD",
+                "XOF",
+                "XPF",
+                "YER",
+                "ZAR",
+                "ZMW",
+                "ZWL"
+              ],
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "currency"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "format": "currency"
+    },
+    "totalAmount": {
+      "title": "Total Amount",
+      "description": "The total amount to be deducted",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "currency": {
+              "title": "currency",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "title": "Value",
+                  "description": "",
+                  "minimum": 0,
+                  "type": "number",
+                  "format": "positiveNumber"
+                },
+                "currency": {
+                  "title": "Currency",
+                  "description": "",
+                  "enum": [
+                    "AED",
+                    "AFN",
+                    "ALL",
+                    "AMD",
+                    "ANG",
+                    "AOA",
+                    "ARS",
+                    "AUD",
+                    "AWG",
+                    "AZN",
+                    "BAM",
+                    "BBD",
+                    "BDT",
+                    "BGN",
+                    "BHD",
+                    "BIF",
+                    "BMD",
+                    "BND",
+                    "BOB",
+                    "BRL",
+                    "BSD",
+                    "BTN",
+                    "BWP",
+                    "BYR",
+                    "BZD",
+                    "CAD",
+                    "CDF",
+                    "CHF",
+                    "CLP",
+                    "CNY",
+                    "COP",
+                    "CRC",
+                    "CUC",
+                    "CUP",
+                    "CVE",
+                    "CZK",
+                    "DJF",
+                    "DKK",
+                    "DOP",
+                    "DZD",
+                    "EGP",
+                    "ERN",
+                    "ETB",
+                    "EUR",
+                    "FJD",
+                    "FKP",
+                    "GBP",
+                    "GEL",
+                    "GHS",
+                    "GIP",
+                    "GMD",
+                    "GNF",
+                    "GTQ",
+                    "GYD",
+                    "HKD",
+                    "HNL",
+                    "HRK",
+                    "HTG",
+                    "HUF",
+                    "IDR",
+                    "ILS",
+                    "INR",
+                    "IQD",
+                    "IRR",
+                    "ISK",
+                    "JMD",
+                    "JOD",
+                    "JPY",
+                    "KES",
+                    "KGS",
+                    "KHR",
+                    "KMF",
+                    "KPW",
+                    "KRW",
+                    "KWD",
+                    "KYD",
+                    "KZT",
+                    "LAK",
+                    "LBP",
+                    "LKR",
+                    "LRD",
+                    "LSL",
+                    "LYD",
+                    "MAD",
+                    "MDL",
+                    "MGA",
+                    "MKD",
+                    "MMK",
+                    "MNT",
+                    "MOP",
+                    "MRO",
+                    "MUR",
+                    "MVR",
+                    "MWK",
+                    "MXN",
+                    "MYR",
+                    "MZN",
+                    "NAD",
+                    "NGN",
+                    "NIO",
+                    "NOK",
+                    "NPR",
+                    "NZD",
+                    "OMR",
+                    "PAB",
+                    "PEN",
+                    "PGK",
+                    "PHP",
+                    "PKR",
+                    "PLN",
+                    "PYG",
+                    "QAR",
+                    "RON",
+                    "RSD",
+                    "RUB",
+                    "RWF",
+                    "SAR",
+                    "SBD",
+                    "SCR",
+                    "SDG",
+                    "SEK",
+                    "SGD",
+                    "SHP",
+                    "SLL",
+                    "SOS",
+                    "SRD",
+                    "SSP",
+                    "STD",
+                    "SVC",
+                    "SYP",
+                    "SZL",
+                    "THB",
+                    "TJS",
+                    "TMT",
+                    "TND",
+                    "TOP",
+                    "TRY",
+                    "TTD",
+                    "TWD",
+                    "TZS",
+                    "UAH",
+                    "UGX",
+                    "USD",
+                    "UYU",
+                    "UZS",
+                    "VEF",
+                    "VND",
+                    "VUV",
+                    "WST",
+                    "XAF",
+                    "XCD",
+                    "XOF",
+                    "XPF",
+                    "YER",
+                    "ZAR",
+                    "ZMW",
+                    "ZWL"
+                  ],
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "currency"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "format": "currency"
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "recurrence": {
+      "title": "Recurrence",
+      "description": "",
+      "oneOf": [
+        {
+          "type": "object",
+          "format": "recurrence",
+          "properties": {
+            "timePeriod": {
+              "title": "Time Period",
+              "description": "The period of time to be repeated.",
+              "type": "object",
+              "properties": {
+                "startOn": {
+                  "title": "Start On",
+                  "description": "The beginning of the time period being repeated.",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+                },
+                "endOn": {
+                  "title": "End On",
+                  "description": "The end of the time period being repeated.",
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+                    },
+                    {
+                      "type": "string",
+                      "maxLength": 0
+                    }
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "startOn"
+              ]
+            },
+            "repeatRule": {
+              "title": "Repeat Rule",
+              "description": "The rule that describes how to repeat the time period.",
+              "oneOf": [
+                {
+                  "title": "Daily",
+                  "description": "Rules for repeating on a daily basis.",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "daily"
+                      ]
+                    },
+                    "interval": {
+                      "title": "Interval",
+                      "description": "Number of days between each repetition.",
+                      "oneOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 365
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "ends": {
+                      "title": "Ends",
+                      "description": "When to end the daily repetitions.",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "repetitions": {
+                              "title": "Repetitions",
+                              "description": "Number of times to repeat, then stop.",
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 365
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "repetitions"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "date": {
+                              "title": "Date",
+                              "description": "The date after which to stop repeating.",
+                              "type": "string",
+                              "format": "date",
+                              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "date"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "maxProperties": 0
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                },
+                {
+                  "title": "Weekly",
+                  "description": "Rules for repeating on a weekly basis.",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "weekly"
+                      ]
+                    },
+                    "interval": {
+                      "title": "Interval",
+                      "description": "Number of weeks between each repetition.",
+                      "oneOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 52
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "daysOfWeek": {
+                      "title": "Days of Week",
+                      "description": "The days of the week on which to repeat the event.",
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "sunday",
+                          "monday",
+                          "tuesday",
+                          "wednesday",
+                          "thursday",
+                          "friday",
+                          "saturday"
+                        ]
+                      }
+                    },
+                    "ends": {
+                      "title": "Ends",
+                      "description": "When to end the weekly repetitions.",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "repetitions": {
+                              "title": "Repetitions",
+                              "description": "Number of times to repeat, then stop.",
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 52
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "repetitions"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "date": {
+                              "title": "Date",
+                              "description": "The date after which to stop repeating.",
+                              "type": "string",
+                              "format": "date",
+                              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "date"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "maxProperties": 0
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                },
+                {
+                  "title": "Monthly",
+                  "description": "Rules for repeating on a monthly basis.",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "monthly"
+                      ]
+                    },
+                    "interval": {
+                      "title": "Interval",
+                      "description": "Number of months between each repetition.",
+                      "oneOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 12
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "repeatBy": {
+                      "title": "Repeat By",
+                      "description": "How to calculate the day of the month on which to start repeating.",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "dayOfMonth": {
+                              "title": "Day of Month",
+                              "description": "The number of the day in the month on which to start repeating.",
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 31
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "dayOfMonth"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "dayOfWeek": {
+                              "title": "Day of Week",
+                              "description": "The cardinal day of the week (e.g., the first Tuesday, the last Friday, etc.) in the month on which to start repeating.",
+                              "type": "object",
+                              "properties": {
+                                "occurrence": {
+                                  "title": "Occurrence",
+                                  "description": "The nth occurrence of the day of the week in the month. Use a positive number to count from the start of the month (e.g., 1 = first in the month, 2 = second in the month), and a negative number to count from the end of the month (e.g. -1 = last in the month, -2 = second from last, etc.).",
+                                  "type": "integer",
+                                  "minimum": -4,
+                                  "maximum": 4
+                                },
+                                "day": {
+                                  "title": "Day of Week",
+                                  "description": "A day in a week.",
+                                  "type": "string",
+                                  "enum": [
+                                    "sunday",
+                                    "monday",
+                                    "tuesday",
+                                    "wednesday",
+                                    "thursday",
+                                    "friday",
+                                    "saturday"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "occurrence",
+                                "day"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "dayOfWeek"
+                          ]
+                        }
+                      ]
+                    },
+                    "ends": {
+                      "title": "Ends",
+                      "description": "When to end the monthly repetitions.",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "repetitions": {
+                              "title": "Repetitions",
+                              "description": "Number of times to repeat, then stop.",
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "repetitions"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "date": {
+                              "title": "Date",
+                              "description": "The date after which to stop repeating.",
+                              "type": "string",
+                              "format": "date",
+                              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "date"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "maxProperties": 0
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type",
+                    "repeatBy"
+                  ]
+                },
+                {
+                  "title": "Yearly",
+                  "description": "Rules for repeating on an annual basis.",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "yearly"
+                      ]
+                    },
+                    "interval": {
+                      "title": "Interval",
+                      "description": "Number of years between each repetition.",
+                      "oneOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 0,
+                          "format": "positiveInteger"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "ends": {
+                      "title": "Ends",
+                      "description": "When to end the yearly repetitions.",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "repetitions": {
+                              "title": "Repetitions",
+                              "description": "Number of times to repeat, then stop.",
+                              "type": "integer",
+                              "minimum": 0,
+                              "format": "positiveInteger"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "repetitions"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "date": {
+                              "title": "Date",
+                              "description": "The date after which to stop repeating.",
+                              "type": "string",
+                              "format": "date",
+                              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "date"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "maxProperties": 0
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                }
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "timePeriod",
+            "repeatRule"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "person",
+    "paymentTarget",
+    "status",
+    "amountPerPayment",
+    "recurrence"
+  ],
+  "additionalProperties": false
+}

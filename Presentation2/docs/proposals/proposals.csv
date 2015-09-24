@@ -1,0 +1,310 @@
+title,Proposal
+description,Donation proposal
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,The global identifier of the proposal
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of the proposal
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,The full description of the proposal
+properties.description.type,string
+properties.prospects.title,Prospect
+properties.prospects.description,Prospect, whom the proposal is extended to
+properties.prospects.type,array
+properties.prospects.items.title,Prospect
+properties.prospects.items.description,Prospect, whom the proposal is extended to
+properties.prospects.items.type,object
+properties.prospects.items.properties.id.title,ID
+properties.prospects.items.properties.id.description,The global identifier for Prospect
+properties.prospects.items.properties.id.type,string
+properties.prospects.items.properties.id.format,guid
+properties.prospects.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.prospects.items.links.rel,self
+properties.prospects.items.links.href,/propects/{id}
+properties.prospects.items.links.targetSchema.$ref,propects.json#
+properties.prospects.items.additionalProperties,false
+properties.prospects.items.required,id
+properties.state.title,Proposal State
+properties.state.description,The state of the proposal
+properties.state.type,object
+properties.state.properties.id.title,ID
+properties.state.properties.id.description,The global identifier for Proposal State
+properties.state.properties.id.type,string
+properties.state.properties.id.format,guid
+properties.state.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.state.links.rel,self
+properties.state.links.href,/proposal-states/{id}
+properties.state.links.targetSchema.$ref,proposal-states.json#
+properties.state.additionalProperties,false
+properties.state.required,id
+properties.startOn.title,Proposal Start Date
+properties.startOn.description,The start date of the proposal
+properties.startOn.type,string
+properties.startOn.format,date-time
+properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.title,Proposal End Date
+properties.endOn.description,The end date of the proposal
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.askedOn.title,Last Contact Date
+properties.askedOn.description,The most recent date that the donor was asked about the proposal
+properties.askedOn.oneOf.type,string
+properties.askedOn.oneOf.format,date-time
+properties.askedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.askedOn.oneOf.type,string
+properties.askedOn.oneOf.maxLength,
+properties.askAmount.title,Amount Asked
+properties.askAmount.description,The most recent actual amount asked for
+properties.askAmount.oneOf.type,object
+properties.askAmount.oneOf.properties.currency.title,currency
+properties.askAmount.oneOf.properties.currency.description,
+properties.askAmount.oneOf.properties.currency.type,object
+properties.askAmount.oneOf.properties.currency.properties.value.title,Value
+properties.askAmount.oneOf.properties.currency.properties.value.description,
+properties.askAmount.oneOf.properties.currency.properties.value.minimum,
+properties.askAmount.oneOf.properties.currency.properties.value.type,number
+properties.askAmount.oneOf.properties.currency.properties.value.format,positiveNumber
+properties.askAmount.oneOf.properties.currency.properties.currency.title,Currency
+properties.askAmount.oneOf.properties.currency.properties.currency.description,
+properties.askAmount.oneOf.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.askAmount.oneOf.properties.currency.properties.currency.type,string
+properties.askAmount.oneOf.properties.currency.additionalProperties,false
+properties.askAmount.oneOf.properties.currency.required,value;currency
+properties.askAmount.oneOf.additionalProperties,false
+properties.askAmount.oneOf.format,currency
+properties.askAmount.oneOf.type,object
+properties.askAmount.oneOf.maxProperties,
+properties.plannedAskAmount.title,Planned Asked Amount
+properties.plannedAskAmount.description,The amount planned to be asked for
+properties.plannedAskAmount.oneOf.type,object
+properties.plannedAskAmount.oneOf.properties.currency.title,currency
+properties.plannedAskAmount.oneOf.properties.currency.description,
+properties.plannedAskAmount.oneOf.properties.currency.type,object
+properties.plannedAskAmount.oneOf.properties.currency.properties.value.title,Value
+properties.plannedAskAmount.oneOf.properties.currency.properties.value.description,
+properties.plannedAskAmount.oneOf.properties.currency.properties.value.minimum,
+properties.plannedAskAmount.oneOf.properties.currency.properties.value.type,number
+properties.plannedAskAmount.oneOf.properties.currency.properties.value.format,positiveNumber
+properties.plannedAskAmount.oneOf.properties.currency.properties.currency.title,Currency
+properties.plannedAskAmount.oneOf.properties.currency.properties.currency.description,
+properties.plannedAskAmount.oneOf.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.plannedAskAmount.oneOf.properties.currency.properties.currency.type,string
+properties.plannedAskAmount.oneOf.properties.currency.additionalProperties,false
+properties.plannedAskAmount.oneOf.properties.currency.required,value;currency
+properties.plannedAskAmount.oneOf.additionalProperties,false
+properties.plannedAskAmount.oneOf.format,currency
+properties.plannedAskAmount.oneOf.type,object
+properties.plannedAskAmount.oneOf.maxProperties,
+properties.grantedAmount.title,Granted Amount
+properties.grantedAmount.description,The amount granted by the donor
+properties.grantedAmount.oneOf.type,object
+properties.grantedAmount.oneOf.properties.currency.title,currency
+properties.grantedAmount.oneOf.properties.currency.description,
+properties.grantedAmount.oneOf.properties.currency.type,object
+properties.grantedAmount.oneOf.properties.currency.properties.value.title,Value
+properties.grantedAmount.oneOf.properties.currency.properties.value.description,
+properties.grantedAmount.oneOf.properties.currency.properties.value.minimum,
+properties.grantedAmount.oneOf.properties.currency.properties.value.type,number
+properties.grantedAmount.oneOf.properties.currency.properties.value.format,positiveNumber
+properties.grantedAmount.oneOf.properties.currency.properties.currency.title,Currency
+properties.grantedAmount.oneOf.properties.currency.properties.currency.description,
+properties.grantedAmount.oneOf.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.grantedAmount.oneOf.properties.currency.properties.currency.type,string
+properties.grantedAmount.oneOf.properties.currency.additionalProperties,false
+properties.grantedAmount.oneOf.properties.currency.required,value;currency
+properties.grantedAmount.oneOf.additionalProperties,false
+properties.grantedAmount.oneOf.format,currency
+properties.grantedAmount.oneOf.type,object
+properties.grantedAmount.oneOf.maxProperties,
+properties.receivedAmount.title,Received Amount
+properties.receivedAmount.description,The amount actually received for the proposal
+properties.receivedAmount.oneOf.type,object
+properties.receivedAmount.oneOf.properties.currency.title,currency
+properties.receivedAmount.oneOf.properties.currency.description,
+properties.receivedAmount.oneOf.properties.currency.type,object
+properties.receivedAmount.oneOf.properties.currency.properties.value.title,Value
+properties.receivedAmount.oneOf.properties.currency.properties.value.description,
+properties.receivedAmount.oneOf.properties.currency.properties.value.minimum,
+properties.receivedAmount.oneOf.properties.currency.properties.value.type,number
+properties.receivedAmount.oneOf.properties.currency.properties.value.format,positiveNumber
+properties.receivedAmount.oneOf.properties.currency.properties.currency.title,Currency
+properties.receivedAmount.oneOf.properties.currency.properties.currency.description,
+properties.receivedAmount.oneOf.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.receivedAmount.oneOf.properties.currency.properties.currency.type,string
+properties.receivedAmount.oneOf.properties.currency.additionalProperties,false
+properties.receivedAmount.oneOf.properties.currency.required,value;currency
+properties.receivedAmount.oneOf.additionalProperties,false
+properties.receivedAmount.oneOf.format,currency
+properties.receivedAmount.oneOf.type,object
+properties.receivedAmount.oneOf.maxProperties,
+properties.proposingOrganization.title,Proposing Organization
+properties.proposingOrganization.description,The organization making the proposal
+properties.proposingOrganization.type,object
+properties.proposingOrganization.properties.id.title,ID
+properties.proposingOrganization.properties.id.description,The global identifier for Proposing Organization
+properties.proposingOrganization.properties.id.type,string
+properties.proposingOrganization.properties.id.format,guid
+properties.proposingOrganization.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.proposingOrganization.links.rel,self
+properties.proposingOrganization.links.href,/organizations/{id}
+properties.proposingOrganization.links.targetSchema.$ref,organizations.json#
+properties.proposingOrganization.additionalProperties,false
+properties.proposingOrganization.required,id
+properties.purposes.title,Proposal Purposes
+properties.purposes.description,The purposes for the donation
+properties.purposes.type,array
+properties.purposes.items.title,Proposal Purposes
+properties.purposes.items.description,The purposes for the donation
+properties.purposes.items.type,object
+properties.purposes.items.properties.id.title,ID
+properties.purposes.items.properties.id.description,The global identifier for Proposal Purposes
+properties.purposes.items.properties.id.type,string
+properties.purposes.items.properties.id.format,guid
+properties.purposes.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.purposes.items.links.rel,self
+properties.purposes.items.links.href,/proposal-purposes/{id}
+properties.purposes.items.links.targetSchema.$ref,proposal-purposes.json#
+properties.purposes.items.additionalProperties,false
+properties.purposes.items.required,id
+properties.designations.title,Designations
+properties.designations.description,Designations for the donation
+properties.designations.type,array
+properties.designations.items.title,Designations
+properties.designations.items.description,Designations for the donation
+properties.designations.items.type,object
+properties.designations.items.properties.id.title,ID
+properties.designations.items.properties.id.description,The global identifier for Designations
+properties.designations.items.properties.id.type,string
+properties.designations.items.properties.id.format,guid
+properties.designations.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.designations.items.links.rel,self
+properties.designations.items.links.href,/designations/{id}
+properties.designations.items.links.targetSchema.$ref,designations.json#
+properties.designations.items.additionalProperties,false
+properties.designations.items.required,id
+properties.closingProbablility.title,Closing Probability Percent
+properties.closingProbablility.description,Percentage chance that a proposals will be closed
+properties.closingProbablility.oneOf.type,number
+properties.closingProbablility.oneOf.minimum,
+properties.closingProbablility.oneOf.format,positiveNumber
+properties.closingProbablility.oneOf.type,null
+properties.assignments.title,Assignment
+properties.assignments.description,Designation assignments
+properties.assignments.type,array
+properties.assignments.items.type,object
+properties.assignments.items.properties.assignee.title,Assignee
+properties.assignments.items.properties.assignee.description,
+properties.assignments.items.properties.assignee.oneOf.title,Person
+properties.assignments.items.properties.assignee.oneOf.description,Assigned Person
+properties.assignments.items.properties.assignee.oneOf.type,object
+properties.assignments.items.properties.assignee.oneOf.properties.person.title,Person
+properties.assignments.items.properties.assignee.oneOf.properties.person.description,A human being or other independent agent.
+properties.assignments.items.properties.assignee.oneOf.properties.person.type,object
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.title,ID
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.description,The global identifier for Person
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.type,string
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.format,guid
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.assignments.items.properties.assignee.oneOf.properties.person.links.rel,self
+properties.assignments.items.properties.assignee.oneOf.properties.person.links.href,/persons/{id}
+properties.assignments.items.properties.assignee.oneOf.properties.person.links.targetSchema.$ref,persons.json#
+properties.assignments.items.properties.assignee.oneOf.properties.person.additionalProperties,false
+properties.assignments.items.properties.assignee.oneOf.properties.person.required,id
+properties.assignments.items.properties.assignee.oneOf.additionalProperties,false
+properties.assignments.items.properties.assignee.oneOf.required,person
+properties.assignments.items.properties.assignee.oneOf.title,Group
+properties.assignments.items.properties.assignee.oneOf.description,Assigned Group
+properties.assignments.items.properties.assignee.oneOf.type,object
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.title,Group
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.description,A group of persons.
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.type,object
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.properties.id.title,ID
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.properties.id.description,The global identifier for Group
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.properties.id.type,string
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.properties.id.format,guid
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.links.rel,self
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.links.href,/person-groups/{id}
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.links.targetSchema.$ref,person-groups.json#
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.additionalProperties,false
+properties.assignments.items.properties.assignee.oneOf.properties.personGroup.required,id
+properties.assignments.items.properties.assignee.oneOf.additionalProperties,false
+properties.assignments.items.properties.assignee.oneOf.required,personGroup
+properties.assignments.items.properties.role.title,Assignment Role
+properties.assignments.items.properties.role.description,The assignment role
+properties.assignments.items.properties.role.type,object
+properties.assignments.items.properties.role.properties.roleType.title,Type
+properties.assignments.items.properties.role.properties.roleType.description,A type of role.
+properties.assignments.items.properties.role.properties.roleType.enum,manager;other
+properties.assignments.items.properties.role.properties.roleType.type,string
+properties.assignments.items.properties.role.properties.detail.title,Detail
+properties.assignments.items.properties.role.properties.detail.description,
+properties.assignments.items.properties.role.properties.detail.oneOf.type,object
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.title,ID
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.type,string
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.format,guid
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.assignments.items.properties.role.properties.detail.oneOf.links.rel,self
+properties.assignments.items.properties.role.properties.detail.oneOf.links.href,/roles/{id}
+properties.assignments.items.properties.role.properties.detail.oneOf.links.targetSchema.$ref,roles.json#
+properties.assignments.items.properties.role.properties.detail.oneOf.additionalProperties,false
+properties.assignments.items.properties.role.properties.detail.oneOf.required,id
+properties.assignments.items.properties.role.properties.detail.oneOf.type,object
+properties.assignments.items.properties.role.properties.detail.oneOf.maxProperties,
+properties.assignments.items.properties.role.additionalProperties,false
+properties.assignments.items.properties.role.required,roleType
+properties.assignments.items.properties.preference.title,Preferred assignee
+properties.assignments.items.properties.preference.description,Indicates the preferred assignee for the designation.
+properties.assignments.items.properties.preference.oneOf.type,string
+properties.assignments.items.properties.preference.oneOf.enum,primary
+properties.assignments.items.properties.preference.oneOf.type,string
+properties.assignments.items.properties.preference.oneOf.maxLength,
+properties.assignments.items.properties.startOn.title,Start Date
+properties.assignments.items.properties.startOn.description,The start date of the assignment
+properties.assignments.items.properties.startOn.type,string
+properties.assignments.items.properties.startOn.format,date-time
+properties.assignments.items.properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.assignments.items.properties.endOn.title,End Date
+properties.assignments.items.properties.endOn.description,The end date of the assignment
+properties.assignments.items.properties.endOn.oneOf.type,string
+properties.assignments.items.properties.endOn.oneOf.format,date-time
+properties.assignments.items.properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.assignments.items.properties.endOn.oneOf.type,string
+properties.assignments.items.properties.endOn.oneOf.maxLength,
+properties.assignments.items.additionalProperties,false
+properties.assignments.items.required,assignee;role;startOn
+required,id;title;prospects;state;startOn;proposingOrganization;purposes;designations
+additionalProperties,false

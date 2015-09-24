@@ -1,0 +1,2691 @@
+{
+  "title": "Wealth Screening Profile",
+  "description": "Assessment results of a person's donation potential",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "recordId": {
+      "title": "Record ID",
+      "description": "The internal identifier of the wealth screening profile record at the origin",
+      "type": "integer"
+    },
+    "personId": {
+      "title": "Person ID",
+      "description": "The global identifier of the person, whose wealth screening is performed",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "title": {
+      "title": "Title",
+      "description": "The full name of the wealth screening profile record",
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "title": "Description",
+      "description": "The full description of the wealth screening profile record",
+      "type": "string"
+    },
+    "metrics": {
+      "title": "Metrics",
+      "description": "Wealth screening profile metrics",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "title": "Propensity to Give",
+            "description": "Person's propensity to give",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "oneOf": [
+                  {
+                    "title": "Excellent",
+                    "description": "",
+                    "enum": [
+                      1
+                    ],
+                    "type": "integer"
+                  },
+                  {
+                    "title": "Above Average",
+                    "description": "",
+                    "enum": [
+                      2
+                    ],
+                    "type": "integer"
+                  },
+                  {
+                    "title": "Average",
+                    "description": "",
+                    "enum": [
+                      3
+                    ],
+                    "type": "integer"
+                  },
+                  {
+                    "title": "Fair",
+                    "description": "",
+                    "enum": [
+                      4
+                    ],
+                    "type": "integer"
+                  },
+                  {
+                    "title": "Unmatched",
+                    "description": "",
+                    "enum": [
+                      5
+                    ],
+                    "type": "integer"
+                  },
+                  {
+                    "type": "object",
+                    "maxProperties": 0
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity",
+            "description": "Person's giving capacity",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "oneOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Asset Range",
+            "description": "Total value of all assets held by a household",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "<$25K",
+                  "$25K-$50K",
+                  "$50K-$100K",
+                  "$100K-$500K",
+                  "$500K-$1MM",
+                  "$1MM-$5MM",
+                  "$5MM-$10MM",
+                  "$10MM-$25MM",
+                  "$25MM-$50MM",
+                  "$50MM-$100MM",
+                  "$100MM-$500MM",
+                  "$500MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Asset Rating",
+            "description": "Corresponding rating for Total Assets Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.ASSETS.999",
+                  "WE.ASSETS.001",
+                  "WE.ASSETS.002",
+                  "WE.ASSETS.003",
+                  "WE.ASSETS.004",
+                  "WE.ASSETS.005",
+                  "WE.ASSETS.006",
+                  "WE.ASSETS.007",
+                  "WE.ASSETS.008",
+                  "WE.ASSETS.009",
+                  "WE.ASSETS.010",
+                  "WE.ASSETS.011",
+                  "WE.ASSETS.012",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Net Worth Range",
+            "description": "Difference between total assets and total debt for a household",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "<$25K",
+                  "$25K-$50K",
+                  "$50K-$100K",
+                  "$100K-$500K",
+                  "$500K-$1MM",
+                  "$1MM-$5MM",
+                  "$5MM-$10MM",
+                  "$10MM-$25MM",
+                  "$25MM-$50MM",
+                  "$50MM-$100MM",
+                  "$100MM-$500MM",
+                  "$500MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Net Worth Rating",
+            "description": "Corresponding rating for Net Worth Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.NETWRTH.999",
+                  "WE.NETWRTH.001",
+                  "WE.NETWRTH.002",
+                  "WE.NETWRTH.003",
+                  "WE.NETWRTH.004",
+                  "WE.NETWRTH.005",
+                  "WE.NETWRTH.006",
+                  "WE.NETWRTH.007",
+                  "WE.NETWRTH.008",
+                  "WE.NETWRTH.009",
+                  "WE.NETWRTH.010",
+                  "WE.NETWRTH.011",
+                  "WE.NETWRTH.012",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Liquidity Range",
+            "description": "Measure of financial assets readily available",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "<$10K",
+                  "$10K-$100K",
+                  "$100K-$500K",
+                  "$500K+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Liquidity Rating",
+            "description": "Corresponding rating for Liquidity (Cash on Hand) Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.LIQUID.999",
+                  "WE.LIQUID.001",
+                  "WE.LIQUID.002",
+                  "WE.LIQUID.003",
+                  "WE.LIQUID.004",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Estimated Annual Donations Range",
+            "description": "Measure of money a person gives annually to all nonprofits",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "<$1K",
+                  "$1K-$5K",
+                  "$5K-$10K",
+                  "$10K-$25K",
+                  "$25K-$50K",
+                  "$50K-$100K",
+                  "$100K+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Estimated Annual Donations Rating",
+            "description": "Corresponding rating for Estimated Annual Donations Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.ANNDON.999",
+                  "WE.ANNDON.001",
+                  "WE.ANNDON.002",
+                  "WE.ANNDON.003",
+                  "WE.ANNDON.004",
+                  "WE.ANNDON.005",
+                  "WE.ANNDON.006",
+                  "WE.ANNDON.007",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Inclination Giving",
+            "description": "Measure of philanthropic intent based on client supplied giving information",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Giving data not provided",
+                  "Prospect",
+                  "Small Dated Gift",
+                  "Moderate Dated Gift(s)",
+                  "Small Recent Gift: One Time Giver",
+                  "Small Recent Gift: Frequent Giver",
+                  "Large Dated Gift",
+                  "Moderate Recent Gift: One Time Giver",
+                  "Moderate Recent Gift: Frequent Giver",
+                  "Large Recent Gift",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Inclination Affiliation",
+            "description": "Measure of philanthropic intent based on affiliations and political giving",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to rate",
+                  "Younger w/o Affiliation",
+                  "Younger w/ Moderate Political Support",
+                  "Older w/o Political Support",
+                  "Older w/ Moderate Political Support",
+                  "Strong Political Support",
+                  "Older w/ Strong Political, Charitable Affiliation",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity Range",
+            "description": "Amount a prospect can afford to give to all nonprofits over a 5 year period",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "<$1K",
+                  "$1K-$2K",
+                  "$2K-$3K",
+                  "$3K-$5K",
+                  "$5K-$7.5K",
+                  "$7.5K-$10K",
+                  "$10K-$15K",
+                  "$15K-$20K",
+                  "$20K-$25K",
+                  "$25K-$30K",
+                  "$30K-$40K",
+                  "$40K-$50K",
+                  "$50K-$75K",
+                  "$75K-$100K",
+                  "$100K-$200K",
+                  "$200K-$300K",
+                  "$300K-$500K",
+                  "$500K-$1MM",
+                  "$1MM-$5MM",
+                  "$5MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity Rating",
+            "description": "Corresponding rating for Giving Capacity Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.GIVCAP.999",
+                  "WE.GIVCAP.001",
+                  "WE.GIVCAP.002",
+                  "WE.GIVCAP.003",
+                  "WE.GIVCAP.004",
+                  "WE.GIVCAP.005",
+                  "WE.GIVCAP.006",
+                  "WE.GIVCAP.007",
+                  "WE.GIVCAP.008",
+                  "WE.GIVCAP.009",
+                  "WE.GIVCAP.010",
+                  "WE.GIVCAP.011",
+                  "WE.GIVCAP.012",
+                  "WE.GIVCAP.013",
+                  "WE.GIVCAP.014",
+                  "WE.GIVCAP.015",
+                  "WE.GIVCAP.016",
+                  "WE.GIVCAP.017",
+                  "WE.GIVCAP.018",
+                  "WE.GIVCAP.019",
+                  "WE.GIVCAP.020",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Bequest",
+            "description": "Indicates a good candidate for the bequest type of giving",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "YES",
+                  "NO",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Annuity",
+            "description": "Indicates a good candidate for the annuity type of giving",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "minimum": 0,
+                "maximum": 9,
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Trust",
+            "description": "Indicates a good candidate for the trust type of giving",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "minimum": 0,
+                "maximum": 9,
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Influence Rating",
+            "description": "Prospect's influence in their community based upon current board membership, represented by a number between 1 and 4 that indicates a quartile",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "minimum": 1,
+                "maximum": 4,
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Income Range",
+            "description": "Total income range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "$1-$50K",
+                  "$50K-$100K",
+                  "$100K-$250K",
+                  "$250K-$500K",
+                  "$500K+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Income Rating",
+            "description": "Corresponding rating for total Income Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.INCOME.999",
+                  "WE.INCOME.001",
+                  "WE.INCOME.002",
+                  "WE.INCOME.003",
+                  "WE.INCOME.004",
+                  "WE.INCOME.005",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Real Estate Value Range",
+            "description": "Total real estate value range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "$1-$250K",
+                  "$250K-$500K",
+                  "$500K-$750K",
+                  "$750K-$1MM",
+                  "$1MM-$2MM",
+                  "$2MM-$5MM",
+                  "$5MM-$10MM",
+                  "$10MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Real Estate Value Rating",
+            "description": "Corresponding rating for Real Estate Value Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.RELEST.999",
+                  "WE.RELEST.001",
+                  "WE.RELEST.002",
+                  "WE.RELEST.003",
+                  "WE.RELEST.004",
+                  "WE.RELEST.005",
+                  "WE.RELEST.006",
+                  "WE.RELEST.007",
+                  "WE.RELEST.008",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Property Count",
+            "description": "Total real estate property count",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Direct Stock Holdings Range",
+            "description": "Total direct stock holdings range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "$1-$500K",
+                  "$500K-$1MM",
+                  "$1MM-$5MM",
+                  "$5MM-$10MM",
+                  "$10MM-$25MM",
+                  "$25MM-$50MM",
+                  "$50MM-$100MM",
+                  "$100MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Direct Stock Holdings Rating",
+            "description": "Corresponding rating for Direct Stock Holdings Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.DSTOCK.999",
+                  "WE.DSTOCK.001",
+                  "WE.DSTOCK.002",
+                  "WE.DSTOCK.003",
+                  "WE.DSTOCK.004",
+                  "WE.DSTOCK.005",
+                  "WE.DSTOCK.006",
+                  "WE.DSTOCK.007",
+                  "WE.DSTOCK.008",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Total Stock Holdings Range",
+            "description": "Total stock holdings range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "$1-$500K",
+                  "$500K-$1MM",
+                  "$1MM-$5MM",
+                  "$5MM-$10MM",
+                  "$10MM-$25MM",
+                  "$25MM-$50MM",
+                  "$50MM-$100MM",
+                  "$100MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Total Stock Holdings Rating",
+            "description": "Corresponding rating for Total Stock Holdings Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.TSTOCK.999",
+                  "WE.TSTOCK.001",
+                  "WE.TSTOCK.002",
+                  "WE.TSTOCK.003",
+                  "WE.TSTOCK.004",
+                  "WE.TSTOCK.005",
+                  "WE.TSTOCK.006",
+                  "WE.TSTOCK.007",
+                  "WE.TSTOCK.008",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Total Donations Range",
+            "description": "Total donations range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "<$25",
+                  "$25-$50",
+                  "$50-$100",
+                  "$100-$200",
+                  "$200-$300",
+                  "$300-$750",
+                  "$750-$1.5K",
+                  "$1.5K-$3K",
+                  "$3K-$5K",
+                  "$5K-$10K",
+                  "$10K-$25K",
+                  "$25K-$50K",
+                  "$50K-$100K",
+                  "$100K-$500K",
+                  "$500K-$1MM",
+                  "$1MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Total Donations Rating",
+            "description": "Corresponding rating for Total Donations Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.DONTOT.999",
+                  "WE.DONTOT.001",
+                  "WE.DONTOT.002",
+                  "WE.DONTOT.003",
+                  "WE.DONTOT.004",
+                  "WE.DONTOT.005",
+                  "WE.DONTOT.006",
+                  "WE.DONTOT.007",
+                  "WE.DONTOT.008",
+                  "WE.DONTOT.009",
+                  "WE.DONTOT.010",
+                  "WE.DONTOT.011",
+                  "WE.DONTOT.012",
+                  "WE.DONTOT.013",
+                  "WE.DONTOT.014",
+                  "WE.DONTOT.015",
+                  "WE.DONTOT.016",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Charitable Donations Range",
+            "description": "Charitable donations range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "<$50",
+                  "$50-$150",
+                  "$150-$500",
+                  "$500-$1K",
+                  "$1K-$1.25K",
+                  "$1.25K-$2.5K",
+                  "$2.5K-$5K",
+                  "$5K-$10K",
+                  "$10K-$20K",
+                  "$20K-$50K",
+                  "$50K-$100K",
+                  "100K-$250K",
+                  "$250K-$1MM",
+                  "$1MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Charitable Donations Rating",
+            "description": "Corresponding rating for Charitable Donations Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.NPOGIV.999",
+                  "WE.NPOGIV.001",
+                  "WE.NPOGIV.002",
+                  "WE.NPOGIV.003",
+                  "WE.NPOGIV.004",
+                  "WE.NPOGIV.005",
+                  "WE.NPOGIV.006",
+                  "WE.NPOGIV.007",
+                  "WE.NPOGIV.008",
+                  "WE.NPOGIV.009",
+                  "WE.NPOGIV.010",
+                  "WE.NPOGIV.011",
+                  "WE.NPOGIV.012",
+                  "WE.NPOGIV.013",
+                  "WE.NPOGIV.014",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Political Donations Range",
+            "description": "Total political donations range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "<$25",
+                  "$25-$50",
+                  "$50-$100",
+                  "$100-$200",
+                  "$200-$300",
+                  "$300-$750",
+                  "$750-$1.5K",
+                  "$1.5K-$3K",
+                  "$3K-$5K",
+                  "$5K-$10K",
+                  "$10K-$25K",
+                  "$25K-$50K",
+                  "$50K-$100K",
+                  "$100K-$500K",
+                  "$500K-$1MM",
+                  "$1MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Political Donations Rating",
+            "description": "Corresponding rating for total Political Donations Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.POLDON.999",
+                  "WE.POLDON.001",
+                  "WE.POLDON.002",
+                  "WE.POLDON.003",
+                  "WE.POLDON.004",
+                  "WE.POLDON.005",
+                  "WE.POLDON.006",
+                  "WE.POLDON.007",
+                  "WE.POLDON.008",
+                  "WE.POLDON.009",
+                  "WE.POLDON.010",
+                  "WE.POLDON.011",
+                  "WE.POLDON.012",
+                  "WE.POLDON.013",
+                  "WE.POLDON.014",
+                  "WE.POLDON.015",
+                  "WE.POLDON.016",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Boat Owner",
+            "description": "Flag indicating whether the individual owns a boat",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "YES",
+                  "NO",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Aircraft Owner",
+            "description": "Flag indicating whether the individual owns an aircraft",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "YES",
+                  "NO",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Board Member",
+            "description": "Flag indicating whether the individual is a non-profit board member",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "YES",
+                  "NO",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Company Value Range",
+            "description": "Total Dun & Bradstreet reported company value range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "$1-$500K",
+                  "$500K-$1MM",
+                  "$1MM-$5MM",
+                  "$5MM-$10MM",
+                  "$10MM-$25MM",
+                  "$25MM-$50MM",
+                  "$50MM-$100MM",
+                  "$100MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Company Value Rating",
+            "description": "Corresponding rating for total Dun & Bradstreet reported Company Value Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.COVALU.999",
+                  "WE.COVALU.001",
+                  "WE.COVALU.002",
+                  "WE.COVALU.003",
+                  "WE.COVALU.004",
+                  "WE.COVALU.005",
+                  "WE.COVALU.006",
+                  "WE.COVALU.007",
+                  "WE.COVALU.008",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Business Sales Volume Range",
+            "description": "Business sales volume range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "$1-$500K",
+                  "$500K-$1MM",
+                  "$1MM-$5MM",
+                  "$5MM-$10MM",
+                  "$10MM-$25MM",
+                  "$25MM-$50MM",
+                  "$50MM-$100MM",
+                  "$100MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Business Sales Volume Rating",
+            "description": "Corresponding rating for Business Sales Volume Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.BIZVOL.999",
+                  "WE.BIZVOL.001",
+                  "WE.BIZVOL.002",
+                  "WE.BIZVOL.003",
+                  "WE.BIZVOL.004",
+                  "WE.BIZVOL.005",
+                  "WE.BIZVOL.006",
+                  "WE.BIZVOL.007",
+                  "WE.BIZVOL.008",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Pensions Range",
+            "description": "Held pensions range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "$1-$250K",
+                  "$250K-$500K",
+                  "$500K-$750K",
+                  "$750K-$1MM",
+                  "$1MM-$2MM",
+                  "$2MM-$5MM",
+                  "$5MM-$10MM",
+                  "$10MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Pensions Rating",
+            "description": "Corresponding rating for Pensions Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.PENSON.999",
+                  "WE.PENSON.001",
+                  "WE.PENSON.002",
+                  "WE.PENSON.003",
+                  "WE.PENSON.004",
+                  "WE.PENSON.005",
+                  "WE.PENSON.006",
+                  "WE.PENSON.007",
+                  "WE.PENSON.008",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity Income Range",
+            "description": "Portion of income used in calculating the giving capacity range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "<$5K",
+                  "$5K-$10K",
+                  "$10K-$15K",
+                  "$15K-$20K",
+                  "$20K-$25K",
+                  "$25K-$30K",
+                  "$30K-$35K",
+                  "$35K-$40K",
+                  "$40K-$45K",
+                  "$45K-$50K",
+                  "$50K+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity Income Rating",
+            "description": "Corresponding rating for Giving Capacity Income Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.GC-INC.999",
+                  "WE.GC-INC.001",
+                  "WE.GC-INC.002",
+                  "WE.GC-INC.003",
+                  "WE.GC-INC.004",
+                  "WE.GC-INC.005",
+                  "WE.GC-INC.006",
+                  "WE.GC-INC.007",
+                  "WE.GC-INC.008",
+                  "WE.GC-INC.009",
+                  "WE.GC-INC.010",
+                  "WE.GC-INC.011",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity Real Estate Range",
+            "description": "Portion of real estate used in calculating the giving capacity range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "<$5K",
+                  "$5K-$10K",
+                  "$10K-$15K",
+                  "$15K-$20K",
+                  "$20K-$25K",
+                  "$25K-$30K",
+                  "$30K-$40K",
+                  "$40K-$50K",
+                  "$50K-$75K",
+                  "$75K-$100K",
+                  "$100K-$200K",
+                  "$200K-$500K",
+                  "$500K-$1MM",
+                  "$1MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity Real Estate Rating",
+            "description": "Corresponding rating for Giving Capacity Real Estate Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.GCREAL.999",
+                  "WE.GCREAL.001",
+                  "WE.GCREAL.002",
+                  "WE.GCREAL.003",
+                  "WE.GCREAL.004",
+                  "WE.GCREAL.005",
+                  "WE.GCREAL.006",
+                  "WE.GCREAL.007",
+                  "WE.GCREAL.008",
+                  "WE.GCREAL.009",
+                  "WE.GCREAL.010",
+                  "WE.GCREAL.011",
+                  "WE.GCREAL.012",
+                  "WE.GCREAL.013",
+                  "WE.GCREAL.014",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity Stocks Range",
+            "description": "Portion of stock holdings value used in calculating the gift capacity range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "<$25K",
+                  "$25K-$50K",
+                  "$50K-$100K",
+                  "$100K-$500K",
+                  "$500K-$1MM",
+                  "$1MM-$5MM",
+                  "$5MM-$10MM",
+                  "$10MM-$25MM",
+                  "$25MM-$50MM",
+                  "$50MM-$100MM",
+                  "$100MM-$500MM",
+                  "$500MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity Stocks Rating",
+            "description": "Corresponding rating for Giving Capacity Stocks Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.GCSTOK.999",
+                  "WE.GCSTOK.001",
+                  "WE.GCSTOK.002",
+                  "WE.GCSTOK.003",
+                  "WE.GCSTOK.004",
+                  "WE.GCSTOK.005",
+                  "WE.GCSTOK.006",
+                  "WE.GCSTOK.007",
+                  "WE.GCSTOK.008",
+                  "WE.GCSTOK.009",
+                  "WE.GCSTOK.010",
+                  "WE.GCSTOK.011",
+                  "WE.GCSTOK.012",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity Pension Range",
+            "description": "Portion of pension used in calculating the giving capacity range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "<$25K",
+                  "$25K-$50K",
+                  "$50K-$75K",
+                  "$75K-$100K",
+                  "$100K-$200K",
+                  "$200K-$500K",
+                  "$500K-$1MM",
+                  "$1MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity Pension Rating",
+            "description": "Corresponding rating for Giving Capacity Pension Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.GCPENS.999",
+                  "WE.GCPENS.001",
+                  "WE.GCPENS.002",
+                  "WE.GCPENS.003",
+                  "WE.GCPENS.004",
+                  "WE.GCPENS.005",
+                  "WE.GCPENS.006",
+                  "WE.GCPENS.007",
+                  "WE.GCPENS.008",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity Giving Range",
+            "description": "Portion of donations used in calculating the giving capacity range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "Unable to Rate",
+                  "$1-$1K",
+                  "$1K-$2K",
+                  "$2K-$3K",
+                  "$3K-$5K",
+                  "$5K-$7.5K",
+                  "$7.5K-$10K",
+                  "$10K-$15K",
+                  "$15K-$20K",
+                  "$20K-$25K",
+                  "$25K-$30K",
+                  "$30K-$40K",
+                  "$40K-$50K",
+                  "$50K-$75K",
+                  "$75K-$100K",
+                  "$100K-$200K",
+                  "$200K-$300K",
+                  "$300K-$500K",
+                  "$500K-$1MM",
+                  "$1MM-$5MM",
+                  "$5MM+",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Giving Capacity Giving Rating",
+            "description": "Corresponding rating for Giving Capacity Giving Range",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "WE.GCGIFT.999",
+                  "WE.GCGIFT.001",
+                  "WE.GCGIFT.002",
+                  "WE.GCGIFT.003",
+                  "WE.GCGIFT.004",
+                  "WE.GCGIFT.005",
+                  "WE.GCGIFT.006",
+                  "WE.GCGIFT.007",
+                  "WE.GCGIFT.008",
+                  "WE.GCGIFT.009",
+                  "WE.GCGIFT.010",
+                  "WE.GCGIFT.011",
+                  "WE.GCGIFT.012",
+                  "WE.GCGIFT.013",
+                  "WE.GCGIFT.014",
+                  "WE.GCGIFT.015",
+                  "WE.GCGIFT.016",
+                  "WE.GCGIFT.017",
+                  "WE.GCGIFT.018",
+                  "WE.GCGIFT.019",
+                  "WE.GCGIFT.020",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Age Used",
+            "description": "The age used as the input for WealthEngine�s giving capacity rating",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "minimum": 0,
+                "maximum": 130,
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Aircraft Quality of Match",
+            "description": "Quality of match for Aircraft data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Airmen Quality of Match",
+            "description": "Quality of match for Airmen data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Dun & Bradstreet State Business Registrations Quality of Match",
+            "description": "Quality of match for Dun & Bradstreet State Business Registrations data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Dun & Bradstreet Quality of Match",
+            "description": "Quality of match for Dun & Bradstreet data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Volunteers & Directors Quality of Match",
+            "description": "Quality of match for Volunteers & Directors data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Do Not Mail Registry Quality of Match",
+            "description": "Quality of match for National Do Not Mail Registry data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Federal Election Campaign Quality of Match",
+            "description": "Quality of match for Federal Election Campaign data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Guidestar Foundations Quality of Match",
+            "description": "Quality of match for Guidestar Foundations data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Guidestar Directors Quality of Match",
+            "description": "Quality of match for Guidestar Directors data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Household Profile Quality of Match",
+            "description": "Quality of match for Household Profile data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Hoover's Quality of Match",
+            "description": "Quality of match for Hoover's data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Major Donor Quality of Match",
+            "description": "Quality of match for Major Donor data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "National Physicians Profiles Quality of Match",
+            "description": "Quality of match for National Physicians Profiles data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Market Guide Quality of Match",
+            "description": "Quality of match for Market Guide data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Market Guide Quality of Match",
+            "description": "Quality of match for Market Guide data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Section 527 Political Directors Quality of Match",
+            "description": "Quality of match for Section 527 Political Directors data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Pension Quality of Match",
+            "description": "Quality of match for Pension data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Philanthropic Donations Quality of Match",
+            "description": "Quality of match for Philanthropic Donations data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Section 527 Political Organizations Quality of Match",
+            "description": "Quality of match for Section 527 Political Organizations data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "State Political Donations Quality of Match",
+            "description": "Quality of match for State Political Donations data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "SSA Death Index Quality of Match",
+            "description": "Quality of match for SSA Death Index data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Real Estate Quality of Match",
+            "description": "Quality of match for Real Estate data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Wealth ID Securities Quality of Match",
+            "description": "Quality of match for Wealth ID Securities data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Foundation Trustees Quality of Match",
+            "description": "Quality of match for Foundation Trustees data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Merchant Vessels Quality of Match",
+            "description": "Quality of match for Merchant Vessels data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          },
+          {
+            "title": "Marquis Who�s Who Quality of Match",
+            "description": "Quality of match for Marquis Who�s Who data source",
+            "type": "object",
+            "properties": {
+              "metric": {
+                "title": "Metric",
+                "description": ""
+              },
+              "value": {
+                "title": "Value",
+                "description": "",
+                "enum": [
+                  "High",
+                  "Medium",
+                  "Low",
+                  ""
+                ],
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 2,
+            "required": [
+              "metric",
+              "value"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "recordId",
+    "personId",
+    "title"
+  ],
+  "additionalProperties": false
+}

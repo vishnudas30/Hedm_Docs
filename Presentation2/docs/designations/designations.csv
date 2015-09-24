@@ -1,0 +1,357 @@
+title,Designation
+description,A designated use of a donation.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a designation.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.code.title,Code
+properties.code.description,A code that represents a designation.
+properties.code.type,string
+properties.title.title,Title
+properties.title.description,The full name of a designation.
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,A full description of a designation.
+properties.description.type,string
+properties.type.title,Type
+properties.type.description,The type of the designation.
+properties.type.oneOf.type,object
+properties.type.oneOf.properties.id.title,ID
+properties.type.oneOf.properties.id.description,The global identifier for Type
+properties.type.oneOf.properties.id.type,string
+properties.type.oneOf.properties.id.format,guid
+properties.type.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.type.oneOf.links.rel,self
+properties.type.oneOf.links.href,/designation-types/{id}
+properties.type.oneOf.links.targetSchema.$ref,designation-types.json#
+properties.type.oneOf.additionalProperties,false
+properties.type.oneOf.required,id
+properties.type.oneOf.type,object
+properties.type.oneOf.maxProperties,
+properties.status.title,Status
+properties.status.description,The status of the designation.
+properties.status.enum,active;inactive
+properties.status.type,string
+properties.startOn.title,Start Date
+properties.startOn.description,A date when a designation started.
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.format,date-time
+properties.startOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.maxLength,
+properties.endOn.title,End Date
+properties.endOn.description,A date when a designation ended.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.campus.title,Campus
+properties.campus.description,The campus specified for the designation.
+properties.campus.oneOf.type,object
+properties.campus.oneOf.properties.id.title,ID
+properties.campus.oneOf.properties.id.description,The global identifier for Campus
+properties.campus.oneOf.properties.id.type,string
+properties.campus.oneOf.properties.id.format,guid
+properties.campus.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.campus.oneOf.links.rel,self
+properties.campus.oneOf.links.href,/sites/{id}
+properties.campus.oneOf.links.targetSchema.$ref,sites.json#
+properties.campus.oneOf.additionalProperties,false
+properties.campus.oneOf.required,id
+properties.campus.oneOf.type,object
+properties.campus.oneOf.maxProperties,
+properties.generalLedgerAccounts.title,General Ledger Accounts
+properties.generalLedgerAccounts.description,The general ledger accounts associated with the designation.
+properties.generalLedgerAccounts.type,array
+properties.generalLedgerAccounts.items.type,object
+properties.generalLedgerAccounts.items.properties.entryType.title,Entry Type
+properties.generalLedgerAccounts.items.properties.entryType.description,The the GL entry type applicable to the account code.
+properties.generalLedgerAccounts.items.properties.entryType.enum,credit;debit
+properties.generalLedgerAccounts.items.properties.entryType.type,string
+properties.generalLedgerAccounts.items.properties.transactionType.title,Transaction Type
+properties.generalLedgerAccounts.items.properties.transactionType.description,A detailed general ledger transaction type applicable to the account code.
+properties.generalLedgerAccounts.items.properties.transactionType.type,object
+properties.generalLedgerAccounts.items.properties.transactionType.properties.id.title,ID
+properties.generalLedgerAccounts.items.properties.transactionType.properties.id.description,The global identifier for Transaction Type
+properties.generalLedgerAccounts.items.properties.transactionType.properties.id.type,string
+properties.generalLedgerAccounts.items.properties.transactionType.properties.id.format,guid
+properties.generalLedgerAccounts.items.properties.transactionType.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.generalLedgerAccounts.items.properties.transactionType.links.rel,self
+properties.generalLedgerAccounts.items.properties.transactionType.links.href,/accounting-transaction-types/{id}
+properties.generalLedgerAccounts.items.properties.transactionType.links.targetSchema.$ref,accounting-transaction-types.json#
+properties.generalLedgerAccounts.items.properties.transactionType.additionalProperties,false
+properties.generalLedgerAccounts.items.properties.transactionType.required,id
+properties.generalLedgerAccounts.items.properties.accountComponents.title,Account Component
+properties.generalLedgerAccounts.items.properties.accountComponents.description,
+properties.generalLedgerAccounts.items.properties.accountComponents.type,array
+properties.generalLedgerAccounts.items.properties.accountComponents.items.type,object
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.title,Account Component
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.description,A component part of an account.
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.type,object
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.properties.id.title,ID
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.properties.id.description,The global identifier for Account Component
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.properties.id.type,string
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.properties.id.format,guid
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.links.rel,self
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.links.href,/account-components/{id}
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.links.targetSchema.$ref,account-components.json#
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.additionalProperties,false
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.accountComponent.required,id
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.value.title,Value
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.value.description,The value of the account component
+properties.generalLedgerAccounts.items.properties.accountComponents.items.properties.value.type,string
+properties.generalLedgerAccounts.items.properties.accountComponents.items.additionalProperties,false
+properties.generalLedgerAccounts.items.properties.accountComponents.items.required,accountComponent;value
+properties.generalLedgerAccounts.items.additionalProperties,false
+properties.generalLedgerAccounts.items.required,entryType;accountComponents
+properties.areaOfGiving.title,Area of Giving
+properties.areaOfGiving.description,The area of giving associated with a designation.
+properties.areaOfGiving.oneOf.type,object
+properties.areaOfGiving.oneOf.properties.id.title,ID
+properties.areaOfGiving.oneOf.properties.id.description,The global identifier for Area of Giving
+properties.areaOfGiving.oneOf.properties.id.type,string
+properties.areaOfGiving.oneOf.properties.id.format,guid
+properties.areaOfGiving.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.areaOfGiving.oneOf.links.rel,self
+properties.areaOfGiving.oneOf.links.href,/areas-of-giving/{id}
+properties.areaOfGiving.oneOf.links.targetSchema.$ref,areas-of-giving.json#
+properties.areaOfGiving.oneOf.additionalProperties,false
+properties.areaOfGiving.oneOf.required,id
+properties.areaOfGiving.oneOf.type,object
+properties.areaOfGiving.oneOf.maxProperties,
+properties.purpose.title,Purpose
+properties.purpose.description,The purpose of the designation.
+properties.purpose.oneOf.type,object
+properties.purpose.oneOf.properties.id.title,ID
+properties.purpose.oneOf.properties.id.description,The global identifier for Purpose
+properties.purpose.oneOf.properties.id.type,string
+properties.purpose.oneOf.properties.id.format,guid
+properties.purpose.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.purpose.oneOf.links.rel,self
+properties.purpose.oneOf.links.href,/designation-purposes/{id}
+properties.purpose.oneOf.links.targetSchema.$ref,designation-purposes.json#
+properties.purpose.oneOf.additionalProperties,false
+properties.purpose.oneOf.required,id
+properties.purpose.oneOf.type,object
+properties.purpose.oneOf.maxProperties,
+properties.fundingGoal.title,Funding Goal
+properties.fundingGoal.description,The desired amount of funds for the designation.
+properties.fundingGoal.oneOf.type,object
+properties.fundingGoal.oneOf.properties.currency.title,currency
+properties.fundingGoal.oneOf.properties.currency.description,
+properties.fundingGoal.oneOf.properties.currency.type,object
+properties.fundingGoal.oneOf.properties.currency.properties.value.title,Value
+properties.fundingGoal.oneOf.properties.currency.properties.value.description,
+properties.fundingGoal.oneOf.properties.currency.properties.value.minimum,
+properties.fundingGoal.oneOf.properties.currency.properties.value.type,number
+properties.fundingGoal.oneOf.properties.currency.properties.value.format,positiveNumber
+properties.fundingGoal.oneOf.properties.currency.properties.currency.title,Currency
+properties.fundingGoal.oneOf.properties.currency.properties.currency.description,
+properties.fundingGoal.oneOf.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.fundingGoal.oneOf.properties.currency.properties.currency.type,string
+properties.fundingGoal.oneOf.properties.currency.additionalProperties,false
+properties.fundingGoal.oneOf.properties.currency.required,value;currency
+properties.fundingGoal.oneOf.additionalProperties,false
+properties.fundingGoal.oneOf.format,currency
+properties.fundingGoal.oneOf.type,object
+properties.fundingGoal.oneOf.maxProperties,
+properties.vsePurpose.title,VSE Purpose
+properties.vsePurpose.description,VSE Survey purpose category.
+properties.vsePurpose.oneOf.title,One Of-1
+properties.vsePurpose.oneOf.description,
+properties.vsePurpose.oneOf.type,object
+properties.vsePurpose.oneOf.properties.purpose.title,Purpose
+properties.vsePurpose.oneOf.properties.purpose.description,VSE Survey purpose category.
+properties.vsePurpose.oneOf.properties.purpose.enum,currentRestricted
+properties.vsePurpose.oneOf.properties.purpose.type,string
+properties.vsePurpose.oneOf.properties.subPurpose.title,Subpurpose
+properties.vsePurpose.oneOf.properties.subPurpose.description,VSE Survey sub-purpose category.
+properties.vsePurpose.oneOf.properties.subPurpose.enum,academicDivisions;compensation;research;extensionServices;library;physicalPlant;financialAid;athletics;other
+properties.vsePurpose.oneOf.properties.subPurpose.type,string
+properties.vsePurpose.oneOf.additionalProperties,false
+properties.vsePurpose.oneOf.required,purpose;subPurpose
+properties.vsePurpose.oneOf.title,One Of-2
+properties.vsePurpose.oneOf.description,
+properties.vsePurpose.oneOf.type,object
+properties.vsePurpose.oneOf.properties.purpose.title,Purpose
+properties.vsePurpose.oneOf.properties.purpose.description,VSE Survey purpose category.
+properties.vsePurpose.oneOf.properties.purpose.enum,currentUnrestricted;property;buildings;endowmentUnrestricted;endowmentRestricted;loan;deferred
+properties.vsePurpose.oneOf.properties.purpose.type,string
+properties.vsePurpose.oneOf.additionalProperties,false
+properties.vsePurpose.oneOf.required,purpose
+properties.vsePurpose.oneOf.type,object
+properties.vsePurpose.oneOf.maxProperties,
+properties.financialAidFunds.title,Financial Aid Fund
+properties.financialAidFunds.description,The financial aid funds associated with a designation.
+properties.financialAidFunds.type,array
+properties.financialAidFunds.items.title,Financial Aid Fund
+properties.financialAidFunds.items.description,The financial aid funds associated with a designation.
+properties.financialAidFunds.items.type,object
+properties.financialAidFunds.items.properties.id.title,ID
+properties.financialAidFunds.items.properties.id.description,The global identifier for Financial Aid Fund
+properties.financialAidFunds.items.properties.id.type,string
+properties.financialAidFunds.items.properties.id.format,guid
+properties.financialAidFunds.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.financialAidFunds.items.links.rel,self
+properties.financialAidFunds.items.links.href,/financial-aid-funds/{id}
+properties.financialAidFunds.items.links.targetSchema.$ref,financial-aid-funds.json#
+properties.financialAidFunds.items.additionalProperties,false
+properties.financialAidFunds.items.required,id
+properties.fundsRestriction.title,Funds Restriction
+properties.fundsRestriction.description,donor restrictions on funds, or constraints on the usage of funds
+properties.fundsRestriction.oneOf.type,string
+properties.fundsRestriction.oneOf.enum,unrestricted;temporary;permanent
+properties.fundsRestriction.oneOf.type,string
+properties.fundsRestriction.oneOf.maxLength,
+properties.restrictions.title,Restriction
+properties.restrictions.description,The restrictions associated with a designation.
+properties.restrictions.type,array
+properties.restrictions.items.title,Restriction
+properties.restrictions.items.description,The restrictions associated with a designation.
+properties.restrictions.items.type,object
+properties.restrictions.items.properties.id.title,ID
+properties.restrictions.items.properties.id.description,The global identifier for Restriction
+properties.restrictions.items.properties.id.type,string
+properties.restrictions.items.properties.id.format,guid
+properties.restrictions.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.restrictions.items.links.rel,self
+properties.restrictions.items.links.href,/designation-restrictions/{id}
+properties.restrictions.items.links.targetSchema.$ref,designation-restrictions.json#
+properties.restrictions.items.additionalProperties,false
+properties.restrictions.items.required,id
+properties.organizations.title,Organization
+properties.organizations.description,The organizations associated with a designation.
+properties.organizations.type,array
+properties.organizations.items.title,Organization
+properties.organizations.items.description,The organizations associated with a designation.
+properties.organizations.items.type,object
+properties.organizations.items.properties.id.title,ID
+properties.organizations.items.properties.id.description,The global identifier for Organization
+properties.organizations.items.properties.id.type,string
+properties.organizations.items.properties.id.format,guid
+properties.organizations.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.organizations.items.links.rel,self
+properties.organizations.items.links.href,/organizations/{id}
+properties.organizations.items.links.targetSchema.$ref,organizations.json#
+properties.organizations.items.additionalProperties,false
+properties.organizations.items.required,id
+properties.comment.title,Comment
+properties.comment.description,A comment associated with the designation.
+properties.comment.type,string
+properties.assignments.title,Assignment
+properties.assignments.description,Designation assignments
+properties.assignments.type,array
+properties.assignments.items.type,object
+properties.assignments.items.properties.assignee.title,Assignee
+properties.assignments.items.properties.assignee.description,
+properties.assignments.items.properties.assignee.oneOf.title,One Of-1
+properties.assignments.items.properties.assignee.oneOf.description,
+properties.assignments.items.properties.assignee.oneOf.type,object
+properties.assignments.items.properties.assignee.oneOf.properties.person.title,Person
+properties.assignments.items.properties.assignee.oneOf.properties.person.description,Assigned Person
+properties.assignments.items.properties.assignee.oneOf.properties.person.type,object
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.title,ID
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.description,The global identifier for Person
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.type,string
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.format,guid
+properties.assignments.items.properties.assignee.oneOf.properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.assignments.items.properties.assignee.oneOf.properties.person.links.rel,self
+properties.assignments.items.properties.assignee.oneOf.properties.person.links.href,/persons/{id}
+properties.assignments.items.properties.assignee.oneOf.properties.person.links.targetSchema.$ref,persons.json#
+properties.assignments.items.properties.assignee.oneOf.properties.person.additionalProperties,false
+properties.assignments.items.properties.assignee.oneOf.properties.person.required,id
+properties.assignments.items.properties.assignee.oneOf.additionalProperties,false
+properties.assignments.items.properties.assignee.oneOf.required,person
+properties.assignments.items.properties.assignee.oneOf.title,One Of-2
+properties.assignments.items.properties.assignee.oneOf.description,
+properties.assignments.items.properties.assignee.oneOf.type,object
+properties.assignments.items.properties.assignee.oneOf.properties.group.title,Group
+properties.assignments.items.properties.assignee.oneOf.properties.group.description,Assigned Group
+properties.assignments.items.properties.assignee.oneOf.properties.group.type,object
+properties.assignments.items.properties.assignee.oneOf.properties.group.properties.id.title,ID
+properties.assignments.items.properties.assignee.oneOf.properties.group.properties.id.description,The global identifier for Group
+properties.assignments.items.properties.assignee.oneOf.properties.group.properties.id.type,string
+properties.assignments.items.properties.assignee.oneOf.properties.group.properties.id.format,guid
+properties.assignments.items.properties.assignee.oneOf.properties.group.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.assignments.items.properties.assignee.oneOf.properties.group.links.rel,self
+properties.assignments.items.properties.assignee.oneOf.properties.group.links.href,/person-groups/{id}
+properties.assignments.items.properties.assignee.oneOf.properties.group.links.targetSchema.$ref,person-groups.json#
+properties.assignments.items.properties.assignee.oneOf.properties.group.additionalProperties,false
+properties.assignments.items.properties.assignee.oneOf.properties.group.required,id
+properties.assignments.items.properties.assignee.oneOf.additionalProperties,false
+properties.assignments.items.properties.assignee.oneOf.required,group
+properties.assignments.items.properties.role.title,Assignment Role
+properties.assignments.items.properties.role.description,The assignment role
+properties.assignments.items.properties.role.type,object
+properties.assignments.items.properties.role.properties.roleType.title,Type
+properties.assignments.items.properties.role.properties.roleType.description,A type of role.
+properties.assignments.items.properties.role.properties.roleType.enum,manager;other
+properties.assignments.items.properties.role.properties.roleType.type,string
+properties.assignments.items.properties.role.properties.detail.title,Detail
+properties.assignments.items.properties.role.properties.detail.description,
+properties.assignments.items.properties.role.properties.detail.oneOf.type,object
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.title,ID
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.type,string
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.format,guid
+properties.assignments.items.properties.role.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.assignments.items.properties.role.properties.detail.oneOf.links.rel,self
+properties.assignments.items.properties.role.properties.detail.oneOf.links.href,/roles/{id}
+properties.assignments.items.properties.role.properties.detail.oneOf.links.targetSchema.$ref,roles.json#
+properties.assignments.items.properties.role.properties.detail.oneOf.additionalProperties,false
+properties.assignments.items.properties.role.properties.detail.oneOf.required,id
+properties.assignments.items.properties.role.properties.detail.oneOf.type,object
+properties.assignments.items.properties.role.properties.detail.oneOf.maxProperties,
+properties.assignments.items.properties.role.additionalProperties,false
+properties.assignments.items.properties.role.required,roleType
+properties.assignments.items.properties.preference.title,Preferred assignee
+properties.assignments.items.properties.preference.description,Indicates the preferred assignee for the designation.
+properties.assignments.items.properties.preference.oneOf.type,string
+properties.assignments.items.properties.preference.oneOf.enum,primary
+properties.assignments.items.properties.preference.oneOf.type,string
+properties.assignments.items.properties.preference.oneOf.maxLength,
+properties.assignments.items.properties.startOn.title,Start Date
+properties.assignments.items.properties.startOn.description,The start date of the assignment
+properties.assignments.items.properties.startOn.type,string
+properties.assignments.items.properties.startOn.format,date-time
+properties.assignments.items.properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.assignments.items.properties.endOn.title,End Date
+properties.assignments.items.properties.endOn.description,The end date of the assignment
+properties.assignments.items.properties.endOn.oneOf.type,string
+properties.assignments.items.properties.endOn.oneOf.format,date-time
+properties.assignments.items.properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.assignments.items.properties.endOn.oneOf.type,string
+properties.assignments.items.properties.endOn.oneOf.maxLength,
+properties.assignments.items.additionalProperties,false
+properties.assignments.items.required,assignee;role;startOn
+required,id;title;status
+additionalProperties,false

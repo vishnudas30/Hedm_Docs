@@ -1,0 +1,109 @@
+title,Personal Relationship
+description,A kind of relationship between two people
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,The global identifier of the relationship
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of the relationship
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,The full description of the relationship
+properties.description.type,string
+properties.subjectPerson.title,Subject Person
+properties.subjectPerson.description,A person, with regards to whom the relationship is considered
+properties.subjectPerson.type,object
+properties.subjectPerson.properties.id.title,ID
+properties.subjectPerson.properties.id.description,The global identifier for Subject Person
+properties.subjectPerson.properties.id.type,string
+properties.subjectPerson.properties.id.format,guid
+properties.subjectPerson.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.subjectPerson.links.rel,self
+properties.subjectPerson.links.href,/persons/{id}
+properties.subjectPerson.links.targetSchema.$ref,persons.json#
+properties.subjectPerson.additionalProperties,false
+properties.subjectPerson.required,id
+properties.relatedPerson.title,Related Person
+properties.relatedPerson.description,A person related to the subject one
+properties.relatedPerson.type,object
+properties.relatedPerson.properties.id.title,ID
+properties.relatedPerson.properties.id.description,The global identifier for Related Person
+properties.relatedPerson.properties.id.type,string
+properties.relatedPerson.properties.id.format,guid
+properties.relatedPerson.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.relatedPerson.links.rel,self
+properties.relatedPerson.links.href,/persons/{id}
+properties.relatedPerson.links.targetSchema.$ref,persons.json#
+properties.relatedPerson.additionalProperties,false
+properties.relatedPerson.required,id
+properties.relationshipType.title,Personal Relationship Type
+properties.relationshipType.description,Type of relationships between two people
+properties.relationshipType.enum,parent;stepParent;mother;stepMother;father;stepFather;child;stepChild;daughter;stepDaughter;son;stepSon;sibling;stepSibling;brother;stepBrother;sister;stepSister;spouse;wife;partner;grandParent;grandMother;grandFather;grandChild;grandDaughter;grandSon;parentInLaw;motherInLaw;fatherInLaw;childInLaw;daughterInLaw;sonInLaw;siblingInLaw;sisterInLaw;brotherInLaw;siblingOfParent;aunt;uncle;childOfSibling;niece;nephew;cousin;friend;relative;coworker;neighbor;classmate;caregiver;other
+properties.relationshipType.type,string
+properties.detail.title,Detail
+properties.detail.description,
+properties.detail.oneOf.type,object
+properties.detail.oneOf.properties.id.title,ID
+properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.detail.oneOf.properties.id.type,string
+properties.detail.oneOf.properties.id.format,guid
+properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.detail.oneOf.links.rel,self
+properties.detail.oneOf.links.href,/personal-relationship-types/{id}
+properties.detail.oneOf.links.targetSchema.$ref,personal-relationship-types.json#
+properties.detail.oneOf.additionalProperties,false
+properties.detail.oneOf.required,id
+properties.detail.oneOf.type,object
+properties.detail.oneOf.maxProperties,
+properties.status.title,Status
+properties.status.description,The status of the relationship (where appropriate)
+properties.status.oneOf.type,string
+properties.status.oneOf.enum,active;inactive
+properties.status.oneOf.type,string
+properties.status.oneOf.maxLength,
+properties.startOn.title,Start Date
+properties.startOn.description,A date when a relationship started
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.format,date-time
+properties.startOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.maxLength,
+properties.endOn.title,End Date
+properties.endOn.description,A date when a relationship ended
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.comments.title,Comments
+properties.comments.description,Comments on the relationship
+properties.comments.type,string
+required,id;title;subjectPerson;relatedPerson;relationshipType
+additionalProperties,false

@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HEDM API</title>
+    
+    
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/bootstrap-toggle.min.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/github.min.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/jsondiffpatch.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/main.css">
+    <!--
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/ellucian.css">
+    <link rel="stylesheet" type="text/css" href="/Presentation2/css/ellucian-light.css">
+    -->
+    
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jquery-migrate.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jquery-ui.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jquery.tipsy.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/d3.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/dagre-d3.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/CollapsibleLists.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/epiceditor.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/bootstrap-toggle.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/highlight.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jsondiffpatch.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/modules/jsondiffpatch-formatters.min.js"></script>
+    
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/applyMdTables.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/hedm-graph.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/dropdown.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/search-bar.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/stickytabs.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/resize.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/quickstart.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/navbar.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/standardsnav.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/hljs.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/leftnav.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/initepiceditor.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/toggleDiff.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/search-buttons.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/toggleAdmin.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/toggleAllProperties.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/Presentation2/js/src/collapsibleLists.js"></script>
+    
+    
+    <meta name="name" content="persons">
+    <meta name="version" content="Presentation2">
+  </head>
+  <body>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h2 class="modal-title" id="myModalLabel">Search Bar and Filter Bar Help Menu</h2>
+        </div>
+        <div class="modal-body">
+          <h3> Search Bar Usage <span class="glyphicon glyphicon-search" aria-hidden="true"></span></h3>
+          <h4> Description </h4>
+          <p> The search bar provides the ability to quickly navigate to an entity in the listing. </p>
+          <h4> Usage </h4>
+          <p> In the "Search for entities" bar, begin typing the name of an entity of interest. </p>
+          <p> A dropdown will display suggestions based upon the text in the search bar. </p>
+          <p> To select the entity from the dropdown, use the down arrow key to navigate to the particular entity, then press tab for the selected entity to fill in the text field. </p>
+          <p> Finally, press enter and the entity list will jump to the selected entity. To view that entitiy's documentation, press enter again or click on the entity in the list </p>
+          <p> <b>Note:</b> Queries with the search bar are <b>case insensitive</b>. </p>
+  
+          <h3> Filter Bar Usage <span class="glyphicon glyphicon-filter" aria-hidden="true"></span></h3>
+          <h4> Description </h4>
+          <p> The filter bar provides the ability to filter the list of entities by attribute. </p>
+          <h4> Usage </h4>
+          <p> The mechanics of using the filter bar are the same as the search bar mechanics described above.</p>
+          <p> The filter bar supports complex filters using the keywords "and", "or" and "not" and parentheses "(" and ")". </p>
+          <p> Try the example filter below: </p>
+          <pre> ((startOn or endOn) and metadata) </pre>
+          <p> <b>Note:</b> Queries with the search bar are <b>case sensitive</b>. </p>
+  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>    <div class="container-fluid">
+      <div id="header" class="row">
+        <div id="header-title" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <h1 class="logo float-left m-hide ta-hide tb1 da1 db1">
+            <a href="/Presentation2/">Ellucian</a>
+          </h1>
+        </div>
+        <div id="docVersion" class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Version: Presentation2
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+      	  <li><a href="/1.0">1.0</a></li>
+      <li><a href="/1.0.1">1.0.1</a></li>
+      <li><a href="/1.0.2">1.0.2</a></li>
+      <li><a href="/2.0">2.0</a></li>
+      <li><a href="/2.0.1">2.0.1</a></li>
+      <li><a href="/2.0.2">2.0.2</a></li>
+      <li><a href="/Presentation2">Presentation2</a></li>
+      <li><a href="/migrated">migrated</a></li>
+      <li><a href="/premigration-done">premigration-done</a></li>
+      <li><a href="/presentation1">presentation1</a></li>
+      <li><a href="/v0.1">v0.1</a></li>
+      
+              </ul>
+        </div>
+      </div>
+      <div id="main" class="row">
+	<div id="navbar" class="slideInLeft col-lg-3 col-md-3 col-sm-12 col-xs-12">
+	  <div id="nav-header" class="row">
+	    <!--
+	    <div class="navSlider collapse">&#9664;</div>
+	    -->
+	    <div id="entity-search" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+	      <div class="row">
+	        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-md-6">
+	         <h2>Entities</h2>
+	        </div>
+	      </div>
+	      <form id="navbar-search" class="input-group" action="#" onsubmit="return tryJump(event);">
+		<input id="searchbar" type="text" aria-label="Search for and entity" placeholder="Search for entities" class="form-control search" onKeyUp="return tryJump(event);">
+		
+		<span class="input-group-btn">
+	
+		  <button class="btn btn-default" type="button" aria-label="search for entity submit" id="searchButton" onclick="return tryJump(enterEvent());">
+	
+		    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+		  </button>
+		</span>
+	      </form>
+	      <form id="search-attr-form" class="input-group" action="#" onsubmit="return trySearch(event);">
+	        <input id="searchbar-attr" type="text" aria-label="Filter by attributes" placeholder="Filter by attribute" class="form-control search" onKeyUp="return trySearch(event);">
+		<span class="input-group-btn">
+		  <button class="btn btn-default" type="button" aria-label="filter by attributes submit" id="filterButton" onclick="return trySearch(enterEvent());">
+		    <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+		  </button>
+		</span>
+	      </form>
+	       <!-- Button trigger modal -->
+	    <div id="modalBtnDiv" class="row">
+	      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+	       <!--  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	          ?
+	        </button> -->
+	      </div>
+	    </div>
+	    </div>
+	     
+	  </div>
+	 <div id="scroll" class="row">
+	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-12">
+	      <ul class="nav">
+	      <li>
+	        <a id="academic-catalogs" href="/Presentation2/docs/academic-catalogs/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Catalogs
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-credentials" href="/Presentation2/docs/academic-credentials/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Credentials
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-disciplines" href="/Presentation2/docs/academic-disciplines/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Disciplines
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-histories" href="/Presentation2/docs/academic-histories/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Histories
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-honors" href="/Presentation2/docs/academic-honors/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Honors
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-levels" href="/Presentation2/docs/academic-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-periods" href="/Presentation2/docs/academic-periods/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Periods
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-program-enrollments" href="/Presentation2/docs/academic-program-enrollments/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Program Enrollments
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="academic-programs" href="/Presentation2/docs/academic-programs/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Academic Programs
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="account-components" href="/Presentation2/docs/account-components/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Account Components
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="accounting-transaction-types" href="/Presentation2/docs/accounting-transaction-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Accounting Transaction Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="administrative-periods" href="/Presentation2/docs/administrative-periods/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Administrative Periods
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="api-links" href="/Presentation2/docs/api-links/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Api Links
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="appeal-purposes" href="/Presentation2/docs/appeal-purposes/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Appeal Purposes
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="appeal-types" href="/Presentation2/docs/appeal-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Appeal Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="appeals" href="/Presentation2/docs/appeals/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Appeals
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="areas-of-giving" href="/Presentation2/docs/areas-of-giving/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Areas Of Giving
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="asset-states" href="/Presentation2/docs/asset-states/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Asset States
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="asset-types" href="/Presentation2/docs/asset-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Asset Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="buildings" href="/Presentation2/docs/buildings/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Buildings
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="campaign-categories" href="/Presentation2/docs/campaign-categories/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Campaign Categories
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="campaign-types" href="/Presentation2/docs/campaign-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Campaign Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="campaigns" href="/Presentation2/docs/campaigns/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Campaigns
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="citizenship-statuses" href="/Presentation2/docs/citizenship-statuses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Citizenship Statuses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="comments" href="/Presentation2/docs/comments/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Comments
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="compensation-levels" href="/Presentation2/docs/compensation-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Compensation Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="confidence-levels" href="/Presentation2/docs/confidence-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Confidence Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituent-activities" href="/Presentation2/docs/constituent-activities/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituent Activities
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituent-activity-categories" href="/Presentation2/docs/constituent-activity-categories/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituent Activity Categories
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituent-activity-types" href="/Presentation2/docs/constituent-activity-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituent Activity Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituent-donation-interests" href="/Presentation2/docs/constituent-donation-interests/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituent Donation Interests
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituent-participation-types" href="/Presentation2/docs/constituent-participation-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituent Participation Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituent-types" href="/Presentation2/docs/constituent-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituent Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="constituents" href="/Presentation2/docs/constituents/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Constituents
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="countries" href="/Presentation2/docs/countries/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Countries
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="course-levels" href="/Presentation2/docs/course-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Course Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="courses" href="/Presentation2/docs/courses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Courses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="credit-categories" href="/Presentation2/docs/credit-categories/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Credit Categories
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="deposit-types" href="/Presentation2/docs/deposit-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Deposit Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="designation-purposes" href="/Presentation2/docs/designation-purposes/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Designation Purposes
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="designation-restrictions" href="/Presentation2/docs/designation-restrictions/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Designation Restrictions
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="designation-types" href="/Presentation2/docs/designation-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Designation Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="designations" href="/Presentation2/docs/designations/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Designations
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donation-credit-types" href="/Presentation2/docs/donation-credit-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donation Credit Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donation-promises" href="/Presentation2/docs/donation-promises/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donation Promises
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donation-types" href="/Presentation2/docs/donation-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donation Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donations" href="/Presentation2/docs/donations/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donations
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donations-summary" href="/Presentation2/docs/donations-summary/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donations Summary
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donor-association-types" href="/Presentation2/docs/donor-association-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donor Association Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donor-societies" href="/Presentation2/docs/donor-societies/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donor Societies
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donor-society-levels" href="/Presentation2/docs/donor-society-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donor Society Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="donor-society-memberships" href="/Presentation2/docs/donor-society-memberships/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Donor Society Memberships
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="email-types" href="/Presentation2/docs/email-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Email Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="employment-histories" href="/Presentation2/docs/employment-histories/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Employment Histories
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="employment-position-levels" href="/Presentation2/docs/employment-position-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Employment Position Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="employment-termination-reasons" href="/Presentation2/docs/employment-termination-reasons/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Employment Termination Reasons
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="employment-types" href="/Presentation2/docs/employment-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Employment Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="enrollment-statuses" href="/Presentation2/docs/enrollment-statuses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Enrollment Statuses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="errors" href="/Presentation2/docs/errors/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Errors
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="ethnicities" href="/Presentation2/docs/ethnicities/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Ethnicities
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="external-donations" href="/Presentation2/docs/external-donations/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            External Donations
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="financial-aid-funds" href="/Presentation2/docs/financial-aid-funds/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Financial Aid Funds
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="general-ledger-transactions" href="/Presentation2/docs/general-ledger-transactions/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            General Ledger Transactions
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="geographic-area-types" href="/Presentation2/docs/geographic-area-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Geographic Area Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="geographic-areas" href="/Presentation2/docs/geographic-areas/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Geographic Areas
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="giving-capacity-ranges" href="/Presentation2/docs/giving-capacity-ranges/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Giving Capacity Ranges
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="grade-change-reasons" href="/Presentation2/docs/grade-change-reasons/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Grade Change Reasons
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="grade-scheme-items" href="/Presentation2/docs/grade-scheme-items/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Grade Scheme Items
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="grade-scheme-items-maximum" href="/Presentation2/docs/grade-scheme-items-maximum/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Grade Scheme Items Maximum
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="grade-schemes" href="/Presentation2/docs/grade-schemes/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Grade Schemes
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="instructional-event-instances" href="/Presentation2/docs/instructional-event-instances/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Instructional Event Instances
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="instructional-events" href="/Presentation2/docs/instructional-events/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Instructional Events
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="instructional-methods" href="/Presentation2/docs/instructional-methods/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Instructional Methods
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="instructional-platforms" href="/Presentation2/docs/instructional-platforms/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Instructional Platforms
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="interest-areas" href="/Presentation2/docs/interest-areas/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Interest Areas
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="interest-levels" href="/Presentation2/docs/interest-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Interest Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="interest-purposes" href="/Presentation2/docs/interest-purposes/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Interest Purposes
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="interest-types" href="/Presentation2/docs/interest-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Interest Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="location-types" href="/Presentation2/docs/location-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Location Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="mailing-labels" href="/Presentation2/docs/mailing-labels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Mailing Labels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="marital-statuses" href="/Presentation2/docs/marital-statuses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Marital Statuses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="organization-size-levels" href="/Presentation2/docs/organization-size-levels/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Organization Size Levels
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="organizations" href="/Presentation2/docs/organizations/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Organizations
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="payment-methods" href="/Presentation2/docs/payment-methods/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Payment Methods
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="payroll-deduction-requests" href="/Presentation2/docs/payroll-deduction-requests/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Payroll Deduction Requests
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="person-filters" href="/Presentation2/docs/person-filters/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Person Filters
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="person-groups" href="/Presentation2/docs/person-groups/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Person Groups
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="person-name-types" href="/Presentation2/docs/person-name-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Person Name Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="person-names" href="/Presentation2/docs/person-names/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Person Names
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="personal-relationship-types" href="/Presentation2/docs/personal-relationship-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Personal Relationship Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="personal-relationships" href="/Presentation2/docs/personal-relationships/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Personal Relationships
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="persons" href="/Presentation2/docs/persons/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Persons
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="phone-types" href="/Presentation2/docs/phone-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Phone Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="places" href="/Presentation2/docs/places/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Places
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="privacy-statuses" href="/Presentation2/docs/privacy-statuses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Privacy Statuses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="proposal-purposes" href="/Presentation2/docs/proposal-purposes/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Proposal Purposes
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="proposal-states" href="/Presentation2/docs/proposal-states/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Proposal States
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="proposals" href="/Presentation2/docs/proposals/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Proposals
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="prospects" href="/Presentation2/docs/prospects/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Prospects
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="races" href="/Presentation2/docs/races/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Races
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="restriction-types" href="/Presentation2/docs/restriction-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Restriction Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="roles" href="/Presentation2/docs/roles/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Roles
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="room-types" href="/Presentation2/docs/room-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Room Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="rooms" href="/Presentation2/docs/rooms/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Rooms
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="rooms-minimum" href="/Presentation2/docs/rooms-minimum/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Rooms Minimum
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="rooms_room-availability" href="/Presentation2/docs/rooms_room-availability/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Rooms_room Availability
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="screening-target-types" href="/Presentation2/docs/screening-target-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Screening Target Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="section-grade-types" href="/Presentation2/docs/section-grade-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Section Grade Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="section-grades" href="/Presentation2/docs/section-grades/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Section Grades
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="section-registration-statuses" href="/Presentation2/docs/section-registration-statuses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Section Registration Statuses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="section-registrations" href="/Presentation2/docs/section-registrations/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Section Registrations
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="sections" href="/Presentation2/docs/sections/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Sections
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="sections-maximum" href="/Presentation2/docs/sections-maximum/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Sections Maximum
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="sites" href="/Presentation2/docs/sites/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Sites
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="social-media" href="/Presentation2/docs/social-media/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Social Media
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="social-media-types" href="/Presentation2/docs/social-media-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Social Media Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="source-contexts" href="/Presentation2/docs/source-contexts/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Source Contexts
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="sources" href="/Presentation2/docs/sources/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Sources
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="subjects" href="/Presentation2/docs/subjects/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Subjects
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="visa-types" href="/Presentation2/docs/visa-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Visa Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="wealth-assessment-metrics" href="/Presentation2/docs/wealth-assessment-metrics/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Wealth Assessment Metrics
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="wealth-assessment-statuses" href="/Presentation2/docs/wealth-assessment-statuses/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Wealth Assessment Statuses
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="wealth-assessments" href="/Presentation2/docs/wealth-assessments/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Wealth Assessments
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="wealth-information-types" href="/Presentation2/docs/wealth-information-types/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Wealth Information Types
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="wealth-ranges" href="/Presentation2/docs/wealth-ranges/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Wealth Ranges
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	      <li>
+	        <a id="wealth-screening-profiles" href="/Presentation2/docs/wealth-screening-profiles/?#">
+	          <div class="row">
+	            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-md-10">
+	            Wealth Screening Profiles
+	            </div>
+	          </div>
+	        </a>
+	      </li>
+	        </ul>
+	    </div>
+	  </div>
+	</div>
+	<div id="content" class="col-lg-9">
+	  <div class="row">
+	    <!--
+		<div class="navSlider expand">&#9654;</div>
+		-->
+	    <div class="col-lg-12">
+	      <div class="row">
+		<div class="col-lg-9">
+		  <h1>HEDM API</h1>
+		</div>
+		<div class="col-lg-3">
+		  <div id="downloads" class="dropdown">
+		    <button class="btn btn-default dropdown-toggle" type="button" id="downloadDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		      Download
+		      <span class="caret"></span>
+		    </button>
+		    <ul class="dropdown-menu" aria-labelledby="downloadDropdown">
+		      <li><a href="/Presentation2/files/schemas.zip" download>ZIP</a></li>
+		      <li><a href="/Presentation2/files/schemas.csv" download>CSV</a></li>
+		    </ul>
+		  </div>
+		</div>
+	      </div>
+	      <div class="row">
+		<div class="col-lg-12">
+		  <p> The REST APIs provide programmatic access to read and write Ellucian Higher Education Data Model data. The Ellucian Higher Education Data Model (HEDM) is a single model of all the things and concepts in the entire domain of higher education administration. Each thing/concept is treated as a separate entity in the model, and the same name is used by both business and technical audiences.  The model is expressed in the form of JSON Schema documents.</p>
+		  <p id="latestBuild">Latest build time: 2015-09-21 09:44:25</p>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="row" id="content-area">
+	    <div class="col-lg-12">
+	      <div class="row">
+		<div id="standards" class="col-lg-12">
+		  <h1>Overview of Standards</h1>
+		  <hr>
+		  <div class="row"> 
+		    <div class="col-lg-3">
+		      <ul id="standards-nav" class="nav nav-pills nav-stacked">
+			<li id="HEDM-API-HTTP-list" role="presentation"><a href="#">Use of HTTP</a></li>
+			<li id="HEDM-API-Bulk-Data-list" role="presentation"><a href="#">HEDM API Bulk Data</a></li>
+			<li id="HEDM-API-filtering-list" role="presentation"><a href="#">HEDM API Filtering</a></li>
+			<li id="HEDM-API-pagination-list" role="presentation"><a href="#">HEDM API Pagination</a></li>
+			<li id="errorcodes-list" role="presentation"><a href="#">HEDM Error Messages</a></li>
+			<li id="template-list" role="presentation"><a href="#">Template</a></li>
+		      </ul>
+
+		    </div>
+		    <div id="standards-content" class="col-lg-9">
+		      <div id="HEDM-API-HTTP" class="standard">
+			<h2 id="use-of-http">Use of HTTP</h2>
+<blockquote>
+<p><strong>Status: Under Review</strong></p>
+<p><strong>Since: version 0.4.0</strong>
+Note: Specific sections may explicitly identify a later version. The specified version above represents the &#39;default&#39; HEDM version for which this standard applies.</p>
+</blockquote>
+<p><p/><p/></p>
+<p>HEDM HTTP APIs must comply with the standards specified herein.</p>
+<p>The <a href="https://github.com/restfulapi/api-strategy">API Strategy</a> may be referenced for additional background information. This document supercedes the API Strategy, as that document is not HEDM specific. </p>
+<hr>
+<p><p/><p/>
+This document establishes HEDM standards for using HTTP.</p>
+<h3 id="-a-id-http-methods-a-http-methods"><a id="http-methods"></a>HTTP Methods</h3>
+<p>APIs must expose a standard REST interface using the HTTP methods (aka verbs) shown below:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">HTTP Method</th>
+<th style="text-align:left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">GET</td>
+<td style="text-align:left">Read a resource or list of resources</td>
+</tr>
+<tr>
+<td style="text-align:center">POST</td>
+<td style="text-align:left">Create a new resource (when the key is not known a-priori)</td>
+</tr>
+<tr>
+<td style="text-align:center">PUT</td>
+<td style="text-align:left">Update an existing resource or create one if the key is pre-defined</td>
+</tr>
+<tr>
+<td style="text-align:center">PATCH</td>
+<td style="text-align:left">Partially update an existing resource</td>
+</tr>
+<tr>
+<td style="text-align:center">DELETE</td>
+<td style="text-align:left">Remove a resource</td>
+</tr>
+</tbody>
+</table>
+<p><em>HTTP PATCH support was not required in earlier HEDM versions. Consequently, this support must be added for existing APIs to be compliant with this specification.</em></p>
+<p>HEDM API support for HTTP PATCH must also support <a href="https://tools.ietf.org/html/rfc6902">JSON Patch</a>. JSON Patch provides a very explicit mechanism to describe changes to a resource. The proper custom media type for HTTP PATCH requests using JSON Patch is &#39;application/json-patch+json&#39;. This standard custom media type must be set as the Content-Type header irrespective of the resource being patched.</p>
+<p>Safety and idempotency:</p>
+<ul>
+<li>HTTP &#39;GET&#39; must be &#39;safe&#39;, meaning such requests must not have side effects and must not modify state on the server.</li>
+<li>HTTP &#39;GET&#39;, &#39;PUT&#39;, &#39;PATCH&#39; and &#39;DELETE&#39; must be &#39;idempotent&#39;, meaning subsequent invocations of the same request must not have any adverse consequences (other than processing overhead in order to provide a response to the client).</li>
+</ul>
+<p>When using PUT to &#39;update&#39; a resource, PUT support must allow for partial updates. That is, while PUT semantics are to &#39;replace&#39; a resource, HEDM APIs must support requests containing only required properties (i.e., they must not remove optional properties from an existing resource if not included in a PUT request). </p>
+<p>Two additional HTTP methods are encouraged but not required (as some frameworks do not provide support for them).  These are:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">HTTP Method</th>
+<th style="text-align:left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">HEAD</td>
+<td style="text-align:left">Read metadata about a resource, but not the resource itself</td>
+</tr>
+<tr>
+<td style="text-align:center">OPTIONS</td>
+<td style="text-align:left">Discover the supported methods, as returned in an &#39;Allow&#39; header</td>
+</tr>
+</tbody>
+</table>
+<p>Support for OPTIONS is particularly important when using <a href="http://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a>, to support pre-flight requests issued by modern browsers.</p>
+<h3 id="-a-id-http-codes-a-http-status-codes"><a id="http-codes"></a>HTTP Status Codes</h3>
+<p>HEDM HTTP/S APIs must use standard <a href="http://httpstatus.es">HTTP status codes</a> as specified in the table below:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Status Code</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">200</td>
+<td style="text-align:left">The request was successful.</td>
+</tr>
+<tr>
+<td style="text-align:center">201</td>
+<td style="text-align:left">A resource was successfully created.</td>
+</tr>
+<tr>
+<td style="text-align:center">202</td>
+<td style="text-align:left">Request has been received. This is only used for asynchronous processing.</td>
+</tr>
+<tr>
+<td style="text-align:center">204</td>
+<td style="text-align:left">Request was successful and no content is returned. This is a common response to a DELETE request, and is permitted for POST if there is no value in returning the newly created resource.</td>
+</tr>
+<tr>
+<td style="text-align:center">304</td>
+<td style="text-align:left">The GET request was conditional and contained an &#39;If-None-Match&#39; header that was used to determine the current representation has not changed</td>
+</tr>
+<tr>
+<td style="text-align:center">400</td>
+<td style="text-align:left">The request cannot be understood. This should be used if there are syntax errors and validation errors, (&#39;422&#39; is also acceptable for validation errors.)</td>
+</tr>
+<tr>
+<td style="text-align:center">401</td>
+<td style="text-align:left">Authentication has failed, or the authenticated client is not authorized.</td>
+</tr>
+<tr>
+<td style="text-align:center">404</td>
+<td style="text-align:left">The requested resource could not be found.</td>
+</tr>
+<tr>
+<td style="text-align:center">405</td>
+<td style="text-align:left">The method is not supported by the resource.</td>
+</tr>
+<tr>
+<td style="text-align:center">406</td>
+<td style="text-align:left">Not Acceptable. Return this code when the Accept header (or a custom header as discussed in this strategy) requests a response in an unsupported format.</td>
+</tr>
+<tr>
+<td style="text-align:center">409</td>
+<td style="text-align:left">There is a conflict. Return this if the request reflects stale data (that violates an optimistic lock).</td>
+</tr>
+<tr>
+<td style="text-align:center">412</td>
+<td style="text-align:left">A precondition failed. Used for conditional requests (e.g., when an &#39;If-Match&#39; header does not match a resource&#39;s Etag value).</td>
+</tr>
+<tr>
+<td style="text-align:center">415</td>
+<td style="text-align:left">Unsupported Media Type. Return when a client request contains content in an unsupported format.</td>
+</tr>
+<tr>
+<td style="text-align:center">417</td>
+<td style="text-align:left">Expectation Failed. Return this if appropriate when supporting &#39;look-before-you-leap&#39; requests</td>
+</tr>
+<tr>
+<td style="text-align:center">429</td>
+<td style="text-align:left">The rate limit is exceeded</td>
+</tr>
+<tr>
+<td style="text-align:center">500</td>
+<td style="text-align:left">An undisclosed server error occurred. This is a generic &#39;fail whale&#39; response.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: The above table represents a minimum list for API developers, your middleware will certainly use additional codes, particularly those related to redirects.</em></p>
+<h3 id="validation-errors">Validation Errors</h3>
+<p>Responses must report validation errors using HTTP Status Code &#39;400&#39;, and must return a body containing details of the error.</p>
+<p>Following is an example error:</p>
+<pre><code class="lang-json">  { &quot;errors&quot; : [
+        {
+          &quot;type&quot;: &quot;validation&quot;,
+          &quot;resource&quot;: {
+                        &quot;id&quot;: 25
+                      },
+          &quot;message&quot;: &quot;districtDivision value exceeds two character limit&quot;
+        }
+    ]
+  }
+</code></pre>
+<h3 id="conditional-requests-and-caching">Conditional Requests and Caching</h3>
+<blockquote>
+<p><strong>Since: 0.5.0</strong> &nbsp;&nbsp;&nbsp; 
+Note: <em>HEDM APIs may add support for ETag and conditional requests as described in this section prior to this identified release, however they must not require use of conditional requests until this release. This is a breaking change from the previous release.</em> </p>
+</blockquote>
+<p>HEDM HTTP APIs must include an <a href="https://en.wikipedia.org/wiki/HTTP_ETag">ETag</a> header within a response to each GET request.</p>
+<p>A HEDM API must support conditional GET requests that use the &#39;If-None-Match&#39; header containing an ETag value returned from a previous GET request. If the service finds the resource still has a representation that has this ETag, the service must return an HTTP status code of 304 instead of returning the resource. </p>
+<p>Similarly, a HEDM API must support conditional PUT or PATCH requests. If the &#39;If-Match&#39; header contains an ETag that is different than an ETag calculated for a representation based on the current state of the resource, an HTTP status code of 412 should be returned. </p>
+<p>If an API client retrieves a list of some resource (e.g., a &#39;page&#39;), that list must contain an ETag.  That ETag, however, is only useful to support subsequent conditional GET requests of that same &#39;page&#39;.  That is, an ETag for a list needs to account for all elements within that list, and is not the same ETag associated with any particular element contained in that list. In fact, an ETag for a list can be a hash of all the ETags for the elements in the list.</p>
+<p>Consequently, a client will not be able to issue a PUT or PATCH request for a resource without first retrieving the affected resource explicitly (i.e., individually) so that it can attain the needed ETag corresponding to that specific resource. </p>
+<p>If an &#39;If-Match&#39; header is not provided within a PUT or PATCH request, a &#39;412&#39; must be returned.</p>
+<h3 id="optimistic-locking">Optimistic Locking</h3>
+<p>Resources are often protected against stale updates by incorporating an optimistic locking strategy. This is not surfaced using HEDM APIs, as an optimistic lock token (aka revision or version) is not included within HEDM models. </p>
+<p>The use of ETags and conditional requests (as discussed above) will be used to prevent &#39;stale&#39; updates. When implemented, an ETag may be constructed by including the optimistic lock tokens when available within the underlying datastore.</p>
+<h4 id="-a-id-uri-conventions-a-uri-conventions"><a id="uri-conventions"></a>URI conventions</h4>
+<ul>
+<li>Use transparent (i.e., readable) URIs unless specific requirements preclude</li>
+<li>Use dashes (aka hyphens) in lieu of underscores</li>
+<li>Use camelCase when referencing property names</li>
+<li>Use pluralized resource names for URLs, regardless of whether a collection or a single instance is being addressed. For example, a list of colleges might be retrieved using &#39;GET /colleges&#39; while a specific college instance might be retrieved using &#39;GET /colleges/{id}&#39;.</li>
+</ul>
+<h4 id="-a-id-api-versioning-a-versioning"><a id="api-versioning"></a>Versioning</h4>
+<p>HEDM APIs must use custom media types within the &#39;Accept&#39; and &#39;Content-Type&#39; HTTP Headers to identify the (major) version of HEDM being requested or used.That is, a HEDM API is deployed to support one or more major versions of HEDM.</p>
+<p>HEDM JSON Schema Catalog releases are versioned using <a href="http://semver.org/">Semantic Versioning</a> (version 2), and an API may support one or more major releases of the catalog.  Only &#39;major&#39; versions are identified within a custom media type (as &#39;minor&#39; and &#39;patch&#39; changes are by definition backward compatible, a HEDM API implementation is free to adopt the last backward compatible version to satisfy a request identifying a major version).</p>
+<p>As an example, let us assume HEDM JSON Schema Catalog 3.4.17 is released and is adopted by a HEDM API that was previously supporting catalog version 3.3.19.  HTTP requests to that API including a custom media type identifying &#39;v3&#39; will now use this &#39;new&#39; catalog release.  </p>
+<p>A HEDM API may support multiple HEDM versions, however this support is limited to a single version per major release. That is, a HEDM API that supports &#39;v3&#39; may also support &#39;v2&#39; (which would use the latest HEDM JSON Catalog 2.x.x release available). </p>
+<p>When using custom media types, they do not need to be <a href="http://www.iana.org/assignments/media-types/application">registered</a> nor do they need to correspond to a schema document (although they often may).</p>
+<h3 id="-a-id-media-types-a-media-types"><a id="media-types"></a>Media Types</h3>
+<p>An HTTP request should include HTTP &#39;Content-Type&#39; and &#39;Accept&#39; headers that identify the media type used in the request and the media type desired in the response, respectively. </p>
+<p>A custom media type may be used to identify a specific representation of a resource:</p>
+<pre><code>    application/vnd.hedtech.supercourses.v4+json
+</code></pre><p>To identify a default representation (one that corresponds to the HEDM JSON Schema for that resource) and indicate a particular (major) version (e.g., 3.x.x), a more general custom media type may be employed:</p>
+<pre><code>    application/vnd.hedtech.hedm.v3+json
+</code></pre><p>This more general &#39;hedm&#39; custom media type is preferred when requesting default representations. There is no benefit to identifying a resource within the custom media name if the default representation is requested, as the resource name is already provided within the request&#39;s URI.</p>
+<p>Lastly, the client may use a standard media type if identifying &#39;the latest&#39; supported version using the default representation:</p>
+<pre><code>    application/json
+</code></pre><p>When a request identifies a custom media type that is not supported, a 415 (unsupported media type) error should be returned.</p>
+<h3 id="dates-and-times">Dates and Times</h3>
+<p>HEDM model properties using a JSON Schema &#39;format&#39; of ”date-time” must contain values that adhere to <a href="http://tools.ietf.org/html/rfc3339#section-5.6">RFC3339 section 5.6</a>. (Note RFC3339 is a profile of <a href="http://www.w3.org/TR/NOTE-datetime">ISO </a>.)</p>
+<p>This same RFC applies to specifying dates and times on the URI when used as query paramters.</p>
+
+		      </div>
+		      <div id="HEDM-API-Bulk-Data" class="standard">
+			<h2 id="hedm-bulk-data">HEDM Bulk Data</h2>
+<blockquote>
+<p><strong>Status: Accepted</strong></p>
+<p><strong>Since: version 0.4.0</strong><br/></p>
+</blockquote>
+<p>Bulk processing provides a way to apply one API call to multiple instances of the same resource (e.g., HEDM model), all in a single payload. The request payload is a JSON array of instances of the same resource (e.g., persons). The response payload is a JSON array of results, in exactly the same order as requested. That is, if a bulk request consists of 10 &#39;persons&#39;, then the response will contain a JSON array of ten results, in the same order. There is no explicit index; it is the responsibility of the service to ensure the results array is in the same order.</p>
+<p>Each result within the response&#39;s JSON array will be either a full representation of the instance (if that instance was created or updated successfully) or an error document that describes why the operation on that instance was not successful. All bulk requests are &quot;greedy&quot;, as many instances in the request payload that can be accepted will be. </p>
+<p>Bulk APIs may normally synchronous, although an asynchronous API may be implemented in compliance with the Batch API Standard currently under development. This standard focuses on synchronous bulk APIs.</p>
+<h4 id="example-">Example:</h4>
+<h5 id="request">Request</h5>
+<pre><code>{
+    {person instance 1},
+    {person instance 2},
+    {person instance 3}
+}
+</code></pre><h5 id="response-">Response:</h5>
+<pre><code>{
+    {person instance 1 full representation},  // accepted
+    {error for instance 2},  // not accepted
+    {person instance 3 full representation} // accepted
+}
+</code></pre><p>In this example, instances 1 and 3 of the bulk request were complete successfully, but instance 2 was not. </p>
+
+		      </div>
+		      <div id="HEDM-API-filtering" class="standard">
+			<h2 id="api-filtering">API Filtering</h2>
+<blockquote>
+<p><strong>Status: Proposed</strong></p>
+<p><strong>Since: version 0.4.0</strong><br/></p>
+</blockquote>
+<p>HEDM APIs may need to support filtering through the use of &#39;ad-hoc&#39; and or &#39;named&#39; queries. When such filtering is needed for an API, it must be implemented in accordance to this specification. The determination of filtering requirements, and whether ad-hoc or named queries should be employed, must be determined by the HEDM working group. </p>
+<p>Filtering capability must be specified in documentation for each HEDM model, and all solutions that may be configured as an authoritative source for that model must support the specified filtering.</p>
+<h4 id="ad-hoc-query-support">Ad-Hoc Query Support</h4>
+<p>Ad-hoc queries must use the query syntax described herein, which is a subset of the <a href="http://docs.mongodb.org/manual/tutorial/query-documents/">MongoDB</a> query syntax.  The rest of this page describes the specific parts that will be supported by Ellucian.  Additional part of the MongoDB syntax can be adopted if deemed necessary.  Using this syntax, queries are defined as a JSON document. Queries are submitted by passing the query document as a JSON-formatted string using the a query parameter called &quot;filter&quot;.  For example:</p>
+<pre><code>http://localhost/fsu/api/courses?filter={&quot;title&quot; : &quot;my course title&quot;}
+</code></pre><p>In the above example, the query document is shown as plain text for the sake of clarity.  However, in reality this string should be URL encoded.  For example:</p>
+<pre><code>http://localhost/fsu/api/courses?filter=%7B%22title%22%3A%22my%20course%20title%22%7D
+</code></pre><p>The following sections provide an overview of the query syntax.</p>
+<h5 id="equality">Equality</h5>
+<p>The simplest query is a test for equality.</p>
+<pre><code>{&quot;title&quot; : &quot;MATH101&quot;}
+</code></pre><p>The above example says give me all the courses where the course title equals MATH101. You can create an AND query by specifying more than one property in the query document.  The following example says return all instances where description equals Beginning mathematics and number equals 101.</p>
+<pre><code>{&quot;description&quot; : &quot;Beginning mathematics&quot;, &quot;number&quot; : &quot;101&quot;}
+</code></pre><h5 id="basic-operators">Basic Operators</h5>
+<p>The following basic operators are supported.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$gt</td>
+<td>Greater than</td>
+</tr>
+<tr>
+<td>$gte</td>
+<td>Greater than or equal</td>
+</tr>
+<tr>
+<td>$lt</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>$lte</td>
+<td>Less than or equal</td>
+</tr>
+<tr>
+<td>$ne</td>
+<td>Not equal</td>
+</tr>
+</tbody>
+</table>
+<p>Below is an example of how to use the above operators.  This example say give me all the instances where count is greater than 10. </p>
+<pre><code>{&quot;count&quot; : {&quot;$gt&quot; : 10}}
+</code></pre><h5 id="or-queries">OR Queries</h5>
+<p>An OR query can be performed using the $or operator.  The example below will return all instances where property1 equals true or property equals false.</p>
+<pre><code>{&quot;$or&quot; : [{&quot;property1&quot; : true}, {&quot;property2&quot; : false}]}
+</code></pre><p>The $or operator can also be used in conjunction with the other operators. For example:</p>
+<pre><code>{&quot;$or&quot; : [{&quot;qty&quot; : {&quot;$gt : 10}}, {&quot;qty&quot; : {&quot;$lt&quot; : 20}}]}
+</code></pre><h5 id="querying-arrays">Querying Arrays</h5>
+<p>Given the following document</p>
+<pre><code>{&quot;id&quot; : &quot;53b2f1d0641a0a0f000c2f13&quot;, &quot;colors&quot; : [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]}
+</code></pre><p>To exactly match the array, both values and order, your query document would look like the following.</p>
+<pre><code>{&quot;colors&quot; : [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]}
+</code></pre><p>To match one or more elements of the array, without regard for position, you use the $all operator.</p>
+<pre><code>{“colors” : {“$all” : [“red, “green’]}}
+</code></pre><h5 id="querying-embedded-documents">Querying Embedded Documents</h5>
+<p>Given the following document.</p>
+<pre><code>{&quot;id&quot; : &quot;53b2f1d0641a0a0f000c2f13&quot;, &quot;item&quot; : {&quot;name&quot; : &quot;item1&quot;, &quot;code&quot; : &quot;001&quot;}}            
+</code></pre><p>To exactly match the entire embedded document, your query document would look like the following.</p>
+<pre><code>{&quot;item&quot; : {&quot;name&quot; : &quot;item1&quot;, &quot;code&quot; : &quot;001&quot;}}
+</code></pre><p>To match a single element of an embedded document use dot notation. For example:</p>
+<pre><code>{&quot;item.code&quot; : &quot;001&quot;}    
+</code></pre><h4 id="named-query-support">Named Query Support</h4>
+<p>A named query is a pre-defined query that must be described within the API documentation.  Named queries may be used to perform very complex queries without requiring the API user to construct a complicated ad-hoc query. </p>
+<p>A named query is specified as a query parameter and may require arguments which must be expressed using JSON (where the arguments are provided as name-value pairs akin to the ad-hoc query syntax used for filtering by &#39;equality&#39;, as described above).</p>
+<pre><code>?highestPerformingStudents={&quot;grade&quot;:&quot;A&quot;,&quot;honors&quot;:&quot;true&quot;}
+</code></pre><h4 id="query-specification">Query Specification</h4>
+<p>HEDM documentation pertaining to each HEDM model must specify the filtering requirements that must be supported by any authoritative source for that model. This model-specific documentation must specify which model properties may be included within an ad-hoc query, and specify the named queries (and arguments) that must be supported.</p>
+<p>That is, while the implementation of a query may vary greatly by technology, the semantics and interface of that query must be consistent regardless of what solution is configured as the authoritative source for that model. </p>
+<p>Note it is necessary to limit the properties that may be included within an ad-hoc query to ensure acceptable performance (e.g., indexing may be necessary within a datastore).   </p>
+<p>The HEDM working group must be used to coordinate the specification and agreement of specific filtering requirements for each HEDM model.</p>
+
+		      </div>
+		      <div id="HEDM-API-pagination" class="standard">
+			<h2 id="hedm-pagination">HEDM Pagination</h2>
+<blockquote>
+<p><strong>Status: Accepted</strong></p>
+<p><strong>Since: version 0.4.0</strong><br/></p>
+</blockquote>
+<p>HEDM APIs supporting retrieval of multiple resources (e.g., &#39;<code>GET /things</code>&#39;) <strong>must</strong> employ &#39;offset-based&#39; pagination as described below.</p>
+<h3 id="http-request-query-parameters">HTTP Request Query Parameters</h3>
+<p>Two URL query parameters must be accepted when handling a GET request for multiple resources. These query parameters allow a client to request subsets (aka pages or blocks) of a dataset at a time.</p>
+<p>These two query parameters are:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Query Param</th>
+<th style="text-align:left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">offset</td>
+<td style="text-align:left">This represents the offset from the first item in the dataset.</td>
+</tr>
+<tr>
+<td style="text-align:center">limit</td>
+<td style="text-align:left">This represents the maximum number of items that may be included in the response.</td>
+</tr>
+</tbody>
+</table>
+<p>It is imperative each HEDM API restrict the limit used to an appropriate maximum value.  Specifically, each HEDM API must override the client-specified limit if that requested limit exceeds some threshold. The specific threshold is not specified, and will likely vary by resource.  </p>
+<p>For example, if the HEDM API has established an internal threshold of &#39;100&#39; for &#39;/things&#39;, a client request that contains a &#39;limit&#39; query parameter of &#39;300&#39; will not result in an error but the response will contain only &#39;100&#39; things.</p>
+<h3 id="http-response-headers">HTTP Response Headers</h3>
+<p>While the two query parameters above are used to communicate pagination within a Request, a HEDM API is required to communicate pagination within the response. This is accomplished using two HTTP Headers, one standard and one custom, as described below.</p>
+<h5 id="x-total-count">X-Total-Count</h5>
+<p>This custom Header represents the total number of items in the dataset, not just the limited number returned in the response. For example, if a backing datastore contained a total of 43,000 students, the X-Total-Count when retrieving students (e.g., 100 at a time) would be &#39;43000&#39;.</p>
+<p>This useful header may be omitted in cases where the total count is difficult to assertain. However, it is expected the great majority of HEDM APIs will be able to determine and return the total count.</p>
+<h5 id="link">Link</h5>
+<p>A standard <a href="http://tools.ietf.org/html/rfc5988">Link Header</a> must be used to communicate pagination within a response to a GET request for multiple resource instances that does not include the full dataset. (If it does include the full dataset (i.e., there is only one page) the Link Header may optionally still be included.)</p>
+<p>This standard identifies four &#39;link relation types&#39; (&#39;first&#39;, &#39;prev&#39;, &#39;next&#39;, and &#39;last&#39;) that pertain to pagination. These are shown in the example Link Header below: </p>
+<pre><code>Link: &lt;https://{host:port}/courses?offset=500&amp;limit=100&gt;; rel=&quot;next&quot;,
+  &lt;https://{host:port}/courses?offset=2700&amp;limit=100&gt;; rel=&quot;last&quot;,
+  &lt;https://{host:port}/courses?offset=0&amp;limit=100&gt;; rel=&quot;first&quot;, 
+  &lt;https://{host:port}/courses?offset=300&amp;limit=100&gt;; rel=&quot;prev&quot;
+</code></pre><p><br/>
+HEDM APIs must support use of a concatenated Link header as defined at <a href="http://www.w3.org/Protocols/9707-link-header.html">http://www.w3.org/Protocols/9707-link-header.html</a>, where multiple lines need to be prefixed with a whitespace character. This is shown above.</p>
+<p>Note each response may not contain all four of these link relations (aka relation types). For example, an initial request for the first 100 items will not be able to include a &#39;prev&#39; link relation (as there is no previous batch of items at the beginning of the dataset). Similarly, the last batch of items would not be able to include the &#39;next&#39; link relation.</p>
+<p>Also note multiple link relations may be combined for one link.  For instance, when the &#39;next&#39; batch of items is also the &#39;last&#39; batch, these two link relations may be expressed together as shown below:</p>
+<pre><code>&lt;https://{host:port}/courses?offset=500&amp;limit=100&gt;; rel=&quot;next last&quot;
+</code></pre><p>If we&#39;re on the only &#39;page&#39; (the entire dataset is returned, and contains 83 elements), the Link Header and X-Total-Count headers would look like:</p>
+<pre><code>Link: &lt;https://{host:port}/fewThings?offset=0&amp;limit=100&gt;; rel=&quot;first last&quot;
+X-Total-Count: 83
+</code></pre><p><br/>
+There are existing libraries to facilitate parsing of the Link Header available for most platforms.</p>
+<p>Lastly, similar to the X-Total-Count custom header discussed above, if the total count cannot be assertained it will not be possible to include the &#39;last&#39; link relation. This is acceptable (albeit undesirable), altough it is expected the great majority of HEDM APIs will be able to include the &#39;last&#39; link relation.</p>
+<h3 id="related-standards">Related Standards</h3>
+<p>Please see HEDM standards for &#39;filtering&#39; and &#39;sorting&#39;. Filtering, sorting and paging are often used together.  </p>
+
+		      </div>
+		      <div id="errorcodes" class="standard">
+			<h2 id="hedm-error-message-schema">HEDM Error Message Schema</h2>
+<p>This describes the HEDM schema that enables conveying information about an error caused by, or related to, the request payload, from the recipient system to the requestor one.</p>
+<h3 id="assumptions-and-constraints">Assumptions and Constraints</h3>
+<ul>
+<li>Systems communicate in the synchronous mode.</li>
+<li>An HTTP error code is returned in the message envelope rather than in the message payload.</li>
+<li>This schema is to only support business logic related error, when the data from the request is consumed and processed.</li>
+<li>Ellucian will maintain one, master, list of all error messages that all publishers will agree to use. Publishers may request additional errors to be included in the list.</li>
+<li>The master list of error messages will be documented as data and checked into the repository under its own directory. Publishers will provide meaningful explanations to each error for the entities, which they are assigned to be the authoritative source for (or the custodian of).</li>
+<li>Individual schemas may include additional information about the interpretation of particular errors in their supplemental documentation.</li>
+</ul>
+<h3 id="error-code-format">Error Code Format</h3>
+<p>Error codes should be unique per resource and follow the dot notation pattern, e.g., &quot;Room.Unavailable&quot;. There is a folder &#39;data/errors&#39; where JSON files are located, which contain the list of all supported error codes by HEDM entity. Here are a few examples of possible entries:</p>
+<pre><code>    [
+      { 
+        &quot;code&quot;: &quot;Instructor.Unavailable&quot;,
+        &quot;title&quot;: &quot;Instructor Unavailable&quot;,
+        &quot;description&quot;: &quot;The instructor selected for this event is not available within the chosen timeframe&quot;
+      },
+      {
+        &quot;code&quot;: &quot;Instructor.InvalidRole&quot;,
+        &quot;title&quot;: &quot;Invalid Role for Instructor&quot;,
+        &quot;description&quot;: &quot;The instructor selected for this event does not have a proper role to teach the course&quot;
+      }
+    ]
+</code></pre><h3 id="error-message-model">Error Message Model</h3>
+<p>The error message model is a vehicle that delivers information about the exception that occurred in the recipient system to the requestor.</p>
+<table>
+<thead>
+<tr>
+<th>Error Message elements</th>
+<th>Required (Y/N)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>An error code</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>A error human-readable error description</td>
+<td>N</td>
+</tr>
+<tr>
+<td>The URL of the resource request that resulted in the error condition being triggered</td>
+<td>N*</td>
+</tr>
+<tr>
+<td>A collection of JSON pointers to properties in the entities where the error occurred</td>
+<td>N**</td>
+</tr>
+</tbody>
+</table>
+<p> * Required if the error is traceable to a specific resource;  ** Required if the error is traceable to specific entities and their properties</p>
+
+		      </div>
+		      <div id="template" class="standard">
+			<h2 id="start-with-an-h2-with-the-name-of-the-standard">Start with an h2 with the name of the standard</h2>
+<p>Add a small overview if desired. Full md is supported.</p>
+<p>Add your md file to hedm-models repo on the develop branch in <code>hedm-models/docs/gen/input/standards</code>. Then add the file to manifest.json with the field as the title of standard and the value as the filename.</p>
+<h3 id="use-h3-for-all-subheading">Use h3 for all subheading</h3>
+<p>paragraph about subheading</p>
+<ul>
+<li>list</li>
+<li>about</li>
+<li>subheading</li>
+</ul>
+<h3 id="images">images</h3>
+<p>add the image to the hedm-models repo at <code>hedm-models/docs/gen/www/images/</code>. then use standard md</p>
+<p><img src="&quot;images/&lt;image-name&gt;&quot;" alt="image alt text"></p>
+
+		      </div>
+		      <!--
+		      <div id="requiredness" class="standard">
+		  	<h4>Using HeDM on the Ellucian Hub</h4>
+		  	<p>While there are many conceptual similarities between our products, there is a lot of variation in how things are named and organized. What is required by Banner may not be required by Colleague - and may not even be a concept at all in Recruiter or Elevate.  The following are some best practices for using HeDM in these scenarios.</p>
+
+		  	<p>Interaction between systems is done through the Ellucian Hub, which uses a Publisher/Subscriber model. </p>
+		  	<ul>
+		  	  <li>Publishers:</li>
+		  	  <ul>
+		  	    <li>Are authoritative for specific HEDM entities. </li>
+		  	    <li>Persist or provide defaults for the full HEDM model, all properties. </li>
+		  	    <li>Have exclusive permission to create, update, and delete.</li>
+		  	  </ul>
+		  	</ul>
+
+		  	<ul>
+		  	  <li>Subscribers: </li>
+		  	  <ul>
+		  	    <li>If <i>syncing</i>, subscribers are keeping a copy of published data. </li>
+		  	    <li>If <i>consuming</i>, subscribers are reading published data. </li>
+		  	    <li>No subscribers are authoritative, they only have permission to read.</li>
+		  	  </ul>
+		  	</ul>
+		      </div>
+		      <div id="filtering" class="standard">
+		  	<p>When requesting a list of matching entities via the API (e.g., /persons?[query-string], the following properties are required to be allowed in query strings.  The format of the query-string must follow the <a href = "https://github.com/restfulapi/api-strategy#support-querying">API Strategy Guide</a>, and use the "unstructured", name=value form.</p>
+
+		  	<p>The JSON Schema for each entity listed here must provide a JSON Hyper-Schema link named "filter" that documents the allowed submission query parameters.</p>
+
+		  	<p>The response to all filter queries is an array of objects containing a "guid" property of all matching entities, or an empty array if there are no matching results.</p>
+		  	<ul>
+		  	  <li>Person</li>
+			  <ul>
+			    <li> Name (Support filtering on all name fields)</li>
+			    <li> Roles</li>
+			    <li> Credentials - Banner ID, Banner Sourced ID, Banner User Name, Banner UDC ID</li>
+			    <li> EmailType and EmailAddress </li>
+			    <li> Filter based on Population Selection</li>
+			  </ul>
+			  <ul>
+			    <li>Course</li>
+			    <ul>
+			      <li> Subject and Number</li>
+			      <li> academicLevels</li>
+			      <li> owningOrganizations (College, Department)</li>
+			      <li> Title </li>
+			      <li> instructionalMethods</li>
+			      <li> Credit</li>
+			      <li> effectiveStartDate </li>
+			      <li> effectiveEndDate</li>
+			    </ul>
+			  </ul>
+			  <ul>
+			    <li>Section</li>
+			    <ul>
+			      <li> Title</li>
+			      <li> startDate</li>
+			      <li> End Date</li>
+			      <li> Code </li>
+			      <li> Number</li>
+			      <li> instructionalPlatform</li>
+			      <li> academicPeriod </li>
+			      <li> course (filter all sections for a given course guid)</li>
+			      <li> site</li>
+			      <li> academicLevels</li>
+			      <li> status</li>
+			      <li> owningOrganizations </li>
+			      <li> integrationpartner (ILP requirement but not yet added to v2 HeDM)</li>
+			    </ul>
+			  </ul>
+			  <ul>
+			    <li>Instructional-events</li>
+			    <ul>
+			      <li> Section (filter all instructional-events for a section)</li>
+			      <li> startDate</li>
+			      <li> End Date</li>
+			      <li> Location.Room</li>
+			      <li> instructorRoster.instructor</li>
+			      <li> Paging</li>
+			    </ul>
+			  </ul>
+		      </div>
+		      <div id="error-handling" class="standard">
+		  	<h1>Nothing Here</h1>
+		      </div>
+		      <div id="partial-updates" class="standard">
+		  	<p>Regarding partial updates in HEDM APIs:</p>
+		  	<p>Systems must support partial updates regarding optional HEDM defined fields in PUT operations at this time.  This means, when processing a PUT operation, only those fields present in the request JSON content body should be updated(or removed) from the resource.  Systems are not required to implement the HTTP PATCH verb at this time.  Note that this caveat is noted in the Ellucian restful API strategy:</p>
+		  	<p>"Note: 'PUT' may, in the future, be replaced with 'PATCH' as 'PUT' is actually intended to replace the resource based upon the new content whereby 'PATCH' is intended to 'update' the existing resource with new content. REST APIs should use 'PUT' with 'PATCH' semantics until PATCH is more broadly supported."</p>
+		  	<p>To further clarify, this means that HEDM API behavior on PUT should be to overlay the fields provided in the request over the existing resource only changing fields which were actually provided in the original web request body.  We handle any property present in the content body and use NULL(or empty string for string literals) to note the removal or deletion of a value/associated object.  This behavior is still compatible with full representations where all HEDM fields are provided, although does not wipe out fields unmentioned in the content body like HTTP PUT specification dictates.</p>
+		  	<p>We will revisit this standard once HTTP PATCH becomes more widely supported in the REST API industry as well as within commonly used client and server framework SDK versions.</p>
+		  	<p>Things needing consideration when revisiting this standard from an HEDM prospective:</p>
+		  	<p>Change events by BEP/EDX must identify between updates and creation of a new resource.  (An insert of an address is not the creation of a new person.  Also the insert of a new name record and update invalidating an old name record for audit history is not the creation of a new person)</p>
+		  	<p>Update content bodies will need to be generated by the ERP adapter off of the event as no restful-api in the source system will build this differential JSON formatted message.</p>
+		      </div>
+		      <div id="functional-api" class="standard">
+		  	<p>Each implementer of the HEDM models in a restful API should provide their own data dictionary for clients. </p>
+		  	<p>All HEDM models will be centrally documented on the XE Registry where Banner and Colleague API resides.</p>
+		  	<p>HEDM defines the schema which describes the type and whether required for each field in the HEDM model. Also has example responses for each endpoint.</p>
+		  	<p>Filterable fields are defined in the links section of the response schema.</p>
+		  	<p>Special query requests sent via POST through QAPI need their own schema.</p>
+		  	<p>In order to differentiate different special requests on the same HEDM resource, the Content-Type must be provided which explicitly defines the request type sent and which schema the request body should be validated against.  This allows for each special request to have it's own schema with it's own required and optional properties defined.</p>
+		  	<p>For persons when duplicate checking the schema is the same as the normal person schema.  However, when requesting a saved person list (person-filter) a required property named person-filter is required of type string and format guid.</p>
+		  	<p>This allows us to have multiple different special requests that return standard HEDM resources from the standard HEDM endpoint for that resource.</p>
+		  	<p>Special request suggested naming:</p>
+		  	<table class='table table-stiped'>
+		  	  <tr>
+		  	    <th>Media Type</th>
+		  	    <th>Schema file</th>
+		  	    <th>Resource being called</th>
+		  	  </tr>
+		  	  <tr>
+		  	    <td>application/vnd.hedtech.integration.duplicate-check.v1+json </td>
+		  	    <td>persons_duplicate-check.json </td>
+		  	    <td>/persons </td>
+		  	  </tr>
+		  	  <tr>
+		  	    <td>application/vnd.hedtech.integration.person-filter.v1+json </td>
+		  	    <td>persons_person-filter.json	 </td>
+		  	    <td>/persons </td>
+		  	  </tr>
+		  	  <tr>
+		  	    <td>application/vnd.hedtech.integration.room-availability.v1+json </td>
+		  	    <td>rooms_room-availability.json</td>
+		  	    <td>/rooms </td>
+		  	  </tr>
+		  	</table>
+		  	<p>Responses also may have extended or minimal representations.</p>
+		  	<table class='table table-stiped'>
+		  	  <tr>
+		  	    <th>Media Type</th>
+		  	    <th>Schema file</th>
+		  	    <th>Resource being called</th>
+		  	  </tr>
+		  	  <tr>
+		  	    <td>application/vnd.hedtech.integration.maximum.v1+json </td>
+		  	    <td>sections_maximum.json </td>
+		  	    <td>/sections </td>
+		  	  </tr>
+		  	  <tr>
+		  	    <td>application/vnd.hedtech.integration.minimum.v1+json </td>
+		  	    <td>sections_minimum.json </td>
+		  	    <td>/sections </td>
+		  	  </tr>
+		  	</table>
+		      </div>
+		      <div id="optimistic-locking" class="standard">
+		  	<h1> Nothing here</h1>
+		      </div>
+		      <div id="deleted-data" class="standard">
+		  	<h1> Nothing here</h1>
+		      </div>
+		      <div id="users-permissions" class="standard">
+		  	<h1> Nothing here</h1>
+		      </div>
+		      <div id="high-med-low-data" class="standard">
+		  	<p>After discussion with AR architects, we've come to the conclusion that we should move forward with the strategy of supporting these three basic representation levels, and expand upon if absolutely necessary in the future. We will define them as the needs are identified and not define them in advance to avoid a large number of schemas in total.</p>
+		  	<p> schemas/sections-minimum.json<br>Accept: application/vnd.hedtech.integration.minimum+json</p>
+		  	<p>	schemas/sections-maximum.json <br> Accept: application/vnd.hedtech.integration.maximum+json</p>
+		  	<p>schemas/sections.json <br> Accept: application/vnd.hedtech.integration+json</p>
+		      </div>
+		      -->
+		    </div>
+		  </div>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </body>
+</html>

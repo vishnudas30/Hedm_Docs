@@ -1,0 +1,152 @@
+{
+  "title": "Places",
+  "description": "A postal and geographic region.  Postal regions are expressed as a hierarchy of county, region, and sub-region, and as a locality with postal automation codes. Geographic regions are expressed as GPS coordinates.",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "Id",
+      "description": "A global identifier of countries",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "title": {
+      "title": "Title",
+      "description": "The full name of countries",
+      "type": "string"
+    },
+    "country": {
+      "title": "Country",
+      "description": "The country that this place is located in",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier for Country",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "links": [
+            {
+              "rel": "self",
+              "href": "/countries/{id}",
+              "targetSchema": {
+                "$ref": "countries.json#"
+              }
+            }
+          ],
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "region": {
+      "title": "Region",
+      "description": "The code of a region within the country",
+      "type": "object",
+      "properties": {
+        "code": {
+          "title": "Code",
+          "description": "The code of a region within the country",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "description": "The full name of the region",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "subRegion": {
+      "title": "Sub Region",
+      "description": "A subregion within the country and region",
+      "type": "object",
+      "properties": {
+        "code": {
+          "title": "Code",
+          "description": "The code of a subregion",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "description": "The name of a subregion",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "locality": {
+      "title": "Locality",
+      "description": "The name of the city or town.",
+      "type": "string"
+    },
+    "postalCode": {
+      "title": "Postal Code",
+      "description": "The mailing postal code.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "additionalProperties": false
+}

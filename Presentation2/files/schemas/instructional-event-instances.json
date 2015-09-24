@@ -1,0 +1,324 @@
+{
+  "title": "Instructional Event Instance",
+  "description": "An instance of a recurring Instructional Event",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "A global identifier of a recurring instructional event to be used in external references.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "title": {
+      "title": "Title",
+      "description": "The full name of a recurring instructional event.",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "description": "A description of a recurring instructional event.",
+      "type": "string"
+    },
+    "startOn": {
+      "title": "Start Date and Time",
+      "description": "The date and time at which an instructional event begins.",
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+    },
+    "endOn": {
+      "title": "End Date and Time",
+      "description": "The date and time at which an instructional event ends.",
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+    },
+    "instructionalEvent": {
+      "title": "Instructional Event",
+      "description": "",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The global identifier for Instructional Event",
+          "type": "string",
+          "format": "guid",
+          "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+        }
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "/instructional-events/{id}",
+          "targetSchema": {
+            "$ref": "instructional-events.json#"
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "locations": {
+      "title": "Location",
+      "description": "The locations where the instructional event will take place",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "title": "Location",
+            "description": "",
+            "oneOf": [
+              {
+                "title": "Site",
+                "description": "A physical location within the organization.",
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "title": "Type",
+                    "description": "",
+                    "enum": [
+                      "site"
+                    ],
+                    "type": "string"
+                  },
+                  "site": {
+                    "title": "Site",
+                    "description": "The site where the event will take place.",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "title": "ID",
+                        "description": "The global identifier for Site",
+                        "type": "string",
+                        "format": "guid",
+                        "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                      }
+                    },
+                    "links": [
+                      {
+                        "rel": "self",
+                        "href": "/sites/{id}",
+                        "targetSchema": {
+                          "$ref": "sites.json#"
+                        }
+                      }
+                    ],
+                    "additionalProperties": false,
+                    "required": [
+                      "id"
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "type",
+                  "site"
+                ]
+              },
+              {
+                "title": "Room",
+                "description": "A room within a building, on a floor.",
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "title": "Type",
+                    "description": "",
+                    "enum": [
+                      "room"
+                    ],
+                    "type": "string"
+                  },
+                  "room": {
+                    "title": "Room",
+                    "description": "T room where the event will take place.",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "title": "ID",
+                        "description": "The global identifier for Room",
+                        "type": "string",
+                        "format": "guid",
+                        "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                      }
+                    },
+                    "links": [
+                      {
+                        "rel": "self",
+                        "href": "/rooms/{id}",
+                        "targetSchema": {
+                          "$ref": "rooms.json#"
+                        }
+                      }
+                    ],
+                    "additionalProperties": false,
+                    "required": [
+                      "id"
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "type",
+                  "room"
+                ]
+              },
+              {
+                "title": "Online Location",
+                "description": "A meeting location available via a computer network, such as an online video conference.",
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "title": "Type",
+                    "description": "",
+                    "enum": [
+                      "online"
+                    ],
+                    "type": "string"
+                  },
+                  "phoneNumber": {
+                    "title": "Phone",
+                    "description": "The international telephone number of the location.",
+                    "type": "string"
+                  },
+                  "phoneExtension": {
+                    "title": "Extension",
+                    "description": "The telephone extension number of the location's telephone.",
+                    "type": "string"
+                  },
+                  "webAddress": {
+                    "title": "Web Address",
+                    "description": "The primary web address (URL) of the online meeting location.",
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "type"
+                ]
+              },
+              {
+                "title": "Other Location",
+                "description": "A human-readable description of a location.",
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "title": "Type",
+                    "description": "",
+                    "enum": [
+                      "other"
+                    ],
+                    "type": "string"
+                  },
+                  "title": {
+                    "title": "Title",
+                    "description": "",
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "type"
+                ]
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "location"
+        ]
+      }
+    },
+    "instructors": {
+      "title": "Instructor",
+      "description": "The persons who will be teaching at the event",
+      "type": "array",
+      "items": {
+        "title": "Instructor",
+        "description": "The persons who will be teaching at the event",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "The global identifier for Instructor",
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        },
+        "links": [
+          {
+            "rel": "self",
+            "href": "/persons/{id}",
+            "targetSchema": {
+              "$ref": "persons.json#"
+            }
+          }
+        ],
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "startOn",
+    "endOn",
+    "instructionalEvent"
+  ],
+  "additionalProperties": false
+}

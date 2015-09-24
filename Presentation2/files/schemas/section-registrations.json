@@ -1,0 +1,348 @@
+{
+  "title": "Section Registration",
+  "description": "A record of a person's registration for a section.",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "A global identifier of a course.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "registrant": {
+      "title": "Registrant",
+      "description": "A person registered for a section.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The global identifier for Registrant",
+          "type": "string",
+          "format": "guid",
+          "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+        }
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "/persons/{id}",
+          "targetSchema": {
+            "$ref": "persons.json#"
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "section": {
+      "title": "Section",
+      "description": "An instance of a course for which a person is registering.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The global identifier for Section",
+          "type": "string",
+          "format": "guid",
+          "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+        }
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "/sections/{id}",
+          "targetSchema": {
+            "$ref": "sections.json#"
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "status": {
+      "title": "Status",
+      "description": "",
+      "oneOf": [
+        {
+          "title": "Not registered",
+          "description": "A person is not registered in the section.",
+          "type": "object",
+          "properties": {
+            "registrationStatus": {
+              "title": "Registration Status",
+              "description": "The status of this person's registration in the section",
+              "enum": [
+                "notRegistered"
+              ],
+              "type": "string"
+            },
+            "sectionRegistrationStatusReason": {
+              "title": "Reason",
+              "description": "Status reason for non-registration",
+              "enum": [
+                "pending",
+                "dropped",
+                "withdrawn",
+                "canceled"
+              ],
+              "type": "string"
+            },
+            "detail": {
+              "title": "Detail",
+              "description": "",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "title": "ID",
+                      "description": "The global identifier for Detail",
+                      "type": "string",
+                      "format": "guid",
+                      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                    }
+                  },
+                  "links": [
+                    {
+                      "rel": "self",
+                      "href": "/section-registration-statuses/{id}",
+                      "targetSchema": {
+                        "$ref": "section-registration-statuses.json#"
+                      }
+                    }
+                  ],
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "maxProperties": 0
+                }
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "registrationStatus",
+            "sectionRegistrationStatusReason"
+          ]
+        },
+        {
+          "title": "Registered",
+          "description": "A person is registered in the section.",
+          "type": "object",
+          "properties": {
+            "registrationStatus": {
+              "title": "Registration Status",
+              "description": "The status of this person's registration in the section.",
+              "enum": [
+                "registered"
+              ],
+              "type": "string"
+            },
+            "sectionRegistrationStatusReason": {
+              "title": "Registered",
+              "description": "A person was registered.",
+              "enum": [
+                "registered"
+              ],
+              "type": "string"
+            },
+            "detail": {
+              "title": "Detail",
+              "description": "",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "title": "ID",
+                      "description": "The global identifier for Detail",
+                      "type": "string",
+                      "format": "guid",
+                      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                    }
+                  },
+                  "links": [
+                    {
+                      "rel": "self",
+                      "href": "/section-registration-statuses/{id}",
+                      "targetSchema": {
+                        "$ref": "section-registration-statuses.json#"
+                      }
+                    }
+                  ],
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "maxProperties": 0
+                }
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "registrationStatus",
+            "sectionRegistrationStatusReason"
+          ]
+        }
+      ]
+    },
+    "approvals": {
+      "title": "Approval",
+      "description": "The method of approval.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "approvalType": {
+            "title": "Type",
+            "description": "The type of approval granted.",
+            "enum": [
+              "all"
+            ],
+            "type": "string"
+          },
+          "approvalEntity": {
+            "title": "Entity",
+            "description": "The entity granting approval.",
+            "enum": [
+              "user",
+              "system"
+            ],
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "approvalType",
+          "approvalEntity"
+        ]
+      }
+    },
+    "gradeScheme": {
+      "title": "Grade Scheme",
+      "description": "The grading scheme that is used during the registration of a section.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier for Grade Scheme",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "links": [
+            {
+              "rel": "self",
+              "href": "/grade-schemes/{id}",
+              "targetSchema": {
+                "$ref": "grade-schemes.json#"
+              }
+            }
+          ],
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "registrant",
+    "section",
+    "status"
+  ],
+  "additionalProperties": false,
+  "links": [
+    {
+      "rel": "filter",
+      "encType": "application/x-www-form-urlencoded",
+      "method": "GET",
+      "href": "/section-registrations/",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "section": {
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          },
+          "registrant": {
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        }
+      }
+    }
+  ]
+}

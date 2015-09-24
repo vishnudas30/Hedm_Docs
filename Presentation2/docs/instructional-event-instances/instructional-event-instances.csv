@@ -1,0 +1,161 @@
+title,Instructional Event Instance
+description,An instance of a recurring Instructional Event
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a recurring instructional event to be used in external references.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of a recurring instructional event.
+properties.title.type,string
+properties.description.title,Description
+properties.description.description,A description of a recurring instructional event.
+properties.description.type,string
+properties.startOn.title,Start Date and Time
+properties.startOn.description,The date and time at which an instructional event begins.
+properties.startOn.type,string
+properties.startOn.format,date-time
+properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.title,End Date and Time
+properties.endOn.description,The date and time at which an instructional event ends.
+properties.endOn.type,string
+properties.endOn.format,date-time
+properties.endOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.instructionalEvent.title,Instructional Event
+properties.instructionalEvent.description,
+properties.instructionalEvent.type,object
+properties.instructionalEvent.properties.id.title,ID
+properties.instructionalEvent.properties.id.description,The global identifier for Instructional Event
+properties.instructionalEvent.properties.id.type,string
+properties.instructionalEvent.properties.id.format,guid
+properties.instructionalEvent.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructionalEvent.links.rel,self
+properties.instructionalEvent.links.href,/instructional-events/{id}
+properties.instructionalEvent.links.targetSchema.$ref,instructional-events.json#
+properties.instructionalEvent.additionalProperties,false
+properties.instructionalEvent.required,id
+properties.locations.title,Location
+properties.locations.description,The locations where the instructional event will take place
+properties.locations.type,array
+properties.locations.items.type,object
+properties.locations.items.properties.location.title,Location
+properties.locations.items.properties.location.description,
+properties.locations.items.properties.location.oneOf.title,Site
+properties.locations.items.properties.location.oneOf.description,A physical location within the organization.
+properties.locations.items.properties.location.oneOf.type,object
+properties.locations.items.properties.location.oneOf.properties.type.title,Type
+properties.locations.items.properties.location.oneOf.properties.type.description,
+properties.locations.items.properties.location.oneOf.properties.type.enum,site
+properties.locations.items.properties.location.oneOf.properties.type.type,string
+properties.locations.items.properties.location.oneOf.properties.site.title,Site
+properties.locations.items.properties.location.oneOf.properties.site.description,The site where the event will take place.
+properties.locations.items.properties.location.oneOf.properties.site.type,object
+properties.locations.items.properties.location.oneOf.properties.site.properties.id.title,ID
+properties.locations.items.properties.location.oneOf.properties.site.properties.id.description,The global identifier for Site
+properties.locations.items.properties.location.oneOf.properties.site.properties.id.type,string
+properties.locations.items.properties.location.oneOf.properties.site.properties.id.format,guid
+properties.locations.items.properties.location.oneOf.properties.site.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.locations.items.properties.location.oneOf.properties.site.links.rel,self
+properties.locations.items.properties.location.oneOf.properties.site.links.href,/sites/{id}
+properties.locations.items.properties.location.oneOf.properties.site.links.targetSchema.$ref,sites.json#
+properties.locations.items.properties.location.oneOf.properties.site.additionalProperties,false
+properties.locations.items.properties.location.oneOf.properties.site.required,id
+properties.locations.items.properties.location.oneOf.additionalProperties,false
+properties.locations.items.properties.location.oneOf.required,type;site
+properties.locations.items.properties.location.oneOf.title,Room
+properties.locations.items.properties.location.oneOf.description,A room within a building, on a floor.
+properties.locations.items.properties.location.oneOf.type,object
+properties.locations.items.properties.location.oneOf.properties.type.title,Type
+properties.locations.items.properties.location.oneOf.properties.type.description,
+properties.locations.items.properties.location.oneOf.properties.type.enum,room
+properties.locations.items.properties.location.oneOf.properties.type.type,string
+properties.locations.items.properties.location.oneOf.properties.room.title,Room
+properties.locations.items.properties.location.oneOf.properties.room.description,T room where the event will take place.
+properties.locations.items.properties.location.oneOf.properties.room.type,object
+properties.locations.items.properties.location.oneOf.properties.room.properties.id.title,ID
+properties.locations.items.properties.location.oneOf.properties.room.properties.id.description,The global identifier for Room
+properties.locations.items.properties.location.oneOf.properties.room.properties.id.type,string
+properties.locations.items.properties.location.oneOf.properties.room.properties.id.format,guid
+properties.locations.items.properties.location.oneOf.properties.room.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.locations.items.properties.location.oneOf.properties.room.links.rel,self
+properties.locations.items.properties.location.oneOf.properties.room.links.href,/rooms/{id}
+properties.locations.items.properties.location.oneOf.properties.room.links.targetSchema.$ref,rooms.json#
+properties.locations.items.properties.location.oneOf.properties.room.additionalProperties,false
+properties.locations.items.properties.location.oneOf.properties.room.required,id
+properties.locations.items.properties.location.oneOf.additionalProperties,false
+properties.locations.items.properties.location.oneOf.required,type;room
+properties.locations.items.properties.location.oneOf.title,Online Location
+properties.locations.items.properties.location.oneOf.description,A meeting location available via a computer network, such as an online video conference.
+properties.locations.items.properties.location.oneOf.type,object
+properties.locations.items.properties.location.oneOf.properties.type.title,Type
+properties.locations.items.properties.location.oneOf.properties.type.description,
+properties.locations.items.properties.location.oneOf.properties.type.enum,online
+properties.locations.items.properties.location.oneOf.properties.type.type,string
+properties.locations.items.properties.location.oneOf.properties.phoneNumber.title,Phone
+properties.locations.items.properties.location.oneOf.properties.phoneNumber.description,The international telephone number of the location.
+properties.locations.items.properties.location.oneOf.properties.phoneNumber.type,string
+properties.locations.items.properties.location.oneOf.properties.phoneExtension.title,Extension
+properties.locations.items.properties.location.oneOf.properties.phoneExtension.description,The telephone extension number of the location's telephone.
+properties.locations.items.properties.location.oneOf.properties.phoneExtension.type,string
+properties.locations.items.properties.location.oneOf.properties.webAddress.title,Web Address
+properties.locations.items.properties.location.oneOf.properties.webAddress.description,The primary web address (URL) of the online meeting location.
+properties.locations.items.properties.location.oneOf.properties.webAddress.type,string
+properties.locations.items.properties.location.oneOf.additionalProperties,false
+properties.locations.items.properties.location.oneOf.required,type
+properties.locations.items.properties.location.oneOf.title,Other Location
+properties.locations.items.properties.location.oneOf.description,A human-readable description of a location.
+properties.locations.items.properties.location.oneOf.type,object
+properties.locations.items.properties.location.oneOf.properties.type.title,Type
+properties.locations.items.properties.location.oneOf.properties.type.description,
+properties.locations.items.properties.location.oneOf.properties.type.enum,other
+properties.locations.items.properties.location.oneOf.properties.type.type,string
+properties.locations.items.properties.location.oneOf.properties.title.title,Title
+properties.locations.items.properties.location.oneOf.properties.title.description,
+properties.locations.items.properties.location.oneOf.properties.title.type,string
+properties.locations.items.properties.location.oneOf.additionalProperties,false
+properties.locations.items.properties.location.oneOf.required,type
+properties.locations.items.additionalProperties,false
+properties.locations.items.required,location
+properties.instructors.title,Instructor
+properties.instructors.description,The persons who will be teaching at the event
+properties.instructors.type,array
+properties.instructors.items.title,Instructor
+properties.instructors.items.description,The persons who will be teaching at the event
+properties.instructors.items.type,object
+properties.instructors.items.properties.id.title,ID
+properties.instructors.items.properties.id.description,The global identifier for Instructor
+properties.instructors.items.properties.id.type,string
+properties.instructors.items.properties.id.format,guid
+properties.instructors.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructors.items.links.rel,self
+properties.instructors.items.links.href,/persons/{id}
+properties.instructors.items.links.targetSchema.$ref,persons.json#
+properties.instructors.items.additionalProperties,false
+properties.instructors.items.required,id
+required,id;startOn;endOn;instructionalEvent
+additionalProperties,false

@@ -1,0 +1,121 @@
+title,Grade Scheme Items
+description,The individual grade items that constitute a grade scheme.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,Id
+properties.id.description,The global identifier of the grade scheme item.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.scheme.title,Grade Scheme
+properties.scheme.description,The grade scheme which defines the context of the grade scheme item.
+properties.scheme.type,object
+properties.scheme.properties.id.title,ID
+properties.scheme.properties.id.description,The global identifier for Grade Scheme
+properties.scheme.properties.id.type,string
+properties.scheme.properties.id.format,guid
+properties.scheme.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.scheme.links.rel,self
+properties.scheme.links.href,/grade-schemes/{id}
+properties.scheme.links.targetSchema.$ref,grade-schemes.json#
+properties.scheme.additionalProperties,false
+properties.scheme.required,id
+properties.grade.title,Grade
+properties.grade.description,The literal value or numeric range that distinguishes the grade scheme item.
+properties.grade.oneOf.title,Literal Value
+properties.grade.oneOf.description,The item is defined as a literal
+properties.grade.oneOf.type,object
+properties.grade.oneOf.properties.type.title,Type
+properties.grade.oneOf.properties.type.description,The type of the grade scheme item.
+properties.grade.oneOf.properties.type.enum,literal
+properties.grade.oneOf.properties.type.type,string
+properties.grade.oneOf.properties.value.title,Value
+properties.grade.oneOf.properties.value.description,The literal value of the grade scheme item.
+properties.grade.oneOf.properties.value.type,string
+properties.grade.oneOf.additionalProperties,false
+properties.grade.oneOf.required,type;value
+properties.grade.oneOf.title,Numeric Range
+properties.grade.oneOf.description,The numeric range that defines the grade scheme item
+properties.grade.oneOf.type,object
+properties.grade.oneOf.properties.type.title,Type
+properties.grade.oneOf.properties.type.description,The type of the grade scheme item.
+properties.grade.oneOf.properties.type.enum,numeric
+properties.grade.oneOf.properties.type.type,string
+properties.grade.oneOf.properties.minValue.title,Minimum Value
+properties.grade.oneOf.properties.minValue.description,The lower boundary of the numeric range of the grade scheme item.
+properties.grade.oneOf.properties.minValue.type,number
+properties.grade.oneOf.properties.maxValue.title,Maximum Value
+properties.grade.oneOf.properties.maxValue.description,The upper boundary of the numeric range of the grade scheme item.
+properties.grade.oneOf.properties.maxValue.type,number
+properties.grade.oneOf.properties.increment.title,Increment
+properties.grade.oneOf.properties.increment.description,The size of the allowed incremental steps between the lower and upper boundaries of the range.
+properties.grade.oneOf.properties.increment.type,number
+properties.grade.oneOf.additionalProperties,false
+properties.grade.oneOf.required,type;minValue;maxValue
+properties.startOn.title,Start Date
+properties.startOn.description,The earliest date on which the grade scheme item is valid.
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.format,date-time
+properties.startOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.maxLength,
+properties.endOn.title,End Date
+properties.endOn.description,The latest date on which the grade scheme item is valid.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.qualityValue.title,Quality Value
+properties.qualityValue.description,The quality point value associated with the grade scheme item.
+properties.qualityValue.oneOf.type,number
+properties.qualityValue.oneOf.minimum,
+properties.qualityValue.oneOf.format,positiveNumber
+properties.qualityValue.oneOf.type,null
+properties.passFail.title,Pass Fail Indicator
+properties.passFail.description,Specifies if the grade scheme item is considered to be a passing of failing grade.
+properties.passFail.oneOf.type,string
+properties.passFail.oneOf.enum,pass;fail
+properties.passFail.oneOf.type,string
+properties.passFail.oneOf.maxLength,
+properties.equivalentGradeItems.title,Equivalent Grade Items
+properties.equivalentGradeItems.description,A list of mapping to the equivalent grade scheme item in different grade schemes.
+properties.equivalentGradeItems.type,array
+properties.equivalentGradeItems.items.title,Equivalent Grade Items
+properties.equivalentGradeItems.items.description,A list of mapping to the equivalent grade scheme item in different grade schemes.
+properties.equivalentGradeItems.items.type,object
+properties.equivalentGradeItems.items.properties.id.title,ID
+properties.equivalentGradeItems.items.properties.id.description,The global identifier for Equivalent Grade Items
+properties.equivalentGradeItems.items.properties.id.type,string
+properties.equivalentGradeItems.items.properties.id.format,guid
+properties.equivalentGradeItems.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.equivalentGradeItems.items.links.rel,self
+properties.equivalentGradeItems.items.links.href,/grade-scheme-items/{id}
+properties.equivalentGradeItems.items.links.targetSchema.$ref,grade-scheme-items.json#
+properties.equivalentGradeItems.items.additionalProperties,false
+properties.equivalentGradeItems.items.required,id
+required,id;scheme;grade
+additionalProperties,false

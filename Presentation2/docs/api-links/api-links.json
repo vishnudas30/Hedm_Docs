@@ -1,0 +1,247 @@
+{
+  "title": "API Links Example",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "",
+      "type": "string"
+    },
+    "title": {
+      "title": "Name",
+      "description": "",
+      "type": "string"
+    },
+    "code": {
+      "title": "Code",
+      "description": "",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "title"
+  ],
+  "additionalProperties": false,
+  "links": [
+    {
+      "rel": "read",
+      "method": "GET",
+      "href": "/api-links/{id}",
+      "schema": {
+        "filter": {}
+      },
+      "targetSchema": {
+        "allOf": [
+          {
+            "$ref": "id"
+          },
+          {
+            "$ref": "title"
+          },
+          {
+            "$ref": "code"
+          }
+        ]
+      }
+    },
+    {
+      "rel": "instances",
+      "method": "GET",
+      "href": "/api-links",
+      "schema": {
+        "filter": {},
+        "sort": {},
+        "offset": {},
+        "limit": {}
+      },
+      "targetSchema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "id"
+            },
+            {
+              "$ref": "title"
+            },
+            {
+              "$ref": "code"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "rel": "create",
+      "method": "POST",
+      "href": "/api-links",
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "title"
+          },
+          {
+            "$ref": "code"
+          }
+        ],
+        "required": [
+          "title"
+        ]
+      },
+      "targetSchema": {
+        "allOf": [
+          {
+            "$ref": "id"
+          },
+          {
+            "$ref": "title"
+          },
+          {
+            "$ref": "code"
+          }
+        ]
+      }
+    },
+    {
+      "rel": "replace",
+      "method": "PUT",
+      "href": "/api-links/{id}",
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "title"
+          },
+          {
+            "$ref": "code"
+          }
+        ],
+        "required": [
+          "title"
+        ]
+      },
+      "targetSchema": {
+        "allOf": [
+          {
+            "$ref": "id"
+          },
+          {
+            "$ref": "title"
+          },
+          {
+            "$ref": "code"
+          }
+        ]
+      }
+    },
+    {
+      "rel": "patch",
+      "method": "PATCH",
+      "href": "/api-links",
+      "schema": {
+        "type": "array",
+        "items": {
+          "op": {},
+          "path": {},
+          "value": {}
+        }
+      },
+      "targetSchema": {
+        "type": "array",
+        "items": {
+          "allOf": [
+            {
+              "$ref": "id"
+            },
+            {
+              "$ref": "title"
+            },
+            {
+              "$ref": "code"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "rel": "delete",
+      "method": "DELETE",
+      "href": "/api-links/{id}",
+      "schema": {},
+      "targetSchema": {
+        "allOf": [
+          {
+            "$ref": "id"
+          },
+          {
+            "$ref": "title"
+          },
+          {
+            "$ref": "code"
+          }
+        ]
+      }
+    },
+    {
+      "rel": "associatedProperty",
+      "method": "GET",
+      "href": "/some/path/",
+      "schema": {
+        "title": {},
+        "code": {}
+      },
+      "targetSchema": {
+        "$ref": "associated-schema.json#"
+      }
+    }
+  ]
+}

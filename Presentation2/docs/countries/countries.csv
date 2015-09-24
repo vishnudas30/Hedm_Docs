@@ -1,0 +1,60 @@
+title,Country
+description,A region that is identified as a distinct entity in political geography.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,Id
+properties.id.description,A global identifier of a country
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of a country
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,The description of a country
+properties.description.type,string
+properties.alpha2Code.title,Alpha-2 Code
+properties.alpha2Code.description,The two-letter country code defined in the ISO 3166 standard that identifies the country.
+properties.alpha2Code.type,string
+properties.alpha2Code.minLength,1
+properties.alpha3Code.title,Alpha-3 Code
+properties.alpha3Code.description,The three-letter country code defined in the ISO 3166 standard that identifies the country.
+properties.alpha3Code.type,string
+properties.alpha3Code.minLength,1
+properties.numericCode.title,Numeric Code
+properties.numericCode.description,The three digit numeric country code defined in the ISO 3166 standard that identifies the country.
+properties.numericCode.type,integer
+properties.telephoneCode.title,Telephone Code
+properties.telephoneCode.description,The telepone calling code for the country
+properties.telephoneCode.type,string
+properties.telephoneCode.format,countryCallingCode
+properties.telephoneCode.pattern,^\+?[1-9][0-9]{0,3}$
+properties.worldRegion.title,World Region
+properties.worldRegion.description,The region of the world where the country resides.
+properties.worldRegion.type,string
+required,id;title;alpha2Code;alpha3Code
+additionalProperties,false

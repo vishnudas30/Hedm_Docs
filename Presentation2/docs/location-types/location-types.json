@@ -1,0 +1,166 @@
+{
+  "title": "Location Type",
+  "description": "A type of physical location where a person or organization may be contacted.",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "A globally unique identifier of a location type.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "title": {
+      "title": "Title",
+      "description": "The full name of a location type.",
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "title": "Description",
+      "description": "The description of a location type.",
+      "type": "string"
+    },
+    "code": {
+      "title": "Location Type Code",
+      "description": "The generally unique code for a location type.",
+      "type": "string"
+    },
+    "type": {
+      "title": "Type",
+      "description": "The high level type of the location.",
+      "oneOf": [
+        {
+          "title": "Type",
+          "description": "A type of location for a person.",
+          "type": "object",
+          "properties": {
+            "person": {
+              "title": "Person",
+              "description": "A human being or other independent agent.",
+              "type": "object",
+              "properties": {
+                "locationType": {
+                  "title": "Type",
+                  "description": "A type of location information for a person.",
+                  "enum": [
+                    "home",
+                    "school",
+                    "vacation",
+                    "billing",
+                    "shipping",
+                    "mailing",
+                    "business",
+                    "parent",
+                    "family",
+                    "other"
+                  ],
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "locationType"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "person"
+          ]
+        },
+        {
+          "title": "Type",
+          "description": "A type of location for an organization.",
+          "type": "object",
+          "properties": {
+            "organization": {
+              "title": "Organization",
+              "description": "A collection of people organized together into a community or other social, commercial or political structure for a common purpose that acts as a single agent.",
+              "type": "object",
+              "properties": {
+                "locationType": {
+                  "title": "Type",
+                  "description": "A type of location information for an organization.",
+                  "enum": [
+                    "business",
+                    "pobox",
+                    "main",
+                    "branch",
+                    "region",
+                    "support",
+                    "matchingGifts",
+                    "other"
+                  ],
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "locationType"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "organization"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "type"
+  ],
+  "additionalProperties": false
+}

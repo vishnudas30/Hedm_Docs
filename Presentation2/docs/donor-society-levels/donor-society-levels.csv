@@ -1,0 +1,115 @@
+title,Donor Society Level
+description,A recognition level within a donor society.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a donor society level.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of a donor society level.
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,A full description of a donor society level.
+properties.description.type,string
+properties.status.title,Status
+properties.status.description,A status of a donor society level.
+properties.status.enum,active;inactive
+properties.status.type,string
+properties.startOn.title,Start Date
+properties.startOn.description,A date when a donor society level started.
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.format,date-time
+properties.startOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.maxLength,
+properties.endOn.title,End Date
+properties.endOn.description,A date when a donor society level ended.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.donorSociety.title,Donor Society
+properties.donorSociety.description,The donor society associated with this donor society level.
+properties.donorSociety.type,object
+properties.donorSociety.properties.id.title,ID
+properties.donorSociety.properties.id.description,The global identifier for Donor Society
+properties.donorSociety.properties.id.type,string
+properties.donorSociety.properties.id.format,guid
+properties.donorSociety.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.donorSociety.links.rel,self
+properties.donorSociety.links.href,/donor-societies/{id}
+properties.donorSociety.links.targetSchema.$ref,donor-societies.json#
+properties.donorSociety.additionalProperties,false
+properties.donorSociety.required,id
+properties.range.title,Range
+properties.range.description,The boundaries of the donor society level range
+properties.range.type,object
+properties.range.properties.startAmount.title,Start
+properties.range.properties.startAmount.description,The lower boundary of the amount range
+properties.range.properties.startAmount.type,object
+properties.range.properties.startAmount.properties.currency.title,currency
+properties.range.properties.startAmount.properties.currency.description,
+properties.range.properties.startAmount.properties.currency.type,object
+properties.range.properties.startAmount.properties.currency.properties.value.title,Value
+properties.range.properties.startAmount.properties.currency.properties.value.description,
+properties.range.properties.startAmount.properties.currency.properties.value.minimum,
+properties.range.properties.startAmount.properties.currency.properties.value.type,number
+properties.range.properties.startAmount.properties.currency.properties.value.format,positiveNumber
+properties.range.properties.startAmount.properties.currency.properties.currency.title,Currency
+properties.range.properties.startAmount.properties.currency.properties.currency.description,
+properties.range.properties.startAmount.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.range.properties.startAmount.properties.currency.properties.currency.type,string
+properties.range.properties.startAmount.properties.currency.additionalProperties,false
+properties.range.properties.startAmount.properties.currency.required,value;currency
+properties.range.properties.startAmount.additionalProperties,false
+properties.range.properties.startAmount.format,currency
+properties.range.properties.endAmount.title,End
+properties.range.properties.endAmount.description,The upper boundary of the amount range
+properties.range.properties.endAmount.type,object
+properties.range.properties.endAmount.properties.currency.title,currency
+properties.range.properties.endAmount.properties.currency.description,
+properties.range.properties.endAmount.properties.currency.type,object
+properties.range.properties.endAmount.properties.currency.properties.value.title,Value
+properties.range.properties.endAmount.properties.currency.properties.value.description,
+properties.range.properties.endAmount.properties.currency.properties.value.minimum,
+properties.range.properties.endAmount.properties.currency.properties.value.type,number
+properties.range.properties.endAmount.properties.currency.properties.value.format,positiveNumber
+properties.range.properties.endAmount.properties.currency.properties.currency.title,Currency
+properties.range.properties.endAmount.properties.currency.properties.currency.description,
+properties.range.properties.endAmount.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.range.properties.endAmount.properties.currency.properties.currency.type,string
+properties.range.properties.endAmount.properties.currency.additionalProperties,false
+properties.range.properties.endAmount.properties.currency.required,value;currency
+properties.range.properties.endAmount.additionalProperties,false
+properties.range.properties.endAmount.format,currency
+properties.range.additionalProperties,false
+properties.range.required,startAmount;endAmount
+required,id;title;status
+additionalProperties,false

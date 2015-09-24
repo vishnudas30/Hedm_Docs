@@ -1,0 +1,158 @@
+title,Section Registration
+description,A record of a person's registration for a section.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a course.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.registrant.title,Registrant
+properties.registrant.description,A person registered for a section.
+properties.registrant.type,object
+properties.registrant.properties.id.title,ID
+properties.registrant.properties.id.description,The global identifier for Registrant
+properties.registrant.properties.id.type,string
+properties.registrant.properties.id.format,guid
+properties.registrant.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.registrant.links.rel,self
+properties.registrant.links.href,/persons/{id}
+properties.registrant.links.targetSchema.$ref,persons.json#
+properties.registrant.additionalProperties,false
+properties.registrant.required,id
+properties.section.title,Section
+properties.section.description,An instance of a course for which a person is registering.
+properties.section.type,object
+properties.section.properties.id.title,ID
+properties.section.properties.id.description,The global identifier for Section
+properties.section.properties.id.type,string
+properties.section.properties.id.format,guid
+properties.section.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.section.links.rel,self
+properties.section.links.href,/sections/{id}
+properties.section.links.targetSchema.$ref,sections.json#
+properties.section.additionalProperties,false
+properties.section.required,id
+properties.status.title,Status
+properties.status.description,
+properties.status.oneOf.title,Not registered
+properties.status.oneOf.description,A person is not registered in the section.
+properties.status.oneOf.type,object
+properties.status.oneOf.properties.registrationStatus.title,Registration Status
+properties.status.oneOf.properties.registrationStatus.description,The status of this person's registration in the section
+properties.status.oneOf.properties.registrationStatus.enum,notRegistered
+properties.status.oneOf.properties.registrationStatus.type,string
+properties.status.oneOf.properties.sectionRegistrationStatusReason.title,Reason
+properties.status.oneOf.properties.sectionRegistrationStatusReason.description,Status reason for non-registration
+properties.status.oneOf.properties.sectionRegistrationStatusReason.enum,pending;dropped;withdrawn;canceled
+properties.status.oneOf.properties.sectionRegistrationStatusReason.type,string
+properties.status.oneOf.properties.detail.title,Detail
+properties.status.oneOf.properties.detail.description,
+properties.status.oneOf.properties.detail.oneOf.type,object
+properties.status.oneOf.properties.detail.oneOf.properties.id.title,ID
+properties.status.oneOf.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.status.oneOf.properties.detail.oneOf.properties.id.type,string
+properties.status.oneOf.properties.detail.oneOf.properties.id.format,guid
+properties.status.oneOf.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.status.oneOf.properties.detail.oneOf.links.rel,self
+properties.status.oneOf.properties.detail.oneOf.links.href,/section-registration-statuses/{id}
+properties.status.oneOf.properties.detail.oneOf.links.targetSchema.$ref,section-registration-statuses.json#
+properties.status.oneOf.properties.detail.oneOf.additionalProperties,false
+properties.status.oneOf.properties.detail.oneOf.required,id
+properties.status.oneOf.properties.detail.oneOf.type,object
+properties.status.oneOf.properties.detail.oneOf.maxProperties,
+properties.status.oneOf.additionalProperties,false
+properties.status.oneOf.required,registrationStatus;sectionRegistrationStatusReason
+properties.status.oneOf.title,Registered
+properties.status.oneOf.description,A person is registered in the section.
+properties.status.oneOf.type,object
+properties.status.oneOf.properties.registrationStatus.title,Registration Status
+properties.status.oneOf.properties.registrationStatus.description,The status of this person's registration in the section.
+properties.status.oneOf.properties.registrationStatus.enum,registered
+properties.status.oneOf.properties.registrationStatus.type,string
+properties.status.oneOf.properties.sectionRegistrationStatusReason.title,Registered
+properties.status.oneOf.properties.sectionRegistrationStatusReason.description,A person was registered.
+properties.status.oneOf.properties.sectionRegistrationStatusReason.enum,registered
+properties.status.oneOf.properties.sectionRegistrationStatusReason.type,string
+properties.status.oneOf.properties.detail.title,Detail
+properties.status.oneOf.properties.detail.description,
+properties.status.oneOf.properties.detail.oneOf.type,object
+properties.status.oneOf.properties.detail.oneOf.properties.id.title,ID
+properties.status.oneOf.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.status.oneOf.properties.detail.oneOf.properties.id.type,string
+properties.status.oneOf.properties.detail.oneOf.properties.id.format,guid
+properties.status.oneOf.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.status.oneOf.properties.detail.oneOf.links.rel,self
+properties.status.oneOf.properties.detail.oneOf.links.href,/section-registration-statuses/{id}
+properties.status.oneOf.properties.detail.oneOf.links.targetSchema.$ref,section-registration-statuses.json#
+properties.status.oneOf.properties.detail.oneOf.additionalProperties,false
+properties.status.oneOf.properties.detail.oneOf.required,id
+properties.status.oneOf.properties.detail.oneOf.type,object
+properties.status.oneOf.properties.detail.oneOf.maxProperties,
+properties.status.oneOf.additionalProperties,false
+properties.status.oneOf.required,registrationStatus;sectionRegistrationStatusReason
+properties.approvals.title,Approval
+properties.approvals.description,The method of approval.
+properties.approvals.type,array
+properties.approvals.items.type,object
+properties.approvals.items.properties.approvalType.title,Type
+properties.approvals.items.properties.approvalType.description,The type of approval granted.
+properties.approvals.items.properties.approvalType.enum,all
+properties.approvals.items.properties.approvalType.type,string
+properties.approvals.items.properties.approvalEntity.title,Entity
+properties.approvals.items.properties.approvalEntity.description,The entity granting approval.
+properties.approvals.items.properties.approvalEntity.enum,user;system
+properties.approvals.items.properties.approvalEntity.type,string
+properties.approvals.items.additionalProperties,false
+properties.approvals.items.required,approvalType;approvalEntity
+properties.gradeScheme.title,Grade Scheme
+properties.gradeScheme.description,The grading scheme that is used during the registration of a section.
+properties.gradeScheme.oneOf.type,object
+properties.gradeScheme.oneOf.properties.id.title,ID
+properties.gradeScheme.oneOf.properties.id.description,The global identifier for Grade Scheme
+properties.gradeScheme.oneOf.properties.id.type,string
+properties.gradeScheme.oneOf.properties.id.format,guid
+properties.gradeScheme.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.gradeScheme.oneOf.links.rel,self
+properties.gradeScheme.oneOf.links.href,/grade-schemes/{id}
+properties.gradeScheme.oneOf.links.targetSchema.$ref,grade-schemes.json#
+properties.gradeScheme.oneOf.additionalProperties,false
+properties.gradeScheme.oneOf.required,id
+properties.gradeScheme.oneOf.type,object
+properties.gradeScheme.oneOf.maxProperties,
+required,id;registrant;section;status
+additionalProperties,false
+links.rel,filter
+links.encType,application/x-www-form-urlencoded
+links.method,GET
+links.href,/section-registrations/
+links.schema.type,object
+links.schema.properties.section.type,string
+links.schema.properties.section.format,guid
+links.schema.properties.section.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.registrant.type,string
+links.schema.properties.registrant.format,guid
+links.schema.properties.registrant.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$

@@ -1,0 +1,74 @@
+title,Phone Type
+description,A type of phone.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A globally unique identifier of a type of phone.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.code.title,Code
+properties.code.description,The code that identifies a phone type.
+properties.code.type,string
+properties.title.title,Title
+properties.title.description,The full name of a type of phone.
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,The full description of a type of phone.
+properties.description.type,string
+properties.type.title,Type
+properties.type.description,
+properties.type.oneOf.title,Type
+properties.type.oneOf.description,A type of phone for a person.
+properties.type.oneOf.type,object
+properties.type.oneOf.properties.person.title,Person
+properties.type.oneOf.properties.person.description,A human being or other independent agent.
+properties.type.oneOf.properties.person.type,object
+properties.type.oneOf.properties.person.properties.phoneType.title,Type
+properties.type.oneOf.properties.person.properties.phoneType.description,A type of phone contact for a person.
+properties.type.oneOf.properties.person.properties.phoneType.enum,mobile;home;school;vacation;business;fax;pager;tdd;parent;family;other
+properties.type.oneOf.properties.person.properties.phoneType.type,string
+properties.type.oneOf.properties.person.additionalProperties,false
+properties.type.oneOf.properties.person.required,phoneType
+properties.type.oneOf.additionalProperties,false
+properties.type.oneOf.required,person
+properties.type.oneOf.title,Type
+properties.type.oneOf.description,A type of phone for an organization.
+properties.type.oneOf.type,object
+properties.type.oneOf.properties.organization.title,Organization
+properties.type.oneOf.properties.organization.description,Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.
+properties.type.oneOf.properties.organization.type,object
+properties.type.oneOf.properties.organization.properties.phoneType.title,Type
+properties.type.oneOf.properties.organization.properties.phoneType.description,A type of phone contact for an organization.
+properties.type.oneOf.properties.organization.properties.phoneType.enum,main;branch;region;support;billing;matchingGifts;other
+properties.type.oneOf.properties.organization.properties.phoneType.type,string
+properties.type.oneOf.properties.organization.additionalProperties,false
+properties.type.oneOf.properties.organization.required,phoneType
+properties.type.oneOf.additionalProperties,false
+properties.type.oneOf.required,organization
+required,id;title;type
+additionalProperties,false

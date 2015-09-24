@@ -1,0 +1,139 @@
+title,Academic Time Period
+description,A specified interval of time used in institutions of higher education (e.g. academic year, term).
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of an academic time period.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.code.title,Code
+properties.code.description,A code that identifies an academic time period.
+properties.code.type,string
+properties.title.title,Title
+properties.title.description,The full name of an academic time period (e.g. 'Fall 2014').
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,A description of an academic time period.
+properties.description.type,string
+properties.startOn.title,Period Start Date
+properties.startOn.description,The date at which the period begins
+properties.startOn.type,string
+properties.startOn.format,date-time
+properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.title,Period End Date
+properties.endOn.description,The date at which the period ends
+properties.endOn.type,string
+properties.endOn.format,date-time
+properties.endOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.category.title,Category
+properties.category.description,
+properties.category.oneOf.title,Year
+properties.category.oneOf.description,An academic year.
+properties.category.oneOf.type,object
+properties.category.oneOf.properties.type.title,Type
+properties.category.oneOf.properties.type.description,
+properties.category.oneOf.properties.type.enum,year
+properties.category.oneOf.properties.type.type,string
+properties.category.oneOf.additionalProperties,false
+properties.category.oneOf.required,type
+properties.category.oneOf.title,Term
+properties.category.oneOf.description,A term within an academic year, such as a Semester.
+properties.category.oneOf.type,object
+properties.category.oneOf.properties.type.title,Type
+properties.category.oneOf.properties.type.description,
+properties.category.oneOf.properties.type.enum,term
+properties.category.oneOf.properties.type.type,string
+properties.category.oneOf.properties.parent.title,Year
+properties.category.oneOf.properties.parent.description,The academic year in which term occurs.
+properties.category.oneOf.properties.parent.type,object
+properties.category.oneOf.properties.parent.properties.id.title,ID
+properties.category.oneOf.properties.parent.properties.id.description,The global identifier for Year
+properties.category.oneOf.properties.parent.properties.id.type,string
+properties.category.oneOf.properties.parent.properties.id.format,guid
+properties.category.oneOf.properties.parent.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.category.oneOf.properties.parent.links.rel,self
+properties.category.oneOf.properties.parent.links.href,/academic-periods/{id}
+properties.category.oneOf.properties.parent.links.targetSchema.$ref,academic-periods.json#
+properties.category.oneOf.properties.parent.additionalProperties,false
+properties.category.oneOf.properties.parent.required,id
+properties.category.oneOf.properties.preceding.title,Preceding Term
+properties.category.oneOf.properties.preceding.description,The term which immediately precedes this term in time.
+properties.category.oneOf.properties.preceding.oneOf.type,object
+properties.category.oneOf.properties.preceding.oneOf.properties.id.title,ID
+properties.category.oneOf.properties.preceding.oneOf.properties.id.description,The global identifier for Preceding Term
+properties.category.oneOf.properties.preceding.oneOf.properties.id.type,string
+properties.category.oneOf.properties.preceding.oneOf.properties.id.format,guid
+properties.category.oneOf.properties.preceding.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.category.oneOf.properties.preceding.oneOf.links.rel,self
+properties.category.oneOf.properties.preceding.oneOf.links.href,/academic-periods/{id}
+properties.category.oneOf.properties.preceding.oneOf.links.targetSchema.$ref,academic-periods.json#
+properties.category.oneOf.properties.preceding.oneOf.additionalProperties,false
+properties.category.oneOf.properties.preceding.oneOf.required,id
+properties.category.oneOf.properties.preceding.oneOf.type,object
+properties.category.oneOf.properties.preceding.oneOf.maxProperties,
+properties.category.oneOf.additionalProperties,false
+properties.category.oneOf.required,type;parent
+properties.category.oneOf.title,Subterm
+properties.category.oneOf.description,A subterm within an academic term, such as a part of a Semester.
+properties.category.oneOf.type,object
+properties.category.oneOf.properties.type.title,Type
+properties.category.oneOf.properties.type.description,
+properties.category.oneOf.properties.type.enum,subterm
+properties.category.oneOf.properties.type.type,string
+properties.category.oneOf.properties.parent.title,Term
+properties.category.oneOf.properties.parent.description,The term in which this subterm occurs.
+properties.category.oneOf.properties.parent.type,object
+properties.category.oneOf.properties.parent.properties.id.title,ID
+properties.category.oneOf.properties.parent.properties.id.description,The global identifier for Term
+properties.category.oneOf.properties.parent.properties.id.type,string
+properties.category.oneOf.properties.parent.properties.id.format,guid
+properties.category.oneOf.properties.parent.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.category.oneOf.properties.parent.links.rel,self
+properties.category.oneOf.properties.parent.links.href,/academic-periods/{id}
+properties.category.oneOf.properties.parent.links.targetSchema.$ref,academic-periods.json#
+properties.category.oneOf.properties.parent.additionalProperties,false
+properties.category.oneOf.properties.parent.required,id
+properties.category.oneOf.properties.preceding.title,Preceding Subterm
+properties.category.oneOf.properties.preceding.description,The subterm which immediately precedes this subterm in time.
+properties.category.oneOf.properties.preceding.oneOf.type,object
+properties.category.oneOf.properties.preceding.oneOf.properties.id.title,ID
+properties.category.oneOf.properties.preceding.oneOf.properties.id.description,The global identifier for Preceding Subterm
+properties.category.oneOf.properties.preceding.oneOf.properties.id.type,string
+properties.category.oneOf.properties.preceding.oneOf.properties.id.format,guid
+properties.category.oneOf.properties.preceding.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.category.oneOf.properties.preceding.oneOf.links.rel,self
+properties.category.oneOf.properties.preceding.oneOf.links.href,/academic-periods/{id}
+properties.category.oneOf.properties.preceding.oneOf.links.targetSchema.$ref,academic-periods.json#
+properties.category.oneOf.properties.preceding.oneOf.additionalProperties,false
+properties.category.oneOf.properties.preceding.oneOf.required,id
+properties.category.oneOf.properties.preceding.oneOf.type,object
+properties.category.oneOf.properties.preceding.oneOf.maxProperties,
+properties.category.oneOf.additionalProperties,false
+properties.category.oneOf.required,type;parent
+required,id;title;startOn;endOn;category
+additionalProperties,false

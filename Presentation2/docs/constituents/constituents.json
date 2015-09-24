@@ -1,0 +1,287 @@
+{
+  "title": "Constituent",
+  "description": "Persons or organizations that are the subjects of fund-raising activities",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "A global identifier of a constituent.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "constituent": {
+      "title": "Entity",
+      "description": "The person or organization for whom an interest is identified",
+      "oneOf": [
+        {
+          "title": "Person",
+          "description": "A constituent that is a person.",
+          "type": "object",
+          "properties": {
+            "person": {
+              "title": "Person",
+              "description": "A human being or other independent agent.",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Person",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/persons/{id}",
+                  "targetSchema": {
+                    "$ref": "persons.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            },
+            "classYear": {
+              "title": "Class Year",
+              "description": "The constituent's preferred class year",
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "year",
+                  "pattern": "^([1-9][0-9]*)?[0-9]{4}$"
+                },
+                {
+                  "type": "string",
+                  "maxLength": 0
+                }
+              ]
+            },
+            "preferredOrganization": {
+              "title": "Organization",
+              "description": "Constituent's preferred organization (school, college, etc.)",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "title": "ID",
+                      "description": "The global identifier for Organization",
+                      "type": "string",
+                      "format": "guid",
+                      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                    }
+                  },
+                  "links": [
+                    {
+                      "rel": "self",
+                      "href": "/organizations/{id}",
+                      "targetSchema": {
+                        "$ref": "organizations.json#"
+                      }
+                    }
+                  ],
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "maxProperties": 0
+                }
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "person"
+          ]
+        },
+        {
+          "title": "Organization",
+          "description": "A constituent that is an organization.",
+          "type": "object",
+          "properties": {
+            "organization": {
+              "title": "Organization",
+              "description": "Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Organization",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/organizations/{id}",
+                  "targetSchema": {
+                    "$ref": "organizations.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "organization"
+          ]
+        }
+      ]
+    },
+    "types": {
+      "title": "Type",
+      "description": "The list of the categories of types of a constituent",
+      "type": "array",
+      "items": {
+        "title": "Type",
+        "description": "The list of the categories of types of a constituent",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "The global identifier for Type",
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        },
+        "links": [
+          {
+            "rel": "self",
+            "href": "/constituent-types/{id}",
+            "targetSchema": {
+              "$ref": "constituent-types.json#"
+            }
+          }
+        ],
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "constituent"
+  ],
+  "additionalProperties": false,
+  "links": [
+    {
+      "rel": "wealthAssessment",
+      "title": "Wealth Assessment",
+      "description": "An assessment of a person or organization's giving potential",
+      "href": "/wealth-assessments?constituent.entityType={constituent.entityType}&constituent.id={constituent.id}",
+      "targetSchema": {
+        "$ref": "wealth-assessments.json#"
+      }
+    },
+    {
+      "rel": "constituentDonationInterest",
+      "title": "Constituent Donation Interest",
+      "description": "A donation interest identified for a person or organization",
+      "href": "/constituent-donation-interests?constituent.entityType={constituent.entityType}&constituent.id={constituent.id}",
+      "targetSchema": {
+        "$ref": "constituent-donation-interests.json#"
+      }
+    },
+    {
+      "rel": "externalDonations",
+      "title": "External Donations",
+      "description": "A donation made by a constitient to an external organization",
+      "href": "/external-donations?constituent.entityType={constituent.entityType}&constituent.id={constituent.id}",
+      "targetSchema": {
+        "$ref": "external-donations.json#"
+      }
+    },
+    {
+      "rel": "donationPromises",
+      "title": "External Donations",
+      "description": "A promised donation that has yet to be fulfilled",
+      "href": "/donation-promises?donorAllocations[donor].entityType={constituent.entityType}&donorAllocations[donor].id={constituent.id}",
+      "targetSchema": {
+        "$ref": "donation-promises.json#"
+      }
+    },
+    {
+      "rel": "donations",
+      "title": "Donations",
+      "description": "A donation made to an institution",
+      "href": "/donations?donorAllocations[donor].entityType={constituent.entityType}&donorAllocations[donor].id={constituent.id}",
+      "targetSchema": {
+        "$ref": "donations.json#"
+      }
+    },
+    {
+      "rel": "donorSocietyMembership",
+      "title": "Donor Society Membership",
+      "description": "A membership in a donor society",
+      "href": "/donor-society-memberships?donor.entityType={constituent.entityType}&donor.id={constituent.id}",
+      "targetSchema": {
+        "$ref": "donor-society-memberships.json#"
+      }
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+title,Wealth Assessment
+description,An assessment of a person or organization's giving potential.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,The global identifier of the wealth assessment record
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of the wealth assessment record
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,The full description of the wealth assessment record
+properties.description.type,string
+properties.informationType.title,Information Type
+properties.informationType.description,Wealth information type
+properties.informationType.type,object
+properties.informationType.properties.id.title,ID
+properties.informationType.properties.id.description,The global identifier for Information Type
+properties.informationType.properties.id.type,string
+properties.informationType.properties.id.format,guid
+properties.informationType.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.informationType.links.rel,self
+properties.informationType.links.href,/wealth-information-types/{id}
+properties.informationType.links.targetSchema.$ref,wealth-information-types.json#
+properties.informationType.additionalProperties,false
+properties.informationType.required,id
+properties.constituent.title,Constituent
+properties.constituent.description,A person, for whom wealth assessment is performed
+properties.constituent.oneOf.title,Person
+properties.constituent.oneOf.description,
+properties.constituent.oneOf.type,object
+properties.constituent.oneOf.properties.person.title,Person
+properties.constituent.oneOf.properties.person.description,A human being or other independent agent.
+properties.constituent.oneOf.properties.person.type,object
+properties.constituent.oneOf.properties.person.properties.id.title,ID
+properties.constituent.oneOf.properties.person.properties.id.description,The global identifier for Person
+properties.constituent.oneOf.properties.person.properties.id.type,string
+properties.constituent.oneOf.properties.person.properties.id.format,guid
+properties.constituent.oneOf.properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.constituent.oneOf.properties.person.links.rel,self
+properties.constituent.oneOf.properties.person.links.href,/persons/{id}
+properties.constituent.oneOf.properties.person.links.targetSchema.$ref,persons.json#
+properties.constituent.oneOf.properties.person.additionalProperties,false
+properties.constituent.oneOf.properties.person.required,id
+properties.constituent.oneOf.additionalProperties,false
+properties.constituent.oneOf.required,person
+properties.constituent.oneOf.title,Organization
+properties.constituent.oneOf.description,An organization, for which wealth assessment is performed
+properties.constituent.oneOf.type,object
+properties.constituent.oneOf.properties.organization.title,Organization
+properties.constituent.oneOf.properties.organization.description,Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.
+properties.constituent.oneOf.properties.organization.type,object
+properties.constituent.oneOf.properties.organization.properties.id.title,ID
+properties.constituent.oneOf.properties.organization.properties.id.description,The global identifier for Organization
+properties.constituent.oneOf.properties.organization.properties.id.type,string
+properties.constituent.oneOf.properties.organization.properties.id.format,guid
+properties.constituent.oneOf.properties.organization.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.constituent.oneOf.properties.organization.links.rel,self
+properties.constituent.oneOf.properties.organization.links.href,/organizations/{id}
+properties.constituent.oneOf.properties.organization.links.targetSchema.$ref,organizations.json#
+properties.constituent.oneOf.properties.organization.additionalProperties,false
+properties.constituent.oneOf.properties.organization.required,id
+properties.constituent.oneOf.additionalProperties,false
+properties.constituent.oneOf.required,organization
+properties.screeningTargetType.title,Screening Target Type
+properties.screeningTargetType.description,The type of a wealth screening target
+properties.screeningTargetType.oneOf.type,object
+properties.screeningTargetType.oneOf.properties.id.title,ID
+properties.screeningTargetType.oneOf.properties.id.description,The global identifier for Screening Target Type
+properties.screeningTargetType.oneOf.properties.id.type,string
+properties.screeningTargetType.oneOf.properties.id.format,guid
+properties.screeningTargetType.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.screeningTargetType.oneOf.links.rel,self
+properties.screeningTargetType.oneOf.links.href,/screening-target-types/{id}
+properties.screeningTargetType.oneOf.links.targetSchema.$ref,screening-target-types.json#
+properties.screeningTargetType.oneOf.additionalProperties,false
+properties.screeningTargetType.oneOf.required,id
+properties.screeningTargetType.oneOf.type,object
+properties.screeningTargetType.oneOf.maxProperties,
+properties.assets.title,Assets
+properties.assets.description,Assessed assets for a target
+properties.assets.type,array
+properties.assets.items.type,object
+properties.assets.items.properties.assetType.title,Asset Type
+properties.assets.items.properties.assetType.description,A type of an asset
+properties.assets.items.properties.assetType.type,object
+properties.assets.items.properties.assetType.properties.id.title,ID
+properties.assets.items.properties.assetType.properties.id.description,The global identifier for Asset Type
+properties.assets.items.properties.assetType.properties.id.type,string
+properties.assets.items.properties.assetType.properties.id.format,guid
+properties.assets.items.properties.assetType.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.assets.items.properties.assetType.links.rel,self
+properties.assets.items.properties.assetType.links.href,/asset-types/{id}
+properties.assets.items.properties.assetType.links.targetSchema.$ref,asset-types.json#
+properties.assets.items.properties.assetType.additionalProperties,false
+properties.assets.items.properties.assetType.required,id
+properties.assets.items.properties.assetState.title,Asset State
+properties.assets.items.properties.assetState.description,The state of an asset
+properties.assets.items.properties.assetState.oneOf.type,object
+properties.assets.items.properties.assetState.oneOf.properties.id.title,ID
+properties.assets.items.properties.assetState.oneOf.properties.id.description,The global identifier for Asset State
+properties.assets.items.properties.assetState.oneOf.properties.id.type,string
+properties.assets.items.properties.assetState.oneOf.properties.id.format,guid
+properties.assets.items.properties.assetState.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.assets.items.properties.assetState.oneOf.links.rel,self
+properties.assets.items.properties.assetState.oneOf.links.href,/asset-states/{id}
+properties.assets.items.properties.assetState.oneOf.links.targetSchema.$ref,asset-states.json#
+properties.assets.items.properties.assetState.oneOf.additionalProperties,false
+properties.assets.items.properties.assetState.oneOf.required,id
+properties.assets.items.properties.assetState.oneOf.type,object
+properties.assets.items.properties.assetState.oneOf.maxProperties,
+properties.assets.items.properties.assetValue.title,Asset Value
+properties.assets.items.properties.assetValue.description,The assessed value of an asset for a target
+properties.assets.items.properties.assetValue.type,object
+properties.assets.items.properties.assetValue.properties.currency.title,currency
+properties.assets.items.properties.assetValue.properties.currency.description,
+properties.assets.items.properties.assetValue.properties.currency.type,object
+properties.assets.items.properties.assetValue.properties.currency.properties.value.title,Value
+properties.assets.items.properties.assetValue.properties.currency.properties.value.description,
+properties.assets.items.properties.assetValue.properties.currency.properties.value.minimum,
+properties.assets.items.properties.assetValue.properties.currency.properties.value.type,number
+properties.assets.items.properties.assetValue.properties.currency.properties.value.format,positiveNumber
+properties.assets.items.properties.assetValue.properties.currency.properties.currency.title,Currency
+properties.assets.items.properties.assetValue.properties.currency.properties.currency.description,
+properties.assets.items.properties.assetValue.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.assets.items.properties.assetValue.properties.currency.properties.currency.type,string
+properties.assets.items.properties.assetValue.properties.currency.additionalProperties,false
+properties.assets.items.properties.assetValue.properties.currency.required,value;currency
+properties.assets.items.properties.assetValue.additionalProperties,false
+properties.assets.items.properties.assetValue.format,currency
+properties.assets.items.additionalProperties,false
+properties.assets.items.required,assetType;assetValue
+properties.wealthRange.title,Wealth Range
+properties.wealthRange.description,The assessed wealth range for a target
+properties.wealthRange.oneOf.type,object
+properties.wealthRange.oneOf.properties.range.title,Range
+properties.wealthRange.oneOf.properties.range.description,
+properties.wealthRange.oneOf.properties.range.type,object
+properties.wealthRange.oneOf.properties.range.properties.id.title,ID
+properties.wealthRange.oneOf.properties.range.properties.id.description,The global identifier for Range
+properties.wealthRange.oneOf.properties.range.properties.id.type,string
+properties.wealthRange.oneOf.properties.range.properties.id.format,guid
+properties.wealthRange.oneOf.properties.range.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.wealthRange.oneOf.properties.range.links.rel,self
+properties.wealthRange.oneOf.properties.range.links.href,/wealth-ranges/{id}
+properties.wealthRange.oneOf.properties.range.links.targetSchema.$ref,wealth-ranges.json#
+properties.wealthRange.oneOf.properties.range.additionalProperties,false
+properties.wealthRange.oneOf.properties.range.required,id
+properties.wealthRange.oneOf.properties.currencyCode.title,Currency Code
+properties.wealthRange.oneOf.properties.currencyCode.description,International code indicating the unit of currency of the amount.
+properties.wealthRange.oneOf.properties.currencyCode.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.wealthRange.oneOf.properties.currencyCode.format,currencyCode
+properties.wealthRange.oneOf.properties.currencyCode.type,string
+properties.wealthRange.oneOf.additionalProperties,false
+properties.wealthRange.oneOf.required,range;currencyCode
+properties.wealthRange.oneOf.type,object
+properties.wealthRange.oneOf.maxProperties,
+properties.wealthValue.title,Wealth Value
+properties.wealthValue.description,Assessed value of wealth for a target
+properties.wealthValue.oneOf.type,object
+properties.wealthValue.oneOf.properties.currency.title,currency
+properties.wealthValue.oneOf.properties.currency.description,
+properties.wealthValue.oneOf.properties.currency.type,object
+properties.wealthValue.oneOf.properties.currency.properties.value.title,Value
+properties.wealthValue.oneOf.properties.currency.properties.value.description,
+properties.wealthValue.oneOf.properties.currency.properties.value.minimum,
+properties.wealthValue.oneOf.properties.currency.properties.value.type,number
+properties.wealthValue.oneOf.properties.currency.properties.value.format,positiveNumber
+properties.wealthValue.oneOf.properties.currency.properties.currency.title,Currency
+properties.wealthValue.oneOf.properties.currency.properties.currency.description,
+properties.wealthValue.oneOf.properties.currency.properties.currency.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.wealthValue.oneOf.properties.currency.properties.currency.type,string
+properties.wealthValue.oneOf.properties.currency.additionalProperties,false
+properties.wealthValue.oneOf.properties.currency.required,value;currency
+properties.wealthValue.oneOf.additionalProperties,false
+properties.wealthValue.oneOf.format,currency
+properties.wealthValue.oneOf.type,object
+properties.wealthValue.oneOf.maxProperties,
+properties.status.title,Status
+properties.status.description,The status of the wealth assessment data
+properties.status.oneOf.type,object
+properties.status.oneOf.properties.id.title,ID
+properties.status.oneOf.properties.id.description,The global identifier for Status
+properties.status.oneOf.properties.id.type,string
+properties.status.oneOf.properties.id.format,guid
+properties.status.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.status.oneOf.links.rel,self
+properties.status.oneOf.links.href,/wealth-assessment-statuses/{id}
+properties.status.oneOf.links.targetSchema.$ref,wealth-assessment-statuses.json#
+properties.status.oneOf.additionalProperties,false
+properties.status.oneOf.required,id
+properties.status.oneOf.type,object
+properties.status.oneOf.maxProperties,
+properties.metrics.title,Metrics
+properties.metrics.description,Wealth assessment and/or giving capacity metrics
+properties.metrics.type,array
+properties.metrics.items.oneOf.title,Metric
+properties.metrics.items.oneOf.description,A measurement of wealth.
+properties.metrics.items.oneOf.type,object
+properties.metrics.items.oneOf.properties.metric.title,Metric
+properties.metrics.items.oneOf.properties.metric.description,The wealth assessment metric.
+properties.metrics.items.oneOf.properties.metric.type,object
+properties.metrics.items.oneOf.properties.metric.properties.id.title,ID
+properties.metrics.items.oneOf.properties.metric.properties.id.description,The global identifier for Metric
+properties.metrics.items.oneOf.properties.metric.properties.id.type,string
+properties.metrics.items.oneOf.properties.metric.properties.id.format,guid
+properties.metrics.items.oneOf.properties.metric.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.metrics.items.oneOf.properties.metric.links.rel,self
+properties.metrics.items.oneOf.properties.metric.links.href,/wealth-assessment-metrics/{id}
+properties.metrics.items.oneOf.properties.metric.links.targetSchema.$ref,wealth-assessment-metrics.json#
+properties.metrics.items.oneOf.properties.metric.additionalProperties,false
+properties.metrics.items.oneOf.properties.metric.required,id
+properties.metrics.items.oneOf.properties.value.title,Value
+properties.metrics.items.oneOf.properties.value.description,The values of a wealth assessment metric
+properties.metrics.items.oneOf.properties.value.type,string
+properties.metrics.items.oneOf.additionalProperties,false
+properties.metrics.items.oneOf.required,metric
+properties.confidenceLevel.title,Confidence Level
+properties.confidenceLevel.description,Confidence level for an assessment
+properties.confidenceLevel.oneOf.type,object
+properties.confidenceLevel.oneOf.properties.id.title,ID
+properties.confidenceLevel.oneOf.properties.id.description,The global identifier for Confidence Level
+properties.confidenceLevel.oneOf.properties.id.type,string
+properties.confidenceLevel.oneOf.properties.id.format,guid
+properties.confidenceLevel.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.confidenceLevel.oneOf.links.rel,self
+properties.confidenceLevel.oneOf.links.href,/confidence-levels/{id}
+properties.confidenceLevel.oneOf.links.targetSchema.$ref,confidence-levels.json#
+properties.confidenceLevel.oneOf.additionalProperties,false
+properties.confidenceLevel.oneOf.required,id
+properties.confidenceLevel.oneOf.type,object
+properties.confidenceLevel.oneOf.maxProperties,
+properties.assessmentDate.title,Assessment Date
+properties.assessmentDate.description,The date of an assessment
+properties.assessmentDate.type,string
+properties.assessmentDate.format,date-time
+properties.assessmentDate.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.source.title,Source
+properties.source.description,Assessment information source
+properties.source.type,object
+properties.source.properties.id.title,ID
+properties.source.properties.id.description,The global identifier for Source
+properties.source.properties.id.type,string
+properties.source.properties.id.format,guid
+properties.source.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.source.links.rel,self
+properties.source.links.href,/sources/{id}
+properties.source.links.targetSchema.$ref,sources.json#
+properties.source.additionalProperties,false
+properties.source.required,id
+required,id;title;informationType;constituent;assessmentDate;source
+additionalProperties,false

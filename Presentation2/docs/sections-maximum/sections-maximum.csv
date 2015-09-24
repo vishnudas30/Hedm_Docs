@@ -1,0 +1,902 @@
+title,Section
+description,An instance of a Course.
+type,object
+properties.id.title,ID
+properties.id.description,A globally unique identifier of a section maximum to be used in all external references.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of a section.
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,A description of a section.
+properties.description.type,string
+properties.startOn.title,Offering Start Date
+properties.startOn.description,The starting date at which a Section may be scheduled to be taken.
+properties.startOn.type,string
+properties.startOn.format,date-time
+properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.title,Offering End Date
+properties.endOn.description,The ending date at which a Section may no longer be scheduled to be taken.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.code.title,Section Code
+properties.code.description,The human-readable identifier of a Section. It is generally unique within an academic period.
+properties.code.type,string
+properties.number.title,Section Number
+properties.number.description,A numbering scheme or other mark that distinguishes between multiple sections.  It is generally unique within an academic period and course.
+properties.number.type,string
+properties.instructionalPlatform.title,Instructional Platform
+properties.instructionalPlatform.description,The technology platform used to manage the administration of a section
+properties.instructionalPlatform.oneOf.type,object
+properties.instructionalPlatform.oneOf.properties.code.title,Code
+properties.instructionalPlatform.oneOf.properties.code.description,The code that identifies a Technology Platform.
+properties.instructionalPlatform.oneOf.properties.code.type,string
+properties.instructionalPlatform.oneOf.properties.title.title,Title
+properties.instructionalPlatform.oneOf.properties.title.description,The full name of a Technology Platform.
+properties.instructionalPlatform.oneOf.properties.title.type,string
+properties.instructionalPlatform.oneOf.properties.title.minLength,1
+properties.instructionalPlatform.oneOf.properties.detail.title,Instructional Platform
+properties.instructionalPlatform.oneOf.properties.detail.description,The instructional platform used in this section.
+properties.instructionalPlatform.oneOf.properties.detail.type,object
+properties.instructionalPlatform.oneOf.properties.detail.properties.id.title,ID
+properties.instructionalPlatform.oneOf.properties.detail.properties.id.description,The global identifier for Instructional Platform
+properties.instructionalPlatform.oneOf.properties.detail.properties.id.type,string
+properties.instructionalPlatform.oneOf.properties.detail.properties.id.format,guid
+properties.instructionalPlatform.oneOf.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructionalPlatform.oneOf.properties.detail.links.rel,self
+properties.instructionalPlatform.oneOf.properties.detail.links.href,/instructional-platforms/{id}
+properties.instructionalPlatform.oneOf.properties.detail.links.targetSchema.$ref,instructional-platforms.json#
+properties.instructionalPlatform.oneOf.properties.detail.additionalProperties,false
+properties.instructionalPlatform.oneOf.properties.detail.required,id
+properties.instructionalPlatform.oneOf.additionalProperties,false
+properties.instructionalPlatform.oneOf.required,title;detail
+properties.instructionalPlatform.oneOf.type,object
+properties.instructionalPlatform.oneOf.maxProperties,
+properties.academicPeriod.title,Academic Period
+properties.academicPeriod.description,The academic time period associated with this section.
+properties.academicPeriod.oneOf.type,object
+properties.academicPeriod.oneOf.properties.code.title,Code
+properties.academicPeriod.oneOf.properties.code.description,The code that identifies an academic time period.
+properties.academicPeriod.oneOf.properties.code.type,string
+properties.academicPeriod.oneOf.properties.title.title,Title
+properties.academicPeriod.oneOf.properties.title.description,The full name of an academic time period.
+properties.academicPeriod.oneOf.properties.title.type,string
+properties.academicPeriod.oneOf.properties.title.minLength,1
+properties.academicPeriod.oneOf.properties.startOn.title,Period Start Date
+properties.academicPeriod.oneOf.properties.startOn.description,The date at which the academic time period begins
+properties.academicPeriod.oneOf.properties.startOn.type,string
+properties.academicPeriod.oneOf.properties.startOn.format,date-time
+properties.academicPeriod.oneOf.properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.academicPeriod.oneOf.properties.endOn.title,Period End Date
+properties.academicPeriod.oneOf.properties.endOn.description,The date at which the academic time period ends
+properties.academicPeriod.oneOf.properties.endOn.type,string
+properties.academicPeriod.oneOf.properties.endOn.format,date-time
+properties.academicPeriod.oneOf.properties.endOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.academicPeriod.oneOf.properties.detail.title,Academic Period
+properties.academicPeriod.oneOf.properties.detail.description,The academic period used in this section.
+properties.academicPeriod.oneOf.properties.detail.type,object
+properties.academicPeriod.oneOf.properties.detail.properties.id.title,ID
+properties.academicPeriod.oneOf.properties.detail.properties.id.description,The global identifier for Academic Period
+properties.academicPeriod.oneOf.properties.detail.properties.id.type,string
+properties.academicPeriod.oneOf.properties.detail.properties.id.format,guid
+properties.academicPeriod.oneOf.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.academicPeriod.oneOf.properties.detail.links.rel,self
+properties.academicPeriod.oneOf.properties.detail.links.href,/academic-periods/{id}
+properties.academicPeriod.oneOf.properties.detail.links.targetSchema.$ref,academic-periods.json#
+properties.academicPeriod.oneOf.properties.detail.additionalProperties,false
+properties.academicPeriod.oneOf.properties.detail.required,id
+properties.academicPeriod.oneOf.additionalProperties,false
+properties.academicPeriod.oneOf.required,title;startOn;endOn;detail
+properties.academicPeriod.oneOf.type,object
+properties.academicPeriod.oneOf.maxProperties,
+properties.administrativePeriod.title,Administrative Time Period
+properties.administrativePeriod.description,The administrative time period associated with this section.
+properties.administrativePeriod.oneOf.type,object
+properties.administrativePeriod.oneOf.properties.code.title,Code
+properties.administrativePeriod.oneOf.properties.code.description,The code that identifies an administrative time period.
+properties.administrativePeriod.oneOf.properties.code.type,string
+properties.administrativePeriod.oneOf.properties.title.title,Title
+properties.administrativePeriod.oneOf.properties.title.description,The full name of an administrative time period.
+properties.administrativePeriod.oneOf.properties.title.type,string
+properties.administrativePeriod.oneOf.properties.title.minLength,1
+properties.administrativePeriod.oneOf.properties.startOn.title,Period Start Date
+properties.administrativePeriod.oneOf.properties.startOn.description,The date at which the administrative time period begins
+properties.administrativePeriod.oneOf.properties.startOn.type,string
+properties.administrativePeriod.oneOf.properties.startOn.format,date-time
+properties.administrativePeriod.oneOf.properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.administrativePeriod.oneOf.properties.endOn.title,Period End Date
+properties.administrativePeriod.oneOf.properties.endOn.description,The date at which the administrative time period ends
+properties.administrativePeriod.oneOf.properties.endOn.type,string
+properties.administrativePeriod.oneOf.properties.endOn.format,date-time
+properties.administrativePeriod.oneOf.properties.endOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.administrativePeriod.oneOf.properties.detail.title,Administrative Period
+properties.administrativePeriod.oneOf.properties.detail.description,The administrative period used in this section.
+properties.administrativePeriod.oneOf.properties.detail.type,object
+properties.administrativePeriod.oneOf.properties.detail.properties.id.title,ID
+properties.administrativePeriod.oneOf.properties.detail.properties.id.description,The global identifier for Administrative Period
+properties.administrativePeriod.oneOf.properties.detail.properties.id.type,string
+properties.administrativePeriod.oneOf.properties.detail.properties.id.format,guid
+properties.administrativePeriod.oneOf.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.administrativePeriod.oneOf.properties.detail.links.rel,self
+properties.administrativePeriod.oneOf.properties.detail.links.href,/administrative-periods/{id}
+properties.administrativePeriod.oneOf.properties.detail.links.targetSchema.$ref,administrative-periods.json#
+properties.administrativePeriod.oneOf.properties.detail.additionalProperties,false
+properties.administrativePeriod.oneOf.properties.detail.required,id
+properties.administrativePeriod.oneOf.additionalProperties,false
+properties.administrativePeriod.oneOf.required,title;startOn;endOn;detail
+properties.administrativePeriod.oneOf.type,object
+properties.administrativePeriod.oneOf.maxProperties,
+properties.course.title,Course
+properties.course.description,The course associated with this section.
+properties.course.type,object
+properties.course.properties.title.title,Title
+properties.course.properties.title.description,The full name of a course.
+properties.course.properties.title.type,string
+properties.course.properties.title.minLength,1
+properties.course.properties.subject.title,Subject
+properties.course.properties.subject.description,A branch of knowledge typically used as a course of study, such as "Mathematics" or "Biology".
+properties.course.properties.subject.type,object
+properties.course.properties.subject.properties.abbreviation.title,Abbreviation
+properties.course.properties.subject.properties.abbreviation.description,The abbreviated name of a subject.
+properties.course.properties.subject.properties.abbreviation.type,string
+properties.course.properties.subject.properties.title.title,Title
+properties.course.properties.subject.properties.title.description,The full name of a subject.
+properties.course.properties.subject.properties.title.type,string
+properties.course.properties.subject.properties.title.minLength,1
+properties.course.properties.subject.properties.detail.title,Subject
+properties.course.properties.subject.properties.detail.description,The subject associated with this course.
+properties.course.properties.subject.properties.detail.type,object
+properties.course.properties.subject.properties.detail.properties.id.title,ID
+properties.course.properties.subject.properties.detail.properties.id.description,The global identifier for Subject
+properties.course.properties.subject.properties.detail.properties.id.type,string
+properties.course.properties.subject.properties.detail.properties.id.format,guid
+properties.course.properties.subject.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.course.properties.subject.properties.detail.links.rel,self
+properties.course.properties.subject.properties.detail.links.href,/subjects/{id}
+properties.course.properties.subject.properties.detail.links.targetSchema.$ref,subjects.json#
+properties.course.properties.subject.properties.detail.additionalProperties,false
+properties.course.properties.subject.properties.detail.required,id
+properties.course.properties.subject.additionalProperties,false
+properties.course.properties.subject.required,title;detail
+properties.course.properties.number.title,Course Number
+properties.course.properties.number.description,A numbering scheme to distinguish different Courses. Typically this is an integer, but can be any string.
+properties.course.properties.number.type,string
+properties.course.properties.number.minLength,1
+properties.course.properties.detail.title,Course
+properties.course.properties.detail.description,The course associated with this section.
+properties.course.properties.detail.type,object
+properties.course.properties.detail.properties.id.title,ID
+properties.course.properties.detail.properties.id.description,The global identifier for Course
+properties.course.properties.detail.properties.id.type,string
+properties.course.properties.detail.properties.id.format,guid
+properties.course.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.course.properties.detail.links.rel,self
+properties.course.properties.detail.links.href,/courses/{id}
+properties.course.properties.detail.links.targetSchema.$ref,courses.json#
+properties.course.properties.detail.additionalProperties,false
+properties.course.properties.detail.required,id
+properties.course.additionalProperties,false
+properties.course.required,title;subject;number;detail
+properties.credits.title,Credits
+properties.credits.description,
+properties.credits.type,array
+properties.credits.items.type,object
+properties.credits.items.properties.creditCategory.title,Credit Category
+properties.credits.items.properties.creditCategory.description,
+properties.credits.items.properties.creditCategory.type,object
+properties.credits.items.properties.creditCategory.properties.code.title,Code
+properties.credits.items.properties.creditCategory.properties.code.description,The code that identifies a credit category.
+properties.credits.items.properties.creditCategory.properties.code.type,string
+properties.credits.items.properties.creditCategory.properties.title.title,Title
+properties.credits.items.properties.creditCategory.properties.title.description,The full name of a credit category.
+properties.credits.items.properties.creditCategory.properties.title.type,string
+properties.credits.items.properties.creditCategory.properties.title.minLength,1
+properties.credits.items.properties.creditCategory.properties.creditType.title,Credit Type
+properties.credits.items.properties.creditCategory.properties.creditType.description,The higher-level category of academic credits.
+properties.credits.items.properties.creditCategory.properties.creditType.enum,ce;institution;transfer
+properties.credits.items.properties.creditCategory.properties.creditType.type,string
+properties.credits.items.properties.creditCategory.properties.detail.title,Credit Category
+properties.credits.items.properties.creditCategory.properties.detail.description,The category of credit earned in this section.
+properties.credits.items.properties.creditCategory.properties.detail.type,object
+properties.credits.items.properties.creditCategory.properties.detail.properties.id.title,ID
+properties.credits.items.properties.creditCategory.properties.detail.properties.id.description,The global identifier for Credit Category
+properties.credits.items.properties.creditCategory.properties.detail.properties.id.type,string
+properties.credits.items.properties.creditCategory.properties.detail.properties.id.format,guid
+properties.credits.items.properties.creditCategory.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.credits.items.properties.creditCategory.properties.detail.links.rel,self
+properties.credits.items.properties.creditCategory.properties.detail.links.href,/credit-categories/{id}
+properties.credits.items.properties.creditCategory.properties.detail.links.targetSchema.$ref,credit-categories.json#
+properties.credits.items.properties.creditCategory.properties.detail.additionalProperties,false
+properties.credits.items.properties.creditCategory.properties.detail.required,id
+properties.credits.items.properties.creditCategory.additionalProperties,false
+properties.credits.items.properties.creditCategory.required,title;detail
+properties.credits.items.properties.measure.title,Unit of Measure
+properties.credits.items.properties.measure.description,A unit or standard of measurement.
+properties.credits.items.properties.measure.enum,credit;ceu;hours
+properties.credits.items.properties.measure.type,string
+properties.credits.items.properties.minimum.title,Minimum number
+properties.credits.items.properties.minimum.description,The lower number, inclusive bound of a numeric range of values.
+properties.credits.items.properties.minimum.type,number
+properties.credits.items.properties.maximum.title,Maximum number
+properties.credits.items.properties.maximum.description,The upper, inclusive bound of a numeric range of values.
+properties.credits.items.properties.maximum.oneOf.type,number
+properties.credits.items.properties.maximum.oneOf.type,null
+properties.credits.items.properties.increment.title,Increment number
+properties.credits.items.properties.increment.description,The multiple by which a numeric range of values can be stepped from the minimum to the maximum. For example, a range of 1 to 3 with an increment of 1 would evaluate to 1, 2, or 3. Specifying an increment of 0.5 would evaluate to 1, 1.5, 2, 2.5, or 3
+properties.credits.items.properties.increment.oneOf.type,number
+properties.credits.items.properties.increment.oneOf.type,null
+properties.credits.items.additionalProperties,false
+properties.credits.items.required,creditCategory;measure;minimum
+properties.site.title,Site
+properties.site.description,A physical location within the organization where this section events will be held.
+properties.site.oneOf.type,object
+properties.site.oneOf.properties.code.title,Code
+properties.site.oneOf.properties.code.description,The code that identifies the site.
+properties.site.oneOf.properties.code.type,string
+properties.site.oneOf.properties.title.title,Title
+properties.site.oneOf.properties.title.description,The full name of the site.
+properties.site.oneOf.properties.title.type,string
+properties.site.oneOf.properties.detail.title,Site
+properties.site.oneOf.properties.detail.description,The site where this section's events will be held.
+properties.site.oneOf.properties.detail.type,object
+properties.site.oneOf.properties.detail.properties.id.title,ID
+properties.site.oneOf.properties.detail.properties.id.description,The global identifier for Site
+properties.site.oneOf.properties.detail.properties.id.type,string
+properties.site.oneOf.properties.detail.properties.id.format,guid
+properties.site.oneOf.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.site.oneOf.properties.detail.links.rel,self
+properties.site.oneOf.properties.detail.links.href,/sites/{id}
+properties.site.oneOf.properties.detail.links.targetSchema.$ref,sites.json#
+properties.site.oneOf.properties.detail.additionalProperties,false
+properties.site.oneOf.properties.detail.required,id
+properties.site.oneOf.additionalProperties,false
+properties.site.oneOf.required,detail
+properties.site.oneOf.type,object
+properties.site.oneOf.maxProperties,
+properties.academicLevels.title,Academic Levels
+properties.academicLevels.description,
+properties.academicLevels.type,array
+properties.academicLevels.items.type,object
+properties.academicLevels.items.properties.code.title,Code
+properties.academicLevels.items.properties.code.description,The code that identifies the academic level.
+properties.academicLevels.items.properties.code.type,string
+properties.academicLevels.items.properties.title.title,Title
+properties.academicLevels.items.properties.title.description,The full name of the academic level.
+properties.academicLevels.items.properties.title.type,string
+properties.academicLevels.items.properties.title.minLength,1
+properties.academicLevels.items.properties.detail.title,Academic Level
+properties.academicLevels.items.properties.detail.description,The academic level associated with this section.
+properties.academicLevels.items.properties.detail.type,object
+properties.academicLevels.items.properties.detail.properties.id.title,ID
+properties.academicLevels.items.properties.detail.properties.id.description,The global identifier for Academic Level
+properties.academicLevels.items.properties.detail.properties.id.type,string
+properties.academicLevels.items.properties.detail.properties.id.format,guid
+properties.academicLevels.items.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.academicLevels.items.properties.detail.links.rel,self
+properties.academicLevels.items.properties.detail.links.href,/academic-levels/{id}
+properties.academicLevels.items.properties.detail.links.targetSchema.$ref,academic-levels.json#
+properties.academicLevels.items.properties.detail.additionalProperties,false
+properties.academicLevels.items.properties.detail.required,id
+properties.academicLevels.items.additionalProperties,false
+properties.academicLevels.items.required,code;title;detail
+properties.gradeSchemes.title,Grade Schemes
+properties.gradeSchemes.description,
+properties.gradeSchemes.type,array
+properties.gradeSchemes.items.type,object
+properties.gradeSchemes.items.properties.abbreviation.title,Abbreviation
+properties.gradeSchemes.items.properties.abbreviation.description,The abbreviated name of a grade scheme.
+properties.gradeSchemes.items.properties.abbreviation.type,string
+properties.gradeSchemes.items.properties.title.title,Title
+properties.gradeSchemes.items.properties.title.description,The full name of a grade scheme.
+properties.gradeSchemes.items.properties.title.type,string
+properties.gradeSchemes.items.properties.title.minLength,1
+properties.gradeSchemes.items.properties.detail.title,Grade Scheme
+properties.gradeSchemes.items.properties.detail.description,The grade scheme used in this section.
+properties.gradeSchemes.items.properties.detail.type,object
+properties.gradeSchemes.items.properties.detail.properties.id.title,ID
+properties.gradeSchemes.items.properties.detail.properties.id.description,The global identifier for Grade Scheme
+properties.gradeSchemes.items.properties.detail.properties.id.type,string
+properties.gradeSchemes.items.properties.detail.properties.id.format,guid
+properties.gradeSchemes.items.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.gradeSchemes.items.properties.detail.links.rel,self
+properties.gradeSchemes.items.properties.detail.links.href,/grade-schemes/{id}
+properties.gradeSchemes.items.properties.detail.links.targetSchema.$ref,grade-schemes.json#
+properties.gradeSchemes.items.properties.detail.additionalProperties,false
+properties.gradeSchemes.items.properties.detail.required,id
+properties.gradeSchemes.items.additionalProperties,false
+properties.gradeSchemes.items.required,title;detail
+properties.courseLevels.title,Course Levels
+properties.courseLevels.description,
+properties.courseLevels.type,array
+properties.courseLevels.items.type,object
+properties.courseLevels.items.properties.code.title,Code
+properties.courseLevels.items.properties.code.description,The code that identifies a course level.
+properties.courseLevels.items.properties.code.type,string
+properties.courseLevels.items.properties.title.title,Title
+properties.courseLevels.items.properties.title.description,The full name of a course level.
+properties.courseLevels.items.properties.title.type,string
+properties.courseLevels.items.properties.title.minLength,1
+properties.courseLevels.items.properties.detail.title,Course Level
+properties.courseLevels.items.properties.detail.description,The course level associated with this section.
+properties.courseLevels.items.properties.detail.type,object
+properties.courseLevels.items.properties.detail.properties.id.title,ID
+properties.courseLevels.items.properties.detail.properties.id.description,The global identifier for Course Level
+properties.courseLevels.items.properties.detail.properties.id.type,string
+properties.courseLevels.items.properties.detail.properties.id.format,guid
+properties.courseLevels.items.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.courseLevels.items.properties.detail.links.rel,self
+properties.courseLevels.items.properties.detail.links.href,/course-levels/{id}
+properties.courseLevels.items.properties.detail.links.targetSchema.$ref,course-levels.json#
+properties.courseLevels.items.properties.detail.additionalProperties,false
+properties.courseLevels.items.properties.detail.required,id
+properties.courseLevels.items.additionalProperties,false
+properties.courseLevels.items.required,title;detail
+properties.status.title,Status
+properties.status.description,The status of a section, for example, "Open" or "Closed".
+properties.status.oneOf.type,string
+properties.status.oneOf.enum,closed;open;pending;cancelled
+properties.status.oneOf.type,string
+properties.status.oneOf.maxLength,
+properties.duration.title,Duration
+properties.duration.description,The scheme for calculating the duration of a section
+properties.duration.oneOf.type,object
+properties.duration.oneOf.properties.length.title,Length
+properties.duration.oneOf.properties.length.description,The duration length, expressed in duration units
+properties.duration.oneOf.properties.length.type,number
+properties.duration.oneOf.properties.unit.title,Unit
+properties.duration.oneOf.properties.unit.description,The calendar period of time equivalent to 1 unit of duration
+properties.duration.oneOf.properties.unit.enum,days;weeks;months;years
+properties.duration.oneOf.properties.unit.type,string
+properties.duration.oneOf.additionalProperties,false
+properties.duration.oneOf.required,length;unit
+properties.duration.oneOf.type,object
+properties.duration.oneOf.maxProperties,
+properties.maxEnrollment.title,Maximum Enrollment
+properties.maxEnrollment.description,The maximum number of persons who are allowed to enroll for a section.
+properties.maxEnrollment.oneOf.type,number
+properties.maxEnrollment.oneOf.type,null
+properties.instructionalEvents.title,Instructional Events
+properties.instructionalEvents.description,
+properties.instructionalEvents.type,array
+properties.instructionalEvents.items.type,object
+properties.instructionalEvents.items.properties.title.title,Title
+properties.instructionalEvents.items.properties.title.description,The full name of an instructional activity that takes place during a Section.
+properties.instructionalEvents.items.properties.title.type,string
+properties.instructionalEvents.items.properties.instructionalMethod.title,Instructional Method
+properties.instructionalEvents.items.properties.instructionalMethod.description,
+properties.instructionalEvents.items.properties.instructionalMethod.type,object
+properties.instructionalEvents.items.properties.instructionalMethod.properties.abbreviation.title,Abbreviation
+properties.instructionalEvents.items.properties.instructionalMethod.properties.abbreviation.description,The abbreviated name of an instructional method.
+properties.instructionalEvents.items.properties.instructionalMethod.properties.abbreviation.type,string
+properties.instructionalEvents.items.properties.instructionalMethod.properties.title.title,Title
+properties.instructionalEvents.items.properties.instructionalMethod.properties.title.description,The full name of an instructional method.
+properties.instructionalEvents.items.properties.instructionalMethod.properties.title.type,string
+properties.instructionalEvents.items.properties.instructionalMethod.properties.title.minLength,1
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.title,Instructional Method
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.description,The instructional method used in this instructional event.
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.type,object
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.properties.id.title,ID
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.properties.id.description,The global identifier for Instructional Method
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.properties.id.type,string
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.properties.id.format,guid
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.links.rel,self
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.links.href,/instructional-methods/{id}
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.links.targetSchema.$ref,instructional-methods.json#
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.additionalProperties,false
+properties.instructionalEvents.items.properties.instructionalMethod.properties.detail.required,id
+properties.instructionalEvents.items.properties.instructionalMethod.additionalProperties,false
+properties.instructionalEvents.items.properties.instructionalMethod.required,title;detail
+properties.instructionalEvents.items.properties.recurrence.title,Recurrence
+properties.instructionalEvents.items.properties.recurrence.description,
+properties.instructionalEvents.items.properties.recurrence.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.format,recurrence
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.title,Time Period
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.description,The period of time to be repeated.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.properties.startOn.title,Start On
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.properties.startOn.description,The beginning of the time period being repeated.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.properties.startOn.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.properties.startOn.format,date-time
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.properties.endOn.title,End On
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.properties.endOn.description,The end of the time period being repeated.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.format,date-time
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.maxLength,
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.timePeriod.required,startOn
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.title,Repeat Rule
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.description,The rule that describes how to repeat the time period.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.title,Daily
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.description,Rules for repeating on a daily basis.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.enum,daily
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.title,Interval
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.description,Number of days between each repetition.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,integer
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.minimum,1
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.maximum,365
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,null
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.title,Ends
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.description,When to end the daily repetitions.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.title,Repetitions
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.description,Number of times to repeat, then stop.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.type,integer
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.minimum,1
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.maximum,365
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,repetitions
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.title,Date
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.description,The date after which to stop repeating.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.format,date
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,date
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.maxProperties,
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.required,type
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.title,Weekly
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.description,Rules for repeating on a weekly basis.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.enum,weekly
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.title,Interval
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.description,Number of weeks between each repetition.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,integer
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.minimum,1
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.maximum,52
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,null
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.title,Days of Week
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.description,The days of the week on which to repeat the event.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.type,array
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.items.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.items.enum,sunday;monday;tuesday;wednesday;thursday;friday;saturday
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.title,Ends
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.description,When to end the weekly repetitions.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.title,Repetitions
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.description,Number of times to repeat, then stop.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.type,integer
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.minimum,1
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.maximum,52
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,repetitions
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.title,Date
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.description,The date after which to stop repeating.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.format,date
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,date
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.maxProperties,
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.required,type
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.title,Monthly
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.description,Rules for repeating on a monthly basis.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.enum,monthly
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.title,Interval
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.description,Number of months between each repetition.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,integer
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.minimum,1
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.maximum,12
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,null
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.title,Repeat By
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.description,How to calculate the day of the month on which to start repeating.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.title,Day of Month
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.description,The number of the day in the month on which to start repeating.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.type,integer
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.minimum,1
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.maximum,31
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.required,dayOfMonth
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.title,Day of Week
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.description,The cardinal day of the week (e.g., the first Tuesday, the last Friday, etc.) in the month on which to start repeating.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.title,Occurrence
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.description,The nth occurrence of the day of the week in the month. Use a positive number to count from the start of the month (e.g., 1 = first in the month, 2 = second in the month), and a negative number to count from the end of the month (e.g. -1 = last in the month, -2 = second from last, etc.).
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.type,integer
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.minimum,-4
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.maximum,4
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.day.title,Day of Week
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.day.description,A day in a week.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.day.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.day.enum,sunday;monday;tuesday;wednesday;thursday;friday;saturday
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.required,occurrence;day
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.required,dayOfWeek
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.title,Ends
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.description,When to end the monthly repetitions.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.title,Repetitions
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.description,Number of times to repeat, then stop.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.type,integer
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.minimum,1
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.maximum,12
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,repetitions
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.title,Date
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.description,The date after which to stop repeating.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.format,date
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,date
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.maxProperties,
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.required,type;repeatBy
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.title,Yearly
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.description,Rules for repeating on an annual basis.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.enum,yearly
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.title,Interval
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.description,Number of years between each repetition.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,integer
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.minimum,
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.format,positiveInteger
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,null
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.title,Ends
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.description,When to end the yearly repetitions.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.title,Repetitions
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.description,Number of times to repeat, then stop.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.type,integer
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.minimum,
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.format,positiveInteger
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,repetitions
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.title,Date
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.description,The date after which to stop repeating.
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.type,string
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.format,date
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,date
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.maxProperties,
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.properties.repeatRule.oneOf.required,type
+properties.instructionalEvents.items.properties.recurrence.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.recurrence.oneOf.required,timePeriod;repeatRule
+properties.instructionalEvents.items.properties.recurrence.oneOf.type,object
+properties.instructionalEvents.items.properties.recurrence.oneOf.maxProperties,
+properties.instructionalEvents.items.properties.locations.title,Location
+properties.instructionalEvents.items.properties.locations.description,Locations where the instructional event will take place.
+properties.instructionalEvents.items.properties.locations.type,array
+properties.instructionalEvents.items.properties.locations.items.type,object
+properties.instructionalEvents.items.properties.locations.items.properties.location.title,Location
+properties.instructionalEvents.items.properties.locations.items.properties.location.description,
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.title,Site
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.description,A physical location within the organization.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.type,object
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.title,Type
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.description,
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.enum,site
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.code.title,Code
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.code.description,The code that identifies the site.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.code.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.title.title,Title
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.title.description,The full name of the site.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.title.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.title,Site
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.description,The site where the event will take place.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.type,object
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.properties.id.title,ID
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.properties.id.description,The global identifier for Site
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.properties.id.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.properties.id.format,guid
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.links.rel,self
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.links.href,/sites/{id}
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.links.targetSchema.$ref,sites.json#
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.additionalProperties,false
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.required,id
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.required,type;detail
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.title,Room
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.description,A room within a building, on a floor.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.type,object
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.title,Type
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.description,
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.enum,room
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.title.title,Title
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.title.description,The full name of a room.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.title.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.number.title,Number
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.number.description,A numbering scheme to distinguish different buildings, floors, and rooms located in the same site.  Typically this is a string.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.number.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.floor.title,Floor
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.floor.description,The name of the floor where a room is located.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.floor.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.title,building
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.description,A physical structure, usually containing rooms, which is located at a specified physical location.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.type,object
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.title.title,Title
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.title.description,The full name of a building.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.title.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.code.title,Code
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.code.description,A code that identifies the building.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.code.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.title,building
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.description,The building used in this instructional event.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.type,object
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.properties.id.title,ID
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.properties.id.description,The global identifier for building
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.properties.id.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.properties.id.format,guid
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.links.rel,self
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.links.href,/buildings/{id}
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.links.targetSchema.$ref,buildings.json#
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.additionalProperties,false
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.properties.detail.required,id
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.additionalProperties,false
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.building.required,detail
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.title,Room
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.description,The room where the event will take place.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.type,object
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.properties.id.title,ID
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.properties.id.description,The global identifier for Room
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.properties.id.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.properties.id.format,guid
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.links.rel,self
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.links.href,/rooms/{id}
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.links.targetSchema.$ref,rooms.json#
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.additionalProperties,false
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.detail.required,id
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.required,type;detail
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.title,Online Location
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.description,A meeting location available via a computer network, such as an online video conference.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.type,object
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.title,Type
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.description,
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.enum,online
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.phoneNumber.title,Phone
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.phoneNumber.description,The international telephone number of the location.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.phoneNumber.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.phoneExtension.title,Extension
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.phoneExtension.description,The telephone extension number of the location's telephone.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.phoneExtension.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.webAddress.title,Web Address
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.webAddress.description,The primary web address (URL) of the online meeting location.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.webAddress.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.required,type
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.title,Other Location
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.description,A human readable description of a location.
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.type,object
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.title,Type
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.description,
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.enum,other
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.type.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.title.title,Title
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.title.description,
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.properties.title.type,string
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.additionalProperties,false
+properties.instructionalEvents.items.properties.locations.items.properties.location.oneOf.required,type
+properties.instructionalEvents.items.properties.locations.items.additionalProperties,false
+properties.instructionalEvents.items.properties.locations.items.required,location
+properties.instructionalEvents.items.properties.instructorRoster.title,Instructor Roster
+properties.instructionalEvents.items.properties.instructorRoster.description,
+properties.instructionalEvents.items.properties.instructorRoster.type,array
+properties.instructionalEvents.items.properties.instructorRoster.items.type,object
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.title,Instructor
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.description,A person assigned to teach an instruction method of a section.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.type,object
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.title,Name
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.description,The parts of a particular form of a person's name.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.type,array
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.minItems,1
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.type,object
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.type.title,Name Type
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.type.description,A type of name being defined. For example, a "Primary" name.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.type.enum,primary
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.type.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.title.title,Title
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.title.description,A person's title. For example, "Mr.", "Mrs.", "Dr.", etc.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.title.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.firstName.title,First Name
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.firstName.description,A person's first, or given, name.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.firstName.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.middleName.title,Middle Name
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.middleName.description,A person's middle name.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.middleName.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.lastNamePrefix.title,Last Name Prefix
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.lastNamePrefix.description,The article or preposition portion of a person's last name. For example, "De la", "Van", "Van der Von", etc.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.lastNamePrefix.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.lastName.title,Last Name
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.lastName.description,A person's last, or family, name.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.lastName.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.pedigree.title,Pedigree/Suffix
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.pedigree.description,A person's pedigree, e.g. "Jr.", "Sr.", etc.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.pedigree.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.preferredName.title,Preferred Name
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.preferredName.description,A person's preferred, short-hand name, such as a nickname.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.properties.preferredName.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.additionalProperties,false
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.names.items.required,type;firstName;lastName
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.title,Credential
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.description,The unique information that identifies a user to a system such as a network or computer.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.type,array
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.items.type,object
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.items.properties.type.title,Type
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.items.properties.type.description,The type of credential, such as "Person ID", "System ID", etc.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.items.properties.type.enum,ssn;sin;bannerId;colleagePersonId;elevateID;bannerSourcedId;bannerUserName;bannerUdcId
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.items.properties.type.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.items.properties.value.title,Credential
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.items.properties.value.description,The credential used in this section.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.items.properties.value.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.items.additionalProperties,false
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.credentials.items.required,type;value
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.title,Instructor
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.description,The instructor teaching this section.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.type,object
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.properties.id.title,ID
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.properties.id.description,The global identifier for Instructor
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.properties.id.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.properties.id.format,guid
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.links.rel,self
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.links.href,/persons/{id}
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.links.targetSchema.$ref,persons.json#
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.additionalProperties,false
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.properties.detail.required,id
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.additionalProperties,false
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.instructor.required,detail
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workLoadPercentage.title,Load Percentage
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workLoadPercentage.description,The rate or proportion per hundred of the instructional method's work load that is attributable to the instructor.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workLoadPercentage.oneOf.type,number
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workLoadPercentage.oneOf.type,null
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.responsibilityPercentage.title,Responsibility Percentage
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.responsibilityPercentage.description,The rate or proportion per hundred of the responsibility for managing the instructional method's activities that is attributable to the instructor.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.responsibilityPercentage.oneOf.type,number
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.responsibilityPercentage.oneOf.type,null
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workStartOn.title,Work Start Date
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workStartOn.description,The date when an instructor is assigned to start teaching the scheduled event for a Section.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workStartOn.oneOf.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workStartOn.oneOf.format,date-time
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workStartOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workStartOn.oneOf.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workStartOn.oneOf.maxLength,
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workEndOn.title,Work End Date
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workEndOn.description,The date after which an instructor is no longer assigned to the scheduled event for a Section.
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workEndOn.oneOf.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workEndOn.oneOf.format,date-time
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workEndOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workEndOn.oneOf.type,string
+properties.instructionalEvents.items.properties.instructorRoster.items.properties.workEndOn.oneOf.maxLength,
+properties.instructionalEvents.items.properties.instructorRoster.items.additionalProperties,false
+properties.instructionalEvents.items.properties.instructorRoster.items.required,instructor
+properties.instructionalEvents.items.properties.detail.title,Instructional Event
+properties.instructionalEvents.items.properties.detail.description,The instructional event associated to this section.
+properties.instructionalEvents.items.properties.detail.type,object
+properties.instructionalEvents.items.properties.detail.properties.id.title,ID
+properties.instructionalEvents.items.properties.detail.properties.id.description,The global identifier for Instructional Event
+properties.instructionalEvents.items.properties.detail.properties.id.type,string
+properties.instructionalEvents.items.properties.detail.properties.id.format,guid
+properties.instructionalEvents.items.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructionalEvents.items.properties.detail.links.rel,self
+properties.instructionalEvents.items.properties.detail.links.href,/instructional-events/{id}
+properties.instructionalEvents.items.properties.detail.links.targetSchema.$ref,instructional-events.json#
+properties.instructionalEvents.items.properties.detail.additionalProperties,false
+properties.instructionalEvents.items.properties.detail.required,id
+properties.instructionalEvents.items.additionalProperties,false
+properties.instructionalEvents.items.required,detail
+properties.owningOrganizations.title,Owning Organization
+properties.owningOrganizations.description,Organizations which own, or are responsible for, a course
+properties.owningOrganizations.type,array
+properties.owningOrganizations.items.type,object
+properties.owningOrganizations.items.properties.code.title,Code
+properties.owningOrganizations.items.properties.code.description,The code that identifies an organization
+properties.owningOrganizations.items.properties.code.type,string
+properties.owningOrganizations.items.properties.title.title,Title
+properties.owningOrganizations.items.properties.title.description,The full name of an organization.
+properties.owningOrganizations.items.properties.title.type,string
+properties.owningOrganizations.items.properties.ownershipPercentage.title,Percent Ownership
+properties.owningOrganizations.items.properties.ownershipPercentage.description,The rate or proportion per hundred of ownership that is attributable to the organization.
+properties.owningOrganizations.items.properties.ownershipPercentage.type,number
+properties.owningOrganizations.items.properties.detail.title,Owning Organization
+properties.owningOrganizations.items.properties.detail.description,The organization primarily responsible for this section.
+properties.owningOrganizations.items.properties.detail.type,object
+properties.owningOrganizations.items.properties.detail.properties.id.title,ID
+properties.owningOrganizations.items.properties.detail.properties.id.description,The global identifier for Owning Organization
+properties.owningOrganizations.items.properties.detail.properties.id.type,string
+properties.owningOrganizations.items.properties.detail.properties.id.format,guid
+properties.owningOrganizations.items.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.owningOrganizations.items.properties.detail.links.rel,self
+properties.owningOrganizations.items.properties.detail.links.href,/organizations/{id}
+properties.owningOrganizations.items.properties.detail.links.targetSchema.$ref,organizations.json#
+properties.owningOrganizations.items.properties.detail.additionalProperties,false
+properties.owningOrganizations.items.properties.detail.required,id
+properties.owningOrganizations.items.additionalProperties,false
+properties.owningOrganizations.items.required,ownershipPercentage;detail
+properties.gradeTypes.title,Grade Types
+properties.gradeTypes.description,The grade types that can be used in grading a section
+properties.gradeTypes.type,array
+properties.gradeTypes.items.type,object
+properties.gradeTypes.items.properties.title.title,Title
+properties.gradeTypes.items.properties.title.description,The full name of grade type
+properties.gradeTypes.items.properties.title.type,string
+properties.gradeTypes.items.properties.title.minLength,1
+properties.gradeTypes.items.properties.details.title,Grade Type
+properties.gradeTypes.items.properties.details.description,The grade type that is used in this section
+properties.gradeTypes.items.properties.details.type,object
+properties.gradeTypes.items.properties.details.properties.id.title,ID
+properties.gradeTypes.items.properties.details.properties.id.description,The global identifier for Grade Type
+properties.gradeTypes.items.properties.details.properties.id.type,string
+properties.gradeTypes.items.properties.details.properties.id.format,guid
+properties.gradeTypes.items.properties.details.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.gradeTypes.items.properties.details.links.rel,self
+properties.gradeTypes.items.properties.details.links.href,/section-grade-types/{id}
+properties.gradeTypes.items.properties.details.links.targetSchema.$ref,section-grade-types.json#
+properties.gradeTypes.items.properties.details.additionalProperties,false
+properties.gradeTypes.items.properties.details.required,id
+properties.gradeTypes.items.additionalProperties,false
+properties.gradeTypes.items.required,title;details
+required,id;title;startOn;course
+additionalProperties,false
+links.rel,instructionalEvents
+links.title,Instructional Events
+links.description,The instructional events associated with a section
+links.href,/instructional-events?section.id={id}
+links.targetSchema.$ref,instructional-events.json#
+links.rel,filter
+links.encType,application/x-www-form-urlencoded
+links.method,GET
+links.href,/sections/
+links.schema.type,object
+links.schema.properties.title.type,string
+links.schema.properties.startOn.type,string
+links.schema.properties.startOn.format,date-time
+links.schema.properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+links.schema.properties.endOn.type,string
+links.schema.properties.endOn.format,date-time
+links.schema.properties.endOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+links.schema.properties.code.type,string
+links.schema.properties.number.type,string
+links.schema.properties.instructionalPlatform.type,string
+links.schema.properties.instructionalPlatform.format,guid
+links.schema.properties.instructionalPlatform.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.academicLevels.type,string
+links.schema.properties.academicLevels.format,guid
+links.schema.properties.academicLevels.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.course.type,string
+links.schema.properties.course.format,guid
+links.schema.properties.course.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.site.type,string
+links.schema.properties.site.format,guid
+links.schema.properties.site.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.status.type,string
+links.schema.properties.status.enum,closed;open;pending;cancelled
+links.schema.properties.owningOrganizations.type,string
+links.schema.properties.owningOrganizations.format,guid
+links.schema.properties.owningOrganizations.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$

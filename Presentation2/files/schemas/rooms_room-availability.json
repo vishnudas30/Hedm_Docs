@@ -1,0 +1,630 @@
+{
+  "title": "Room Availability",
+  "description": "A request to list the rooms that are available within a given time frame, room layout, and occupancy, in a given building, at a given site",
+  "type": "object",
+  "properties": {
+    "recurrence": {
+      "title": "Recurrence",
+      "description": "",
+      "oneOf": [
+        {
+          "type": "object",
+          "format": "recurrence",
+          "properties": {
+            "timePeriod": {
+              "title": "Time Period",
+              "description": "The period of time to be repeated.",
+              "type": "object",
+              "properties": {
+                "startOn": {
+                  "title": "Start On",
+                  "description": "The beginning of the time period being repeated.",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+                },
+                "endOn": {
+                  "title": "End On",
+                  "description": "The end of the time period being repeated.",
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+                    },
+                    {
+                      "type": "string",
+                      "maxLength": 0
+                    }
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "startOn"
+              ]
+            },
+            "repeatRule": {
+              "title": "Repeat Rule",
+              "description": "The rule that describes how to repeat the time period.",
+              "oneOf": [
+                {
+                  "title": "Daily",
+                  "description": "Rules for repeating on a daily basis.",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "daily"
+                      ]
+                    },
+                    "interval": {
+                      "title": "Interval",
+                      "description": "Number of days between each repetition.",
+                      "oneOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 365
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "ends": {
+                      "title": "Ends",
+                      "description": "When to end the daily repetitions.",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "repetitions": {
+                              "title": "Repetitions",
+                              "description": "Number of times to repeat, then stop.",
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 365
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "repetitions"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "date": {
+                              "title": "Date",
+                              "description": "The date after which to stop repeating.",
+                              "type": "string",
+                              "format": "date",
+                              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "date"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "maxProperties": 0
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                },
+                {
+                  "title": "Weekly",
+                  "description": "Rules for repeating on a weekly basis.",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "weekly"
+                      ]
+                    },
+                    "interval": {
+                      "title": "Interval",
+                      "description": "Number of weeks between each repetition.",
+                      "oneOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 52
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "daysOfWeek": {
+                      "title": "Days of Week",
+                      "description": "The days of the week on which to repeat the event.",
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "sunday",
+                          "monday",
+                          "tuesday",
+                          "wednesday",
+                          "thursday",
+                          "friday",
+                          "saturday"
+                        ]
+                      }
+                    },
+                    "ends": {
+                      "title": "Ends",
+                      "description": "When to end the weekly repetitions.",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "repetitions": {
+                              "title": "Repetitions",
+                              "description": "Number of times to repeat, then stop.",
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 52
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "repetitions"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "date": {
+                              "title": "Date",
+                              "description": "The date after which to stop repeating.",
+                              "type": "string",
+                              "format": "date",
+                              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "date"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "maxProperties": 0
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                },
+                {
+                  "title": "Monthly",
+                  "description": "Rules for repeating on a monthly basis.",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "monthly"
+                      ]
+                    },
+                    "interval": {
+                      "title": "Interval",
+                      "description": "Number of months between each repetition.",
+                      "oneOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 12
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "repeatBy": {
+                      "title": "Repeat By",
+                      "description": "How to calculate the day of the month on which to start repeating.",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "dayOfMonth": {
+                              "title": "Day of Month",
+                              "description": "The number of the day in the month on which to start repeating.",
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 31
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "dayOfMonth"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "dayOfWeek": {
+                              "title": "Day of Week",
+                              "description": "The cardinal day of the week (e.g., the first Tuesday, the last Friday, etc.) in the month on which to start repeating.",
+                              "type": "object",
+                              "properties": {
+                                "occurrence": {
+                                  "title": "Occurrence",
+                                  "description": "The nth occurrence of the day of the week in the month. Use a positive number to count from the start of the month (e.g., 1 = first in the month, 2 = second in the month), and a negative number to count from the end of the month (e.g. -1 = last in the month, -2 = second from last, etc.).",
+                                  "type": "integer",
+                                  "minimum": -4,
+                                  "maximum": 4
+                                },
+                                "day": {
+                                  "title": "Day of Week",
+                                  "description": "A day in a week.",
+                                  "type": "string",
+                                  "enum": [
+                                    "sunday",
+                                    "monday",
+                                    "tuesday",
+                                    "wednesday",
+                                    "thursday",
+                                    "friday",
+                                    "saturday"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "occurrence",
+                                "day"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "dayOfWeek"
+                          ]
+                        }
+                      ]
+                    },
+                    "ends": {
+                      "title": "Ends",
+                      "description": "When to end the monthly repetitions.",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "repetitions": {
+                              "title": "Repetitions",
+                              "description": "Number of times to repeat, then stop.",
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "repetitions"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "date": {
+                              "title": "Date",
+                              "description": "The date after which to stop repeating.",
+                              "type": "string",
+                              "format": "date",
+                              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "date"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "maxProperties": 0
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type",
+                    "repeatBy"
+                  ]
+                },
+                {
+                  "title": "Yearly",
+                  "description": "Rules for repeating on an annual basis.",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "yearly"
+                      ]
+                    },
+                    "interval": {
+                      "title": "Interval",
+                      "description": "Number of years between each repetition.",
+                      "oneOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 0,
+                          "format": "positiveInteger"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "ends": {
+                      "title": "Ends",
+                      "description": "When to end the yearly repetitions.",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "repetitions": {
+                              "title": "Repetitions",
+                              "description": "Number of times to repeat, then stop.",
+                              "type": "integer",
+                              "minimum": 0,
+                              "format": "positiveInteger"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "repetitions"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "date": {
+                              "title": "Date",
+                              "description": "The date after which to stop repeating.",
+                              "type": "string",
+                              "format": "date",
+                              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "date"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "maxProperties": 0
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "type"
+                  ]
+                }
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "timePeriod",
+            "repeatRule"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "site": {
+      "title": "Site",
+      "description": "The institution's site",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier of the institution's site",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "building": {
+      "title": "Building",
+      "description": "The building at the selected site",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier of a building.",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "occupancies": {
+      "title": "Occupancy",
+      "description": "The type or style of a of room's layout, for example, \"Classroom\" style, \"Lecture Hall\" style, etc.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Room Layout",
+            "description": "The type or style of a of room's layout, for example, \"Seminar\" style, \"Banquet\" style, etc.",
+            "enum": [
+              "banquet",
+              "conference",
+              "sportsevent",
+              "graduationceremony",
+              "seminar",
+              "boardmeeting",
+              "performance",
+              "convention",
+              "convocation",
+              "pressmeet",
+              "workshops",
+              "exam"
+            ],
+            "type": "string"
+          },
+          "maxOccupancy": {
+            "title": "Maximum Occupancy",
+            "description": "The maximum number of persons who may occupy a room arranged in a given layout.",
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "maxOccupancy"
+        ]
+      }
+    },
+    "roomTypes": {
+      "title": "Room Types",
+      "description": "The type or style of a of room's layout, for example, \"Classroom\" style, \"Lecture Hall\" style, etc.  A room may support multiple types of layouts.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Room Type",
+            "description": "The type or style of a of room's layout, for example, \"Classroom\" style, \"Lecture Hall\" style, etc.",
+            "enum": [
+              "residencehallroom",
+              "residentialsingleroom",
+              "residentialdoubleroom",
+              "residentialtripleroom",
+              "residentialsuiteroom",
+              "apartment",
+              "house",
+              "classroom",
+              "lecturehall",
+              "seminarroom",
+              "conferenceroom",
+              "sciencelaboratory",
+              "computerlaboratory",
+              "mechanicslab",
+              "audiovisuallab",
+              "artstudio",
+              "musicroom",
+              "performingartsstudio",
+              "ballroom",
+              "office",
+              "studyfacility",
+              "clinic",
+              "animalquarters",
+              "greenhouse",
+              "specialusefacility",
+              "generalusefacility",
+              "foodfacility",
+              "daycare",
+              "lounge",
+              "merchandisingroom",
+              "supportfacility",
+              "healthcarefacility",
+              "atrium",
+              "amphitheater",
+              "auditorium",
+              "booth",
+              "other"
+            ],
+            "type": "string"
+          },
+          "detail": {
+            "title": "Detail",
+            "description": "The type or style of a of room's layout, for example, \"Classroom\" style, \"Lecture Hall\" style, etc.",
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "title": "ID",
+                    "description": "The global identifier for Detail",
+                    "type": "string",
+                    "format": "guid",
+                    "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                  }
+                },
+                "links": [
+                  {
+                    "rel": "self",
+                    "href": "/room-types/{id}",
+                    "targetSchema": {
+                      "$ref": "room-types.json#"
+                    }
+                  }
+                ],
+                "additionalProperties": false,
+                "required": [
+                  "id"
+                ]
+              },
+              {
+                "type": "object",
+                "maxProperties": 0
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ]
+      }
+    }
+  },
+  "required": [
+    "recurrence",
+    "roomTypes"
+  ],
+  "additionalProperties": false
+}

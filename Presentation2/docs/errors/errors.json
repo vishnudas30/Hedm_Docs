@@ -1,0 +1,35 @@
+{
+  "title": "Error",
+  "description": "An error conveyed from the recipient to the requestor",
+  "type": "object",
+  "properties": {
+    "code": {
+      "title": "Code",
+      "description": "Error code",
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "title": "Description",
+      "description": "A human-readable description of the error",
+      "type": "string"
+    },
+    "resourceURL": {
+      "title": "Resource URL",
+      "description": "The URL of the resource request that resulted in the error condition being triggered",
+      "type": "string"
+    },
+    "errorProperties": {
+      "title": "Error properties",
+      "description": "A list of JSON pointers to the properties in the entity where the error occurred",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "code"
+  ],
+  "additionalProperties": false
+}

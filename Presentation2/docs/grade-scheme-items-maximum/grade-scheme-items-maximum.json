@@ -1,0 +1,493 @@
+{
+  "title": "Grade Scheme Items Maximum",
+  "description": "The individual grade items that constitute a grade scheme with references resolved.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "title": "Id",
+      "description": "The global identifier of the grade scheme item.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "scheme": {
+      "title": "Scheme",
+      "description": "The grade scheme which defines the context of the grade scheme item.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "description": "The full name of a grade scheme.",
+          "type": "string",
+          "minLength": 1
+        },
+        "code": {
+          "title": "Code",
+          "description": "The code for the grade scheme that may be used a reference or for reporting.",
+          "type": "string"
+        },
+        "startOn": {
+          "title": "Start On",
+          "description": "The date after which a grade scheme may be used.",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "endOn": {
+          "title": "End On",
+          "description": "The date after which a grade scheme may no longer be used.",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "detail": {
+          "title": "Detail",
+          "description": "The grade scheme which defines the context of the grade scheme item.",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier for Detail",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "links": [
+            {
+              "rel": "self",
+              "href": "/grade-schemes/{id}",
+              "targetSchema": {
+                "$ref": "grade-schemes.json#"
+              }
+            }
+          ],
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "detail"
+      ]
+    },
+    "grade": {
+      "title": "Grade",
+      "description": "The literal value or numeric range that distinguishes the grade scheme item.",
+      "oneOf": [
+        {
+          "title": "Literal Value",
+          "description": "The item is defined as a literal",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type",
+              "description": "The type of the grade scheme item.",
+              "enum": [
+                "literal"
+              ],
+              "type": "string"
+            },
+            "value": {
+              "title": "Value",
+              "description": "The literal value of the grade scheme item.",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "value"
+          ]
+        },
+        {
+          "title": "Numeric Range",
+          "description": "The numeric range that defines the grade scheme item",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type",
+              "description": "The type of the grade scheme item.",
+              "enum": [
+                "numeric"
+              ],
+              "type": "string"
+            },
+            "minValue": {
+              "title": "Minimum Value",
+              "description": "The lower boundary of the numeric range of the grade scheme item.",
+              "type": "number"
+            },
+            "maxValue": {
+              "title": "Maximum Value",
+              "description": "The upper boundary of the numeric range of the grade scheme item.",
+              "type": "number"
+            },
+            "increment": {
+              "title": "Increment",
+              "description": "The size of the allowed incremental steps between the lower and upper boundaries of the range.",
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "minValue",
+            "maxValue"
+          ]
+        }
+      ]
+    },
+    "startOn": {
+      "title": "Start Date",
+      "description": "The earliest date on which the grade scheme item is valid.",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "endOn": {
+      "title": "End Date",
+      "description": "The latest date on which the grade scheme item may be used.",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "qualityValue": {
+      "title": "Quality Value",
+      "description": "The quality point value associated with the grade scheme item.",
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "format": "positiveNumber"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "passFail": {
+      "title": "Pass Fail Indicator",
+      "description": "Specifies if the grade scheme item is considered to be a passing of failing grade.",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "equivalentGradeItems": {
+      "title": "Equivalent Grade Item",
+      "description": "A list of mapping to the equivalent grade scheme item in different grade schemes.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "scheme": {
+            "title": "Scheme",
+            "description": "The grade scheme which defines the context of the grade scheme item.",
+            "type": "object",
+            "properties": {
+              "title": {
+                "title": "Title",
+                "description": "The full name of a grade scheme.",
+                "type": "string",
+                "minLength": 1
+              },
+              "code": {
+                "title": "Code",
+                "description": "The code for the grade scheme that may be used a reference or for reporting.",
+                "type": "string"
+              },
+              "startOn": {
+                "title": "Start On",
+                "description": "The date after which a grade scheme may be used.",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+                  },
+                  {
+                    "type": "string",
+                    "maxLength": 0
+                  }
+                ]
+              },
+              "endOn": {
+                "title": "End On",
+                "description": "The date after which a grade scheme may no longer be used.",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+                  },
+                  {
+                    "type": "string",
+                    "maxLength": 0
+                  }
+                ]
+              },
+              "detail": {
+                "title": "Detail",
+                "description": "The grade scheme which defines the context of the grade scheme item.",
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "title": "ID",
+                    "description": "The global identifier for Detail",
+                    "type": "string",
+                    "format": "guid",
+                    "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                  }
+                },
+                "links": [
+                  {
+                    "rel": "self",
+                    "href": "/grade-schemes/{id}",
+                    "targetSchema": {
+                      "$ref": "grade-schemes.json#"
+                    }
+                  }
+                ],
+                "additionalProperties": false,
+                "required": [
+                  "id"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "detail"
+            ]
+          },
+          "grade": {
+            "title": "Grade",
+            "description": "The literal value or numeric range that distinguishes the grade scheme item.",
+            "oneOf": [
+              {
+                "title": "Literal Value",
+                "description": "The item is defined as a literal",
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "title": "Type",
+                    "description": "The type of the grade scheme item.",
+                    "enum": [
+                      "literal"
+                    ],
+                    "type": "string"
+                  },
+                  "value": {
+                    "title": "Value",
+                    "description": "The literal value of the grade scheme item.",
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "type",
+                  "value"
+                ]
+              },
+              {
+                "title": "Numeric Range",
+                "description": "The numeric range that defines the grade scheme item",
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "title": "Type",
+                    "description": "The type of the grade scheme item.",
+                    "enum": [
+                      "numeric"
+                    ],
+                    "type": "string"
+                  },
+                  "minValue": {
+                    "title": "Minimum Value",
+                    "description": "The lower boundary of the numeric range of the grade scheme item.",
+                    "type": "number"
+                  },
+                  "maxValue": {
+                    "title": "Maximum Value",
+                    "description": "The upper boundary of the numeric range of the grade scheme item.",
+                    "type": "number"
+                  },
+                  "increment": {
+                    "title": "Increment",
+                    "description": "The size of the allowed incremental steps between the lower and upper boundaries of the range.",
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "type",
+                  "minValue",
+                  "maxValue"
+                ]
+              }
+            ]
+          },
+          "startOn": {
+            "title": "Start On",
+            "description": "The earliest date on which the grade scheme item may be used.",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "endOn": {
+            "title": "End On",
+            "description": "The latest date on which the grade scheme item may be used.",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "qualityValue": {
+            "title": "Quality Value",
+            "description": "The quality point value associated with the grade scheme item.",
+            "oneOf": [
+              {
+                "type": "number",
+                "format": "positiveNumber",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "passFail": {
+            "title": "Pass Fail Indicator",
+            "description": "Specifies if the grade scheme item is considered to be a passing of failing grade.",
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "pass",
+                  "fail"
+                ]
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "detail": {
+            "title": "Detail",
+            "description": "A grade scheme item in different grade schemes that is equivalent to this grade scheme item.",
+            "type": "object",
+            "properties": {
+              "id": {
+                "title": "ID",
+                "description": "The global identifier for Detail",
+                "type": "string",
+                "format": "guid",
+                "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+              }
+            },
+            "links": [
+              {
+                "rel": "self",
+                "href": "/grade-scheme-items/{id}",
+                "targetSchema": {
+                  "$ref": "grade-scheme-items.json#"
+                }
+              }
+            ],
+            "additionalProperties": false,
+            "required": [
+              "id"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "grade"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "scheme",
+    "grade"
+  ],
+  "additionalProperties": false
+}

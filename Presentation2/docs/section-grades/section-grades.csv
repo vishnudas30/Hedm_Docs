@@ -1,0 +1,229 @@
+title,Section Grade
+description,The grades reported for a student for a particular instance of a course section.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,Id
+properties.id.description,The global identifier of the section grade.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.sectionRegistration.title,Section Registration
+properties.sectionRegistration.description,The section registration instance for which the grade was reported.
+properties.sectionRegistration.type,object
+properties.sectionRegistration.properties.id.title,ID
+properties.sectionRegistration.properties.id.description,The global identifier for Section Registration
+properties.sectionRegistration.properties.id.type,string
+properties.sectionRegistration.properties.id.format,guid
+properties.sectionRegistration.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.sectionRegistration.links.rel,self
+properties.sectionRegistration.links.href,/section-registrations/{id}
+properties.sectionRegistration.links.targetSchema.$ref,section-registrations.json#
+properties.sectionRegistration.additionalProperties,false
+properties.sectionRegistration.required,id
+properties.type.title,Type
+properties.type.description,The type of section grade.
+properties.type.type,object
+properties.type.properties.id.title,ID
+properties.type.properties.id.description,The global identifier for Type
+properties.type.properties.id.type,string
+properties.type.properties.id.format,guid
+properties.type.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.type.links.rel,self
+properties.type.links.href,/section-grade-types/{id}
+properties.type.links.targetSchema.$ref,section-grade-types.json#
+properties.type.additionalProperties,false
+properties.type.required,id
+properties.grade.title,Grade
+properties.grade.description,The reported grade for the section registration.
+properties.grade.type,object
+properties.grade.properties.value.title,Value
+properties.grade.properties.value.description,The value of the reported grade
+properties.grade.properties.value.type,string
+properties.grade.properties.gradeSchemeItem.title,Grade Scheme Item
+properties.grade.properties.gradeSchemeItem.description,The grade scheme item that represents the grade reported.
+properties.grade.properties.gradeSchemeItem.oneOf.type,object
+properties.grade.properties.gradeSchemeItem.oneOf.properties.id.title,ID
+properties.grade.properties.gradeSchemeItem.oneOf.properties.id.description,The global identifier for Grade Scheme Item
+properties.grade.properties.gradeSchemeItem.oneOf.properties.id.type,string
+properties.grade.properties.gradeSchemeItem.oneOf.properties.id.format,guid
+properties.grade.properties.gradeSchemeItem.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.grade.properties.gradeSchemeItem.oneOf.links.rel,self
+properties.grade.properties.gradeSchemeItem.oneOf.links.href,/grade-scheme-items/{id}
+properties.grade.properties.gradeSchemeItem.oneOf.links.targetSchema.$ref,grade-scheme-items.json#
+properties.grade.properties.gradeSchemeItem.oneOf.additionalProperties,false
+properties.grade.properties.gradeSchemeItem.oneOf.required,id
+properties.grade.properties.gradeSchemeItem.oneOf.type,object
+properties.grade.properties.gradeSchemeItem.oneOf.maxProperties,
+properties.grade.additionalProperties,false
+properties.grade.minProperties,1
+properties.reporting.title,Reporting
+properties.reporting.description,Properties required for governmental or other reporting.
+properties.reporting.oneOf.type,object
+properties.reporting.oneOf.properties.countryCode.title,Country Code
+properties.reporting.oneOf.properties.countryCode.description,The country code for the USA
+properties.reporting.oneOf.properties.countryCode.enum,USA
+properties.reporting.oneOf.properties.countryCode.type,string
+properties.reporting.oneOf.properties.lastDayOfAttendance.title,Last Day Of Attendance
+properties.reporting.oneOf.properties.lastDayOfAttendance.description,Information about the last day of attendance
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.type,object
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.status.title,Status
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.status.description,Attendance Status
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.status.oneOf.type,string
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.status.oneOf.enum,attended;neverAttended
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.status.oneOf.type,string
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.status.oneOf.maxLength,
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.lastAttendedOn.title,Last Attended On
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.lastAttendedOn.description,The date the student last attended the section for this registration.
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.lastAttendedOn.oneOf.type,string
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.lastAttendedOn.oneOf.format,date-time
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.lastAttendedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.lastAttendedOn.oneOf.type,string
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.properties.lastAttendedOn.oneOf.maxLength,
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.additionalProperties,false
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.minProperties,1
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.type,object
+properties.reporting.oneOf.properties.lastDayOfAttendance.oneOf.maxProperties,
+properties.reporting.oneOf.additionalProperties,false
+properties.reporting.oneOf.required,countryCode
+properties.reporting.oneOf.type,object
+properties.reporting.oneOf.maxProperties,
+properties.process.title,Process
+properties.process.description,Properties associated with the processing of section grades.
+properties.process.oneOf.type,object
+properties.process.oneOf.properties.gradeExtension.title,Grade Extension
+properties.process.oneOf.properties.gradeExtension.description,Default grade and expiration date for incomplete grades.
+properties.process.oneOf.properties.gradeExtension.oneOf.type,object
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.expiresOn.title,Expires On
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.expiresOn.description,The date the incomplete grade expires and is replaced with the default grade.
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.expiresOn.type,string
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.expiresOn.format,date-time
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.expiresOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.title,Default Grade
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.description,The grade to which an incomplete will revert if not updated by the expiration date.
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.type,object
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.value.title,Value
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.value.description,The value of the default grade
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.value.type,string
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.title,Grade Scheme Item
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.description,The grade scheme item that represents the default grade.
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.type,object
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.properties.id.title,ID
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.properties.id.description,The global identifier for Grade Scheme Item
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.properties.id.type,string
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.properties.id.format,guid
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.links.rel,self
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.links.href,/grade-scheme-items/{id}
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.links.targetSchema.$ref,grade-scheme-items.json#
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.additionalProperties,false
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.required,id
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.type,object
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.properties.gradeSchemeItem.oneOf.maxProperties,
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.additionalProperties,false
+properties.process.oneOf.properties.gradeExtension.oneOf.properties.defaultGrade.minProperties,1
+properties.process.oneOf.properties.gradeExtension.oneOf.additionalProperties,false
+properties.process.oneOf.properties.gradeExtension.oneOf.required,expiresOn
+properties.process.oneOf.properties.gradeExtension.oneOf.type,object
+properties.process.oneOf.properties.gradeExtension.oneOf.maxProperties,
+properties.process.oneOf.properties.transcript.title,Transcript
+properties.process.oneOf.properties.transcript.description,Properties dealing with the transcript processing of the grade.
+properties.process.oneOf.properties.transcript.oneOf.type,object
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedOn.title,Verified On
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedOn.description,The date the grade was verified and rolled into a student's transcript.
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedOn.type,string
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedOn.format,date-time
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.title,Verified By
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.description,The person who verified the grade and rolled it into the student's transcript.
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.type,object
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.properties.id.title,ID
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.properties.id.description,The global identifier for Verified By
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.properties.id.type,string
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.properties.id.format,guid
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.links.rel,self
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.links.href,/persons/{id}
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.links.targetSchema.$ref,persons.json#
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.additionalProperties,false
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.required,id
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.type,object
+properties.process.oneOf.properties.transcript.oneOf.properties.verifiedBy.oneOf.maxProperties,
+properties.process.oneOf.properties.transcript.oneOf.additionalProperties,false
+properties.process.oneOf.properties.transcript.oneOf.required,verifiedOn
+properties.process.oneOf.properties.transcript.oneOf.type,object
+properties.process.oneOf.properties.transcript.oneOf.maxProperties,
+properties.process.oneOf.additionalProperties,false
+properties.process.oneOf.type,object
+properties.process.oneOf.maxProperties,
+properties.submission.title,Submission
+properties.submission.description,Properties related to the submission of the section grade.
+properties.submission.type,object
+properties.submission.properties.submittedBy.title,Submitted By
+properties.submission.properties.submittedBy.description,The person who submitted the section grade.
+properties.submission.properties.submittedBy.oneOf.type,object
+properties.submission.properties.submittedBy.oneOf.properties.id.title,ID
+properties.submission.properties.submittedBy.oneOf.properties.id.description,The global identifier for Submitted By
+properties.submission.properties.submittedBy.oneOf.properties.id.type,string
+properties.submission.properties.submittedBy.oneOf.properties.id.format,guid
+properties.submission.properties.submittedBy.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.submission.properties.submittedBy.oneOf.links.rel,self
+properties.submission.properties.submittedBy.oneOf.links.href,/persons/{id}
+properties.submission.properties.submittedBy.oneOf.links.targetSchema.$ref,persons.json#
+properties.submission.properties.submittedBy.oneOf.additionalProperties,false
+properties.submission.properties.submittedBy.oneOf.required,id
+properties.submission.properties.submittedBy.oneOf.type,object
+properties.submission.properties.submittedBy.oneOf.maxProperties,
+properties.submission.properties.submittedOn.title,Submitted On
+properties.submission.properties.submittedOn.description,The date the section grade was submitted.
+properties.submission.properties.submittedOn.oneOf.type,string
+properties.submission.properties.submittedOn.oneOf.format,date-time
+properties.submission.properties.submittedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.submission.properties.submittedOn.oneOf.type,string
+properties.submission.properties.submittedOn.oneOf.maxLength,
+properties.submission.properties.method.title,Method
+properties.submission.properties.method.description,The method by which the section grade was submitted.
+properties.submission.properties.method.oneOf.type,string
+properties.submission.properties.method.oneOf.enum,auto;manual
+properties.submission.properties.method.oneOf.type,string
+properties.submission.properties.method.oneOf.maxLength,
+properties.submission.properties.reason.title,Reason
+properties.submission.properties.reason.description,The reason for the section grade submission.
+properties.submission.properties.reason.oneOf.type,object
+properties.submission.properties.reason.oneOf.properties.id.title,ID
+properties.submission.properties.reason.oneOf.properties.id.description,The global identifier for Reason
+properties.submission.properties.reason.oneOf.properties.id.type,string
+properties.submission.properties.reason.oneOf.properties.id.format,guid
+properties.submission.properties.reason.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.submission.properties.reason.oneOf.links.rel,self
+properties.submission.properties.reason.oneOf.links.href,/grade-change-reasons/{id}
+properties.submission.properties.reason.oneOf.links.targetSchema.$ref,grade-change-reasons.json#
+properties.submission.properties.reason.oneOf.additionalProperties,false
+properties.submission.properties.reason.oneOf.required,id
+properties.submission.properties.reason.oneOf.type,object
+properties.submission.properties.reason.oneOf.maxProperties,
+properties.submission.additionalProperties,false
+required,id;sectionRegistration;type;grade
+additionalProperties,false

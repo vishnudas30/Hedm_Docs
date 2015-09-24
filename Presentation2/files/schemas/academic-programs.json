@@ -1,0 +1,322 @@
+{
+  "title": "Academic Programs",
+  "description": "An offering by an institution which represents any combination of courses and/or requirements leading to a degree, diploma or certificate for a defined set of majors, minors and/or concentrations.",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "The global identifier of the academic program.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "title": {
+      "title": "Title",
+      "description": "The full name of the academic program.",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "description": "The description of the academic program.",
+      "type": "string"
+    },
+    "code": {
+      "title": "Code",
+      "description": "A code that identifies the academic program.",
+      "type": "string"
+    },
+    "owningOrganization": {
+      "title": "Owning Organization",
+      "description": "The top level organization which offers the academic program.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier for Owning Organization",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "links": [
+            {
+              "rel": "self",
+              "href": "/organizations/{id}",
+              "targetSchema": {
+                "$ref": "organizations.json#"
+              }
+            }
+          ],
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "grantingOrganizations": {
+      "title": "Granting Organization",
+      "description": "The organizations that grant the academic credentials for the program.",
+      "type": "array",
+      "items": {
+        "title": "Granting Organization",
+        "description": "The organizations that grant the academic credentials for the program.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "The global identifier for Granting Organization",
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        },
+        "links": [
+          {
+            "rel": "self",
+            "href": "/organizations/{id}",
+            "targetSchema": {
+              "$ref": "organizations.json#"
+            }
+          }
+        ],
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "academicLevel": {
+      "title": "Academic Level",
+      "description": "The level of academic progress that is associated with the academic program.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier for Academic Level",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "links": [
+            {
+              "rel": "self",
+              "href": "/academic-levels/{id}",
+              "targetSchema": {
+                "$ref": "academic-levels.json#"
+              }
+            }
+          ],
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "credentials": {
+      "title": "Credentials",
+      "description": "The academic credentials that can be awarded for completing the  academic program.",
+      "type": "array",
+      "items": {
+        "title": "Credentials",
+        "description": "The academic credentials that can be awarded for completing the  academic program.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "The global identifier for Credentials",
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        },
+        "links": [
+          {
+            "rel": "self",
+            "href": "/academic-credentials/{id}",
+            "targetSchema": {
+              "$ref": "academic-credentials.json#"
+            }
+          }
+        ],
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "disciplines": {
+      "title": "Discipline",
+      "description": "The academic disciplines offered as part of the academic program.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "discipline": {
+            "title": "Discipline",
+            "description": "An academic discipline associated with the academic program.",
+            "type": "object",
+            "properties": {
+              "id": {
+                "title": "ID",
+                "description": "The global identifier for Discipline",
+                "type": "string",
+                "format": "guid",
+                "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+              }
+            },
+            "links": [
+              {
+                "rel": "self",
+                "href": "/academic-disciplines/{id}",
+                "targetSchema": {
+                  "$ref": "academic-disciplines.json#"
+                }
+              }
+            ],
+            "additionalProperties": false,
+            "required": [
+              "id"
+            ]
+          },
+          "subdisciplines": {
+            "title": "Sub-disciplines",
+            "description": "A list of academic disciplines which is subordinate to the discipline.",
+            "type": "array",
+            "items": {
+              "title": "Sub-disciplines",
+              "description": "A list of academic disciplines which is subordinate to the discipline.",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Sub-disciplines",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/academic-disciplines/{id}",
+                  "targetSchema": {
+                    "$ref": "academic-disciplines.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "discipline"
+        ]
+      }
+    },
+    "status": {
+      "title": "Status",
+      "description": "The status of the academic program. ",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "type": "string"
+    },
+    "startOn": {
+      "title": "Start Date",
+      "description": "The date the academic program started.",
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+    },
+    "endOn": {
+      "title": "End Date",
+      "description": "The date the academic program ended.",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "status",
+    "startOn"
+  ],
+  "additionalProperties": false
+}

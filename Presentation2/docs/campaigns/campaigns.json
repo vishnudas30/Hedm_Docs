@@ -1,0 +1,1140 @@
+{
+  "title": "Campaign",
+  "description": "A systematic course of fundraising activities.",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "A global identifier of a campaign.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "title": {
+      "title": "Title",
+      "description": "The full name of a fundraising campaign.",
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "title": "Description",
+      "description": "A description of a fundraising campaign.",
+      "type": "string"
+    },
+    "fundRaisingTarget": {
+      "title": "Fund Raising Target",
+      "description": "The desired amount of funds to be raised via the campaign.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "currency": {
+              "title": "currency",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "title": "Value",
+                  "description": "",
+                  "minimum": 0,
+                  "type": "number",
+                  "format": "positiveNumber"
+                },
+                "currency": {
+                  "title": "Currency",
+                  "description": "",
+                  "enum": [
+                    "AED",
+                    "AFN",
+                    "ALL",
+                    "AMD",
+                    "ANG",
+                    "AOA",
+                    "ARS",
+                    "AUD",
+                    "AWG",
+                    "AZN",
+                    "BAM",
+                    "BBD",
+                    "BDT",
+                    "BGN",
+                    "BHD",
+                    "BIF",
+                    "BMD",
+                    "BND",
+                    "BOB",
+                    "BRL",
+                    "BSD",
+                    "BTN",
+                    "BWP",
+                    "BYR",
+                    "BZD",
+                    "CAD",
+                    "CDF",
+                    "CHF",
+                    "CLP",
+                    "CNY",
+                    "COP",
+                    "CRC",
+                    "CUC",
+                    "CUP",
+                    "CVE",
+                    "CZK",
+                    "DJF",
+                    "DKK",
+                    "DOP",
+                    "DZD",
+                    "EGP",
+                    "ERN",
+                    "ETB",
+                    "EUR",
+                    "FJD",
+                    "FKP",
+                    "GBP",
+                    "GEL",
+                    "GHS",
+                    "GIP",
+                    "GMD",
+                    "GNF",
+                    "GTQ",
+                    "GYD",
+                    "HKD",
+                    "HNL",
+                    "HRK",
+                    "HTG",
+                    "HUF",
+                    "IDR",
+                    "ILS",
+                    "INR",
+                    "IQD",
+                    "IRR",
+                    "ISK",
+                    "JMD",
+                    "JOD",
+                    "JPY",
+                    "KES",
+                    "KGS",
+                    "KHR",
+                    "KMF",
+                    "KPW",
+                    "KRW",
+                    "KWD",
+                    "KYD",
+                    "KZT",
+                    "LAK",
+                    "LBP",
+                    "LKR",
+                    "LRD",
+                    "LSL",
+                    "LYD",
+                    "MAD",
+                    "MDL",
+                    "MGA",
+                    "MKD",
+                    "MMK",
+                    "MNT",
+                    "MOP",
+                    "MRO",
+                    "MUR",
+                    "MVR",
+                    "MWK",
+                    "MXN",
+                    "MYR",
+                    "MZN",
+                    "NAD",
+                    "NGN",
+                    "NIO",
+                    "NOK",
+                    "NPR",
+                    "NZD",
+                    "OMR",
+                    "PAB",
+                    "PEN",
+                    "PGK",
+                    "PHP",
+                    "PKR",
+                    "PLN",
+                    "PYG",
+                    "QAR",
+                    "RON",
+                    "RSD",
+                    "RUB",
+                    "RWF",
+                    "SAR",
+                    "SBD",
+                    "SCR",
+                    "SDG",
+                    "SEK",
+                    "SGD",
+                    "SHP",
+                    "SLL",
+                    "SOS",
+                    "SRD",
+                    "SSP",
+                    "STD",
+                    "SVC",
+                    "SYP",
+                    "SZL",
+                    "THB",
+                    "TJS",
+                    "TMT",
+                    "TND",
+                    "TOP",
+                    "TRY",
+                    "TTD",
+                    "TWD",
+                    "TZS",
+                    "UAH",
+                    "UGX",
+                    "USD",
+                    "UYU",
+                    "UZS",
+                    "VEF",
+                    "VND",
+                    "VUV",
+                    "WST",
+                    "XAF",
+                    "XCD",
+                    "XOF",
+                    "XPF",
+                    "YER",
+                    "ZAR",
+                    "ZMW",
+                    "ZWL"
+                  ],
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "currency"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "format": "currency"
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "budgetedExpense": {
+      "title": "Budgeted Expense",
+      "description": "The amount of funds budgeted to be spent during the campaign.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "currency": {
+              "title": "currency",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "title": "Value",
+                  "description": "",
+                  "minimum": 0,
+                  "type": "number",
+                  "format": "positiveNumber"
+                },
+                "currency": {
+                  "title": "Currency",
+                  "description": "",
+                  "enum": [
+                    "AED",
+                    "AFN",
+                    "ALL",
+                    "AMD",
+                    "ANG",
+                    "AOA",
+                    "ARS",
+                    "AUD",
+                    "AWG",
+                    "AZN",
+                    "BAM",
+                    "BBD",
+                    "BDT",
+                    "BGN",
+                    "BHD",
+                    "BIF",
+                    "BMD",
+                    "BND",
+                    "BOB",
+                    "BRL",
+                    "BSD",
+                    "BTN",
+                    "BWP",
+                    "BYR",
+                    "BZD",
+                    "CAD",
+                    "CDF",
+                    "CHF",
+                    "CLP",
+                    "CNY",
+                    "COP",
+                    "CRC",
+                    "CUC",
+                    "CUP",
+                    "CVE",
+                    "CZK",
+                    "DJF",
+                    "DKK",
+                    "DOP",
+                    "DZD",
+                    "EGP",
+                    "ERN",
+                    "ETB",
+                    "EUR",
+                    "FJD",
+                    "FKP",
+                    "GBP",
+                    "GEL",
+                    "GHS",
+                    "GIP",
+                    "GMD",
+                    "GNF",
+                    "GTQ",
+                    "GYD",
+                    "HKD",
+                    "HNL",
+                    "HRK",
+                    "HTG",
+                    "HUF",
+                    "IDR",
+                    "ILS",
+                    "INR",
+                    "IQD",
+                    "IRR",
+                    "ISK",
+                    "JMD",
+                    "JOD",
+                    "JPY",
+                    "KES",
+                    "KGS",
+                    "KHR",
+                    "KMF",
+                    "KPW",
+                    "KRW",
+                    "KWD",
+                    "KYD",
+                    "KZT",
+                    "LAK",
+                    "LBP",
+                    "LKR",
+                    "LRD",
+                    "LSL",
+                    "LYD",
+                    "MAD",
+                    "MDL",
+                    "MGA",
+                    "MKD",
+                    "MMK",
+                    "MNT",
+                    "MOP",
+                    "MRO",
+                    "MUR",
+                    "MVR",
+                    "MWK",
+                    "MXN",
+                    "MYR",
+                    "MZN",
+                    "NAD",
+                    "NGN",
+                    "NIO",
+                    "NOK",
+                    "NPR",
+                    "NZD",
+                    "OMR",
+                    "PAB",
+                    "PEN",
+                    "PGK",
+                    "PHP",
+                    "PKR",
+                    "PLN",
+                    "PYG",
+                    "QAR",
+                    "RON",
+                    "RSD",
+                    "RUB",
+                    "RWF",
+                    "SAR",
+                    "SBD",
+                    "SCR",
+                    "SDG",
+                    "SEK",
+                    "SGD",
+                    "SHP",
+                    "SLL",
+                    "SOS",
+                    "SRD",
+                    "SSP",
+                    "STD",
+                    "SVC",
+                    "SYP",
+                    "SZL",
+                    "THB",
+                    "TJS",
+                    "TMT",
+                    "TND",
+                    "TOP",
+                    "TRY",
+                    "TTD",
+                    "TWD",
+                    "TZS",
+                    "UAH",
+                    "UGX",
+                    "USD",
+                    "UYU",
+                    "UZS",
+                    "VEF",
+                    "VND",
+                    "VUV",
+                    "WST",
+                    "XAF",
+                    "XCD",
+                    "XOF",
+                    "XPF",
+                    "YER",
+                    "ZAR",
+                    "ZMW",
+                    "ZWL"
+                  ],
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "currency"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "format": "currency"
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "actualExpense": {
+      "title": "Actual Expense",
+      "description": "The total amount of funds actually spent during the campaign.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "currency": {
+              "title": "currency",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "title": "Value",
+                  "description": "",
+                  "minimum": 0,
+                  "type": "number",
+                  "format": "positiveNumber"
+                },
+                "currency": {
+                  "title": "Currency",
+                  "description": "",
+                  "enum": [
+                    "AED",
+                    "AFN",
+                    "ALL",
+                    "AMD",
+                    "ANG",
+                    "AOA",
+                    "ARS",
+                    "AUD",
+                    "AWG",
+                    "AZN",
+                    "BAM",
+                    "BBD",
+                    "BDT",
+                    "BGN",
+                    "BHD",
+                    "BIF",
+                    "BMD",
+                    "BND",
+                    "BOB",
+                    "BRL",
+                    "BSD",
+                    "BTN",
+                    "BWP",
+                    "BYR",
+                    "BZD",
+                    "CAD",
+                    "CDF",
+                    "CHF",
+                    "CLP",
+                    "CNY",
+                    "COP",
+                    "CRC",
+                    "CUC",
+                    "CUP",
+                    "CVE",
+                    "CZK",
+                    "DJF",
+                    "DKK",
+                    "DOP",
+                    "DZD",
+                    "EGP",
+                    "ERN",
+                    "ETB",
+                    "EUR",
+                    "FJD",
+                    "FKP",
+                    "GBP",
+                    "GEL",
+                    "GHS",
+                    "GIP",
+                    "GMD",
+                    "GNF",
+                    "GTQ",
+                    "GYD",
+                    "HKD",
+                    "HNL",
+                    "HRK",
+                    "HTG",
+                    "HUF",
+                    "IDR",
+                    "ILS",
+                    "INR",
+                    "IQD",
+                    "IRR",
+                    "ISK",
+                    "JMD",
+                    "JOD",
+                    "JPY",
+                    "KES",
+                    "KGS",
+                    "KHR",
+                    "KMF",
+                    "KPW",
+                    "KRW",
+                    "KWD",
+                    "KYD",
+                    "KZT",
+                    "LAK",
+                    "LBP",
+                    "LKR",
+                    "LRD",
+                    "LSL",
+                    "LYD",
+                    "MAD",
+                    "MDL",
+                    "MGA",
+                    "MKD",
+                    "MMK",
+                    "MNT",
+                    "MOP",
+                    "MRO",
+                    "MUR",
+                    "MVR",
+                    "MWK",
+                    "MXN",
+                    "MYR",
+                    "MZN",
+                    "NAD",
+                    "NGN",
+                    "NIO",
+                    "NOK",
+                    "NPR",
+                    "NZD",
+                    "OMR",
+                    "PAB",
+                    "PEN",
+                    "PGK",
+                    "PHP",
+                    "PKR",
+                    "PLN",
+                    "PYG",
+                    "QAR",
+                    "RON",
+                    "RSD",
+                    "RUB",
+                    "RWF",
+                    "SAR",
+                    "SBD",
+                    "SCR",
+                    "SDG",
+                    "SEK",
+                    "SGD",
+                    "SHP",
+                    "SLL",
+                    "SOS",
+                    "SRD",
+                    "SSP",
+                    "STD",
+                    "SVC",
+                    "SYP",
+                    "SZL",
+                    "THB",
+                    "TJS",
+                    "TMT",
+                    "TND",
+                    "TOP",
+                    "TRY",
+                    "TTD",
+                    "TWD",
+                    "TZS",
+                    "UAH",
+                    "UGX",
+                    "USD",
+                    "UYU",
+                    "UZS",
+                    "VEF",
+                    "VND",
+                    "VUV",
+                    "WST",
+                    "XAF",
+                    "XCD",
+                    "XOF",
+                    "XPF",
+                    "YER",
+                    "ZAR",
+                    "ZMW",
+                    "ZWL"
+                  ],
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "currency"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "format": "currency"
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "category": {
+      "title": "Category",
+      "description": "A category of a campaign.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "ID",
+              "description": "The global identifier for Category",
+              "type": "string",
+              "format": "guid",
+              "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "links": [
+            {
+              "rel": "self",
+              "href": "/campaign-categories/{id}",
+              "targetSchema": {
+                "$ref": "campaign-categories.json#"
+              }
+            }
+          ],
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "object",
+          "maxProperties": 0
+        }
+      ]
+    },
+    "type": {
+      "title": "Type",
+      "description": "Type of a campaign.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The global identifier for Type",
+          "type": "string",
+          "format": "guid",
+          "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+        }
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "/campaign-types/{id}",
+          "targetSchema": {
+            "$ref": "campaign-types.json#"
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "status": {
+      "title": "Status",
+      "description": "A status of a campaign. ",
+      "enum": [
+        "proposed",
+        "inProgress",
+        "cancelled",
+        "completed"
+      ],
+      "type": "string"
+    },
+    "startOn": {
+      "title": "Start Date",
+      "description": "A date when a campaign started.",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "endOn": {
+      "title": "End Date",
+      "description": "A date when a campaign ended.",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "appeals": {
+      "title": "Appeal",
+      "description": "A list of appeals associated with the campaign.",
+      "type": "array",
+      "items": {
+        "title": "Appeal",
+        "description": "A list of appeals associated with the campaign.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "The global identifier for Appeal",
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        },
+        "links": [
+          {
+            "rel": "self",
+            "href": "/appeals/{id}",
+            "targetSchema": {
+              "$ref": "appeals.json#"
+            }
+          }
+        ],
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "targets": {
+      "title": "Target",
+      "description": "Prospective fundraising targets of the campaign.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "title": "Target",
+            "description": "",
+            "oneOf": [
+              {
+                "title": "Person",
+                "description": "A person targeted for fundraising durng the campaign.",
+                "type": "object",
+                "properties": {
+                  "person": {
+                    "title": "Person",
+                    "description": "A human being or other independent agent.",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "title": "ID",
+                        "description": "The global identifier for Person",
+                        "type": "string",
+                        "format": "guid",
+                        "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                      }
+                    },
+                    "links": [
+                      {
+                        "rel": "self",
+                        "href": "/persons/{id}",
+                        "targetSchema": {
+                          "$ref": "persons.json#"
+                        }
+                      }
+                    ],
+                    "additionalProperties": false,
+                    "required": [
+                      "id"
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "person"
+                ]
+              },
+              {
+                "title": "Organization",
+                "description": "An organization targeted for fundraising durng the campaign.",
+                "type": "object",
+                "properties": {
+                  "organization": {
+                    "title": "Organization",
+                    "description": "Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "title": "ID",
+                        "description": "The global identifier for Organization",
+                        "type": "string",
+                        "format": "guid",
+                        "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                      }
+                    },
+                    "links": [
+                      {
+                        "rel": "self",
+                        "href": "/organizations/{id}",
+                        "targetSchema": {
+                          "$ref": "organizations.json#"
+                        }
+                      }
+                    ],
+                    "additionalProperties": false,
+                    "required": [
+                      "id"
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "organization"
+                ]
+              },
+              {
+                "title": "Prospect",
+                "description": "A prospect targeted for fundraising during the campaign.",
+                "type": "object",
+                "properties": {
+                  "prospect": {
+                    "title": "Prospect",
+                    "description": "Donation prospect.",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "title": "ID",
+                        "description": "The global identifier for Prospect",
+                        "type": "string",
+                        "format": "guid",
+                        "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                      }
+                    },
+                    "links": [
+                      {
+                        "rel": "self",
+                        "href": "/prospects/{id}",
+                        "targetSchema": {
+                          "$ref": "prospects.json#"
+                        }
+                      }
+                    ],
+                    "additionalProperties": false,
+                    "required": [
+                      "id"
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "prospect"
+                ]
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "target"
+        ]
+      }
+    },
+    "assignments": {
+      "title": "Assignment",
+      "description": "Campaign assignments",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "assignee": {
+            "title": "Assignee",
+            "description": "",
+            "oneOf": [
+              {
+                "title": "Person",
+                "description": "Assigned Person",
+                "type": "object",
+                "properties": {
+                  "person": {
+                    "title": "Person",
+                    "description": "A human being or other independent agent.",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "title": "ID",
+                        "description": "The global identifier for Person",
+                        "type": "string",
+                        "format": "guid",
+                        "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                      }
+                    },
+                    "links": [
+                      {
+                        "rel": "self",
+                        "href": "/persons/{id}",
+                        "targetSchema": {
+                          "$ref": "persons.json#"
+                        }
+                      }
+                    ],
+                    "additionalProperties": false,
+                    "required": [
+                      "id"
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "person"
+                ]
+              },
+              {
+                "title": "Group",
+                "description": "Assigned Group",
+                "type": "object",
+                "properties": {
+                  "personGroup": {
+                    "title": "Group",
+                    "description": "A group of persons.",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "title": "ID",
+                        "description": "The global identifier for Group",
+                        "type": "string",
+                        "format": "guid",
+                        "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                      }
+                    },
+                    "links": [
+                      {
+                        "rel": "self",
+                        "href": "/person-groups/{id}",
+                        "targetSchema": {
+                          "$ref": "person-groups.json#"
+                        }
+                      }
+                    ],
+                    "additionalProperties": false,
+                    "required": [
+                      "id"
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "personGroup"
+                ]
+              }
+            ]
+          },
+          "role": {
+            "title": "Assignment Role",
+            "description": "The role of the assignee in the campaign.",
+            "type": "object",
+            "properties": {
+              "roleType": {
+                "title": "Type",
+                "description": "A type of role.",
+                "enum": [
+                  "manager",
+                  "other"
+                ],
+                "type": "string"
+              },
+              "detail": {
+                "title": "Detail",
+                "description": "",
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "title": "ID",
+                        "description": "The global identifier for Detail",
+                        "type": "string",
+                        "format": "guid",
+                        "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                      }
+                    },
+                    "links": [
+                      {
+                        "rel": "self",
+                        "href": "/roles/{id}",
+                        "targetSchema": {
+                          "$ref": "roles.json#"
+                        }
+                      }
+                    ],
+                    "additionalProperties": false,
+                    "required": [
+                      "id"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "maxProperties": 0
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "roleType"
+            ]
+          },
+          "preference": {
+            "title": "Preferred assignee",
+            "description": "Indicates the preferred assignee for the designation.",
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "primary"
+                ]
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "startOn": {
+            "title": "Start Date",
+            "description": "The start date of the assignment",
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+          },
+          "endOn": {
+            "title": "End Date",
+            "description": "The end date of the assignment",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "assignee",
+          "role",
+          "startOn"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "type",
+    "status"
+  ],
+  "additionalProperties": false
+}

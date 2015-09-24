@@ -1,0 +1,97 @@
+title,Person Name
+description,A subset of person's data, including only his/her name(s)
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a person.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.names.title,Name
+properties.names.description,The names associated with a person, specified by type (e.g. "legal", "birth", ...).
+properties.names.type,array
+properties.names.minItems,1
+properties.names.items.type,object
+properties.names.items.properties.type.title,Name Type
+properties.names.items.properties.type.description,The type of person's name being defined. For example, a "Primary" name.
+properties.names.items.properties.type.type,object
+properties.names.items.properties.type.properties.category.title,Name Type Category
+properties.names.items.properties.type.properties.category.description,The global category of person name types
+properties.names.items.properties.type.properties.category.enum,personal;birth;legal
+properties.names.items.properties.type.properties.category.type,string
+properties.names.items.properties.type.properties.detail.title,Detail
+properties.names.items.properties.type.properties.detail.description,
+properties.names.items.properties.type.properties.detail.oneOf.type,object
+properties.names.items.properties.type.properties.detail.oneOf.properties.id.title,ID
+properties.names.items.properties.type.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.names.items.properties.type.properties.detail.oneOf.properties.id.type,string
+properties.names.items.properties.type.properties.detail.oneOf.properties.id.format,guid
+properties.names.items.properties.type.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.names.items.properties.type.properties.detail.oneOf.links.rel,self
+properties.names.items.properties.type.properties.detail.oneOf.links.href,/person-name-types/{id}
+properties.names.items.properties.type.properties.detail.oneOf.links.targetSchema.$ref,person-name-types.json#
+properties.names.items.properties.type.properties.detail.oneOf.additionalProperties,false
+properties.names.items.properties.type.properties.detail.oneOf.required,id
+properties.names.items.properties.type.properties.detail.oneOf.type,object
+properties.names.items.properties.type.properties.detail.oneOf.maxProperties,
+properties.names.items.properties.type.additionalProperties,false
+properties.names.items.properties.type.required,category
+properties.names.items.properties.preference.title,Name Preference
+properties.names.items.properties.preference.description,Indicates the preferred name for the type
+properties.names.items.properties.preference.oneOf.type,string
+properties.names.items.properties.preference.oneOf.enum,preferred
+properties.names.items.properties.preference.oneOf.type,string
+properties.names.items.properties.preference.oneOf.maxLength,
+properties.names.items.properties.fullName.title,Full Name
+properties.names.items.properties.fullName.description,The person's full name.
+properties.names.items.properties.fullName.type,string
+properties.names.items.properties.fullName.minLength,1
+properties.names.items.properties.title.title,Title
+properties.names.items.properties.title.description,The person's title, e.g., "Mr.", "Mrs.", "Dr.", etc.
+properties.names.items.properties.title.type,string
+properties.names.items.properties.firstName.title,First Name
+properties.names.items.properties.firstName.description,The person's first, or given, name.
+properties.names.items.properties.firstName.type,string
+properties.names.items.properties.middleName.title,Middle Name
+properties.names.items.properties.middleName.description,The person's middle name.
+properties.names.items.properties.middleName.type,string
+properties.names.items.properties.lastNamePrefix.title,Last Name Prefix
+properties.names.items.properties.lastNamePrefix.description,The article or preposition portion of a person's last name, for example, "De la", "Van", "Van der Von", etc.
+properties.names.items.properties.lastNamePrefix.type,string
+properties.names.items.properties.lastName.title,Last Name
+properties.names.items.properties.lastName.description,The person's last, or family, name.
+properties.names.items.properties.lastName.type,string
+properties.names.items.properties.pedigree.title,Pedigree/Suffix
+properties.names.items.properties.pedigree.description,The person's pedigree, e.g. "Jr.", "Sr.", etc.
+properties.names.items.properties.pedigree.type,string
+properties.names.items.properties.professionalAbbreviations.title,Professional Abbreviation
+properties.names.items.properties.professionalAbbreviations.description,A post-nominal professional abbreviation, reflecting an earned degree or honor, e.g. "M.D.", "Ph.D.", etc.
+properties.names.items.properties.professionalAbbreviations.type,array
+properties.names.items.properties.professionalAbbreviations.items.type,string
+properties.names.items.additionalProperties,false
+properties.names.items.required,type;fullName
+required,id;names
+additionalProperties,false

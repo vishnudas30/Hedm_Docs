@@ -1,0 +1,78 @@
+title,Places
+description,A postal and geographic region.  Postal regions are expressed as a hierarchy of county, region, and sub-region, and as a locality with postal automation codes. Geographic regions are expressed as GPS coordinates.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,Id
+properties.id.description,A global identifier of countries
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of countries
+properties.title.type,string
+properties.country.title,Country
+properties.country.description,The country that this place is located in
+properties.country.oneOf.type,object
+properties.country.oneOf.properties.id.title,ID
+properties.country.oneOf.properties.id.description,The global identifier for Country
+properties.country.oneOf.properties.id.type,string
+properties.country.oneOf.properties.id.format,guid
+properties.country.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.country.oneOf.links.rel,self
+properties.country.oneOf.links.href,/countries/{id}
+properties.country.oneOf.links.targetSchema.$ref,countries.json#
+properties.country.oneOf.additionalProperties,false
+properties.country.oneOf.required,id
+properties.country.oneOf.type,object
+properties.country.oneOf.maxProperties,
+properties.region.title,Region
+properties.region.description,The code of a region within the country
+properties.region.type,object
+properties.region.properties.code.title,Code
+properties.region.properties.code.description,The code of a region within the country
+properties.region.properties.code.type,string
+properties.region.properties.title.title,Title
+properties.region.properties.title.description,The full name of the region
+properties.region.properties.title.type,string
+properties.region.additionalProperties,false
+properties.subRegion.title,Sub Region
+properties.subRegion.description,A subregion within the country and region
+properties.subRegion.type,object
+properties.subRegion.properties.code.title,Code
+properties.subRegion.properties.code.description,The code of a subregion
+properties.subRegion.properties.code.type,string
+properties.subRegion.properties.title.title,Title
+properties.subRegion.properties.title.description,The name of a subregion
+properties.subRegion.properties.title.type,string
+properties.subRegion.additionalProperties,false
+properties.locality.title,Locality
+properties.locality.description,The name of the city or town.
+properties.locality.type,string
+properties.postalCode.title,Postal Code
+properties.postalCode.description,The mailing postal code.
+properties.postalCode.type,string
+required,title
+additionalProperties,false

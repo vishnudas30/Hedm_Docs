@@ -1,0 +1,156 @@
+title,Academic Programs
+description,An offering by an institution which represents any combination of courses and/or requirements leading to a degree, diploma or certificate for a defined set of majors, minors and/or concentrations.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,The global identifier of the academic program.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of the academic program.
+properties.title.type,string
+properties.description.title,Description
+properties.description.description,The description of the academic program.
+properties.description.type,string
+properties.code.title,Code
+properties.code.description,A code that identifies the academic program.
+properties.code.type,string
+properties.owningOrganization.title,Owning Organization
+properties.owningOrganization.description,The top level organization which offers the academic program.
+properties.owningOrganization.oneOf.type,object
+properties.owningOrganization.oneOf.properties.id.title,ID
+properties.owningOrganization.oneOf.properties.id.description,The global identifier for Owning Organization
+properties.owningOrganization.oneOf.properties.id.type,string
+properties.owningOrganization.oneOf.properties.id.format,guid
+properties.owningOrganization.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.owningOrganization.oneOf.links.rel,self
+properties.owningOrganization.oneOf.links.href,/organizations/{id}
+properties.owningOrganization.oneOf.links.targetSchema.$ref,organizations.json#
+properties.owningOrganization.oneOf.additionalProperties,false
+properties.owningOrganization.oneOf.required,id
+properties.owningOrganization.oneOf.type,object
+properties.owningOrganization.oneOf.maxProperties,
+properties.grantingOrganizations.title,Granting Organization
+properties.grantingOrganizations.description,The organizations that grant the academic credentials for the program.
+properties.grantingOrganizations.type,array
+properties.grantingOrganizations.items.title,Granting Organization
+properties.grantingOrganizations.items.description,The organizations that grant the academic credentials for the program.
+properties.grantingOrganizations.items.type,object
+properties.grantingOrganizations.items.properties.id.title,ID
+properties.grantingOrganizations.items.properties.id.description,The global identifier for Granting Organization
+properties.grantingOrganizations.items.properties.id.type,string
+properties.grantingOrganizations.items.properties.id.format,guid
+properties.grantingOrganizations.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.grantingOrganizations.items.links.rel,self
+properties.grantingOrganizations.items.links.href,/organizations/{id}
+properties.grantingOrganizations.items.links.targetSchema.$ref,organizations.json#
+properties.grantingOrganizations.items.additionalProperties,false
+properties.grantingOrganizations.items.required,id
+properties.academicLevel.title,Academic Level
+properties.academicLevel.description,The level of academic progress that is associated with the academic program.
+properties.academicLevel.oneOf.type,object
+properties.academicLevel.oneOf.properties.id.title,ID
+properties.academicLevel.oneOf.properties.id.description,The global identifier for Academic Level
+properties.academicLevel.oneOf.properties.id.type,string
+properties.academicLevel.oneOf.properties.id.format,guid
+properties.academicLevel.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.academicLevel.oneOf.links.rel,self
+properties.academicLevel.oneOf.links.href,/academic-levels/{id}
+properties.academicLevel.oneOf.links.targetSchema.$ref,academic-levels.json#
+properties.academicLevel.oneOf.additionalProperties,false
+properties.academicLevel.oneOf.required,id
+properties.academicLevel.oneOf.type,object
+properties.academicLevel.oneOf.maxProperties,
+properties.credentials.title,Credentials
+properties.credentials.description,The academic credentials that can be awarded for completing the  academic program.
+properties.credentials.type,array
+properties.credentials.items.title,Credentials
+properties.credentials.items.description,The academic credentials that can be awarded for completing the  academic program.
+properties.credentials.items.type,object
+properties.credentials.items.properties.id.title,ID
+properties.credentials.items.properties.id.description,The global identifier for Credentials
+properties.credentials.items.properties.id.type,string
+properties.credentials.items.properties.id.format,guid
+properties.credentials.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.credentials.items.links.rel,self
+properties.credentials.items.links.href,/academic-credentials/{id}
+properties.credentials.items.links.targetSchema.$ref,academic-credentials.json#
+properties.credentials.items.additionalProperties,false
+properties.credentials.items.required,id
+properties.disciplines.title,Discipline
+properties.disciplines.description,The academic disciplines offered as part of the academic program.
+properties.disciplines.type,array
+properties.disciplines.items.type,object
+properties.disciplines.items.properties.discipline.title,Discipline
+properties.disciplines.items.properties.discipline.description,An academic discipline associated with the academic program.
+properties.disciplines.items.properties.discipline.type,object
+properties.disciplines.items.properties.discipline.properties.id.title,ID
+properties.disciplines.items.properties.discipline.properties.id.description,The global identifier for Discipline
+properties.disciplines.items.properties.discipline.properties.id.type,string
+properties.disciplines.items.properties.discipline.properties.id.format,guid
+properties.disciplines.items.properties.discipline.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.disciplines.items.properties.discipline.links.rel,self
+properties.disciplines.items.properties.discipline.links.href,/academic-disciplines/{id}
+properties.disciplines.items.properties.discipline.links.targetSchema.$ref,academic-disciplines.json#
+properties.disciplines.items.properties.discipline.additionalProperties,false
+properties.disciplines.items.properties.discipline.required,id
+properties.disciplines.items.properties.subdisciplines.title,Sub-disciplines
+properties.disciplines.items.properties.subdisciplines.description,A list of academic disciplines which is subordinate to the discipline.
+properties.disciplines.items.properties.subdisciplines.type,array
+properties.disciplines.items.properties.subdisciplines.items.title,Sub-disciplines
+properties.disciplines.items.properties.subdisciplines.items.description,A list of academic disciplines which is subordinate to the discipline.
+properties.disciplines.items.properties.subdisciplines.items.type,object
+properties.disciplines.items.properties.subdisciplines.items.properties.id.title,ID
+properties.disciplines.items.properties.subdisciplines.items.properties.id.description,The global identifier for Sub-disciplines
+properties.disciplines.items.properties.subdisciplines.items.properties.id.type,string
+properties.disciplines.items.properties.subdisciplines.items.properties.id.format,guid
+properties.disciplines.items.properties.subdisciplines.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.disciplines.items.properties.subdisciplines.items.links.rel,self
+properties.disciplines.items.properties.subdisciplines.items.links.href,/academic-disciplines/{id}
+properties.disciplines.items.properties.subdisciplines.items.links.targetSchema.$ref,academic-disciplines.json#
+properties.disciplines.items.properties.subdisciplines.items.additionalProperties,false
+properties.disciplines.items.properties.subdisciplines.items.required,id
+properties.disciplines.items.additionalProperties,false
+properties.disciplines.items.required,discipline
+properties.status.title,Status
+properties.status.description,The status of the academic program. 
+properties.status.enum,active;inactive
+properties.status.type,string
+properties.startOn.title,Start Date
+properties.startOn.description,The date the academic program started.
+properties.startOn.type,string
+properties.startOn.format,date-time
+properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.title,End Date
+properties.endOn.description,The date the academic program ended.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+required,id;title;status;startOn
+additionalProperties,false

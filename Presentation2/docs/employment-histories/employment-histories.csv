@@ -1,0 +1,163 @@
+title,Employment History
+description,The history of employment for a person
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,The global identifier of an employment history record
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of an employment history record
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,The full description of an employment history record
+properties.description.type,string
+properties.person.title,Person
+properties.person.description,The person, whom an employment history record belongs to
+properties.person.type,object
+properties.person.properties.id.title,ID
+properties.person.properties.id.description,The global identifier for Person
+properties.person.properties.id.type,string
+properties.person.properties.id.format,guid
+properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.person.links.rel,self
+properties.person.links.href,/persons/{id}
+properties.person.links.targetSchema.$ref,persons.json#
+properties.person.additionalProperties,false
+properties.person.required,id
+properties.position.title,Position
+properties.position.description,Position/job title
+properties.position.type,string
+properties.position.minLength,1
+properties.positionDescription.title,Position Description
+properties.positionDescription.description,The description of a position
+properties.positionDescription.type,string
+properties.organization.title,Organization
+properties.organization.description,The organization where the person works or has worked in the past
+properties.organization.oneOf.title,One Of-1
+properties.organization.oneOf.description,
+properties.organization.oneOf.type,object
+properties.organization.oneOf.properties.id.title,ID
+properties.organization.oneOf.properties.id.description,The global identifier for One Of-1
+properties.organization.oneOf.properties.id.type,string
+properties.organization.oneOf.properties.id.format,guid
+properties.organization.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.organization.oneOf.links.rel,self
+properties.organization.oneOf.links.href,/organizations/{id}
+properties.organization.oneOf.links.targetSchema.$ref,organizations.json#
+properties.organization.oneOf.additionalProperties,false
+properties.organization.oneOf.required,id
+properties.organization.oneOf.title,One Of-2
+properties.organization.oneOf.description,
+properties.organization.oneOf.type,string
+properties.location.title,Location
+properties.location.description,
+properties.location.type,string
+properties.location.minLength,1
+properties.startOn.title,Start Date
+properties.startOn.description,The start date of employment
+properties.startOn.type,string
+properties.startOn.pattern,^([1-9][0-9]*)?[0-9]{4}-(1[0-2]|0[1-9])$
+properties.endOn.title,End Date
+properties.endOn.description,The end date of employment
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.pattern,^([1-9][0-9]*)?[0-9]{4}-(1[0-2]|0[1-9])$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.positionLevel.title,Position Level
+properties.positionLevel.description,
+properties.positionLevel.oneOf.type,object
+properties.positionLevel.oneOf.properties.id.title,ID
+properties.positionLevel.oneOf.properties.id.description,The global identifier for Position Level
+properties.positionLevel.oneOf.properties.id.type,string
+properties.positionLevel.oneOf.properties.id.format,guid
+properties.positionLevel.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.positionLevel.oneOf.links.rel,self
+properties.positionLevel.oneOf.links.href,/employment-position-levels/{id}
+properties.positionLevel.oneOf.links.targetSchema.$ref,employment-position-levels.json#
+properties.positionLevel.oneOf.additionalProperties,false
+properties.positionLevel.oneOf.required,id
+properties.positionLevel.oneOf.type,object
+properties.positionLevel.oneOf.maxProperties,
+properties.employmentType.title,Employment Type
+properties.employmentType.description,
+properties.employmentType.oneOf.type,object
+properties.employmentType.oneOf.properties.id.title,ID
+properties.employmentType.oneOf.properties.id.description,The global identifier for Employment Type
+properties.employmentType.oneOf.properties.id.type,string
+properties.employmentType.oneOf.properties.id.format,guid
+properties.employmentType.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.employmentType.oneOf.links.rel,self
+properties.employmentType.oneOf.links.href,/employment-types/{id}
+properties.employmentType.oneOf.links.targetSchema.$ref,employment-types.json#
+properties.employmentType.oneOf.additionalProperties,false
+properties.employmentType.oneOf.required,id
+properties.employmentType.oneOf.type,object
+properties.employmentType.oneOf.maxProperties,
+properties.annualIncomeLevel.title,Annual Income Level
+properties.annualIncomeLevel.description,Annualized earned income level
+properties.annualIncomeLevel.type,object
+properties.annualIncomeLevel.properties.range.title,Range
+properties.annualIncomeLevel.properties.range.description,A textual description of a range of values, such as "$25K and lower" for the start of a range, and "$200K" for the end. There is no expectation that any numeric values are included, just a human description of them.
+properties.annualIncomeLevel.properties.range.oneOf.title,One Of-1
+properties.annualIncomeLevel.properties.range.oneOf.description,
+properties.annualIncomeLevel.properties.range.oneOf.type,object
+properties.annualIncomeLevel.properties.range.oneOf.properties.startValue.title,Start Value
+properties.annualIncomeLevel.properties.range.oneOf.properties.startValue.description,The textual description of the lower boundary of the range
+properties.annualIncomeLevel.properties.range.oneOf.properties.startValue.type,string
+properties.annualIncomeLevel.properties.range.oneOf.properties.startValue.minLength,1
+properties.annualIncomeLevel.properties.range.oneOf.properties.endValue.title,End Value
+properties.annualIncomeLevel.properties.range.oneOf.properties.endValue.description,The textual description of the upper boundary of the range
+properties.annualIncomeLevel.properties.range.oneOf.properties.endValue.type,string
+properties.annualIncomeLevel.properties.range.oneOf.additionalProperties,false
+properties.annualIncomeLevel.properties.range.oneOf.required,startValue
+properties.annualIncomeLevel.properties.range.oneOf.title,One Of-2
+properties.annualIncomeLevel.properties.range.oneOf.description,
+properties.annualIncomeLevel.properties.range.oneOf.type,string
+properties.annualIncomeLevel.properties.currencyCode.title,Currency Code
+properties.annualIncomeLevel.properties.currencyCode.description,International code indicating the unit of currency of the amount.
+properties.annualIncomeLevel.properties.currencyCode.enum,AED;AFN;ALL;AMD;ANG;AOA;ARS;AUD;AWG;AZN;BAM;BBD;BDT;BGN;BHD;BIF;BMD;BND;BOB;BRL;BSD;BTN;BWP;BYR;BZD;CAD;CDF;CHF;CLP;CNY;COP;CRC;CUC;CUP;CVE;CZK;DJF;DKK;DOP;DZD;EGP;ERN;ETB;EUR;FJD;FKP;GBP;GEL;GHS;GIP;GMD;GNF;GTQ;GYD;HKD;HNL;HRK;HTG;HUF;IDR;ILS;INR;IQD;IRR;ISK;JMD;JOD;JPY;KES;KGS;KHR;KMF;KPW;KRW;KWD;KYD;KZT;LAK;LBP;LKR;LRD;LSL;LYD;MAD;MDL;MGA;MKD;MMK;MNT;MOP;MRO;MUR;MVR;MWK;MXN;MYR;MZN;NAD;NGN;NIO;NOK;NPR;NZD;OMR;PAB;PEN;PGK;PHP;PKR;PLN;PYG;QAR;RON;RSD;RUB;RWF;SAR;SBD;SCR;SDG;SEK;SGD;SHP;SLL;SOS;SRD;SSP;STD;SVC;SYP;SZL;THB;TJS;TMT;TND;TOP;TRY;TTD;TWD;TZS;UAH;UGX;USD;UYU;UZS;VEF;VND;VUV;WST;XAF;XCD;XOF;XPF;YER;ZAR;ZMW;ZWL
+properties.annualIncomeLevel.properties.currencyCode.format,currencyCode
+properties.annualIncomeLevel.properties.currencyCode.type,string
+properties.annualIncomeLevel.additionalProperties,false
+properties.annualIncomeLevel.required,range;currencyCode
+properties.source.title,Source
+properties.source.description,Employment history information source
+properties.source.type,object
+properties.source.properties.id.title,ID
+properties.source.properties.id.description,The global identifier for Source
+properties.source.properties.id.type,string
+properties.source.properties.id.format,guid
+properties.source.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.source.links.rel,self
+properties.source.links.href,/sources/{id}
+properties.source.links.targetSchema.$ref,sources.json#
+properties.source.additionalProperties,false
+properties.source.required,id
+required,id;title;person;position;organization;location;startOn;annualIncomeLevel;source
+additionalProperties,false

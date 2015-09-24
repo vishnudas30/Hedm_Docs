@@ -1,0 +1,72 @@
+title,Registration Status
+description,A person's status with regard to registering for an activity.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of an ethnicity.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.code.title,Code
+properties.code.description,The code for a status. This is generally unique within all registration statuses.
+properties.code.type,string
+properties.title.title,Title
+properties.title.description,The full name of a status.
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,A description of a status.
+properties.description.type,string
+properties.status.title,Status
+properties.status.description,
+properties.status.oneOf.title,Not registered
+properties.status.oneOf.description,A person is not registered in the section.
+properties.status.oneOf.type,object
+properties.status.oneOf.properties.registrationStatus.title,Registration Status
+properties.status.oneOf.properties.registrationStatus.description,The status of this person's registration in the section
+properties.status.oneOf.properties.registrationStatus.enum,notRegistered
+properties.status.oneOf.properties.registrationStatus.type,string
+properties.status.oneOf.properties.sectionRegistrationStatusReason.title,Reason
+properties.status.oneOf.properties.sectionRegistrationStatusReason.description,Status reason for non-registration
+properties.status.oneOf.properties.sectionRegistrationStatusReason.enum,pending;dropped;withdrawn;canceled
+properties.status.oneOf.properties.sectionRegistrationStatusReason.type,string
+properties.status.oneOf.additionalProperties,false
+properties.status.oneOf.required,registrationStatus;sectionRegistrationStatusReason
+properties.status.oneOf.title,Registered
+properties.status.oneOf.description,A person is registered in the section.
+properties.status.oneOf.type,object
+properties.status.oneOf.properties.registrationStatus.title,Registration Status
+properties.status.oneOf.properties.registrationStatus.description,The status of this person's registration in the section.
+properties.status.oneOf.properties.registrationStatus.enum,registered
+properties.status.oneOf.properties.registrationStatus.type,string
+properties.status.oneOf.properties.sectionRegistrationStatusReason.title,Registered
+properties.status.oneOf.properties.sectionRegistrationStatusReason.description,A person was registered.
+properties.status.oneOf.properties.sectionRegistrationStatusReason.enum,registered
+properties.status.oneOf.properties.sectionRegistrationStatusReason.type,string
+properties.status.oneOf.additionalProperties,false
+properties.status.oneOf.required,registrationStatus;sectionRegistrationStatusReason
+required,id;title;status
+additionalProperties,false

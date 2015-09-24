@@ -1,0 +1,227 @@
+title,Grade Scheme Items Maximum
+description,The individual grade items that constitute a grade scheme with references resolved.
+type,object
+properties.id.title,Id
+properties.id.description,The global identifier of the grade scheme item.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.scheme.title,Scheme
+properties.scheme.description,The grade scheme which defines the context of the grade scheme item.
+properties.scheme.type,object
+properties.scheme.properties.title.title,Title
+properties.scheme.properties.title.description,The full name of a grade scheme.
+properties.scheme.properties.title.type,string
+properties.scheme.properties.title.minLength,1
+properties.scheme.properties.code.title,Code
+properties.scheme.properties.code.description,The code for the grade scheme that may be used a reference or for reporting.
+properties.scheme.properties.code.type,string
+properties.scheme.properties.startOn.title,Start On
+properties.scheme.properties.startOn.description,The date after which a grade scheme may be used.
+properties.scheme.properties.startOn.oneOf.type,string
+properties.scheme.properties.startOn.oneOf.format,date-time
+properties.scheme.properties.startOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.scheme.properties.startOn.oneOf.type,string
+properties.scheme.properties.startOn.oneOf.maxLength,
+properties.scheme.properties.endOn.title,End On
+properties.scheme.properties.endOn.description,The date after which a grade scheme may no longer be used.
+properties.scheme.properties.endOn.oneOf.type,string
+properties.scheme.properties.endOn.oneOf.format,date-time
+properties.scheme.properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.scheme.properties.endOn.oneOf.type,string
+properties.scheme.properties.endOn.oneOf.maxLength,
+properties.scheme.properties.detail.title,Detail
+properties.scheme.properties.detail.description,The grade scheme which defines the context of the grade scheme item.
+properties.scheme.properties.detail.type,object
+properties.scheme.properties.detail.properties.id.title,ID
+properties.scheme.properties.detail.properties.id.description,The global identifier for Detail
+properties.scheme.properties.detail.properties.id.type,string
+properties.scheme.properties.detail.properties.id.format,guid
+properties.scheme.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.scheme.properties.detail.links.rel,self
+properties.scheme.properties.detail.links.href,/grade-schemes/{id}
+properties.scheme.properties.detail.links.targetSchema.$ref,grade-schemes.json#
+properties.scheme.properties.detail.additionalProperties,false
+properties.scheme.properties.detail.required,id
+properties.scheme.additionalProperties,false
+properties.scheme.required,title;detail
+properties.grade.title,Grade
+properties.grade.description,The literal value or numeric range that distinguishes the grade scheme item.
+properties.grade.oneOf.title,Literal Value
+properties.grade.oneOf.description,The item is defined as a literal
+properties.grade.oneOf.type,object
+properties.grade.oneOf.properties.type.title,Type
+properties.grade.oneOf.properties.type.description,The type of the grade scheme item.
+properties.grade.oneOf.properties.type.enum,literal
+properties.grade.oneOf.properties.type.type,string
+properties.grade.oneOf.properties.value.title,Value
+properties.grade.oneOf.properties.value.description,The literal value of the grade scheme item.
+properties.grade.oneOf.properties.value.type,string
+properties.grade.oneOf.properties.value.minLength,1
+properties.grade.oneOf.additionalProperties,false
+properties.grade.oneOf.required,type;value
+properties.grade.oneOf.title,Numeric Range
+properties.grade.oneOf.description,The numeric range that defines the grade scheme item
+properties.grade.oneOf.type,object
+properties.grade.oneOf.properties.type.title,Type
+properties.grade.oneOf.properties.type.description,The type of the grade scheme item.
+properties.grade.oneOf.properties.type.enum,numeric
+properties.grade.oneOf.properties.type.type,string
+properties.grade.oneOf.properties.minValue.title,Minimum Value
+properties.grade.oneOf.properties.minValue.description,The lower boundary of the numeric range of the grade scheme item.
+properties.grade.oneOf.properties.minValue.type,number
+properties.grade.oneOf.properties.maxValue.title,Maximum Value
+properties.grade.oneOf.properties.maxValue.description,The upper boundary of the numeric range of the grade scheme item.
+properties.grade.oneOf.properties.maxValue.type,number
+properties.grade.oneOf.properties.increment.title,Increment
+properties.grade.oneOf.properties.increment.description,The size of the allowed incremental steps between the lower and upper boundaries of the range.
+properties.grade.oneOf.properties.increment.oneOf.type,number
+properties.grade.oneOf.properties.increment.oneOf.type,null
+properties.grade.oneOf.additionalProperties,false
+properties.grade.oneOf.required,type;minValue;maxValue
+properties.startOn.title,Start Date
+properties.startOn.description,The earliest date on which the grade scheme item is valid.
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.format,date-time
+properties.startOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.maxLength,
+properties.endOn.title,End Date
+properties.endOn.description,The latest date on which the grade scheme item may be used.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.qualityValue.title,Quality Value
+properties.qualityValue.description,The quality point value associated with the grade scheme item.
+properties.qualityValue.oneOf.type,number
+properties.qualityValue.oneOf.minimum,
+properties.qualityValue.oneOf.format,positiveNumber
+properties.qualityValue.oneOf.type,null
+properties.passFail.title,Pass Fail Indicator
+properties.passFail.description,Specifies if the grade scheme item is considered to be a passing of failing grade.
+properties.passFail.oneOf.type,string
+properties.passFail.oneOf.enum,pass;fail
+properties.passFail.oneOf.type,string
+properties.passFail.oneOf.maxLength,
+properties.equivalentGradeItems.title,Equivalent Grade Item
+properties.equivalentGradeItems.description,A list of mapping to the equivalent grade scheme item in different grade schemes.
+properties.equivalentGradeItems.type,array
+properties.equivalentGradeItems.items.type,object
+properties.equivalentGradeItems.items.properties.scheme.title,Scheme
+properties.equivalentGradeItems.items.properties.scheme.description,The grade scheme which defines the context of the grade scheme item.
+properties.equivalentGradeItems.items.properties.scheme.type,object
+properties.equivalentGradeItems.items.properties.scheme.properties.title.title,Title
+properties.equivalentGradeItems.items.properties.scheme.properties.title.description,The full name of a grade scheme.
+properties.equivalentGradeItems.items.properties.scheme.properties.title.type,string
+properties.equivalentGradeItems.items.properties.scheme.properties.title.minLength,1
+properties.equivalentGradeItems.items.properties.scheme.properties.code.title,Code
+properties.equivalentGradeItems.items.properties.scheme.properties.code.description,The code for the grade scheme that may be used a reference or for reporting.
+properties.equivalentGradeItems.items.properties.scheme.properties.code.type,string
+properties.equivalentGradeItems.items.properties.scheme.properties.startOn.title,Start On
+properties.equivalentGradeItems.items.properties.scheme.properties.startOn.description,The date after which a grade scheme may be used.
+properties.equivalentGradeItems.items.properties.scheme.properties.startOn.oneOf.type,string
+properties.equivalentGradeItems.items.properties.scheme.properties.startOn.oneOf.format,date-time
+properties.equivalentGradeItems.items.properties.scheme.properties.startOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.equivalentGradeItems.items.properties.scheme.properties.startOn.oneOf.type,string
+properties.equivalentGradeItems.items.properties.scheme.properties.startOn.oneOf.maxLength,
+properties.equivalentGradeItems.items.properties.scheme.properties.endOn.title,End On
+properties.equivalentGradeItems.items.properties.scheme.properties.endOn.description,The date after which a grade scheme may no longer be used.
+properties.equivalentGradeItems.items.properties.scheme.properties.endOn.oneOf.type,string
+properties.equivalentGradeItems.items.properties.scheme.properties.endOn.oneOf.format,date-time
+properties.equivalentGradeItems.items.properties.scheme.properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.equivalentGradeItems.items.properties.scheme.properties.endOn.oneOf.type,string
+properties.equivalentGradeItems.items.properties.scheme.properties.endOn.oneOf.maxLength,
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.title,Detail
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.description,The grade scheme which defines the context of the grade scheme item.
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.type,object
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.properties.id.title,ID
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.properties.id.description,The global identifier for Detail
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.properties.id.type,string
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.properties.id.format,guid
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.links.rel,self
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.links.href,/grade-schemes/{id}
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.links.targetSchema.$ref,grade-schemes.json#
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.additionalProperties,false
+properties.equivalentGradeItems.items.properties.scheme.properties.detail.required,id
+properties.equivalentGradeItems.items.properties.scheme.additionalProperties,false
+properties.equivalentGradeItems.items.properties.scheme.required,title;detail
+properties.equivalentGradeItems.items.properties.grade.title,Grade
+properties.equivalentGradeItems.items.properties.grade.description,The literal value or numeric range that distinguishes the grade scheme item.
+properties.equivalentGradeItems.items.properties.grade.oneOf.title,Literal Value
+properties.equivalentGradeItems.items.properties.grade.oneOf.description,The item is defined as a literal
+properties.equivalentGradeItems.items.properties.grade.oneOf.type,object
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.type.title,Type
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.type.description,The type of the grade scheme item.
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.type.enum,literal
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.type.type,string
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.value.title,Value
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.value.description,The literal value of the grade scheme item.
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.value.type,string
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.value.minLength,1
+properties.equivalentGradeItems.items.properties.grade.oneOf.additionalProperties,false
+properties.equivalentGradeItems.items.properties.grade.oneOf.required,type;value
+properties.equivalentGradeItems.items.properties.grade.oneOf.title,Numeric Range
+properties.equivalentGradeItems.items.properties.grade.oneOf.description,The numeric range that defines the grade scheme item
+properties.equivalentGradeItems.items.properties.grade.oneOf.type,object
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.type.title,Type
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.type.description,The type of the grade scheme item.
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.type.enum,numeric
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.type.type,string
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.minValue.title,Minimum Value
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.minValue.description,The lower boundary of the numeric range of the grade scheme item.
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.minValue.type,number
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.maxValue.title,Maximum Value
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.maxValue.description,The upper boundary of the numeric range of the grade scheme item.
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.maxValue.type,number
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.increment.title,Increment
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.increment.description,The size of the allowed incremental steps between the lower and upper boundaries of the range.
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.increment.oneOf.type,number
+properties.equivalentGradeItems.items.properties.grade.oneOf.properties.increment.oneOf.type,null
+properties.equivalentGradeItems.items.properties.grade.oneOf.additionalProperties,false
+properties.equivalentGradeItems.items.properties.grade.oneOf.required,type;minValue;maxValue
+properties.equivalentGradeItems.items.properties.startOn.title,Start On
+properties.equivalentGradeItems.items.properties.startOn.description,The earliest date on which the grade scheme item may be used.
+properties.equivalentGradeItems.items.properties.startOn.oneOf.type,string
+properties.equivalentGradeItems.items.properties.startOn.oneOf.format,date-time
+properties.equivalentGradeItems.items.properties.startOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.equivalentGradeItems.items.properties.startOn.oneOf.type,string
+properties.equivalentGradeItems.items.properties.startOn.oneOf.maxLength,
+properties.equivalentGradeItems.items.properties.endOn.title,End On
+properties.equivalentGradeItems.items.properties.endOn.description,The latest date on which the grade scheme item may be used.
+properties.equivalentGradeItems.items.properties.endOn.oneOf.type,string
+properties.equivalentGradeItems.items.properties.endOn.oneOf.format,date-time
+properties.equivalentGradeItems.items.properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.equivalentGradeItems.items.properties.endOn.oneOf.type,string
+properties.equivalentGradeItems.items.properties.endOn.oneOf.maxLength,
+properties.equivalentGradeItems.items.properties.qualityValue.title,Quality Value
+properties.equivalentGradeItems.items.properties.qualityValue.description,The quality point value associated with the grade scheme item.
+properties.equivalentGradeItems.items.properties.qualityValue.oneOf.type,number
+properties.equivalentGradeItems.items.properties.qualityValue.oneOf.format,positiveNumber
+properties.equivalentGradeItems.items.properties.qualityValue.oneOf.minimum,
+properties.equivalentGradeItems.items.properties.qualityValue.oneOf.type,null
+properties.equivalentGradeItems.items.properties.passFail.title,Pass Fail Indicator
+properties.equivalentGradeItems.items.properties.passFail.description,Specifies if the grade scheme item is considered to be a passing of failing grade.
+properties.equivalentGradeItems.items.properties.passFail.oneOf.type,string
+properties.equivalentGradeItems.items.properties.passFail.oneOf.enum,pass;fail
+properties.equivalentGradeItems.items.properties.passFail.oneOf.type,string
+properties.equivalentGradeItems.items.properties.passFail.oneOf.maxLength,
+properties.equivalentGradeItems.items.properties.detail.title,Detail
+properties.equivalentGradeItems.items.properties.detail.description,A grade scheme item in different grade schemes that is equivalent to this grade scheme item.
+properties.equivalentGradeItems.items.properties.detail.type,object
+properties.equivalentGradeItems.items.properties.detail.properties.id.title,ID
+properties.equivalentGradeItems.items.properties.detail.properties.id.description,The global identifier for Detail
+properties.equivalentGradeItems.items.properties.detail.properties.id.type,string
+properties.equivalentGradeItems.items.properties.detail.properties.id.format,guid
+properties.equivalentGradeItems.items.properties.detail.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.equivalentGradeItems.items.properties.detail.links.rel,self
+properties.equivalentGradeItems.items.properties.detail.links.href,/grade-scheme-items/{id}
+properties.equivalentGradeItems.items.properties.detail.links.targetSchema.$ref,grade-scheme-items.json#
+properties.equivalentGradeItems.items.properties.detail.additionalProperties,false
+properties.equivalentGradeItems.items.properties.detail.required,id
+properties.equivalentGradeItems.items.additionalProperties,false
+properties.equivalentGradeItems.items.required,grade
+required,id;scheme;grade
+additionalProperties,false

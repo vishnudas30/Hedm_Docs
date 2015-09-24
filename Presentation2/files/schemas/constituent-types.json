@@ -1,0 +1,114 @@
+{
+  "title": "Constituent Type",
+  "description": "A categorization of a constituent",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "The global identifier of a constituent type",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "type": {
+      "title": "Type",
+      "description": "Constituent type",
+      "type": "object",
+      "properties": {
+        "vseSource": {
+          "title": "Source",
+          "description": "VSE Survey source category.",
+          "enum": [
+            "alumni",
+            "parent",
+            "otherIndividual",
+            "foundation",
+            "corporation",
+            "religious",
+            "consortia",
+            "otherOrganization"
+          ],
+          "type": "string"
+        },
+        "detail": {
+          "title": "Detail",
+          "description": "",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "vseSource"
+      ]
+    },
+    "institutionalPriorityRank": {
+      "title": "Institutional Priority Rank",
+      "description": "The number that represents the institutional priority rank assigned to a constituent type",
+      "minimum": 0,
+      "type": "number",
+      "format": "positiveNumber"
+    },
+    "reportingPriorityRank": {
+      "title": "Reporting Priority Rank",
+      "description": "The number that represents the reporting priority rank assigned to a constituent type",
+      "minimum": 0,
+      "type": "number",
+      "format": "positiveNumber"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "institutionalPriorityRank",
+    "reportingPriorityRank"
+  ],
+  "additionalProperties": false
+}

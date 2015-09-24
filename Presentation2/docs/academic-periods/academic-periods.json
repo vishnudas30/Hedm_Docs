@@ -1,0 +1,289 @@
+{
+  "title": "Academic Time Period",
+  "description": "A specified interval of time used in institutions of higher education (e.g. academic year, term).",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "A global identifier of an academic time period.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "code": {
+      "title": "Code",
+      "description": "A code that identifies an academic time period.",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "description": "The full name of an academic time period (e.g. 'Fall 2014').",
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "title": "Description",
+      "description": "A description of an academic time period.",
+      "type": "string"
+    },
+    "startOn": {
+      "title": "Period Start Date",
+      "description": "The date at which the period begins",
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+    },
+    "endOn": {
+      "title": "Period End Date",
+      "description": "The date at which the period ends",
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+    },
+    "category": {
+      "title": "Category",
+      "description": "",
+      "oneOf": [
+        {
+          "title": "Year",
+          "description": "An academic year.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type",
+              "description": "",
+              "enum": [
+                "year"
+              ],
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ]
+        },
+        {
+          "title": "Term",
+          "description": "A term within an academic year, such as a Semester.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type",
+              "description": "",
+              "enum": [
+                "term"
+              ],
+              "type": "string"
+            },
+            "parent": {
+              "title": "Year",
+              "description": "The academic year in which term occurs.",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Year",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/academic-periods/{id}",
+                  "targetSchema": {
+                    "$ref": "academic-periods.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            },
+            "preceding": {
+              "title": "Preceding Term",
+              "description": "The term which immediately precedes this term in time.",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "title": "ID",
+                      "description": "The global identifier for Preceding Term",
+                      "type": "string",
+                      "format": "guid",
+                      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                    }
+                  },
+                  "links": [
+                    {
+                      "rel": "self",
+                      "href": "/academic-periods/{id}",
+                      "targetSchema": {
+                        "$ref": "academic-periods.json#"
+                      }
+                    }
+                  ],
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "maxProperties": 0
+                }
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "parent"
+          ]
+        },
+        {
+          "title": "Subterm",
+          "description": "A subterm within an academic term, such as a part of a Semester.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type",
+              "description": "",
+              "enum": [
+                "subterm"
+              ],
+              "type": "string"
+            },
+            "parent": {
+              "title": "Term",
+              "description": "The term in which this subterm occurs.",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "ID",
+                  "description": "The global identifier for Term",
+                  "type": "string",
+                  "format": "guid",
+                  "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                }
+              },
+              "links": [
+                {
+                  "rel": "self",
+                  "href": "/academic-periods/{id}",
+                  "targetSchema": {
+                    "$ref": "academic-periods.json#"
+                  }
+                }
+              ],
+              "additionalProperties": false,
+              "required": [
+                "id"
+              ]
+            },
+            "preceding": {
+              "title": "Preceding Subterm",
+              "description": "The subterm which immediately precedes this subterm in time.",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "title": "ID",
+                      "description": "The global identifier for Preceding Subterm",
+                      "type": "string",
+                      "format": "guid",
+                      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                    }
+                  },
+                  "links": [
+                    {
+                      "rel": "self",
+                      "href": "/academic-periods/{id}",
+                      "targetSchema": {
+                        "$ref": "academic-periods.json#"
+                      }
+                    }
+                  ],
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "maxProperties": 0
+                }
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "parent"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "startOn",
+    "endOn",
+    "category"
+  ],
+  "additionalProperties": false
+}

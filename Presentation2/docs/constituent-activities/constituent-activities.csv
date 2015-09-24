@@ -1,0 +1,129 @@
+title,Constituent Activity
+description,Activities in which a constituent is involved.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A global identifier of a constituent activity
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.constituent.title,Constituent
+properties.constituent.description,
+properties.constituent.oneOf.title,Person
+properties.constituent.oneOf.description,A person who is involved in an activity.
+properties.constituent.oneOf.type,object
+properties.constituent.oneOf.properties.person.title,Person
+properties.constituent.oneOf.properties.person.description,A human being or other independent agent.
+properties.constituent.oneOf.properties.person.type,object
+properties.constituent.oneOf.properties.person.properties.id.title,ID
+properties.constituent.oneOf.properties.person.properties.id.description,The global identifier for Person
+properties.constituent.oneOf.properties.person.properties.id.type,string
+properties.constituent.oneOf.properties.person.properties.id.format,guid
+properties.constituent.oneOf.properties.person.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.constituent.oneOf.properties.person.links.rel,self
+properties.constituent.oneOf.properties.person.links.href,/persons/{id}
+properties.constituent.oneOf.properties.person.links.targetSchema.$ref,persons.json#
+properties.constituent.oneOf.properties.person.additionalProperties,false
+properties.constituent.oneOf.properties.person.required,id
+properties.constituent.oneOf.additionalProperties,false
+properties.constituent.oneOf.required,person
+properties.constituent.oneOf.title,Organization
+properties.constituent.oneOf.description,An organization which is involved in an activity.
+properties.constituent.oneOf.type,object
+properties.constituent.oneOf.properties.organization.title,Organization
+properties.constituent.oneOf.properties.organization.description,Represents a collection of people organized together into a community or other social, commercial or political structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.
+properties.constituent.oneOf.properties.organization.type,object
+properties.constituent.oneOf.properties.organization.properties.id.title,ID
+properties.constituent.oneOf.properties.organization.properties.id.description,The global identifier for Organization
+properties.constituent.oneOf.properties.organization.properties.id.type,string
+properties.constituent.oneOf.properties.organization.properties.id.format,guid
+properties.constituent.oneOf.properties.organization.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.constituent.oneOf.properties.organization.links.rel,self
+properties.constituent.oneOf.properties.organization.links.href,/organizations/{id}
+properties.constituent.oneOf.properties.organization.links.targetSchema.$ref,organizations.json#
+properties.constituent.oneOf.properties.organization.additionalProperties,false
+properties.constituent.oneOf.properties.organization.required,id
+properties.constituent.oneOf.additionalProperties,false
+properties.constituent.oneOf.required,organization
+properties.activityType.title,Activity Type
+properties.activityType.description,The activity type in which the constituent is involved.
+properties.activityType.type,object
+properties.activityType.properties.id.title,ID
+properties.activityType.properties.id.description,The global identifier for Activity Type
+properties.activityType.properties.id.type,string
+properties.activityType.properties.id.format,guid
+properties.activityType.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.activityType.links.rel,self
+properties.activityType.links.href,/constituent-activity-types/{id}
+properties.activityType.links.targetSchema.$ref,constituent-activity-types.json#
+properties.activityType.additionalProperties,false
+properties.activityType.required,id
+properties.participationType.title,Participation Type
+properties.participationType.description,
+properties.participationType.oneOf.type,object
+properties.participationType.oneOf.properties.id.title,ID
+properties.participationType.oneOf.properties.id.description,The global identifier for Participation Type
+properties.participationType.oneOf.properties.id.type,string
+properties.participationType.oneOf.properties.id.format,guid
+properties.participationType.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.participationType.oneOf.links.rel,self
+properties.participationType.oneOf.links.href,/constituent-participation-types/{id}
+properties.participationType.oneOf.links.targetSchema.$ref,constituent-participation-types.json#
+properties.participationType.oneOf.additionalProperties,false
+properties.participationType.oneOf.required,id
+properties.participationType.oneOf.type,object
+properties.participationType.oneOf.maxProperties,
+properties.startOn.title,Start Date
+properties.startOn.description,The date when a constituent's involvement in an activity started.
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.format,date-time
+properties.startOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.startOn.oneOf.type,string
+properties.startOn.oneOf.maxLength,
+properties.endOn.title,End Date
+properties.endOn.description,The date when a constituent's involvement in an activity ended.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.source.title,Source
+properties.source.description,The source of the constituent activity information.
+properties.source.oneOf.type,object
+properties.source.oneOf.properties.id.title,ID
+properties.source.oneOf.properties.id.description,The global identifier for Source
+properties.source.oneOf.properties.id.type,string
+properties.source.oneOf.properties.id.format,guid
+properties.source.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.source.oneOf.links.rel,self
+properties.source.oneOf.links.href,/sources/{id}
+properties.source.oneOf.links.targetSchema.$ref,sources.json#
+properties.source.oneOf.additionalProperties,false
+properties.source.oneOf.required,id
+properties.source.oneOf.type,object
+properties.source.oneOf.maxProperties,
+required,id;constituent;activityType
+additionalProperties,false

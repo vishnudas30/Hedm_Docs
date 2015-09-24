@@ -1,0 +1,258 @@
+title,Room Availability
+description,A request to list the rooms that are available within a given time frame, room layout, and occupancy, in a given building, at a given site
+type,object
+properties.recurrence.title,Recurrence
+properties.recurrence.description,
+properties.recurrence.oneOf.type,object
+properties.recurrence.oneOf.format,recurrence
+properties.recurrence.oneOf.properties.timePeriod.title,Time Period
+properties.recurrence.oneOf.properties.timePeriod.description,The period of time to be repeated.
+properties.recurrence.oneOf.properties.timePeriod.type,object
+properties.recurrence.oneOf.properties.timePeriod.properties.startOn.title,Start On
+properties.recurrence.oneOf.properties.timePeriod.properties.startOn.description,The beginning of the time period being repeated.
+properties.recurrence.oneOf.properties.timePeriod.properties.startOn.type,string
+properties.recurrence.oneOf.properties.timePeriod.properties.startOn.format,date-time
+properties.recurrence.oneOf.properties.timePeriod.properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.title,End On
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.description,The end of the time period being repeated.
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.type,string
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.format,date-time
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.type,string
+properties.recurrence.oneOf.properties.timePeriod.properties.endOn.oneOf.maxLength,
+properties.recurrence.oneOf.properties.timePeriod.additionalProperties,false
+properties.recurrence.oneOf.properties.timePeriod.required,startOn
+properties.recurrence.oneOf.properties.repeatRule.title,Repeat Rule
+properties.recurrence.oneOf.properties.repeatRule.description,The rule that describes how to repeat the time period.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.title,Daily
+properties.recurrence.oneOf.properties.repeatRule.oneOf.description,Rules for repeating on a daily basis.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.enum,daily
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.title,Interval
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.description,Number of days between each repetition.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.maximum,365
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,null
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.title,Ends
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.description,When to end the daily repetitions.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.title,Repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.description,Number of times to repeat, then stop.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.maximum,365
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.title,Date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.description,The date after which to stop repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.format,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.maxProperties,
+properties.recurrence.oneOf.properties.repeatRule.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.required,type
+properties.recurrence.oneOf.properties.repeatRule.oneOf.title,Weekly
+properties.recurrence.oneOf.properties.repeatRule.oneOf.description,Rules for repeating on a weekly basis.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.enum,weekly
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.title,Interval
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.description,Number of weeks between each repetition.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.maximum,52
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,null
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.title,Days of Week
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.description,The days of the week on which to repeat the event.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.type,array
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.items.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.daysOfWeek.items.enum,sunday;monday;tuesday;wednesday;thursday;friday;saturday
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.title,Ends
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.description,When to end the weekly repetitions.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.title,Repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.description,Number of times to repeat, then stop.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.maximum,52
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.title,Date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.description,The date after which to stop repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.format,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.maxProperties,
+properties.recurrence.oneOf.properties.repeatRule.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.required,type
+properties.recurrence.oneOf.properties.repeatRule.oneOf.title,Monthly
+properties.recurrence.oneOf.properties.repeatRule.oneOf.description,Rules for repeating on a monthly basis.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.enum,monthly
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.title,Interval
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.description,Number of months between each repetition.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.maximum,12
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,null
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.title,Repeat By
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.description,How to calculate the day of the month on which to start repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.title,Day of Month
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.description,The number of the day in the month on which to start repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfMonth.maximum,31
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.required,dayOfMonth
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.title,Day of Week
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.description,The cardinal day of the week (e.g., the first Tuesday, the last Friday, etc.) in the month on which to start repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.title,Occurrence
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.description,The nth occurrence of the day of the week in the month. Use a positive number to count from the start of the month (e.g., 1 = first in the month, 2 = second in the month), and a negative number to count from the end of the month (e.g. -1 = last in the month, -2 = second from last, etc.).
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.minimum,-4
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.occurrence.maximum,4
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.day.title,Day of Week
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.day.description,A day in a week.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.day.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.properties.day.enum,sunday;monday;tuesday;wednesday;thursday;friday;saturday
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.properties.dayOfWeek.required,occurrence;day
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.repeatBy.oneOf.required,dayOfWeek
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.title,Ends
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.description,When to end the monthly repetitions.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.title,Repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.description,Number of times to repeat, then stop.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.minimum,1
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.maximum,12
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.title,Date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.description,The date after which to stop repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.format,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.maxProperties,
+properties.recurrence.oneOf.properties.repeatRule.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.required,type;repeatBy
+properties.recurrence.oneOf.properties.repeatRule.oneOf.title,Yearly
+properties.recurrence.oneOf.properties.repeatRule.oneOf.description,Rules for repeating on an annual basis.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.type.enum,yearly
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.title,Interval
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.description,Number of years between each repetition.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.minimum,
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.format,positiveInteger
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.interval.oneOf.type,null
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.title,Ends
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.description,When to end the yearly repetitions.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.title,Repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.description,Number of times to repeat, then stop.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.type,integer
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.minimum,
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.repetitions.format,positiveInteger
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,repetitions
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.title,Date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.description,The date after which to stop repeating.
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.type,string
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.format,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.properties.date.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.required,date
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.type,object
+properties.recurrence.oneOf.properties.repeatRule.oneOf.properties.ends.oneOf.maxProperties,
+properties.recurrence.oneOf.properties.repeatRule.oneOf.additionalProperties,false
+properties.recurrence.oneOf.properties.repeatRule.oneOf.required,type
+properties.recurrence.oneOf.additionalProperties,false
+properties.recurrence.oneOf.required,timePeriod;repeatRule
+properties.recurrence.oneOf.type,object
+properties.recurrence.oneOf.maxProperties,
+properties.site.title,Site
+properties.site.description,The institution's site
+properties.site.oneOf.type,object
+properties.site.oneOf.properties.id.title,ID
+properties.site.oneOf.properties.id.description,The global identifier of the institution's site
+properties.site.oneOf.properties.id.type,string
+properties.site.oneOf.properties.id.format,guid
+properties.site.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.site.oneOf.additionalProperties,false
+properties.site.oneOf.required,id
+properties.site.oneOf.type,object
+properties.site.oneOf.maxProperties,
+properties.building.title,Building
+properties.building.description,The building at the selected site
+properties.building.oneOf.type,object
+properties.building.oneOf.properties.id.title,ID
+properties.building.oneOf.properties.id.description,The global identifier of a building.
+properties.building.oneOf.properties.id.type,string
+properties.building.oneOf.properties.id.format,guid
+properties.building.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.building.oneOf.additionalProperties,false
+properties.building.oneOf.required,id
+properties.building.oneOf.type,object
+properties.building.oneOf.maxProperties,
+properties.occupancies.title,Occupancy
+properties.occupancies.description,The type or style of a of room's layout, for example, "Classroom" style, "Lecture Hall" style, etc.
+properties.occupancies.type,array
+properties.occupancies.items.type,object
+properties.occupancies.items.properties.type.title,Room Layout
+properties.occupancies.items.properties.type.description,The type or style of a of room's layout, for example, "Seminar" style, "Banquet" style, etc.
+properties.occupancies.items.properties.type.enum,banquet;conference;sportsevent;graduationceremony;seminar;boardmeeting;performance;convention;convocation;pressmeet;workshops;exam
+properties.occupancies.items.properties.type.type,string
+properties.occupancies.items.properties.maxOccupancy.title,Maximum Occupancy
+properties.occupancies.items.properties.maxOccupancy.description,The maximum number of persons who may occupy a room arranged in a given layout.
+properties.occupancies.items.properties.maxOccupancy.type,number
+properties.occupancies.items.additionalProperties,false
+properties.occupancies.items.required,type;maxOccupancy
+properties.roomTypes.title,Room Types
+properties.roomTypes.description,The type or style of a of room's layout, for example, "Classroom" style, "Lecture Hall" style, etc.  A room may support multiple types of layouts.
+properties.roomTypes.type,array
+properties.roomTypes.items.type,object
+properties.roomTypes.items.properties.type.title,Room Type
+properties.roomTypes.items.properties.type.description,The type or style of a of room's layout, for example, "Classroom" style, "Lecture Hall" style, etc.
+properties.roomTypes.items.properties.type.enum,residencehallroom;residentialsingleroom;residentialdoubleroom;residentialtripleroom;residentialsuiteroom;apartment;house;classroom;lecturehall;seminarroom;conferenceroom;sciencelaboratory;computerlaboratory;mechanicslab;audiovisuallab;artstudio;musicroom;performingartsstudio;ballroom;office;studyfacility;clinic;animalquarters;greenhouse;specialusefacility;generalusefacility;foodfacility;daycare;lounge;merchandisingroom;supportfacility;healthcarefacility;atrium;amphitheater;auditorium;booth;other
+properties.roomTypes.items.properties.type.type,string
+properties.roomTypes.items.properties.detail.title,Detail
+properties.roomTypes.items.properties.detail.description,The type or style of a of room's layout, for example, "Classroom" style, "Lecture Hall" style, etc.
+properties.roomTypes.items.properties.detail.oneOf.type,object
+properties.roomTypes.items.properties.detail.oneOf.properties.id.title,ID
+properties.roomTypes.items.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.roomTypes.items.properties.detail.oneOf.properties.id.type,string
+properties.roomTypes.items.properties.detail.oneOf.properties.id.format,guid
+properties.roomTypes.items.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.roomTypes.items.properties.detail.oneOf.links.rel,self
+properties.roomTypes.items.properties.detail.oneOf.links.href,/room-types/{id}
+properties.roomTypes.items.properties.detail.oneOf.links.targetSchema.$ref,room-types.json#
+properties.roomTypes.items.properties.detail.oneOf.additionalProperties,false
+properties.roomTypes.items.properties.detail.oneOf.required,id
+properties.roomTypes.items.properties.detail.oneOf.type,object
+properties.roomTypes.items.properties.detail.oneOf.maxProperties,
+properties.roomTypes.items.additionalProperties,false
+properties.roomTypes.items.required,type
+required,recurrence;roomTypes
+additionalProperties,false

@@ -1,0 +1,471 @@
+{
+  "title": "Course",
+  "description": "The smallest unit of instruction for which an Oganization grants credits. Identifies the subject and course number and level, availability dates, instructional method, grading schemes, and credits granted along with the granting organizations.",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "A global identifier of a course to be used in all external references.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "title": {
+      "title": "Title",
+      "description": "The full name of a course as might appear in a course catalog (e.g. 'Calculus').",
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "title": "Description",
+      "description": "A description of the substance and nature of a course as might appear in a course catalog.",
+      "type": "string"
+    },
+    "subject": {
+      "title": "Subject",
+      "description": "The branch of knowledge such as 'Mathematics' or 'Biology' associated with this course.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The global identifier for Subject",
+          "type": "string",
+          "format": "guid",
+          "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+        }
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "/academic-subjects/{id}",
+          "targetSchema": {
+            "$ref": "academic-subjects.json#"
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "courseLevels": {
+      "title": "Course Levels",
+      "description": "The levels of scholarship that apply to a course.",
+      "type": "array",
+      "items": {
+        "title": "Course Levels",
+        "description": "The levels of scholarship that apply to a course.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "The global identifier for Course Levels",
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        },
+        "links": [
+          {
+            "rel": "self",
+            "href": "/course-levels/{id}",
+            "targetSchema": {
+              "$ref": "course-levels.json#"
+            }
+          }
+        ],
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "instructionalMethods": {
+      "title": "Instructional Methods",
+      "description": "The methods, styles, or formats in which a course is taught (e.g. 'Lecture', 'Lab').",
+      "type": "array",
+      "items": {
+        "title": "Instructional Methods",
+        "description": "The methods, styles, or formats in which a course is taught (e.g. 'Lecture', 'Lab').",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "The global identifier for Instructional Methods",
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        },
+        "links": [
+          {
+            "rel": "self",
+            "href": "/instructional-methods/{id}",
+            "targetSchema": {
+              "$ref": "instructional-methods.json#"
+            }
+          }
+        ],
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "owningOrganizations": {
+      "title": "Owning Organizations",
+      "description": "A list of organizations, possibly hierarchical, which own or are responsible for a course.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "organization": {
+            "title": "Organization",
+            "description": "A collection of people organized together into a community or other social, commercial or political structure for a common purpose. In the higher education context, it can represents an Institution, School, College, Department, Division, and any other organizational unit in the institution.",
+            "type": "object",
+            "properties": {
+              "id": {
+                "title": "ID",
+                "description": "The global identifier for Organization",
+                "type": "string",
+                "format": "guid",
+                "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+              }
+            },
+            "links": [
+              {
+                "rel": "self",
+                "href": "/organizations/{id}",
+                "targetSchema": {
+                  "$ref": "organizations.json#"
+                }
+              }
+            ],
+            "additionalProperties": false,
+            "required": [
+              "id"
+            ]
+          },
+          "share": {
+            "title": "Share",
+            "description": "The portion of the course owned or allocated to a particular organization.",
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "organization",
+          "share"
+        ]
+      }
+    },
+    "schedulingStartOn": {
+      "title": "Course Effective Starting Date",
+      "description": "The starting date at which a Course is avalaible to have Sections scheduled to be taken. When combined with the scheduling ending date, defines the time period a Course is available for scheduling.",
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+    },
+    "schedulingEndOn": {
+      "title": "Course Effective Ending Date",
+      "description": "The ending date at which a Course is no longer available to have Sections scheduled to be taken. When combined with the scheduling start date, defines the time period a Course is available for scheduling.",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+        },
+        {
+          "type": "string",
+          "maxLength": 0
+        }
+      ]
+    },
+    "number": {
+      "title": "Course Number",
+      "description": "A numbering scheme to distinguish different Courses within a subject. Typically this is an integer.",
+      "type": "string",
+      "minLength": 1
+    },
+    "academicLevels": {
+      "title": "Academic Level",
+      "description": "The academic levels (e.g. 'Under Graduate', 'Graduate') associated with this course.",
+      "type": "array",
+      "items": {
+        "title": "Academic Level",
+        "description": "The academic levels (e.g. 'Under Graduate', 'Graduate') associated with this course.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "The global identifier for Academic Level",
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        },
+        "links": [
+          {
+            "rel": "self",
+            "href": "/academic-levels/{id}",
+            "targetSchema": {
+              "$ref": "academic-levels.json#"
+            }
+          }
+        ],
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "gradeSchemes": {
+      "title": "Grade Scheme",
+      "description": "The grading scheme specifications that apply to a course (e.g. 'A-F', 'Audit', 'Pass/Fail').",
+      "type": "array",
+      "items": {
+        "title": "Grade Scheme",
+        "description": "The grading scheme specifications that apply to a course (e.g. 'A-F', 'Audit', 'Pass/Fail').",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "ID",
+            "description": "The global identifier for Grade Scheme",
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          }
+        },
+        "links": [
+          {
+            "rel": "self",
+            "href": "/grade-schemes/{id}",
+            "targetSchema": {
+              "$ref": "grade-schemes.json#"
+            }
+          }
+        ],
+        "additionalProperties": false,
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "credits": {
+      "title": "Credit",
+      "description": "The credit specifications that apply to a course (e.g. 'Regular Credit').",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "creditCategory": {
+            "title": "Credit Category",
+            "description": "",
+            "type": "object",
+            "properties": {
+              "creditType": {
+                "title": "Credit Type",
+                "description": "The higher-level category of academic credits.",
+                "enum": [
+                  "ce",
+                  "institution",
+                  "transfer"
+                ],
+                "type": "string"
+              },
+              "detail": {
+                "title": "Detail",
+                "description": "",
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "title": "ID",
+                        "description": "The global identifier for Detail",
+                        "type": "string",
+                        "format": "guid",
+                        "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                      }
+                    },
+                    "links": [
+                      {
+                        "rel": "self",
+                        "href": "/credit-categories/{id}",
+                        "targetSchema": {
+                          "$ref": "credit-categories.json#"
+                        }
+                      }
+                    ],
+                    "additionalProperties": false,
+                    "required": [
+                      "id"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "maxProperties": 0
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "creditType"
+            ]
+          },
+          "measure": {
+            "title": "Measure",
+            "description": "A unit or standard of measurement for the course credit.",
+            "enum": [
+              "credit",
+              "ceu",
+              "hour"
+            ],
+            "type": "string"
+          },
+          "minimum": {
+            "title": "Minimum number",
+            "description": "The lower, inclusive bound of the range of values for the course credit.",
+            "type": "number"
+          },
+          "maximum": {
+            "title": "Maximum number",
+            "description": "The upper, inclusive bound of the range of values for the course credit.",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "increment": {
+            "title": "Increment number",
+            "description": "The increment by which the range of values for the course credit can be stepped from the minimum to the maximum. For example, a range of 1 to 3 with an increment of 1 would evaluate to 1, 2, or 3. Specifying an increment of 0.5 would evaluate to 1, 1.5, 2, 2.5, or 3",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "creditCategory",
+          "measure",
+          "minimum"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "subject",
+    "schedulingStartOn",
+    "number"
+  ],
+  "additionalProperties": false,
+  "links": [
+    {
+      "rel": "filter",
+      "encType": "application/x-www-form-urlencoded",
+      "method": "GET",
+      "href": "/courses/",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          },
+          "number": {
+            "type": "string"
+          },
+          "academicLevels": {
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          },
+          "owningOrganizations": {
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "instructionalMethods": {
+            "type": "string",
+            "format": "guid",
+            "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+          },
+          "schedulingStartOn": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+          },
+          "schedulingEndOn": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+          }
+        }
+      }
+    }
+  ]
+}

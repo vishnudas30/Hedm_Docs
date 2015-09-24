@@ -1,0 +1,199 @@
+{
+  "title": "Person Name",
+  "description": "A subset of person's data, including only his/her name(s)",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "title": "Metadata",
+      "description": "Metadata about the JSON payload",
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "title": "Created By",
+          "description": "The name of the originator (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "createdOn": {
+          "title": "Created On",
+          "description": "The date and time when the entity instance was created",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "modifiedBy": {
+          "title": "Modified By",
+          "description": "The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!",
+          "type": "string"
+        },
+        "modifiedOn": {
+          "title": "Modified On",
+          "description": "The date and time when the entity instance was last modified",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "id": {
+      "title": "ID",
+      "description": "A global identifier of a person.",
+      "type": "string",
+      "format": "guid",
+      "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+    },
+    "names": {
+      "title": "Name",
+      "description": "The names associated with a person, specified by type (e.g. \"legal\", \"birth\", ...).",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Name Type",
+            "description": "The type of person's name being defined. For example, a \"Primary\" name.",
+            "type": "object",
+            "properties": {
+              "category": {
+                "title": "Name Type Category",
+                "description": "The global category of person name types",
+                "enum": [
+                  "personal",
+                  "birth",
+                  "legal"
+                ],
+                "type": "string"
+              },
+              "detail": {
+                "title": "Detail",
+                "description": "",
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "title": "ID",
+                        "description": "The global identifier for Detail",
+                        "type": "string",
+                        "format": "guid",
+                        "pattern": "^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+                      }
+                    },
+                    "links": [
+                      {
+                        "rel": "self",
+                        "href": "/person-name-types/{id}",
+                        "targetSchema": {
+                          "$ref": "person-name-types.json#"
+                        }
+                      }
+                    ],
+                    "additionalProperties": false,
+                    "required": [
+                      "id"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "maxProperties": 0
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "category"
+            ]
+          },
+          "preference": {
+            "title": "Name Preference",
+            "description": "Indicates the preferred name for the type",
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "preferred"
+                ]
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "fullName": {
+            "title": "Full Name",
+            "description": "The person's full name.",
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "title": "Title",
+            "description": "The person's title, e.g., \"Mr.\", \"Mrs.\", \"Dr.\", etc.",
+            "type": "string"
+          },
+          "firstName": {
+            "title": "First Name",
+            "description": "The person's first, or given, name.",
+            "type": "string"
+          },
+          "middleName": {
+            "title": "Middle Name",
+            "description": "The person's middle name.",
+            "type": "string"
+          },
+          "lastNamePrefix": {
+            "title": "Last Name Prefix",
+            "description": "The article or preposition portion of a person's last name, for example, \"De la\", \"Van\", \"Van der Von\", etc.",
+            "type": "string"
+          },
+          "lastName": {
+            "title": "Last Name",
+            "description": "The person's last, or family, name.",
+            "type": "string"
+          },
+          "pedigree": {
+            "title": "Pedigree/Suffix",
+            "description": "The person's pedigree, e.g. \"Jr.\", \"Sr.\", etc.",
+            "type": "string"
+          },
+          "professionalAbbreviations": {
+            "title": "Professional Abbreviation",
+            "description": "A post-nominal professional abbreviation, reflecting an earned degree or honor, e.g. \"M.D.\", \"Ph.D.\", etc.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "fullName"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "names"
+  ],
+  "additionalProperties": false
+}

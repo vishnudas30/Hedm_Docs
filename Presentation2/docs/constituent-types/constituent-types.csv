@@ -1,0 +1,56 @@
+title,Constituent Type
+description,A categorization of a constituent
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,The global identifier of a constituent type
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.type.title,Type
+properties.type.description,Constituent type
+properties.type.type,object
+properties.type.properties.vseSource.title,Source
+properties.type.properties.vseSource.description,VSE Survey source category.
+properties.type.properties.vseSource.enum,alumni;parent;otherIndividual;foundation;corporation;religious;consortia;otherOrganization
+properties.type.properties.vseSource.type,string
+properties.type.properties.detail.title,Detail
+properties.type.properties.detail.description,
+properties.type.properties.detail.type,string
+properties.type.additionalProperties,false
+properties.type.required,vseSource
+properties.institutionalPriorityRank.title,Institutional Priority Rank
+properties.institutionalPriorityRank.description,The number that represents the institutional priority rank assigned to a constituent type
+properties.institutionalPriorityRank.minimum,
+properties.institutionalPriorityRank.type,number
+properties.institutionalPriorityRank.format,positiveNumber
+properties.reportingPriorityRank.title,Reporting Priority Rank
+properties.reportingPriorityRank.description,The number that represents the reporting priority rank assigned to a constituent type
+properties.reportingPriorityRank.minimum,
+properties.reportingPriorityRank.type,number
+properties.reportingPriorityRank.format,positiveNumber
+required,id;type;institutionalPriorityRank;reportingPriorityRank
+additionalProperties,false

@@ -1,0 +1,323 @@
+title,Section
+description,An instance of a Course.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,A globally unique identifier of a section to be used in all external references.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.title.title,Title
+properties.title.description,The full name of a section.
+properties.title.type,string
+properties.title.minLength,1
+properties.description.title,Description
+properties.description.description,A description of a section.
+properties.description.type,string
+properties.startOn.title,Offering Start Date
+properties.startOn.description,The starting date at which a section may be scheduled to be taken.
+properties.startOn.type,string
+properties.startOn.format,date-time
+properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.title,Offering End Date
+properties.endOn.description,The ending date at which a section may no longer be scheduled to be taken.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.code.title,Section Code
+properties.code.description,The human-readable identifier of a section. It is generally unique within an academic period.
+properties.code.type,string
+properties.number.title,Section Number
+properties.number.description,A numbering scheme or other mark that distinguishes between multiple sections.  It is generally unique within an academic period and course.
+properties.number.type,string
+properties.instructionalPlatform.title,Instructional Platform
+properties.instructionalPlatform.description,A technology platform used to manage the administration of a section.
+properties.instructionalPlatform.oneOf.type,object
+properties.instructionalPlatform.oneOf.properties.id.title,ID
+properties.instructionalPlatform.oneOf.properties.id.description,The global identifier for Instructional Platform
+properties.instructionalPlatform.oneOf.properties.id.type,string
+properties.instructionalPlatform.oneOf.properties.id.format,guid
+properties.instructionalPlatform.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.instructionalPlatform.oneOf.links.rel,self
+properties.instructionalPlatform.oneOf.links.href,/instructional-platforms/{id}
+properties.instructionalPlatform.oneOf.links.targetSchema.$ref,instructional-platforms.json#
+properties.instructionalPlatform.oneOf.additionalProperties,false
+properties.instructionalPlatform.oneOf.required,id
+properties.instructionalPlatform.oneOf.type,object
+properties.instructionalPlatform.oneOf.maxProperties,
+properties.academicPeriod.title,Academic Period
+properties.academicPeriod.description,The academic time period associated with a section.
+properties.academicPeriod.oneOf.type,object
+properties.academicPeriod.oneOf.properties.id.title,ID
+properties.academicPeriod.oneOf.properties.id.description,The global identifier for Academic Period
+properties.academicPeriod.oneOf.properties.id.type,string
+properties.academicPeriod.oneOf.properties.id.format,guid
+properties.academicPeriod.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.academicPeriod.oneOf.links.rel,self
+properties.academicPeriod.oneOf.links.href,/academic-periods/{id}
+properties.academicPeriod.oneOf.links.targetSchema.$ref,academic-periods.json#
+properties.academicPeriod.oneOf.additionalProperties,false
+properties.academicPeriod.oneOf.required,id
+properties.academicPeriod.oneOf.type,object
+properties.academicPeriod.oneOf.maxProperties,
+properties.administrativePeriod.title,Administrative Time Period
+properties.administrativePeriod.description,The administrative time period associated with a section.
+properties.administrativePeriod.oneOf.type,object
+properties.administrativePeriod.oneOf.properties.id.title,ID
+properties.administrativePeriod.oneOf.properties.id.description,The global identifier for Administrative Time Period
+properties.administrativePeriod.oneOf.properties.id.type,string
+properties.administrativePeriod.oneOf.properties.id.format,guid
+properties.administrativePeriod.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.administrativePeriod.oneOf.links.rel,self
+properties.administrativePeriod.oneOf.links.href,/administrative-periods/{id}
+properties.administrativePeriod.oneOf.links.targetSchema.$ref,administrative-periods.json#
+properties.administrativePeriod.oneOf.additionalProperties,false
+properties.administrativePeriod.oneOf.required,id
+properties.administrativePeriod.oneOf.type,object
+properties.administrativePeriod.oneOf.maxProperties,
+properties.course.title,Course
+properties.course.description,The smallest unit of instruction for which an Oganization grants credits.
+properties.course.type,object
+properties.course.properties.id.title,ID
+properties.course.properties.id.description,The global identifier for Course
+properties.course.properties.id.type,string
+properties.course.properties.id.format,guid
+properties.course.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.course.links.rel,self
+properties.course.links.href,/courses/{id}
+properties.course.links.targetSchema.$ref,courses.json#
+properties.course.additionalProperties,false
+properties.course.required,id
+properties.credits.title,Credit
+properties.credits.description,Unit specification that can be awarded for completing a section.
+properties.credits.type,array
+properties.credits.items.type,object
+properties.credits.items.properties.creditCategory.title,Credit Category
+properties.credits.items.properties.creditCategory.description,
+properties.credits.items.properties.creditCategory.type,object
+properties.credits.items.properties.creditCategory.properties.creditType.title,Credit Type
+properties.credits.items.properties.creditCategory.properties.creditType.description,The higher-level category of academic credits.
+properties.credits.items.properties.creditCategory.properties.creditType.enum,ce;institution;transfer
+properties.credits.items.properties.creditCategory.properties.creditType.type,string
+properties.credits.items.properties.creditCategory.properties.detail.title,Detail
+properties.credits.items.properties.creditCategory.properties.detail.description,
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.type,object
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.properties.id.title,ID
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.properties.id.type,string
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.properties.id.format,guid
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.links.rel,self
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.links.href,/credit-categories/{id}
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.links.targetSchema.$ref,credit-categories.json#
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.additionalProperties,false
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.required,id
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.type,object
+properties.credits.items.properties.creditCategory.properties.detail.oneOf.maxProperties,
+properties.credits.items.properties.creditCategory.additionalProperties,false
+properties.credits.items.properties.creditCategory.required,creditType
+properties.credits.items.properties.measure.title,Unit of Measure
+properties.credits.items.properties.measure.description,A unit or standard of measurement.
+properties.credits.items.properties.measure.enum,credit;ceu;hours
+properties.credits.items.properties.measure.type,string
+properties.credits.items.properties.minimum.title,Minimum number
+properties.credits.items.properties.minimum.description,The lower, inclusive bound of a numeric range of values.
+properties.credits.items.properties.minimum.type,number
+properties.credits.items.properties.maximum.title,Maximum number
+properties.credits.items.properties.maximum.description,The upper, inclusive bound of a numeric range of values.
+properties.credits.items.properties.maximum.oneOf.type,number
+properties.credits.items.properties.maximum.oneOf.type,null
+properties.credits.items.properties.increment.title,Increment number
+properties.credits.items.properties.increment.description,The multiple by which a numeric range of values can be stepped from the minimum to the maximum. For example, a range of 1 to 3 with an increment of 1 would evaluate to 1, 2, or 3. Specifying an increment of 0.5 would evaluate to 1, 1.5, 2, 2.5, or 3
+properties.credits.items.properties.increment.oneOf.type,number
+properties.credits.items.properties.increment.oneOf.type,null
+properties.credits.items.additionalProperties,false
+properties.credits.items.required,creditCategory;measure;minimum
+properties.site.title,Site
+properties.site.description,The primary location within the organization where a section's meetings will be held
+properties.site.oneOf.type,object
+properties.site.oneOf.properties.id.title,ID
+properties.site.oneOf.properties.id.description,The global identifier for Site
+properties.site.oneOf.properties.id.type,string
+properties.site.oneOf.properties.id.format,guid
+properties.site.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.site.oneOf.links.rel,self
+properties.site.oneOf.links.href,/sites/{id}
+properties.site.oneOf.links.targetSchema.$ref,sites.json#
+properties.site.oneOf.additionalProperties,false
+properties.site.oneOf.required,id
+properties.site.oneOf.type,object
+properties.site.oneOf.maxProperties,
+properties.academicLevels.title,Academic Level
+properties.academicLevels.description,The levels of academic progress that can be associated with a section
+properties.academicLevels.type,array
+properties.academicLevels.items.title,Academic Level
+properties.academicLevels.items.description,The levels of academic progress that can be associated with a section
+properties.academicLevels.items.type,object
+properties.academicLevels.items.properties.id.title,ID
+properties.academicLevels.items.properties.id.description,The global identifier for Academic Level
+properties.academicLevels.items.properties.id.type,string
+properties.academicLevels.items.properties.id.format,guid
+properties.academicLevels.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.academicLevels.items.links.rel,self
+properties.academicLevels.items.links.href,/academic-levels/{id}
+properties.academicLevels.items.links.targetSchema.$ref,academic-levels.json#
+properties.academicLevels.items.additionalProperties,false
+properties.academicLevels.items.required,id
+properties.gradeSchemes.title,Grade Scheme
+properties.gradeSchemes.description,The schemes that can be used in grading a section
+properties.gradeSchemes.type,array
+properties.gradeSchemes.items.title,Grade Scheme
+properties.gradeSchemes.items.description,The schemes that can be used in grading a section
+properties.gradeSchemes.items.type,object
+properties.gradeSchemes.items.properties.id.title,ID
+properties.gradeSchemes.items.properties.id.description,The global identifier for Grade Scheme
+properties.gradeSchemes.items.properties.id.type,string
+properties.gradeSchemes.items.properties.id.format,guid
+properties.gradeSchemes.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.gradeSchemes.items.links.rel,self
+properties.gradeSchemes.items.links.href,/grade-schemes/{id}
+properties.gradeSchemes.items.links.targetSchema.$ref,grade-schemes.json#
+properties.gradeSchemes.items.additionalProperties,false
+properties.gradeSchemes.items.required,id
+properties.courseLevels.title,Course Levels
+properties.courseLevels.description,The levels of a course
+properties.courseLevels.type,array
+properties.courseLevels.items.title,Course Levels
+properties.courseLevels.items.description,The levels of a course
+properties.courseLevels.items.type,object
+properties.courseLevels.items.properties.id.title,ID
+properties.courseLevels.items.properties.id.description,The global identifier for Course Levels
+properties.courseLevels.items.properties.id.type,string
+properties.courseLevels.items.properties.id.format,guid
+properties.courseLevels.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.courseLevels.items.links.rel,self
+properties.courseLevels.items.links.href,/course-levels/{id}
+properties.courseLevels.items.links.targetSchema.$ref,course-levels.json#
+properties.courseLevels.items.additionalProperties,false
+properties.courseLevels.items.required,id
+properties.status.title,Status
+properties.status.description,The status of a section, for example, "Open" or "Closed".
+properties.status.oneOf.type,string
+properties.status.oneOf.enum,closed;open;pending;cancelled
+properties.status.oneOf.type,string
+properties.status.oneOf.maxLength,
+properties.duration.title,Duration
+properties.duration.description,The scheme for calculating the duration of a section
+properties.duration.oneOf.type,object
+properties.duration.oneOf.properties.length.title,Length
+properties.duration.oneOf.properties.length.description,The duration length, expressed in duration units.
+properties.duration.oneOf.properties.length.type,number
+properties.duration.oneOf.properties.unit.title,Unit
+properties.duration.oneOf.properties.unit.description,The calendar period of time equivalent to 1 unit of duration.
+properties.duration.oneOf.properties.unit.enum,days;weeks;months;years
+properties.duration.oneOf.properties.unit.type,string
+properties.duration.oneOf.additionalProperties,false
+properties.duration.oneOf.required,length;unit
+properties.duration.oneOf.type,object
+properties.duration.oneOf.maxProperties,
+properties.maxEnrollment.title,Maximum Enrollment
+properties.maxEnrollment.description,The maximum number of persons who are allowed to enroll for a section.
+properties.maxEnrollment.oneOf.type,number
+properties.maxEnrollment.oneOf.type,null
+properties.owningOrganizations.title,Owning Organization
+properties.owningOrganizations.description,The organizations which own, or are responsible for, a course
+properties.owningOrganizations.type,array
+properties.owningOrganizations.items.type,object
+properties.owningOrganizations.items.properties.organization.title,Organization
+properties.owningOrganizations.items.properties.organization.description,Represents a collection of people organized together into a community or other structure for the purposes of education. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures. In the higher education context, it represents an Institution, School, College, Center, Division, and any other organizational unit that can act as an Agent.
+properties.owningOrganizations.items.properties.organization.type,object
+properties.owningOrganizations.items.properties.organization.properties.id.title,ID
+properties.owningOrganizations.items.properties.organization.properties.id.description,The global identifier for Organization
+properties.owningOrganizations.items.properties.organization.properties.id.type,string
+properties.owningOrganizations.items.properties.organization.properties.id.format,guid
+properties.owningOrganizations.items.properties.organization.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.owningOrganizations.items.properties.organization.links.rel,self
+properties.owningOrganizations.items.properties.organization.links.href,/organizations/{id}
+properties.owningOrganizations.items.properties.organization.links.targetSchema.$ref,organizations.json#
+properties.owningOrganizations.items.properties.organization.additionalProperties,false
+properties.owningOrganizations.items.properties.organization.required,id
+properties.owningOrganizations.items.properties.ownershipPercentage.title,Percent Ownership
+properties.owningOrganizations.items.properties.ownershipPercentage.description,The rate or proportion per hundred of ownership that is attributable to the organization.
+properties.owningOrganizations.items.properties.ownershipPercentage.type,number
+properties.owningOrganizations.items.additionalProperties,false
+properties.owningOrganizations.items.required,organization;ownershipPercentage
+properties.gradeTypes.title,Grade Types
+properties.gradeTypes.description,The grade types that can be used in grading a section
+properties.gradeTypes.type,array
+properties.gradeTypes.items.title,Grade Types
+properties.gradeTypes.items.description,The gradee types that can be used in grading a section
+properties.gradeTypes.items.type,object
+properties.gradeTypes.items.properties.id.title,ID
+properties.gradeTypes.items.properties.id.description,The global identifier for Section Grade Types
+properties.gradeTypes.items.properties.id.type,string
+properties.gradeTypes.items.properties.id.format,guid
+properties.gradeTypes.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.gradeTypes.items.links.rel,self
+properties.gradeTypes.items.links.href,/section-grade-types/{id}
+properties.gradeTypes.items.links.targetSchema.$ref,section-grade-types.json#
+properties.gradeTypes.items.additionalProperties,false
+properties.gradeTypes.items.required,id
+required,id;title;startOn;course
+additionalProperties,false
+links.rel,instructionalEvents
+links.title,Instructional Events
+links.description,The instructional events associated with a section
+links.href,/instructional-events?section.id={id}
+links.targetSchema.$ref,instructional-events.json#
+links.rel,filter
+links.encType,application/x-www-form-urlencoded
+links.method,GET
+links.href,/sections/
+links.schema.type,object
+links.schema.properties.title.type,string
+links.schema.properties.startOn.type,string
+links.schema.properties.startOn.format,date-time
+links.schema.properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+links.schema.properties.endOn.type,string
+links.schema.properties.endOn.format,date-time
+links.schema.properties.endOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+links.schema.properties.code.type,string
+links.schema.properties.number.type,string
+links.schema.properties.instructionalPlatform.type,string
+links.schema.properties.instructionalPlatform.format,guid
+links.schema.properties.instructionalPlatform.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.academicLevels.type,string
+links.schema.properties.academicLevels.format,guid
+links.schema.properties.academicLevels.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.course.type,string
+links.schema.properties.course.format,guid
+links.schema.properties.course.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.site.type,string
+links.schema.properties.site.format,guid
+links.schema.properties.site.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+links.schema.properties.status.type,string
+links.schema.properties.status.enum,closed;open;pending;cancelled
+links.schema.properties.owningOrganizations.type,string
+links.schema.properties.owningOrganizations.format,guid
+links.schema.properties.owningOrganizations.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$

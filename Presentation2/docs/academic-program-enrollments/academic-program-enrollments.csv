@@ -1,0 +1,162 @@
+title,Academic Program Enrollments
+description,The mapping of a student to an academic program in which he or she has enrolled.
+type,object
+properties.metadata.title,Metadata
+properties.metadata.description,Metadata about the JSON payload
+properties.metadata.type,object
+properties.metadata.properties.createdBy.title,Created By
+properties.metadata.properties.createdBy.description,The name of the originator (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.createdBy.type,string
+properties.metadata.properties.createdOn.title,Created On
+properties.metadata.properties.createdOn.description,The date and time when the entity instance was created
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.format,date-time
+properties.metadata.properties.createdOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.createdOn.oneOf.type,string
+properties.metadata.properties.createdOn.oneOf.maxLength,
+properties.metadata.properties.modifiedBy.title,Modified By
+properties.metadata.properties.modifiedBy.description,The name of the modifier (user or system) of the data. This is informational only, do not use in business logic!
+properties.metadata.properties.modifiedBy.type,string
+properties.metadata.properties.modifiedOn.title,Modified On
+properties.metadata.properties.modifiedOn.description,The date and time when the entity instance was last modified
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.format,date-time
+properties.metadata.properties.modifiedOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.metadata.properties.modifiedOn.oneOf.type,string
+properties.metadata.properties.modifiedOn.oneOf.maxLength,
+properties.metadata.additionalProperties,false
+properties.id.title,ID
+properties.id.description,The global identifier of the academic program enrollment.
+properties.id.type,string
+properties.id.format,guid
+properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.program.title,Academic Program
+properties.program.description,The academic program in which the student has enrolled.
+properties.program.type,object
+properties.program.properties.id.title,ID
+properties.program.properties.id.description,The global identifier for Academic Program
+properties.program.properties.id.type,string
+properties.program.properties.id.format,guid
+properties.program.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.program.links.rel,self
+properties.program.links.href,/academic-programs/{id}
+properties.program.links.targetSchema.$ref,academic-programs.json#
+properties.program.additionalProperties,false
+properties.program.required,id
+properties.catalog.title,Academic Catalog
+properties.catalog.description,The academic catalog that defines the requirements for student's enrollment in the program.
+properties.catalog.oneOf.type,object
+properties.catalog.oneOf.properties.id.title,ID
+properties.catalog.oneOf.properties.id.description,The global identifier for Academic Catalog
+properties.catalog.oneOf.properties.id.type,string
+properties.catalog.oneOf.properties.id.format,guid
+properties.catalog.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.catalog.oneOf.links.rel,self
+properties.catalog.oneOf.links.href,/academic-catalogs/{id}
+properties.catalog.oneOf.links.targetSchema.$ref,academic-catalogs.json#
+properties.catalog.oneOf.additionalProperties,false
+properties.catalog.oneOf.required,id
+properties.catalog.oneOf.type,object
+properties.catalog.oneOf.maxProperties,
+properties.student.title,Student
+properties.student.description,The student enrolled in the academic program.
+properties.student.type,object
+properties.student.properties.id.title,ID
+properties.student.properties.id.description,The global identifier for Student
+properties.student.properties.id.type,string
+properties.student.properties.id.format,guid
+properties.student.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.student.links.rel,self
+properties.student.links.href,/persons/{id}
+properties.student.links.targetSchema.$ref,persons.json#
+properties.student.additionalProperties,false
+properties.student.required,id
+properties.credentials.title,Credentials
+properties.credentials.description,The academic credentials that can be awarded for completing the  academic program.
+properties.credentials.type,array
+properties.credentials.items.title,Credentials
+properties.credentials.items.description,The academic credentials that can be awarded for completing the  academic program.
+properties.credentials.items.type,object
+properties.credentials.items.properties.id.title,ID
+properties.credentials.items.properties.id.description,The global identifier for Credentials
+properties.credentials.items.properties.id.type,string
+properties.credentials.items.properties.id.format,guid
+properties.credentials.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.credentials.items.links.rel,self
+properties.credentials.items.links.href,/academic-credentials/{id}
+properties.credentials.items.links.targetSchema.$ref,academic-credentials.json#
+properties.credentials.items.additionalProperties,false
+properties.credentials.items.required,id
+properties.disciplines.title,Discipline
+properties.disciplines.description,The academic disciplines offered as part of the academic program.
+properties.disciplines.type,array
+properties.disciplines.items.type,object
+properties.disciplines.items.properties.discipline.title,Discipline
+properties.disciplines.items.properties.discipline.description,An academic discipline associated with the academic program.
+properties.disciplines.items.properties.discipline.type,object
+properties.disciplines.items.properties.discipline.properties.id.title,ID
+properties.disciplines.items.properties.discipline.properties.id.description,The global identifier for Discipline
+properties.disciplines.items.properties.discipline.properties.id.type,string
+properties.disciplines.items.properties.discipline.properties.id.format,guid
+properties.disciplines.items.properties.discipline.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.disciplines.items.properties.discipline.links.rel,self
+properties.disciplines.items.properties.discipline.links.href,/academic-disciplines/{id}
+properties.disciplines.items.properties.discipline.links.targetSchema.$ref,academic-disciplines.json#
+properties.disciplines.items.properties.discipline.additionalProperties,false
+properties.disciplines.items.properties.discipline.required,id
+properties.disciplines.items.properties.subdisciplines.title,Sub-disciplines
+properties.disciplines.items.properties.subdisciplines.description,A list of academic disciplines which is subordinate to the discipline.
+properties.disciplines.items.properties.subdisciplines.type,array
+properties.disciplines.items.properties.subdisciplines.items.title,Sub-disciplines
+properties.disciplines.items.properties.subdisciplines.items.description,A list of academic disciplines which is subordinate to the discipline.
+properties.disciplines.items.properties.subdisciplines.items.type,object
+properties.disciplines.items.properties.subdisciplines.items.properties.id.title,ID
+properties.disciplines.items.properties.subdisciplines.items.properties.id.description,The global identifier for Sub-disciplines
+properties.disciplines.items.properties.subdisciplines.items.properties.id.type,string
+properties.disciplines.items.properties.subdisciplines.items.properties.id.format,guid
+properties.disciplines.items.properties.subdisciplines.items.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.disciplines.items.properties.subdisciplines.items.links.rel,self
+properties.disciplines.items.properties.subdisciplines.items.links.href,/academic-disciplines/{id}
+properties.disciplines.items.properties.subdisciplines.items.links.targetSchema.$ref,academic-disciplines.json#
+properties.disciplines.items.properties.subdisciplines.items.additionalProperties,false
+properties.disciplines.items.properties.subdisciplines.items.required,id
+properties.disciplines.items.additionalProperties,false
+properties.disciplines.items.required,discipline
+properties.startOn.title,Start Date
+properties.startOn.description,The date the academic program started.
+properties.startOn.type,string
+properties.startOn.format,date-time
+properties.startOn.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.title,End Date
+properties.endOn.description,The date the academic program ended.
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.format,date-time
+properties.endOn.oneOf.pattern,^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$
+properties.endOn.oneOf.type,string
+properties.endOn.oneOf.maxLength,
+properties.enrollmentStatus.title,Enrollment Status
+properties.enrollmentStatus.description,The current state of the enrollment.
+properties.enrollmentStatus.type,object
+properties.enrollmentStatus.properties.status.title,Enrollment Status
+properties.enrollmentStatus.properties.status.description,The status of the academic program enrollment.
+properties.enrollmentStatus.properties.status.enum,active;inactive;complete
+properties.enrollmentStatus.properties.status.type,string
+properties.enrollmentStatus.properties.detail.title,Detail
+properties.enrollmentStatus.properties.detail.description,
+properties.enrollmentStatus.properties.detail.oneOf.type,object
+properties.enrollmentStatus.properties.detail.oneOf.properties.id.title,ID
+properties.enrollmentStatus.properties.detail.oneOf.properties.id.description,The global identifier for Detail
+properties.enrollmentStatus.properties.detail.oneOf.properties.id.type,string
+properties.enrollmentStatus.properties.detail.oneOf.properties.id.format,guid
+properties.enrollmentStatus.properties.detail.oneOf.properties.id.pattern,^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$
+properties.enrollmentStatus.properties.detail.oneOf.links.rel,self
+properties.enrollmentStatus.properties.detail.oneOf.links.href,/enrollment-statuses/{id}
+properties.enrollmentStatus.properties.detail.oneOf.links.targetSchema.$ref,enrollment-statuses.json#
+properties.enrollmentStatus.properties.detail.oneOf.additionalProperties,false
+properties.enrollmentStatus.properties.detail.oneOf.required,id
+properties.enrollmentStatus.properties.detail.oneOf.type,object
+properties.enrollmentStatus.properties.detail.oneOf.maxProperties,
+properties.enrollmentStatus.additionalProperties,false
+properties.enrollmentStatus.required,status
+required,id;startOn;enrollmentStatus
+additionalProperties,false
